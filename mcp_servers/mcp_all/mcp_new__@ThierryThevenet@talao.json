@@ -1,0 +1,226 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Data Wallet Verification",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334443,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@ThierryThevenet/talao/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_supported_scopes",
+          "description": "Return supported scopes, the claims each scope returns, and available verifier profiles.",
+          "input_schema": {
+            "type": "object",
+            "required": [],
+            "properties": {}
+          }
+        },
+        {
+          "name": "start_wallet_verification",
+          "description": "Create a wallet request as a QR code image or deeplink.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "verifier_id",
+              "scope"
+            ],
+            "properties": {
+              "scope": {
+                "enum": [
+                  "email",
+                  "phone",
+                  "profile",
+                  "over18",
+                  "custom",
+                  "wallet_identifier",
+                  "raw"
+                ],
+                "type": "string",
+                "description": "Claims: profile→ family_name,given_name,birth_date; email→ email_address; phone→ mobile_phone_number; over18→ age attestation; wallet_identifier→ DID only; custom→ use your own Presentation Definition."
+              },
+              "session_id": {
+                "type": "string",
+                "description": "Optional caller-provided session id."
+              },
+              "verifier_id": {
+                "type": "string",
+                "description": "Verifier identifier."
+              }
+            }
+          }
+        },
+        {
+          "name": "poll_wallet_verification",
+          "description": "Poll current status for a session; returns structured status and redacted wallet_data.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "session_id"
+            ],
+            "properties": {
+              "session_id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "name": "revoke_wallet_flow",
+          "description": "Acknowledge cleanup for a session id (back-end TTL handles actual expiration).",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "session_id"
+            ],
+            "properties": {
+              "session_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 4,
+      "tool_names": [
+        "get_supported_scopes",
+        "start_wallet_verification",
+        "poll_wallet_verification",
+        "revoke_wallet_flow"
+      ],
+      "verification_call_result": "error: Unauthorized: missing token"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Data Wallet Verification",
+      "author": null,
+      "overview": "Discover supported verification scopes and the claims they provide. Initiate and monitor data wallet verification flows to securely receive redacted wallet data. Clean up completed sessions to keep workflows organized.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@ThierryThevenet/talao",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 4,
+      "tools": [
+        {
+          "name": "get_supported_scopes",
+          "description": "Return supported scopes, the claims each scope returns, and available verifier profiles.",
+          "inputSchema": {
+            "type": "object",
+            "required": [],
+            "properties": {}
+          }
+        },
+        {
+          "name": "start_wallet_verification",
+          "description": "Create a wallet request as a QR code image or deeplink.",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "verifier_id",
+              "scope"
+            ],
+            "properties": {
+              "scope": {
+                "enum": [
+                  "email",
+                  "phone",
+                  "profile",
+                  "over18",
+                  "custom",
+                  "wallet_identifier",
+                  "raw"
+                ],
+                "type": "string",
+                "description": "Claims: profile→ family_name,given_name,birth_date; email→ email_address; phone→ mobile_phone_number; over18→ age attestation; wallet_identifier→ DID only; custom→ use your own Presentation Definition."
+              },
+              "session_id": {
+                "type": "string",
+                "description": "Optional caller-provided session id."
+              },
+              "verifier_id": {
+                "type": "string",
+                "description": "Verifier identifier."
+              }
+            }
+          }
+        },
+        {
+          "name": "poll_wallet_verification",
+          "description": "Poll current status for a session; returns structured status and redacted wallet_data.",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "session_id"
+            ],
+            "properties": {
+              "session_id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "name": "revoke_wallet_flow",
+          "description": "Acknowledge cleanup for a session id (back-end TTL handles actual expiration).",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "session_id"
+            ],
+            "properties": {
+              "session_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@ThierryThevenet@talao.json",
+    "source_filename": "@ThierryThevenet@talao.json",
+    "processed_timestamp": 1761334443,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@ThierryThevenet/talao/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@ThierryThevenet/talao",
+      "displayName": "Data Wallet Verification",
+      "description": "Discover supported verification scopes and the claims they provide. Initiate and monitor data wallet verification flows to securely receive redacted wallet data. Clean up completed sessions to keep workflows organized.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-10-16T17:03:22.218Z",
+      "homepage": "https://smithery.ai/server/@ThierryThevenet/talao"
+    }
+  }
+}

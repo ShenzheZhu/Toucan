@@ -1,0 +1,127 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Example MCP Server",
+    "rank_by_usage": null,
+    "usage_count": 194,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334108,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@albertlieyingadrian/example-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "hello",
+          "description": "Say hello to someone",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name to greet"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "hello"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool hello: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"name\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Example MCP Server",
+      "author": null,
+      "overview": "Provide a fast and easy-to-build MCP server implementation to integrate LLMs with external tools and resources. Enable dynamic interaction with data and actions through a standardized protocol. Facilitate rapid development of MCP servers following best practices.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@albertlieyingadrian/example-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 194,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "hello",
+          "description": "Say hello to someone",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name to greet"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@albertlieyingadrian@example-mcp.json",
+    "source_filename": "@albertlieyingadrian@example-mcp.json",
+    "processed_timestamp": 1761334108,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@albertlieyingadrian/example-mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@albertlieyingadrian/example-mcp",
+      "displayName": "Example MCP Server",
+      "description": "Provide a fast and easy-to-build MCP server implementation to integrate LLMs with external tools and resources. Enable dynamic interaction with data and actions through a standardized protocol. Facilitate rapid development of MCP servers following best practices.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/smithery.ai.ico",
+      "verified": false,
+      "useCount": 194,
+      "remote": true,
+      "createdAt": "2025-06-27T18:46:28.717Z",
+      "homepage": "https://smithery.ai/server/@albertlieyingadrian/example-mcp"
+    }
+  }
+}

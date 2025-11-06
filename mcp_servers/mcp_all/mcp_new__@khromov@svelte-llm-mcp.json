@@ -1,0 +1,154 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "svelte-llm-mcp",
+    "rank_by_usage": null,
+    "usage_count": 10,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334664,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@khromov/svelte-llm-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "list_sections",
+          "description": "Lists all available Svelte 5 and SvelteKit documentation sections in a structured format. Returns sections as a list of \"* title: [section_title], path: [file_path]\" - you can use either the title or path when querying a specific section via the get_documentation tool. Always run list_sections first for any query related to Svelte development to discover available content.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_documentation",
+          "description": "Retrieves full documentation content for Svelte 5 or SvelteKit sections. Supports flexible search by title (e.g., \"$state\", \"routing\") or file path (e.g., \"docs/svelte/state.md\"). Can accept a single section name or an array of sections. Before running this, make sure to analyze the users query, as well as the output from list_sections (which should be called first). Then ask for ALL relevant sections the user might require. For example, if the user asks to build anything interactive, you will need to fetch all relevant runes, and so on.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "section"
+            ],
+            "properties": {
+              "section": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "The section name(s) to retrieve. Can search by title (e.g., \"$state\", \"load functions\") or file path (e.g., \"docs/svelte/state.md\"). Supports single string and array of strings"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 2,
+      "tool_names": [
+        "list_sections",
+        "get_documentation"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='📋 Available documentation sections:\\n\\n# Svelte\\n* title: Overview, path: docs/svelte/01-introduction/01-overview.md\\n* title: Getting started, path: docs/svelte/01-introduction/02-getting-started.md\\n* title: .svelte files, path: docs/svelte/01-introduction/03-svelte-files.md\\n* title: .svelte.js and .svelte.ts files, path: docs/svelte/01-introduction/04-svelte-js-files.md\\n* title: What are runes?, path: docs/svelte/02-runes/01-what-are-runes.md\\n* title: $state, path: docs/svelte/02-runes/02-$state.md\\n* title: $derived, path: docs/svelte/02-runes/03-$derived.md\\n* title: $effect, path: docs/svelte/02-runes/04-$effect.md\\n* title: $props, path: docs/svelte/02-runes/05-$props.md\\n* title: $bindable, path: docs/svelte/02-runes/06-$bindable.md\\n* title: $inspect, path: docs/svelte/02-runes/07-$inspect.md\\n* title: $host, path: docs/svelte/02-runes/08-$host.md\\n* title: Basic markup, path: docs/svelte/03-template-syntax/01-basic-markup.md\\n* title: {#if ...}, path: docs/svelte/03-template-syntax/02-if.md\\n* title: {#each ...}, path: docs/svelte/03-template-syntax/03-each.md\\n* title: {#key ...}, path: docs/svelte/03-template-syntax/04-key.md\\n* title: {#await ...}, path: docs/svelte/03-template-syntax/05-await.md\\n* title: {#snippet ...}, path: docs/svelte/03-template-syntax/06-snippet.md\\n* title: {@render ...}, path: docs/svelte/03-template-syntax/07-@render.md\\n* title: {@html ...}, path: docs/svelte/03-template-syntax/08-@html.md\\n* title: {@attach ...}, path: docs/svelte/03-template-syntax/09-@attach.md\\n* title: {@const ...}, path: docs/svelte/03-template-syntax/10-@const.md\\n* title: {@debug ...}, path: docs/svelte/03-template-syntax/11-@debug.md\\n* title: bind:, path: docs/svelte/03-template-syntax/12-bind.md\\n* title: use:, path: docs/svelte/03-template-syntax/13-use.md\\n* title: transition:, path: docs/svelte/03-template-syntax/14-transition.md\\n* title: in: and out:, path: docs/svelte/03-template-syntax/15-in-and-out.md\\n* title: animate:, path: docs/svelte/03-template-syntax/16-animate.md\\n* title: style:, path: docs/svelte/03-template-syntax/17-style.md\\n* title: class, path: docs/svelte/03-template-syntax/18-class.md\\n* title: await, path: docs/svelte/03-template-syntax/19-await-expressions.md\\n* title: Scoped styles, path: docs/svelte/04-styling/01-scoped-styles.md\\n* title: Global styles, path: docs/svelte/04-styling/02-global-styles.md\\n* title: Custom properties, path: docs/svelte/04-styling/03-custom-properties.md\\n* title: Nested <style> elements, path: docs/svelte/04-styling/04-nested-style-elements.md\\n* title: <svelte:boundary>, path: docs/svelte/05-special-elements/01-svelte-boundary.md\\n* title: <svelte:window>, path: docs/svelte/05-special-elements/02-svelte-window.md\\n* title: <svelte:document>, path: docs/svelte/05-special-elements/03-svelte-document.md\\n* title: <svelte:body>, path: docs/svelte/05-special-elements/04-svelte-body.md\\n* title: <svelte:head>, path: docs/svelte/05-special-elements/05-svelte-head.md\\n* title: <svelte:element>, path: docs/svelte/05-special-elements/06-svelte-element.md\\n* title: <svelte:options>, path: docs/svelte/05-special-elements/07-svelte-options.md\\n* title: Stores, path: docs/svelte/06-runtime/01-stores.md\\n* title: Context, path: docs/svelte/06-runtime/02-context.md\\n* title: Lifecycle hooks, path: docs/svelte/06-runtime/03-lifecycle-hooks.md\\n* title: Imperative component API, path: docs/svelte/06-runtime/04-imperative-component-api.md\\n* title: Testing, path: docs/svelte/07-misc/02-testing.md\\n* title: TypeScript, path: docs/svelte/07-misc/03-typescript.md\\n* title: Custom elements, path: docs/svelte/07-misc/04-custom-elements.md\\n* title: Svelte 4 migration guide, path: docs/svelte/07-misc/06-v4-migration-guide.md\\n* title: Svelte 5 migration guide, path: docs/svelte/07-misc/07-v5-migration-guide.md\\n* title: Frequently asked questions, path: docs/svelte/07-misc/99-faq.md\\n* title: svelte, path: docs/svelte/98-reference/20-svelte.md\\n* title: svelte/action, path: docs/svelte/98-reference/21-svelte-action.md\\n* title: svelte/animate, path: docs/svelte/98-reference/21-svelte-animate.md\\n* title: svelte/attachments, path: docs/svelte/98-reference/21-svelte-attachments.md\\n* title: svelte/compiler, path: docs/svelte/98-reference/21-svelte-compiler.md\\n* title: svelte/easing, path: docs/svelte/98-reference/21-svelte-easing.md\\n* title: svelte/events, path: docs/svelte/98-reference/21-svelte-events.md\\n* title: svelte/legacy, path: docs/svelte/98-reference/21-svelte-legacy.md\\n* title: svelte/motion, path: docs/svelte/98-reference/21-svelte-motion.md\\n* title: svelte/reactivity/window, path: docs/svelte/98-reference/21-svelte-reactivity-window.md\\n* title: svelte/reactivity, path: docs/svelte/98-reference/21-svelte-reactivity.md\\n* title: svelte/server, path: docs/svelte/98-reference/21-svelte-server.md\\n* title: svelte/store, path: docs/svelte/98-reference/21-svelte-store.md\\n* title: svelte/transition, path: docs/svelte/98-reference/21-svelte-transition.md\\n* title: Compiler errors, path: docs/svelte/98-reference/30-compiler-errors.md\\n* title: Compiler warnings, path: docs/svelte/98-reference/30-compiler-warnings.md\\n* title: Runtime errors, path: docs/svelte/98-reference/30-runtime-errors.md\\n* title: Runtime warnings, path: docs/svelte/98-reference/30-runtime-warnings.md\\n* title: Overview, path: docs/svelte/99-legacy/00-legacy-overview.md\\n* title: Reactive let/var declarations, path: docs/svelte/99-legacy/01-legacy-let.md\\n* title: Reactive $: statements, path: docs/svelte/99-legacy/02-legacy-reactive-assignments.md\\n* title: export let, path: docs/svelte/99-legacy/03-legacy-export-let.md\\n* title: $$props and $$restProps, path: docs/svelte/99-legacy/04-legacy-$$props-and-$$restProps.md\\n* title: on:, path: docs/svelte/99-legacy/10-legacy-on.md\\n* title: <slot>, path: docs/svelte/99-legacy/20-legacy-slots.md\\n* title: $$slots, path: docs/svelte/99-legacy/21-legacy-$$slots.md\\n* title: <svelte:fragment>, path: docs/svelte/99-legacy/22-legacy-svelte-fragment.md\\n* title: <svelte:component>, path: docs/svelte/99-legacy/30-legacy-svelte-component.md\\n* title: <svelte:self>, path: docs/svelte/99-legacy/31-legacy-svelte-self.md\\n* title: Imperative component API, path: docs/svelte/99-legacy/40-legacy-component-api.md\\n\\n# SvelteKit\\n* title: Introduction, path: docs/kit/10-getting-started/10-introduction.md\\n* title: Creating a project, path: docs/kit/10-getting-started/20-creating-a-project.md\\n* title: Project types, path: docs/kit/10-getting-started/25-project-types.md\\n* title: Project structure, path: docs/kit/10-getting-started/30-project-structure.md\\n* title: Web standards, path: docs/kit/10-getting-started/40-web-standards.md\\n* title: Routing, path: docs/kit/20-core-concepts/10-routing.md\\n* title: Loading data, path: docs/kit/20-core-concepts/20-load.md\\n* title: Form actions, path: docs/kit/20-core-concepts/30-form-actions.md\\n* title: Page options, path: docs/kit/20-core-concepts/40-page-options.md\\n* title: State management, path: docs/kit/20-core-concepts/50-state-management.md\\n* title: Remote functions, path: docs/kit/20-core-concepts/60-remote-functions.md\\n* title: Building your app, path: docs/kit/25-build-and-deploy/10-building-your-app.md\\n* title: Adapters, path: docs/kit/25-build-and-deploy/20-adapters.md\\n* title: Zero-config deployments, path: docs/kit/25-build-and-deploy/30-adapter-auto.md\\n* title: Node servers, path: docs/kit/25-build-and-deploy/40-adapter-node.md\\n* title: Static site generation, path: docs/kit/25-build-and-deploy/50-adapter-static.md\\n* title: Single-page apps, path: docs/kit/25-build-and-deploy/55-single-page-apps.md\\n* title: Cloudflare, path: docs/kit/25-build-and-deploy/60-adapter-cloudflare.md\\n* title: Cloudflare Workers, path: docs/kit/25-build-and-deploy/70-adapter-cloudflare-workers.md\\n* title: Netlify, path: docs/kit/25-build-and-deploy/80-adapter-netlify.md\\n* title: Vercel, path: docs/kit/25-build-and-deploy/90-adapter-vercel.md\\n* title: Writing adapters, path: docs/kit/25-build-and-deploy/99-writing-adapters.md\\n* title: Advanced routing, path: docs/kit/30-advanced/10-advanced-routing.md\\n* title: Hooks, path: docs/kit/30-advanced/20-hooks.md\\n* title: Errors, path: docs/kit/30-advanced/25-errors.md\\n* title: Link options, path: docs/kit/30-advanced/30-link-options.md\\n* title: Service workers, path: docs/kit/30-advanced/40-service-workers.md\\n* title: Server-only modules, path: docs/kit/30-advanced/50-server-only-modules.md\\n* title: Snapshots, path: docs/kit/30-advanced/65-snapshots.md\\n* title: Shallow routing, path: docs/kit/30-advanced/67-shallow-routing.md\\n* title: Observability, path: docs/kit/30-advanced/68-observability.md\\n* title: Packaging, path: docs/kit/30-advanced/70-packaging.md\\n* title: Auth, path: docs/kit/40-best-practices/03-auth.md\\n* title: Performance, path: docs/kit/40-best-practices/05-performance.md\\n* title: Icons, path: docs/kit/40-best-practices/06-icons.md\\n* title: Images, path: docs/kit/40-best-practices/07-images.md\\n* title: Accessibility, path: docs/kit/40-best-practices/10-accessibility.md\\n* title: SEO, path: docs/kit/40-best-practices/20-seo.md\\n* title: Frequently asked questions, path: docs/kit/60-appendix/10-faq.md\\n* title: Integrations, path: docs/kit/60-appendix/20-integrations.md\\n* title: Breakpoint Debugging, path: docs/kit/60-appendix/25-debugging.md\\n* title: Migrating to SvelteKit v2, path: docs/kit/60-appendix/30-migrating-to-sveltekit-2.md\\n* title: Migrating from Sapper, path: docs/kit/60-appendix/40-migrating.md\\n* title: Additional resources, path: docs/kit/60-appendix/50-additional-resources.md\\n* title: Glossary, path: docs/kit/60-appendix/60-glossary.md\\n* title: @sveltejs/kit, path: docs/kit/98-reference/10-@sveltejs-kit.md\\n* title: @sveltejs/kit/hooks, path: docs/kit/98-reference/15-@sveltejs-kit-hooks.md\\n* title: @sveltejs/kit/node/polyfills, path: docs/kit/98-reference/15-@sveltejs-kit-node-polyfills.md\\n* title: @sveltejs/kit/node, path: docs/kit/98-reference/15-@sveltejs-kit-node.md\\n* title: @sveltejs/kit/vite, path: docs/kit/98-reference/15-@sveltejs-kit-vite.md\\n* title: $app/environment, path: docs/kit/98-reference/20-$app-environment.md\\n* title: $app/forms, path: docs/kit/98-reference/20-$app-forms.md\\n* title: $app/navigation, path: docs/kit/98-reference/20-$app-navigation.md\\n* title: $app/paths, path: docs/kit/98-reference/20-$app-paths.md\\n* title: $app/server, path: docs/kit/98-reference/20-$app-server.md\\n* title: $app/state, path: docs/kit/98-reference/20-$app-state.md\\n* title: $app/stores, path: docs/kit/98-reference/20-$app-stores.md\\n* title: $app/types, path: docs/kit/98-reference/20-$app-types.md\\n* title: $env/dynamic/private, path: docs/kit/98-reference/25-$env-dynamic-private.md\\n* title: $env/dynamic/public, path: docs/kit/98-reference/25-$env-dynamic-public.md\\n* title: $env/static/private, path: docs/kit/98-reference/25-$env-static-private.md\\n* title: $env/static/public, path: docs/kit/98-reference/25-$env-static-public.md\\n* title: $lib, path: docs/kit/98-reference/26-$lib.md\\n* title: $service-worker, path: docs/kit/98-reference/27-$service-worker.md\\n* title: Configuration, path: docs/kit/98-reference/50-configuration.md\\n* title: Command Line Interface, path: docs/kit/98-reference/52-cli.md\\n* title: Types, path: docs/kit/98-reference/54-types.md\\n\\nUse get_documentation with a section name to retrieve specific content for a section.', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "svelte-llm-mcp",
+      "author": null,
+      "overview": "Connect your AI coding assistant directly to up-to-date Svelte 5 and SvelteKit documentation via this MCP server.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@khromov/svelte-llm-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 10,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 2,
+      "tools": [
+        {
+          "name": "list_sections",
+          "description": "Lists all available Svelte 5 and SvelteKit documentation sections in a structured format. Returns sections as a list of \"* title: [section_title], path: [file_path]\" - you can use either the title or path when querying a specific section via the get_documentation tool. Always run list_sections first for any query related to Svelte development to discover available content.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_documentation",
+          "description": "Retrieves full documentation content for Svelte 5 or SvelteKit sections. Supports flexible search by title (e.g., \"$state\", \"routing\") or file path (e.g., \"docs/svelte/state.md\"). Can accept a single section name or an array of sections. Before running this, make sure to analyze the users query, as well as the output from list_sections (which should be called first). Then ask for ALL relevant sections the user might require. For example, if the user asks to build anything interactive, you will need to fetch all relevant runes, and so on.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "section"
+            ],
+            "properties": {
+              "section": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "The section name(s) to retrieve. Can search by title (e.g., \"$state\", \"load functions\") or file path (e.g., \"docs/svelte/state.md\"). Supports single string and array of strings"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@khromov@svelte-llm-mcp.json",
+    "source_filename": "@khromov@svelte-llm-mcp.json",
+    "processed_timestamp": 1761334664,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@khromov/svelte-llm-mcp/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@khromov/svelte-llm-mcp",
+      "displayName": "svelte-llm-mcp",
+      "description": "Connect your AI coding assistant directly to up-to-date Svelte 5 and SvelteKit documentation via this MCP server.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/svelte-llm.stanislav.garden.ico",
+      "verified": false,
+      "useCount": 10,
+      "remote": true,
+      "createdAt": "2025-09-14T20:54:25.584Z",
+      "homepage": "https://smithery.ai/server/@khromov/svelte-llm-mcp"
+    }
+  }
+}

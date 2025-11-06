@@ -1,0 +1,654 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Memory Graph",
+    "rank_by_usage": null,
+    "usage_count": 99,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761332624,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@Myangsun/loc-memory-server/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "create_entities",
+          "description": "Create multiple new entities in the knowledge graph",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "entities"
+            ],
+            "properties": {
+              "entities": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "entityType",
+                    "observations"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the entity"
+                    },
+                    "entityType": {
+                      "type": "string",
+                      "description": "The type of the entity"
+                    },
+                    "observations": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "An array of observation contents associated with the entity"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "create_relations",
+          "description": "Create multiple new relations between entities in the knowledge graph. Relations should be in active voice",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "relations"
+            ],
+            "properties": {
+              "relations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "from",
+                    "to",
+                    "relationType"
+                  ],
+                  "properties": {
+                    "to": {
+                      "type": "string",
+                      "description": "The name of the entity where the relation ends"
+                    },
+                    "from": {
+                      "type": "string",
+                      "description": "The name of the entity where the relation starts"
+                    },
+                    "relationType": {
+                      "type": "string",
+                      "description": "The type of the relation"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "add_observations",
+          "description": "Add new observations to existing entities in the knowledge graph",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "observations"
+            ],
+            "properties": {
+              "observations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "entityName",
+                    "contents"
+                  ],
+                  "properties": {
+                    "contents": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "An array of observation contents to add"
+                    },
+                    "entityName": {
+                      "type": "string",
+                      "description": "The name of the entity to add the observations to"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "delete_entities",
+          "description": "Delete multiple entities and their associated relations from the knowledge graph",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "entityNames"
+            ],
+            "properties": {
+              "entityNames": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "An array of entity names to delete"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "delete_observations",
+          "description": "Delete specific observations from entities in the knowledge graph",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "deletions"
+            ],
+            "properties": {
+              "deletions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "entityName",
+                    "observations"
+                  ],
+                  "properties": {
+                    "entityName": {
+                      "type": "string",
+                      "description": "The name of the entity containing the observations"
+                    },
+                    "observations": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "An array of observations to delete"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "delete_relations",
+          "description": "Delete multiple relations from the knowledge graph",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "relations"
+            ],
+            "properties": {
+              "relations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "from",
+                    "to",
+                    "relationType"
+                  ],
+                  "properties": {
+                    "to": {
+                      "type": "string",
+                      "description": "The name of the entity where the relation ends"
+                    },
+                    "from": {
+                      "type": "string",
+                      "description": "The name of the entity where the relation starts"
+                    },
+                    "relationType": {
+                      "type": "string",
+                      "description": "The type of the relation"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "description": "An array of relations to delete"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "read_graph",
+          "description": "Read the entire knowledge graph",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_nodes",
+          "description": "Search for nodes in the knowledge graph based on a query",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The search query to match against entity names, types, and observation content"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "open_nodes",
+          "description": "Open specific nodes in the knowledge graph by their names",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "names"
+            ],
+            "properties": {
+              "names": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "An array of entity names to retrieve"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "extract_locations",
+          "description": "Extract locations from text and add them to the knowledge graph as entities with geographic relationships",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "The text to extract locations from"
+              },
+              "sourceEntity": {
+                "type": "string",
+                "description": "Optional: name of source entity that mentions these locations (creates 'mentions_location' relations)"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 10,
+      "tool_names": [
+        "create_entities",
+        "create_relations",
+        "add_observations",
+        "delete_entities",
+        "delete_observations",
+        "delete_relations",
+        "read_graph",
+        "search_nodes",
+        "open_nodes",
+        "extract_locations"
+      ],
+      "verification_call_result": "error: Cannot read properties of undefined (reading 'filter')"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Memory Graph",
+      "author": null,
+      "overview": "Remember user details and preferences across conversations. Organize facts into connected profiles for richer, long-term context. Search, update, and automatically extract locations to keep memories accurate and actionable.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@Myangsun/loc-memory-server",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 99,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 10,
+      "tools": [
+        {
+          "name": "create_entities",
+          "description": "Create multiple new entities in the knowledge graph",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "entities"
+            ],
+            "properties": {
+              "entities": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "entityType",
+                    "observations"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the entity"
+                    },
+                    "entityType": {
+                      "type": "string",
+                      "description": "The type of the entity"
+                    },
+                    "observations": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "An array of observation contents associated with the entity"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "create_relations",
+          "description": "Create multiple new relations between entities in the knowledge graph. Relations should be in active voice",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "relations"
+            ],
+            "properties": {
+              "relations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "from",
+                    "to",
+                    "relationType"
+                  ],
+                  "properties": {
+                    "to": {
+                      "type": "string",
+                      "description": "The name of the entity where the relation ends"
+                    },
+                    "from": {
+                      "type": "string",
+                      "description": "The name of the entity where the relation starts"
+                    },
+                    "relationType": {
+                      "type": "string",
+                      "description": "The type of the relation"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "add_observations",
+          "description": "Add new observations to existing entities in the knowledge graph",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "observations"
+            ],
+            "properties": {
+              "observations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "entityName",
+                    "contents"
+                  ],
+                  "properties": {
+                    "contents": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "An array of observation contents to add"
+                    },
+                    "entityName": {
+                      "type": "string",
+                      "description": "The name of the entity to add the observations to"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "delete_entities",
+          "description": "Delete multiple entities and their associated relations from the knowledge graph",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "entityNames"
+            ],
+            "properties": {
+              "entityNames": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "An array of entity names to delete"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "delete_observations",
+          "description": "Delete specific observations from entities in the knowledge graph",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "deletions"
+            ],
+            "properties": {
+              "deletions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "entityName",
+                    "observations"
+                  ],
+                  "properties": {
+                    "entityName": {
+                      "type": "string",
+                      "description": "The name of the entity containing the observations"
+                    },
+                    "observations": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "An array of observations to delete"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "delete_relations",
+          "description": "Delete multiple relations from the knowledge graph",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "relations"
+            ],
+            "properties": {
+              "relations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "from",
+                    "to",
+                    "relationType"
+                  ],
+                  "properties": {
+                    "to": {
+                      "type": "string",
+                      "description": "The name of the entity where the relation ends"
+                    },
+                    "from": {
+                      "type": "string",
+                      "description": "The name of the entity where the relation starts"
+                    },
+                    "relationType": {
+                      "type": "string",
+                      "description": "The type of the relation"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "description": "An array of relations to delete"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "read_graph",
+          "description": "Read the entire knowledge graph",
+          "inputSchema": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_nodes",
+          "description": "Search for nodes in the knowledge graph based on a query",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The search query to match against entity names, types, and observation content"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "open_nodes",
+          "description": "Open specific nodes in the knowledge graph by their names",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "names"
+            ],
+            "properties": {
+              "names": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "An array of entity names to retrieve"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "extract_locations",
+          "description": "Extract locations from text and add them to the knowledge graph as entities with geographic relationships",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "The text to extract locations from"
+              },
+              "sourceEntity": {
+                "type": "string",
+                "description": "Optional: name of source entity that mentions these locations (creates 'mentions_location' relations)"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@Myangsun@loc-memory-server.json",
+    "source_filename": "@Myangsun@loc-memory-server.json",
+    "processed_timestamp": 1761332624,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@Myangsun/loc-memory-server/mcp",
+      "configSchema": {
+        "title": "MCP Session Configuration",
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@Myangsun/loc-memory-server",
+      "displayName": "Memory Graph",
+      "description": "Remember user details and preferences across conversations. Organize facts into connected profiles for richer, long-term context. Search, update, and automatically extract locations to keep memories accurate and actionable.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 99,
+      "remote": true,
+      "createdAt": "2025-10-01T00:13:13.155Z",
+      "homepage": "https://smithery.ai/server/@Myangsun/loc-memory-server"
+    }
+  }
+}

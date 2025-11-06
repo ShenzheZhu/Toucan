@@ -1,0 +1,308 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Amadeus Flight Search Server",
+    "rank_by_usage": null,
+    "usage_count": 138,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334522,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@almogqwinz/mcp-amadeus-api/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "ping",
+          "description": "Simple ping tool to test server connectivity",
+          "input_schema": {
+            "type": "object",
+            "title": "pingArguments",
+            "properties": {}
+          }
+        },
+        {
+          "name": "search_flight_offers",
+          "description": "\n    Search for flight offers using the Amadeus API\n\n    Args:\n        originLocationCode: IATA code of the departure city/airport (e.g., SYD for Sydney)\n        destinationLocationCode: IATA code of the destination city/airport (e.g., BKK for Bangkok)\n        departureDate: Departure date in ISO 8601 format (YYYY-MM-DD, e.g., 2023-05-02)\n        adults: Number of adult travelers (age 12+), must be 1-9\n        returnDate: Return date in ISO 8601 format (YYYY-MM-DD), if round-trip is desired\n        children: Number of child travelers (age 2-11)\n        infants: Number of infant travelers (age <= 2)\n        travelClass: Travel class (ECONOMY, PREMIUM_ECONOMY, BUSINESS, FIRST)\n        includedAirlineCodes: Comma-separated IATA airline codes to include (e.g., '6X,7X')\n        excludedAirlineCodes: Comma-separated IATA airline codes to exclude (e.g., '6X,7X')\n        nonStop: If true, only non-stop flights are returned\n        currencyCode: ISO 4217 currency code (e.g., EUR for Euro)\n        maxPrice: Maximum price per traveler, positive integer with no decimals\n        max: Maximum number of flight offers to return\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "search_flight_offersArguments",
+            "required": [
+              "originLocationCode",
+              "destinationLocationCode",
+              "departureDate",
+              "adults"
+            ],
+            "properties": {
+              "max": {
+                "type": "integer",
+                "title": "Max",
+                "default": 250
+              },
+              "adults": {
+                "type": "integer",
+                "title": "Adults"
+              },
+              "infants": {
+                "type": "integer",
+                "title": "Infants",
+                "default": null
+              },
+              "nonStop": {
+                "type": "boolean",
+                "title": "Nonstop",
+                "default": null
+              },
+              "children": {
+                "type": "integer",
+                "title": "Children",
+                "default": null
+              },
+              "maxPrice": {
+                "type": "integer",
+                "title": "Maxprice",
+                "default": null
+              },
+              "returnDate": {
+                "type": "string",
+                "title": "Returndate",
+                "default": null
+              },
+              "travelClass": {
+                "type": "string",
+                "title": "Travelclass",
+                "default": null
+              },
+              "currencyCode": {
+                "type": "string",
+                "title": "Currencycode",
+                "default": null
+              },
+              "departureDate": {
+                "type": "string",
+                "title": "Departuredate"
+              },
+              "originLocationCode": {
+                "type": "string",
+                "title": "Originlocationcode"
+              },
+              "excludedAirlineCodes": {
+                "type": "string",
+                "title": "Excludedairlinecodes",
+                "default": null
+              },
+              "includedAirlineCodes": {
+                "type": "string",
+                "title": "Includedairlinecodes",
+                "default": null
+              },
+              "destinationLocationCode": {
+                "type": "string",
+                "title": "Destinationlocationcode"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 2,
+      "tool_names": [
+        "ping",
+        "search_flight_offers"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='pong', annotations=None, meta=None)] structuredContent={'result': 'pong'} isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Amadeus Flight Search Server",
+      "author": null,
+      "overview": "Enable natural language flight search capabilities by integrating with the Amadeus Flight Offers Search API. Retrieve detailed flight options including times, airlines, and pricing by specifying origin, destination, dates, and passenger details. Empower your AI assistant to provide real-time flight data seamlessly.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@almogqwinz/mcp-amadeus-api",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 138,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 2,
+      "tools": [
+        {
+          "name": "ping",
+          "description": "Simple ping tool to test server connectivity",
+          "inputSchema": {
+            "type": "object",
+            "title": "pingArguments",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "pingOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_flight_offers",
+          "description": "\n    Search for flight offers using the Amadeus API\n\n    Args:\n        originLocationCode: IATA code of the departure city/airport (e.g., SYD for Sydney)\n        destinationLocationCode: IATA code of the destination city/airport (e.g., BKK for Bangkok)\n        departureDate: Departure date in ISO 8601 format (YYYY-MM-DD, e.g., 2023-05-02)\n        adults: Number of adult travelers (age 12+), must be 1-9\n        returnDate: Return date in ISO 8601 format (YYYY-MM-DD), if round-trip is desired\n        children: Number of child travelers (age 2-11)\n        infants: Number of infant travelers (age <= 2)\n        travelClass: Travel class (ECONOMY, PREMIUM_ECONOMY, BUSINESS, FIRST)\n        includedAirlineCodes: Comma-separated IATA airline codes to include (e.g., '6X,7X')\n        excludedAirlineCodes: Comma-separated IATA airline codes to exclude (e.g., '6X,7X')\n        nonStop: If true, only non-stop flights are returned\n        currencyCode: ISO 4217 currency code (e.g., EUR for Euro)\n        maxPrice: Maximum price per traveler, positive integer with no decimals\n        max: Maximum number of flight offers to return\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "search_flight_offersArguments",
+            "required": [
+              "originLocationCode",
+              "destinationLocationCode",
+              "departureDate",
+              "adults"
+            ],
+            "properties": {
+              "max": {
+                "type": "integer",
+                "title": "Max",
+                "default": 250
+              },
+              "adults": {
+                "type": "integer",
+                "title": "Adults"
+              },
+              "infants": {
+                "type": "integer",
+                "title": "Infants",
+                "default": null
+              },
+              "nonStop": {
+                "type": "boolean",
+                "title": "Nonstop",
+                "default": null
+              },
+              "children": {
+                "type": "integer",
+                "title": "Children",
+                "default": null
+              },
+              "maxPrice": {
+                "type": "integer",
+                "title": "Maxprice",
+                "default": null
+              },
+              "returnDate": {
+                "type": "string",
+                "title": "Returndate",
+                "default": null
+              },
+              "travelClass": {
+                "type": "string",
+                "title": "Travelclass",
+                "default": null
+              },
+              "currencyCode": {
+                "type": "string",
+                "title": "Currencycode",
+                "default": null
+              },
+              "departureDate": {
+                "type": "string",
+                "title": "Departuredate"
+              },
+              "originLocationCode": {
+                "type": "string",
+                "title": "Originlocationcode"
+              },
+              "excludedAirlineCodes": {
+                "type": "string",
+                "title": "Excludedairlinecodes",
+                "default": null
+              },
+              "includedAirlineCodes": {
+                "type": "string",
+                "title": "Includedairlinecodes",
+                "default": null
+              },
+              "destinationLocationCode": {
+                "type": "string",
+                "title": "Destinationlocationcode"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "search_flight_offersOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@almogqwinz@mcp-amadeus-api.json",
+    "source_filename": "@almogqwinz@mcp-amadeus-api.json",
+    "processed_timestamp": 1761334522,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@almogqwinz/mcp-amadeus-api/mcp",
+      "configSchema": {
+        "type": "object",
+        "required": [
+          "amadeusClientId",
+          "amadeusClientSecret"
+        ],
+        "properties": {
+          "amadeusClientId": {
+            "type": "string",
+            "description": "Your Amadeus API Client ID (get from https://developers.amadeus.com)"
+          },
+          "amadeusHostname": {
+            "type": "string",
+            "default": "test",
+            "description": "Amadeus API environment to use"
+          },
+          "amadeusClientSecret": {
+            "type": "string",
+            "description": "Your Amadeus API Client Secret"
+          }
+        },
+        "description": "Configuration required to connect to the Amadeus API"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@almogqwinz/mcp-amadeus-api",
+      "displayName": "Amadeus Flight Search Server",
+      "description": "Enable natural language flight search capabilities by integrating with the Amadeus Flight Offers Search API. Retrieve detailed flight options including times, airlines, and pricing by specifying origin, destination, dates, and passenger details. Empower your AI assistant to provide real-time flight data seamlessly.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/developers.amadeus.com.ico",
+      "verified": false,
+      "useCount": 138,
+      "remote": true,
+      "createdAt": "2025-07-28T12:21:46.635Z",
+      "homepage": "https://smithery.ai/server/@almogqwinz/mcp-amadeus-api"
+    }
+  }
+}

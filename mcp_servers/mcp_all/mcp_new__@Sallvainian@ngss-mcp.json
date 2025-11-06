@@ -1,0 +1,751 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "NGSS Standards Explorer",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333488,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@Sallvainian/ngss-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_standard",
+          "description": "Retrieve a specific NGSS standard by its code identifier (e.g., MS-PS1-1, MS-LS2-3, MS-ESS3-1)",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "code"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "pattern": "^MS-(PS|LS|ESS)\\d+-\\d+$",
+                "description": "NGSS standard code (format: MS-{PS|LS|ESS}{number}-{number})"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_by_domain",
+          "description": "Find all NGSS standards in a specific science domain (Physical Science, Life Science, or Earth and Space Science)",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "domain"
+            ],
+            "properties": {
+              "limit": {
+                "type": "integer",
+                "default": 10,
+                "maximum": 50,
+                "minimum": 1,
+                "description": "Maximum number of results to return (1-50)"
+              },
+              "domain": {
+                "enum": [
+                  "Physical Science",
+                  "Life Science",
+                  "Earth and Space Science"
+                ],
+                "type": "string",
+                "description": "Science domain to filter by"
+              },
+              "offset": {
+                "type": "integer",
+                "default": 0,
+                "minimum": 0,
+                "description": "Number of results to skip (for pagination)"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_3d_components",
+          "description": "Extract the three-dimensional learning components (SEP: Science and Engineering Practices, DCI: Disciplinary Core Ideas, CCC: Crosscutting Concepts) for a specific standard (e.g., MS-PS1-1, MS-LS2-3, MS-ESS3-1)",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "code"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "pattern": "^MS-(PS|LS|ESS)\\d+-\\d+$",
+                "description": "NGSS standard code (format: MS-{PS|LS|ESS}{number}-{number})"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_standards",
+          "description": "Perform full-text search across all NGSS standard content including performance expectations, topics, and keywords (e.g., \"energy transfer\", \"ecosystems\", \"chemical reactions\", \"climate change\")",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "limit": {
+                "type": "integer",
+                "default": 10,
+                "description": "Maximum number of results to return",
+                "exclusiveMinimum": 0
+              },
+              "query": {
+                "type": "string",
+                "minLength": 2,
+                "description": "Search query text"
+              },
+              "domain": {
+                "enum": [
+                  "Physical Science",
+                  "Life Science",
+                  "Earth and Space Science"
+                ],
+                "type": "string",
+                "description": "Optional: filter by domain"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_by_practice",
+          "description": "Find all NGSS standards using a specific Science and Engineering Practice (SEP). Examples: \"Developing and Using Models\", \"Analyzing and Interpreting Data\", \"Planning and Carrying Out Investigations\"",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "practice"
+            ],
+            "properties": {
+              "practice": {
+                "enum": [
+                  "Analyze and interpret data to determine similarities and differences in findings.",
+                  "Analyze and interpret data to provide evidence for phenomena.",
+                  "Analyze displays of data to identify linear and nonlinear relationships.",
+                  "Ask questions that can be investigated within the scope of the classroom, outdoor environment, and museums and other public facilities with available resources and, when appropriate, frame a hypothesis based on observations and scientific principles.",
+                  "Ask questions to identify and clarify evidence of an argument.",
+                  "Construct an explanation that includes qualitative or quantitative relationships between variables that predict phenomena.",
+                  "Develop a model to describe unobservable mechanisms.",
+                  "Develop a model to predict and/or describe phenomena.",
+                  "Develop and use a model to describe phenomena.",
+                  "Unknown"
+                ],
+                "type": "string",
+                "description": "Science and Engineering Practice name"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_by_crosscutting_concept",
+          "description": "Find all NGSS standards using a specific Crosscutting Concept (CCC). Examples: \"Patterns\", \"Cause and Effect\", \"Systems and System Models\", \"Energy and Matter\"",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "concept"
+            ],
+            "properties": {
+              "concept": {
+                "enum": [
+                  "Cause and effect relationships may be used to predict phenomena in natural or designed systems.",
+                  "Cause and effect relationships may be used to predict phenomena in natural systems.",
+                  "Graphs and charts can be used to identify patterns in data.",
+                  "Graphs, charts, and images can be used to identify patterns in data.",
+                  "Macroscopic patterns are related to the nature of microscopic and atomic-level structure.",
+                  "Patterns can be used to identify cause and effect relationships.",
+                  "Patterns in rates of change and other numerical relationships can provide information about natural systems.",
+                  "Proportional relationships (e.g., speed as the ratio of distance traveled to time taken) among different types of quantities provide information about the magnitude of properties and processes."
+                ],
+                "type": "string",
+                "description": "Crosscutting Concept name"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_by_disciplinary_core_idea",
+          "description": "Find all NGSS standards using a specific Disciplinary Core Idea (DCI). Examples: \"Definitions of Energy\", \"Interdependent Relationships in Ecosystems\", \"Weather and Climate\"",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "dci"
+            ],
+            "properties": {
+              "dci": {
+                "enum": [
+                  "Adaptation",
+                  "Biodiversity and Humans",
+                  "Biogeology",
+                  "Chemical Reactions",
+                  "Conservation of Energy and Energy Transfer",
+                  "Cycles of Matter and Energy Transfer in Ecosystems",
+                  "Definitions of Energy",
+                  "Earth and the Solar System",
+                  "Earth Materials and Systems",
+                  "Ecosystem Dynamics, Functioning, and Resilience",
+                  "Electromagnetic Radiation",
+                  "Evidence of Common Ancestry and Diversity",
+                  "Forces and Motion",
+                  "Global Climate Change",
+                  "Growth and Development of Organisms",
+                  "Human Impacts on Earth Systems",
+                  "Information Processing",
+                  "Information Technologies and Instrumentation",
+                  "Inheritance of Traits",
+                  "Interdependent Relationships in Ecosystems",
+                  "Natural Hazards",
+                  "Natural Resources",
+                  "Natural Selection",
+                  "Organization for Matter and Energy Flow in Organisms",
+                  "Plate Tectonics and Large-Scale System Interactions",
+                  "Relationship Between Energy and Forces",
+                  "Structure and Function",
+                  "Structure and Properties of Matter",
+                  "The History of Planet Earth",
+                  "The Roles of Water in Earth's Surface Processes",
+                  "The Universe and Its Stars",
+                  "Types of Interactions",
+                  "Variation of Traits",
+                  "Wave Properties",
+                  "Weather and Climate"
+                ],
+                "type": "string",
+                "description": "Disciplinary Core Idea name"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_unit_suggestions",
+          "description": "Recommend compatible NGSS standards for curriculum unit planning based on 3D framework overlap (domain, SEP, DCI, CCC). Example: Given anchor \"MS-PS3-1\" (energy), suggest 2-7 compatible standards that share similar practices, concepts, or disciplinary ideas for a cohesive unit",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "anchor_code"
+            ],
+            "properties": {
+              "unit_size": {
+                "type": "number",
+                "default": 3,
+                "maximum": 8,
+                "minimum": 2,
+                "description": "Total number of standards in the unit (2-8), including the anchor"
+              },
+              "anchor_code": {
+                "type": "string",
+                "description": "The anchor NGSS standard code (e.g., \"MS-PS3-1\")"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "summary",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 8,
+      "tool_names": [
+        "get_standard",
+        "search_by_domain",
+        "get_3d_components",
+        "search_standards",
+        "search_by_practice",
+        "search_by_crosscutting_concept",
+        "search_by_disciplinary_core_idea",
+        "get_unit_suggestions"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool get_standard: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"code\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "NGSS Standards Explorer",
+      "author": null,
+      "overview": "Search and retrieve NGSS standards by code, domain, or topic. Explore three-dimensional components (SEPs, DCIs, and CCCs) and discover related standards by shared practices, concepts, or core ideas. Plan cohesive curriculum units with suggestions for compatible standards.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@Sallvainian/ngss-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 8,
+      "tools": [
+        {
+          "name": "get_standard",
+          "title": "Get NGSS Standard by Code",
+          "description": "Retrieve a specific NGSS standard by its code identifier (e.g., MS-PS1-1, MS-LS2-3, MS-ESS3-1)",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "code"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "pattern": "^MS-(PS|LS|ESS)\\d+-\\d+$",
+                "description": "NGSS standard code (format: MS-{PS|LS|ESS}{number}-{number})"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_by_domain",
+          "title": "Search Standards by Domain",
+          "description": "Find all NGSS standards in a specific science domain (Physical Science, Life Science, or Earth and Space Science)",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "domain"
+            ],
+            "properties": {
+              "limit": {
+                "type": "integer",
+                "default": 10,
+                "maximum": 50,
+                "minimum": 1,
+                "description": "Maximum number of results to return (1-50)"
+              },
+              "domain": {
+                "enum": [
+                  "Physical Science",
+                  "Life Science",
+                  "Earth and Space Science"
+                ],
+                "type": "string",
+                "description": "Science domain to filter by"
+              },
+              "offset": {
+                "type": "integer",
+                "default": 0,
+                "minimum": 0,
+                "description": "Number of results to skip (for pagination)"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_3d_components",
+          "title": "Get 3D Framework Components",
+          "description": "Extract the three-dimensional learning components (SEP: Science and Engineering Practices, DCI: Disciplinary Core Ideas, CCC: Crosscutting Concepts) for a specific standard (e.g., MS-PS1-1, MS-LS2-3, MS-ESS3-1)",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "code"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "pattern": "^MS-(PS|LS|ESS)\\d+-\\d+$",
+                "description": "NGSS standard code (format: MS-{PS|LS|ESS}{number}-{number})"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_standards",
+          "title": "Search Standards (Full-Text)",
+          "description": "Perform full-text search across all NGSS standard content including performance expectations, topics, and keywords (e.g., \"energy transfer\", \"ecosystems\", \"chemical reactions\", \"climate change\")",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "limit": {
+                "type": "integer",
+                "default": 10,
+                "description": "Maximum number of results to return",
+                "exclusiveMinimum": 0
+              },
+              "query": {
+                "type": "string",
+                "minLength": 2,
+                "description": "Search query text"
+              },
+              "domain": {
+                "enum": [
+                  "Physical Science",
+                  "Life Science",
+                  "Earth and Space Science"
+                ],
+                "type": "string",
+                "description": "Optional: filter by domain"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_by_practice",
+          "title": "Search Standards by Science and Engineering Practice",
+          "description": "Find all NGSS standards using a specific Science and Engineering Practice (SEP). Examples: \"Developing and Using Models\", \"Analyzing and Interpreting Data\", \"Planning and Carrying Out Investigations\"",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "practice"
+            ],
+            "properties": {
+              "practice": {
+                "enum": [
+                  "Analyze and interpret data to determine similarities and differences in findings.",
+                  "Analyze and interpret data to provide evidence for phenomena.",
+                  "Analyze displays of data to identify linear and nonlinear relationships.",
+                  "Ask questions that can be investigated within the scope of the classroom, outdoor environment, and museums and other public facilities with available resources and, when appropriate, frame a hypothesis based on observations and scientific principles.",
+                  "Ask questions to identify and clarify evidence of an argument.",
+                  "Construct an explanation that includes qualitative or quantitative relationships between variables that predict phenomena.",
+                  "Develop a model to describe unobservable mechanisms.",
+                  "Develop a model to predict and/or describe phenomena.",
+                  "Develop and use a model to describe phenomena.",
+                  "Unknown"
+                ],
+                "type": "string",
+                "description": "Science and Engineering Practice name"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_by_crosscutting_concept",
+          "title": "Search Standards by Crosscutting Concept",
+          "description": "Find all NGSS standards using a specific Crosscutting Concept (CCC). Examples: \"Patterns\", \"Cause and Effect\", \"Systems and System Models\", \"Energy and Matter\"",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "concept"
+            ],
+            "properties": {
+              "concept": {
+                "enum": [
+                  "Cause and effect relationships may be used to predict phenomena in natural or designed systems.",
+                  "Cause and effect relationships may be used to predict phenomena in natural systems.",
+                  "Graphs and charts can be used to identify patterns in data.",
+                  "Graphs, charts, and images can be used to identify patterns in data.",
+                  "Macroscopic patterns are related to the nature of microscopic and atomic-level structure.",
+                  "Patterns can be used to identify cause and effect relationships.",
+                  "Patterns in rates of change and other numerical relationships can provide information about natural systems.",
+                  "Proportional relationships (e.g., speed as the ratio of distance traveled to time taken) among different types of quantities provide information about the magnitude of properties and processes."
+                ],
+                "type": "string",
+                "description": "Crosscutting Concept name"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_by_disciplinary_core_idea",
+          "title": "Search Standards by Disciplinary Core Idea",
+          "description": "Find all NGSS standards using a specific Disciplinary Core Idea (DCI). Examples: \"Definitions of Energy\", \"Interdependent Relationships in Ecosystems\", \"Weather and Climate\"",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "dci"
+            ],
+            "properties": {
+              "dci": {
+                "enum": [
+                  "Adaptation",
+                  "Biodiversity and Humans",
+                  "Biogeology",
+                  "Chemical Reactions",
+                  "Conservation of Energy and Energy Transfer",
+                  "Cycles of Matter and Energy Transfer in Ecosystems",
+                  "Definitions of Energy",
+                  "Earth and the Solar System",
+                  "Earth Materials and Systems",
+                  "Ecosystem Dynamics, Functioning, and Resilience",
+                  "Electromagnetic Radiation",
+                  "Evidence of Common Ancestry and Diversity",
+                  "Forces and Motion",
+                  "Global Climate Change",
+                  "Growth and Development of Organisms",
+                  "Human Impacts on Earth Systems",
+                  "Information Processing",
+                  "Information Technologies and Instrumentation",
+                  "Inheritance of Traits",
+                  "Interdependent Relationships in Ecosystems",
+                  "Natural Hazards",
+                  "Natural Resources",
+                  "Natural Selection",
+                  "Organization for Matter and Energy Flow in Organisms",
+                  "Plate Tectonics and Large-Scale System Interactions",
+                  "Relationship Between Energy and Forces",
+                  "Structure and Function",
+                  "Structure and Properties of Matter",
+                  "The History of Planet Earth",
+                  "The Roles of Water in Earth's Surface Processes",
+                  "The Universe and Its Stars",
+                  "Types of Interactions",
+                  "Variation of Traits",
+                  "Wave Properties",
+                  "Weather and Climate"
+                ],
+                "type": "string",
+                "description": "Disciplinary Core Idea name"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "full",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_unit_suggestions",
+          "title": "Get Unit Planning Suggestions",
+          "description": "Recommend compatible NGSS standards for curriculum unit planning based on 3D framework overlap (domain, SEP, DCI, CCC). Example: Given anchor \"MS-PS3-1\" (energy), suggest 2-7 compatible standards that share similar practices, concepts, or disciplinary ideas for a cohesive unit",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "anchor_code"
+            ],
+            "properties": {
+              "unit_size": {
+                "type": "number",
+                "default": 3,
+                "maximum": 8,
+                "minimum": 2,
+                "description": "Total number of standards in the unit (2-8), including the anchor"
+              },
+              "anchor_code": {
+                "type": "string",
+                "description": "The anchor NGSS standard code (e.g., \"MS-PS3-1\")"
+              },
+              "detail_level": {
+                "enum": [
+                  "minimal",
+                  "summary",
+                  "full"
+                ],
+                "type": "string",
+                "default": "summary",
+                "description": "Response detail level: minimal (code, topic, PE 50 chars), summary (+ keywords top 3, PE 150 chars), full (complete standard)"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@Sallvainian@ngss-mcp.json",
+    "source_filename": "@Sallvainian@ngss-mcp.json",
+    "processed_timestamp": 1761333488,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@Sallvainian/ngss-mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "required": [],
+        "properties": {},
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@Sallvainian/ngss-mcp",
+      "displayName": "NGSS Standards Explorer",
+      "description": "Search and retrieve NGSS standards by code, domain, or topic. Explore three-dimensional components (SEPs, DCIs, and CCCs) and discover related standards by shared practices, concepts, or core ideas. Plan cohesive curriculum units with suggestions for compatible standards.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-10-21T10:34:20.358Z",
+      "homepage": "https://smithery.ai/server/@Sallvainian/ngss-mcp"
+    }
+  }
+}

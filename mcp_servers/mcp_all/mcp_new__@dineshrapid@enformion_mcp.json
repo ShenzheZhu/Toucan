@@ -1,0 +1,153 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Enformion Contact Enrichment",
+    "rank_by_usage": null,
+    "usage_count": 105,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333116,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@dineshrapid/enformion_mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "enformion_contact_enrich",
+          "description": "Call Enformion's Contact Enrich API to enrich contact details.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "arguments"
+            ],
+            "properties": {
+              "arguments": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "hello",
+          "description": "Simple test tool.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      ],
+      "tool_count": 2,
+      "tool_names": [
+        "enformion_contact_enrich",
+        "hello"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text=\"Input validation error: 'arguments' is a required property\", annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Enformion Contact Enrichment",
+      "author": null,
+      "overview": "Enrich contact records with phone, email, and address details from Enformion. Validate and complete missing fields to improve data quality and match rates. Accelerate lead scoring, outreach, and onboarding with cleaner, more reliable profiles.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@dineshrapid/enformion_mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 105,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 2,
+      "tools": [
+        {
+          "name": "enformion_contact_enrich",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "Call Enformion's Contact Enrich API to enrich contact details.",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "arguments"
+            ],
+            "properties": {
+              "arguments": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "hello",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "Simple test tool.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@dineshrapid@enformion_mcp.json",
+    "source_filename": "@dineshrapid@enformion_mcp.json",
+    "processed_timestamp": 1761333116,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@dineshrapid/enformion_mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "required": [],
+        "properties": {
+          "serverToken": {
+            "type": "string",
+            "description": "Server token for accessing the Character Counter server (optional for demo)"
+          },
+          "caseSensitive": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether character matching should be case sensitive"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@dineshrapid/enformion_mcp",
+      "displayName": "Enformion Contact Enrichment",
+      "description": "Enrich contact records with phone, email, and address details from Enformion. Validate and complete missing fields to improve data quality and match rates. Accelerate lead scoring, outreach, and onboarding with cleaner, more reliable profiles.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 105,
+      "remote": true,
+      "createdAt": "2025-10-16T09:44:01.185Z",
+      "homepage": "https://smithery.ai/server/@dineshrapid/enformion_mcp"
+    }
+  }
+}

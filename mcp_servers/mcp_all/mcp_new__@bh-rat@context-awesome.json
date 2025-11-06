@@ -1,0 +1,218 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Context Awesome",
+    "rank_by_usage": null,
+    "usage_count": 46,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334181,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@bh-rat/context-awesome/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "find_awesome_section",
+          "description": "Discovers sections/categories across awesome lists matching a search query and returns matching sections from awesome lists.\n\nYou MUST call this function before 'get_awesome_items' to discover available sections UNLESS the user explicitly provides a githubRepo or listId.\n\nSelection Process:\n1. Analyze the query to understand what type of resources the user is looking for\n2. Return the most relevant matches based on:\n   - Name similarity to the query and the awesome lists section\n   - Category/section relevance of the awesome lists \n   - Number of items in the section\n   - Confidence score\n\nResponse Format:\n- Returns matching sections of the awesome lists with metadata\n- Includes repository information, item counts, and confidence score\n- Use the githubRepo or listId with relevant sections from results for get_awesome_items\n\nFor ambiguous queries, multiple relevant sections will be returned for the user to choose from.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "limit": {
+                "type": "number",
+                "default": 10,
+                "maximum": 50,
+                "minimum": 1,
+                "description": "Maximum sections to return"
+              },
+              "query": {
+                "type": "string",
+                "description": "Search terms for finding sections across awesome lists"
+              },
+              "confidence": {
+                "type": "number",
+                "default": 0.3,
+                "maximum": 1,
+                "minimum": 0,
+                "description": "Minimum confidence score (0-1)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_awesome_items",
+          "description": "Retrieves items from a specific awesome list or section with token limiting. You must call 'find_awesome_section' first to discover available sections, UNLESS the user explicitly provides a githubRepo or listId.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "listId": {
+                "type": "string",
+                "description": "UUID of the list (from find_awesome_section results)"
+              },
+              "offset": {
+                "type": "number",
+                "default": 0,
+                "minimum": 0,
+                "description": "Pagination offset for retrieving more items"
+              },
+              "tokens": {
+                "type": "number",
+                "description": "Maximum number of tokens to return (default: 10000). Higher values provide more items but consume more tokens."
+              },
+              "section": {
+                "type": "string",
+                "description": "Category/section name to filter"
+              },
+              "githubRepo": {
+                "type": "string",
+                "description": "GitHub repo path (e.g., 'sindresorhus/awesome') from find_awesome_section results"
+              },
+              "subcategory": {
+                "type": "string",
+                "description": "Subcategory to filter"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 2,
+      "tool_names": [
+        "find_awesome_section",
+        "get_awesome_items"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool find_awesome_section: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"query\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Context Awesome",
+      "author": null,
+      "overview": "Provide your AI agents with instant access to the best curated resources from over 8,500 awesome lists and more than 1 million items. Discover relevant sections and retrieve high-quality references for deep research, learning, and knowledge work. Enhance your agents' ability to find vetted tools and libraries across a wide range of topics efficiently.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@bh-rat/context-awesome",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 46,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 2,
+      "tools": [
+        {
+          "name": "find_awesome_section",
+          "title": "Find Awesome List Section",
+          "description": "Discovers sections/categories across awesome lists matching a search query and returns matching sections from awesome lists.\n\nYou MUST call this function before 'get_awesome_items' to discover available sections UNLESS the user explicitly provides a githubRepo or listId.\n\nSelection Process:\n1. Analyze the query to understand what type of resources the user is looking for\n2. Return the most relevant matches based on:\n   - Name similarity to the query and the awesome lists section\n   - Category/section relevance of the awesome lists \n   - Number of items in the section\n   - Confidence score\n\nResponse Format:\n- Returns matching sections of the awesome lists with metadata\n- Includes repository information, item counts, and confidence score\n- Use the githubRepo or listId with relevant sections from results for get_awesome_items\n\nFor ambiguous queries, multiple relevant sections will be returned for the user to choose from.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "limit": {
+                "type": "number",
+                "default": 10,
+                "maximum": 50,
+                "minimum": 1,
+                "description": "Maximum sections to return"
+              },
+              "query": {
+                "type": "string",
+                "description": "Search terms for finding sections across awesome lists"
+              },
+              "confidence": {
+                "type": "number",
+                "default": 0.3,
+                "maximum": 1,
+                "minimum": 0,
+                "description": "Minimum confidence score (0-1)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_awesome_items",
+          "title": "Get Awesome List Items",
+          "description": "Retrieves items from a specific awesome list or section with token limiting. You must call 'find_awesome_section' first to discover available sections, UNLESS the user explicitly provides a githubRepo or listId.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "listId": {
+                "type": "string",
+                "description": "UUID of the list (from find_awesome_section results)"
+              },
+              "offset": {
+                "type": "number",
+                "default": 0,
+                "minimum": 0,
+                "description": "Pagination offset for retrieving more items"
+              },
+              "tokens": {
+                "type": "number",
+                "description": "Maximum number of tokens to return (default: 10000). Higher values provide more items but consume more tokens."
+              },
+              "section": {
+                "type": "string",
+                "description": "Category/section name to filter"
+              },
+              "githubRepo": {
+                "type": "string",
+                "description": "GitHub repo path (e.g., 'sindresorhus/awesome') from find_awesome_section results"
+              },
+              "subcategory": {
+                "type": "string",
+                "description": "Subcategory to filter"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@bh-rat@context-awesome.json",
+    "source_filename": "@bh-rat@context-awesome.json",
+    "processed_timestamp": 1761334181,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@bh-rat/context-awesome/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@bh-rat/context-awesome",
+      "displayName": "Context Awesome",
+      "description": "Provide your AI agents with instant access to the best curated resources from over 8,500 awesome lists and more than 1 million items. Discover relevant sections and retrieve high-quality references for deep research, learning, and knowledge work. Enhance your agents' ability to find vetted tools and libraries across a wide range of topics efficiently.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/www.context-awesome.com.ico",
+      "verified": false,
+      "useCount": 46,
+      "remote": true,
+      "createdAt": "2025-08-23T05:33:43.782Z",
+      "homepage": "https://smithery.ai/server/@bh-rat/context-awesome"
+    }
+  }
+}

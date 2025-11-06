@@ -1,0 +1,880 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Automated Pentesting Kali",
+    "rank_by_usage": null,
+    "usage_count": 32,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761332475,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@atimevil/mcp-kali-server/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "nmap_scan",
+          "description": "\n        Execute an Nmap scan against a target.\n        \n        Args:\n            target: The IP address or hostname to scan\n            scan_type: Scan type (e.g., -sV for version detection)\n            ports: Comma-separated list of ports or port ranges\n            additional_args: Additional Nmap arguments\n            \n        Returns:\n            Scan results\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "nmap_scanArguments",
+            "required": [
+              "target"
+            ],
+            "properties": {
+              "ports": {
+                "type": "string",
+                "title": "Ports",
+                "default": ""
+              },
+              "target": {
+                "type": "string",
+                "title": "Target"
+              },
+              "scan_type": {
+                "type": "string",
+                "title": "Scan Type",
+                "default": "-sV"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          }
+        },
+        {
+          "name": "gobuster_scan",
+          "description": "\n        Execute Gobuster to find directories, DNS subdomains, or virtual hosts.\n        \n        Args:\n            url: The target URL\n            mode: Scan mode (dir, dns, fuzz, vhost)\n            wordlist: Path to wordlist file\n            additional_args: Additional Gobuster arguments\n            \n        Returns:\n            Scan results\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "gobuster_scanArguments",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "Url"
+              },
+              "mode": {
+                "type": "string",
+                "title": "Mode",
+                "default": "dir"
+              },
+              "wordlist": {
+                "type": "string",
+                "title": "Wordlist",
+                "default": "/usr/share/wordlists/dirb/common.txt"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          }
+        },
+        {
+          "name": "dirb_scan",
+          "description": "\n        Execute Dirb web content scanner.\n        \n        Args:\n            url: The target URL\n            wordlist: Path to wordlist file\n            additional_args: Additional Dirb arguments\n            \n        Returns:\n            Scan results\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "dirb_scanArguments",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "Url"
+              },
+              "wordlist": {
+                "type": "string",
+                "title": "Wordlist",
+                "default": "/usr/share/wordlists/dirb/common.txt"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          }
+        },
+        {
+          "name": "nikto_scan",
+          "description": "\n        Execute Nikto web server scanner.\n        \n        Args:\n            target: The target URL or IP\n            additional_args: Additional Nikto arguments\n            \n        Returns:\n            Scan results\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "nikto_scanArguments",
+            "required": [
+              "target"
+            ],
+            "properties": {
+              "target": {
+                "type": "string",
+                "title": "Target"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          }
+        },
+        {
+          "name": "sqlmap_scan",
+          "description": "\n        Execute SQLmap SQL injection scanner.\n        \n        Args:\n            url: The target URL\n            data: POST data string\n            additional_args: Additional SQLmap arguments\n            \n        Returns:\n            Scan results\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "sqlmap_scanArguments",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "Url"
+              },
+              "data": {
+                "type": "string",
+                "title": "Data",
+                "default": ""
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          }
+        },
+        {
+          "name": "metasploit_run",
+          "description": "\n        Execute a Metasploit module.\n        \n        Args:\n            module: The Metasploit module path\n            options: Dictionary of module options\n            \n        Returns:\n            Module execution results\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "metasploit_runArguments",
+            "required": [
+              "module"
+            ],
+            "properties": {
+              "module": {
+                "type": "string",
+                "title": "Module"
+              },
+              "options": {
+                "type": "object",
+                "title": "Options",
+                "default": {},
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "hydra_attack",
+          "description": "\n        Execute Hydra password cracking tool.\n        \n        Args:\n            target: Target IP or hostname\n            service: Service to attack (ssh, ftp, http-post-form, etc.)\n            username: Single username to try\n            username_file: Path to username file\n            password: Single password to try\n            password_file: Path to password file\n            additional_args: Additional Hydra arguments\n            \n        Returns:\n            Attack results\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "hydra_attackArguments",
+            "required": [
+              "target",
+              "service"
+            ],
+            "properties": {
+              "target": {
+                "type": "string",
+                "title": "Target"
+              },
+              "service": {
+                "type": "string",
+                "title": "Service"
+              },
+              "password": {
+                "type": "string",
+                "title": "Password",
+                "default": ""
+              },
+              "username": {
+                "type": "string",
+                "title": "Username",
+                "default": ""
+              },
+              "password_file": {
+                "type": "string",
+                "title": "Password File",
+                "default": ""
+              },
+              "username_file": {
+                "type": "string",
+                "title": "Username File",
+                "default": ""
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          }
+        },
+        {
+          "name": "john_crack",
+          "description": "\n        Execute John the Ripper password cracker.\n        \n        Args:\n            hash_file: Path to file containing hashes\n            wordlist: Path to wordlist file\n            format_type: Hash format type\n            additional_args: Additional John arguments\n            \n        Returns:\n            Cracking results\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "john_crackArguments",
+            "required": [
+              "hash_file"
+            ],
+            "properties": {
+              "wordlist": {
+                "type": "string",
+                "title": "Wordlist",
+                "default": "/usr/share/wordlists/rockyou.txt"
+              },
+              "hash_file": {
+                "type": "string",
+                "title": "Hash File"
+              },
+              "format_type": {
+                "type": "string",
+                "title": "Format Type",
+                "default": ""
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          }
+        },
+        {
+          "name": "wpscan_analyze",
+          "description": "\n        Execute WPScan WordPress vulnerability scanner.\n        \n        Args:\n            url: The target WordPress URL\n            additional_args: Additional WPScan arguments\n            \n        Returns:\n            Scan results\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "wpscan_analyzeArguments",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "Url"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          }
+        },
+        {
+          "name": "enum4linux_scan",
+          "description": "\n        Execute Enum4linux Windows/Samba enumeration tool.\n        \n        Args:\n            target: The target IP or hostname\n            additional_args: Additional enum4linux arguments\n            \n        Returns:\n            Enumeration results\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "enum4linux_scanArguments",
+            "required": [
+              "target"
+            ],
+            "properties": {
+              "target": {
+                "type": "string",
+                "title": "Target"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": "-a"
+              }
+            }
+          }
+        },
+        {
+          "name": "server_health",
+          "description": "\n        Check the health status of the Kali API server.\n        \n        Returns:\n            Server health information\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "server_healthArguments",
+            "properties": {}
+          }
+        },
+        {
+          "name": "execute_command",
+          "description": "\n        Execute an arbitrary command on the Kali server.\n        \n        Args:\n            command: The command to execute\n            \n        Returns:\n            Command execution results\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "execute_commandArguments",
+            "required": [
+              "command"
+            ],
+            "properties": {
+              "command": {
+                "type": "string",
+                "title": "Command"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 12,
+      "tool_names": [
+        "nmap_scan",
+        "gobuster_scan",
+        "dirb_scan",
+        "nikto_scan",
+        "sqlmap_scan",
+        "metasploit_run",
+        "hydra_attack",
+        "john_crack",
+        "wpscan_analyze",
+        "enum4linux_scan",
+        "server_health",
+        "execute_command"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Error executing tool nmap_scan: 1 validation error for nmap_scanArguments\\ntarget\\n  Field required [type=missing, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.12/v/missing', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Automated Pentesting Kali",
+      "author": null,
+      "overview": "Enable AI-driven offensive security testing by executing terminal commands on a Kali Linux machine through a controlled API. Automate penetration testing, CTF challenge solving, and web application interaction using AI-assisted command execution. Integrate seamlessly with MCP clients to enhance red teaming, bug bounty hunting, and security research workflows. You should run this in kali-linux",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@atimevil/mcp-kali-server",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 32,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 12,
+      "tools": [
+        {
+          "name": "nmap_scan",
+          "description": "\n        Execute an Nmap scan against a target.\n        \n        Args:\n            target: The IP address or hostname to scan\n            scan_type: Scan type (e.g., -sV for version detection)\n            ports: Comma-separated list of ports or port ranges\n            additional_args: Additional Nmap arguments\n            \n        Returns:\n            Scan results\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "nmap_scanArguments",
+            "required": [
+              "target"
+            ],
+            "properties": {
+              "ports": {
+                "type": "string",
+                "title": "Ports",
+                "default": ""
+              },
+              "target": {
+                "type": "string",
+                "title": "Target"
+              },
+              "scan_type": {
+                "type": "string",
+                "title": "Scan Type",
+                "default": "-sV"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "nmap_scanOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "gobuster_scan",
+          "description": "\n        Execute Gobuster to find directories, DNS subdomains, or virtual hosts.\n        \n        Args:\n            url: The target URL\n            mode: Scan mode (dir, dns, fuzz, vhost)\n            wordlist: Path to wordlist file\n            additional_args: Additional Gobuster arguments\n            \n        Returns:\n            Scan results\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "gobuster_scanArguments",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "Url"
+              },
+              "mode": {
+                "type": "string",
+                "title": "Mode",
+                "default": "dir"
+              },
+              "wordlist": {
+                "type": "string",
+                "title": "Wordlist",
+                "default": "/usr/share/wordlists/dirb/common.txt"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "gobuster_scanOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "dirb_scan",
+          "description": "\n        Execute Dirb web content scanner.\n        \n        Args:\n            url: The target URL\n            wordlist: Path to wordlist file\n            additional_args: Additional Dirb arguments\n            \n        Returns:\n            Scan results\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "dirb_scanArguments",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "Url"
+              },
+              "wordlist": {
+                "type": "string",
+                "title": "Wordlist",
+                "default": "/usr/share/wordlists/dirb/common.txt"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "dirb_scanOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "nikto_scan",
+          "description": "\n        Execute Nikto web server scanner.\n        \n        Args:\n            target: The target URL or IP\n            additional_args: Additional Nikto arguments\n            \n        Returns:\n            Scan results\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "nikto_scanArguments",
+            "required": [
+              "target"
+            ],
+            "properties": {
+              "target": {
+                "type": "string",
+                "title": "Target"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "nikto_scanOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "sqlmap_scan",
+          "description": "\n        Execute SQLmap SQL injection scanner.\n        \n        Args:\n            url: The target URL\n            data: POST data string\n            additional_args: Additional SQLmap arguments\n            \n        Returns:\n            Scan results\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "sqlmap_scanArguments",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "Url"
+              },
+              "data": {
+                "type": "string",
+                "title": "Data",
+                "default": ""
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "sqlmap_scanOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "metasploit_run",
+          "description": "\n        Execute a Metasploit module.\n        \n        Args:\n            module: The Metasploit module path\n            options: Dictionary of module options\n            \n        Returns:\n            Module execution results\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "metasploit_runArguments",
+            "required": [
+              "module"
+            ],
+            "properties": {
+              "module": {
+                "type": "string",
+                "title": "Module"
+              },
+              "options": {
+                "type": "object",
+                "title": "Options",
+                "default": {},
+                "additionalProperties": true
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "metasploit_runOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "hydra_attack",
+          "description": "\n        Execute Hydra password cracking tool.\n        \n        Args:\n            target: Target IP or hostname\n            service: Service to attack (ssh, ftp, http-post-form, etc.)\n            username: Single username to try\n            username_file: Path to username file\n            password: Single password to try\n            password_file: Path to password file\n            additional_args: Additional Hydra arguments\n            \n        Returns:\n            Attack results\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "hydra_attackArguments",
+            "required": [
+              "target",
+              "service"
+            ],
+            "properties": {
+              "target": {
+                "type": "string",
+                "title": "Target"
+              },
+              "service": {
+                "type": "string",
+                "title": "Service"
+              },
+              "password": {
+                "type": "string",
+                "title": "Password",
+                "default": ""
+              },
+              "username": {
+                "type": "string",
+                "title": "Username",
+                "default": ""
+              },
+              "password_file": {
+                "type": "string",
+                "title": "Password File",
+                "default": ""
+              },
+              "username_file": {
+                "type": "string",
+                "title": "Username File",
+                "default": ""
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "hydra_attackOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "john_crack",
+          "description": "\n        Execute John the Ripper password cracker.\n        \n        Args:\n            hash_file: Path to file containing hashes\n            wordlist: Path to wordlist file\n            format_type: Hash format type\n            additional_args: Additional John arguments\n            \n        Returns:\n            Cracking results\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "john_crackArguments",
+            "required": [
+              "hash_file"
+            ],
+            "properties": {
+              "wordlist": {
+                "type": "string",
+                "title": "Wordlist",
+                "default": "/usr/share/wordlists/rockyou.txt"
+              },
+              "hash_file": {
+                "type": "string",
+                "title": "Hash File"
+              },
+              "format_type": {
+                "type": "string",
+                "title": "Format Type",
+                "default": ""
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "john_crackOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "wpscan_analyze",
+          "description": "\n        Execute WPScan WordPress vulnerability scanner.\n        \n        Args:\n            url: The target WordPress URL\n            additional_args: Additional WPScan arguments\n            \n        Returns:\n            Scan results\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "wpscan_analyzeArguments",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "Url"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": ""
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "wpscan_analyzeOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "enum4linux_scan",
+          "description": "\n        Execute Enum4linux Windows/Samba enumeration tool.\n        \n        Args:\n            target: The target IP or hostname\n            additional_args: Additional enum4linux arguments\n            \n        Returns:\n            Enumeration results\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "enum4linux_scanArguments",
+            "required": [
+              "target"
+            ],
+            "properties": {
+              "target": {
+                "type": "string",
+                "title": "Target"
+              },
+              "additional_args": {
+                "type": "string",
+                "title": "Additional Args",
+                "default": "-a"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "enum4linux_scanOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "server_health",
+          "description": "\n        Check the health status of the Kali API server.\n        \n        Returns:\n            Server health information\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "server_healthArguments",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "server_healthOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        {
+          "name": "execute_command",
+          "description": "\n        Execute an arbitrary command on the Kali server.\n        \n        Args:\n            command: The command to execute\n            \n        Returns:\n            Command execution results\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "execute_commandArguments",
+            "required": [
+              "command"
+            ],
+            "properties": {
+              "command": {
+                "type": "string",
+                "title": "Command"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "execute_commandOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "object",
+                "title": "Result",
+                "additionalProperties": true
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@atimevil@mcp-kali-server.json",
+    "source_filename": "@atimevil@mcp-kali-server.json",
+    "processed_timestamp": 1761332475,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@atimevil/mcp-kali-server/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@atimevil/mcp-kali-server",
+      "displayName": "Automated Pentesting Kali",
+      "description": "Enable AI-driven offensive security testing by executing terminal commands on a Kali Linux machine through a controlled API. Automate penetration testing, CTF challenge solving, and web application interaction using AI-assisted command execution. Integrate seamlessly with MCP clients to enhance red teaming, bug bounty hunting, and security research workflows. You should run this in kali-linux",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/fae2b734-b0f9-45fd-b4ed-918a72edc25c.png",
+      "verified": false,
+      "useCount": 32,
+      "remote": true,
+      "createdAt": "2025-07-14T18:41:07.008Z",
+      "homepage": "https://smithery.ai/server/@atimevil/mcp-kali-server"
+    }
+  }
+}

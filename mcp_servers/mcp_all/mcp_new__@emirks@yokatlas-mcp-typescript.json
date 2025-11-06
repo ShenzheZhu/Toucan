@@ -1,0 +1,642 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "YOKATLAS MCP Server",
+    "rank_by_usage": null,
+    "usage_count": 16,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334575,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@emirks/yokatlas-mcp-typescript/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "health_check",
+          "description": "Check the health and capabilities of the YOKATLAS server, including search method and data availability",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_associate_degree_atlas_details",
+          "description": "Get comprehensive details for a specific associate degree program from YOKATLAS Atlas",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "yop_kodu",
+              "year"
+            ],
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Data year for statistics (e.g., 2024, 2023)"
+              },
+              "yop_kodu": {
+                "type": "string",
+                "description": "Program YÖP code (e.g., '120910060') - unique identifier for the associate degree program"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_bachelor_degree_atlas_details",
+          "description": "Get comprehensive details for a specific bachelor's degree program from YOKATLAS Atlas",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "yop_kodu",
+              "year"
+            ],
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Data year for statistics (e.g., 2024, 2023)"
+              },
+              "yop_kodu": {
+                "type": "string",
+                "description": "Program YÖP code (e.g., '102210277') - unique identifier for the bachelor's degree program"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_bachelor_degree_programs",
+          "description": "Search for bachelor's degree programs using LOCAL DATA with instant results, smart fuzzy matching, and bell curve sampling for large result sets",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "sehir": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "City name(s) where the university is located. Can be a single string or array of strings (e.g., 'istanbul' or ['istanbul', 'ankara'] → matches any of the specified cities)"
+              },
+              "ucret": {
+                "enum": [
+                  "Ücretsiz",
+                  "Ücretli",
+                  "İÖ-Ücretli",
+                  "Burslu",
+                  "%50 İndirimli",
+                  "%25 İndirimli",
+                  "AÖ-Ücretli",
+                  "UÖ-Ücretli"
+                ],
+                "type": "string",
+                "description": "Fee status: Ücretsiz (Free), Ücretli (Paid), İÖ-Ücretli (Evening-Paid), Burslu (Scholarship), İndirimli (Discounted), AÖ-Ücretli (Open Education-Paid), UÖ-Ücretli (Distance Learning-Paid)"
+              },
+              "doluluk": {
+                "enum": [
+                  "Doldu",
+                  "Doldu#",
+                  "Dolmadı",
+                  "Yeni"
+                ],
+                "type": "string",
+                "description": "Program availability: Doldu (Filled), Doldu# (Filled with conditions), Dolmadı (Not filled), Yeni (New program)"
+              },
+              "program": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "Program/department name(s) with partial matching. Can be a single string or array of strings (e.g., 'bilgisayar' or ['bilgisayar', 'yazılım'] → matches any of the specified programs)"
+              },
+              "siralama": {
+                "type": "number",
+                "description": "Target success ranking - applies bell curve sampling centered at this ranking. Programs closer to this ranking are more likely to be selected. Automatically filters to range [sıralama * 0.5, sıralama * 1.5]"
+              },
+              "puan_turu": {
+                "enum": [
+                  "SAY",
+                  "EA",
+                  "SOZ",
+                  "DIL"
+                ],
+                "type": "string",
+                "description": "Score type: SAY (Science), EA (Equal Weight), SOZ (Verbal), DIL (Language)"
+              },
+              "universite": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "University name(s) with fuzzy matching support. Can be a single string or array of strings (e.g., 'boğaziçi' or ['boğaziçi', 'odtü'] → matches any of the specified universities)"
+              },
+              "max_results": {
+                "type": "number",
+                "description": "Maximum number of results to return. If more results are found, bell curve sampling is applied for representative distribution (default: 100)"
+              },
+              "ogretim_turu": {
+                "enum": [
+                  "Örgün",
+                  "İkinci",
+                  "Açıköğretim",
+                  "Uzaktan"
+                ],
+                "type": "string",
+                "description": "Education type: Örgün (Regular), İkinci (Evening), Açıköğretim (Open Education), Uzaktan (Distance Learning)"
+              },
+              "universite_turu": {
+                "enum": [
+                  "Devlet",
+                  "Vakıf",
+                  "KKTC",
+                  "Yurt Dışı"
+                ],
+                "type": "string",
+                "description": "University type: Devlet (State), Vakıf (Foundation), KKTC (TRNC), Yurt Dışı (International)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_associate_degree_programs",
+          "description": "Search for associate degree (önlisans) programs using LOCAL DATA with instant results, smart fuzzy matching, and bell curve sampling for large result sets",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "city": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "City name(s) where the university is located. Can be a single string or array of strings (e.g., 'istanbul' or ['istanbul', 'ankara'] → matches any of the specified cities)"
+              },
+              "program": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "Program name(s) with partial matching. Can be a single string or array of strings (e.g., 'turizm' or ['turizm', 'otel'] → matches any of the specified programs)"
+              },
+              "fee_type": {
+                "enum": [
+                  "Ücretsiz",
+                  "Ücretli",
+                  "İÖ-Ücretli",
+                  "Burslu",
+                  "%50 İndirimli",
+                  "%25 İndirimli",
+                  "AÖ-Ücretli",
+                  "UÖ-Ücretli"
+                ],
+                "type": "string",
+                "description": "Fee status: Ücretsiz (Free), Ücretli (Paid), İÖ-Ücretli (Evening-Paid), Burslu (Scholarship), İndirimli (Discounted), AÖ-Ücretli (Open Education-Paid), UÖ-Ücretli (Distance Learning-Paid)"
+              },
+              "siralama": {
+                "type": "number",
+                "description": "Target success ranking - applies bell curve sampling centered at this ranking. Programs closer to this ranking are more likely to be selected. Automatically filters to range [sıralama * 0.5, sıralama * 1.5]. Associate degree programs use TYT-based rankings."
+              },
+              "university": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "University name(s) with fuzzy matching support. Can be a single string or array of strings (e.g., 'anadolu' or ['anadolu', 'istanbul'] → matches any of the specified universities)"
+              },
+              "max_results": {
+                "type": "number",
+                "description": "Maximum number of results to return. If more results are found, bell curve sampling is applied for representative distribution (default: 100)"
+              },
+              "availability": {
+                "enum": [
+                  "Doldu",
+                  "Doldu#",
+                  "Dolmadı",
+                  "Yeni"
+                ],
+                "type": "string",
+                "description": "Program availability: Doldu (Filled), Doldu# (Filled with conditions), Dolmadı (Not filled), Yeni (New program)"
+              },
+              "education_type": {
+                "enum": [
+                  "Örgün",
+                  "İkinci",
+                  "Açıköğretim",
+                  "Uzaktan"
+                ],
+                "type": "string",
+                "description": "Education type: Örgün (Regular), İkinci (Evening), Açıköğretim (Open Education), Uzaktan (Distance Learning)"
+              },
+              "university_type": {
+                "enum": [
+                  "Devlet",
+                  "Vakıf",
+                  "KKTC",
+                  "Yurt Dışı"
+                ],
+                "type": "string",
+                "description": "University type: Devlet (State), Vakıf (Foundation), KKTC (TRNC), Yurt Dışı (International)"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 5,
+      "tool_names": [
+        "health_check",
+        "get_associate_degree_atlas_details",
+        "get_bachelor_degree_atlas_details",
+        "search_bachelor_degree_programs",
+        "search_associate_degree_programs"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='{\\n  \"status\": \"healthy\",\\n  \"server\": \"YOKATLAS Local Search Server\",\\n  \"api_version\": \"v2.0\",\\n  \"search_method\": \"local_search_only\",\\n  \"yokatlas_available\": true,\\n  \"message\": \"Local search operational - using cached JSON data\"\\n}', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "YOKATLAS MCP Server",
+      "author": null,
+      "overview": "Provide access to Turkish higher education data through a standardized protocol. Enable seamless integration of university and education-related information into applications. Facilitate data retrieval and interaction using the Model Context Protocol.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@emirks/yokatlas-mcp-typescript",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 16,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 5,
+      "tools": [
+        {
+          "name": "health_check",
+          "description": "Check the health and capabilities of the YOKATLAS server, including search method and data availability",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_associate_degree_atlas_details",
+          "description": "Get comprehensive details for a specific associate degree program from YOKATLAS Atlas",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "yop_kodu",
+              "year"
+            ],
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Data year for statistics (e.g., 2024, 2023)"
+              },
+              "yop_kodu": {
+                "type": "string",
+                "description": "Program YÖP code (e.g., '120910060') - unique identifier for the associate degree program"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_bachelor_degree_atlas_details",
+          "description": "Get comprehensive details for a specific bachelor's degree program from YOKATLAS Atlas",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "yop_kodu",
+              "year"
+            ],
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Data year for statistics (e.g., 2024, 2023)"
+              },
+              "yop_kodu": {
+                "type": "string",
+                "description": "Program YÖP code (e.g., '102210277') - unique identifier for the bachelor's degree program"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_bachelor_degree_programs",
+          "description": "Search for bachelor's degree programs using LOCAL DATA with instant results, smart fuzzy matching, and bell curve sampling for large result sets",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "sehir": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "City name(s) where the university is located. Can be a single string or array of strings (e.g., 'istanbul' or ['istanbul', 'ankara'] → matches any of the specified cities)"
+              },
+              "ucret": {
+                "enum": [
+                  "Ücretsiz",
+                  "Ücretli",
+                  "İÖ-Ücretli",
+                  "Burslu",
+                  "%50 İndirimli",
+                  "%25 İndirimli",
+                  "AÖ-Ücretli",
+                  "UÖ-Ücretli"
+                ],
+                "type": "string",
+                "description": "Fee status: Ücretsiz (Free), Ücretli (Paid), İÖ-Ücretli (Evening-Paid), Burslu (Scholarship), İndirimli (Discounted), AÖ-Ücretli (Open Education-Paid), UÖ-Ücretli (Distance Learning-Paid)"
+              },
+              "doluluk": {
+                "enum": [
+                  "Doldu",
+                  "Doldu#",
+                  "Dolmadı",
+                  "Yeni"
+                ],
+                "type": "string",
+                "description": "Program availability: Doldu (Filled), Doldu# (Filled with conditions), Dolmadı (Not filled), Yeni (New program)"
+              },
+              "program": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "Program/department name(s) with partial matching. Can be a single string or array of strings (e.g., 'bilgisayar' or ['bilgisayar', 'yazılım'] → matches any of the specified programs)"
+              },
+              "siralama": {
+                "type": "number",
+                "description": "Target success ranking - applies bell curve sampling centered at this ranking. Programs closer to this ranking are more likely to be selected. Automatically filters to range [sıralama * 0.5, sıralama * 1.5]"
+              },
+              "puan_turu": {
+                "enum": [
+                  "SAY",
+                  "EA",
+                  "SOZ",
+                  "DIL"
+                ],
+                "type": "string",
+                "description": "Score type: SAY (Science), EA (Equal Weight), SOZ (Verbal), DIL (Language)"
+              },
+              "universite": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "University name(s) with fuzzy matching support. Can be a single string or array of strings (e.g., 'boğaziçi' or ['boğaziçi', 'odtü'] → matches any of the specified universities)"
+              },
+              "max_results": {
+                "type": "number",
+                "description": "Maximum number of results to return. If more results are found, bell curve sampling is applied for representative distribution (default: 100)"
+              },
+              "ogretim_turu": {
+                "enum": [
+                  "Örgün",
+                  "İkinci",
+                  "Açıköğretim",
+                  "Uzaktan"
+                ],
+                "type": "string",
+                "description": "Education type: Örgün (Regular), İkinci (Evening), Açıköğretim (Open Education), Uzaktan (Distance Learning)"
+              },
+              "universite_turu": {
+                "enum": [
+                  "Devlet",
+                  "Vakıf",
+                  "KKTC",
+                  "Yurt Dışı"
+                ],
+                "type": "string",
+                "description": "University type: Devlet (State), Vakıf (Foundation), KKTC (TRNC), Yurt Dışı (International)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "search_associate_degree_programs",
+          "description": "Search for associate degree (önlisans) programs using LOCAL DATA with instant results, smart fuzzy matching, and bell curve sampling for large result sets",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "city": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "City name(s) where the university is located. Can be a single string or array of strings (e.g., 'istanbul' or ['istanbul', 'ankara'] → matches any of the specified cities)"
+              },
+              "program": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "Program name(s) with partial matching. Can be a single string or array of strings (e.g., 'turizm' or ['turizm', 'otel'] → matches any of the specified programs)"
+              },
+              "fee_type": {
+                "enum": [
+                  "Ücretsiz",
+                  "Ücretli",
+                  "İÖ-Ücretli",
+                  "Burslu",
+                  "%50 İndirimli",
+                  "%25 İndirimli",
+                  "AÖ-Ücretli",
+                  "UÖ-Ücretli"
+                ],
+                "type": "string",
+                "description": "Fee status: Ücretsiz (Free), Ücretli (Paid), İÖ-Ücretli (Evening-Paid), Burslu (Scholarship), İndirimli (Discounted), AÖ-Ücretli (Open Education-Paid), UÖ-Ücretli (Distance Learning-Paid)"
+              },
+              "siralama": {
+                "type": "number",
+                "description": "Target success ranking - applies bell curve sampling centered at this ranking. Programs closer to this ranking are more likely to be selected. Automatically filters to range [sıralama * 0.5, sıralama * 1.5]. Associate degree programs use TYT-based rankings."
+              },
+              "university": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "description": "University name(s) with fuzzy matching support. Can be a single string or array of strings (e.g., 'anadolu' or ['anadolu', 'istanbul'] → matches any of the specified universities)"
+              },
+              "max_results": {
+                "type": "number",
+                "description": "Maximum number of results to return. If more results are found, bell curve sampling is applied for representative distribution (default: 100)"
+              },
+              "availability": {
+                "enum": [
+                  "Doldu",
+                  "Doldu#",
+                  "Dolmadı",
+                  "Yeni"
+                ],
+                "type": "string",
+                "description": "Program availability: Doldu (Filled), Doldu# (Filled with conditions), Dolmadı (Not filled), Yeni (New program)"
+              },
+              "education_type": {
+                "enum": [
+                  "Örgün",
+                  "İkinci",
+                  "Açıköğretim",
+                  "Uzaktan"
+                ],
+                "type": "string",
+                "description": "Education type: Örgün (Regular), İkinci (Evening), Açıköğretim (Open Education), Uzaktan (Distance Learning)"
+              },
+              "university_type": {
+                "enum": [
+                  "Devlet",
+                  "Vakıf",
+                  "KKTC",
+                  "Yurt Dışı"
+                ],
+                "type": "string",
+                "description": "University type: Devlet (State), Vakıf (Foundation), KKTC (TRNC), Yurt Dışı (International)"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@emirks@yokatlas-mcp-typescript.json",
+    "source_filename": "@emirks@yokatlas-mcp-typescript.json",
+    "processed_timestamp": 1761334575,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@emirks/yokatlas-mcp-typescript/mcp",
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging"
+          }
+        }
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@emirks/yokatlas-mcp-typescript",
+      "displayName": "YOKATLAS MCP Server",
+      "description": "Provide access to Turkish higher education data through a standardized protocol. Enable seamless integration of university and education-related information into applications. Facilitate data retrieval and interaction using the Model Context Protocol.",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/b8d391ea-05e6-458c-89a4-4562d8489f17.png",
+      "verified": false,
+      "useCount": 16,
+      "remote": true,
+      "createdAt": "2025-08-01T23:31:24.505Z",
+      "homepage": "https://smithery.ai/server/@emirks/yokatlas-mcp-typescript"
+    }
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Smithery Scaffold",
+    "rank_by_usage": null,
+    "usage_count": 8,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334540,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@Vaibahv1306Rapid/sample_mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_leave_balance",
+          "description": "Check how many leave days are left for the employee",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "employee_id"
+            ],
+            "properties": {
+              "employee_id": {
+                "type": "string",
+                "description": "Employee ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "apply_leave",
+          "description": "Apply leave for specific dates",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "employee_id",
+              "leave_dates"
+            ],
+            "properties": {
+              "employee_id": {
+                "type": "string",
+                "description": "Employee ID"
+              },
+              "leave_dates": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of leave dates (e.g., ['2025-04-17'])"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_leave_history",
+          "description": "Get leave history for the employee",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "employee_id"
+            ],
+            "properties": {
+              "employee_id": {
+                "type": "string",
+                "description": "Employee ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 3,
+      "tool_names": [
+        "get_leave_balance",
+        "apply_leave",
+        "get_leave_history"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool get_leave_balance: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"employee_id\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Smithery Scaffold",
+      "author": null,
+      "overview": "Provide a scaffolded environment to develop and run MCP servers with ease. Enable rapid prototyping and integration of tools, resources, and prompts for LLM applications. Simplify MCP server setup and development workflows.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@Vaibahv1306Rapid/sample_mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 8,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 3,
+      "tools": [
+        {
+          "name": "get_leave_balance",
+          "description": "Check how many leave days are left for the employee",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "employee_id"
+            ],
+            "properties": {
+              "employee_id": {
+                "type": "string",
+                "description": "Employee ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "apply_leave",
+          "description": "Apply leave for specific dates",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "employee_id",
+              "leave_dates"
+            ],
+            "properties": {
+              "employee_id": {
+                "type": "string",
+                "description": "Employee ID"
+              },
+              "leave_dates": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of leave dates (e.g., ['2025-04-17'])"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_leave_history",
+          "description": "Get leave history for the employee",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "employee_id"
+            ],
+            "properties": {
+              "employee_id": {
+                "type": "string",
+                "description": "Employee ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@Vaibahv1306Rapid@sample_mcp.json",
+    "source_filename": "@Vaibahv1306Rapid@sample_mcp.json",
+    "processed_timestamp": 1761334540,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@Vaibahv1306Rapid/sample_mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@Vaibahv1306Rapid/sample_mcp",
+      "displayName": "Smithery Scaffold",
+      "description": "Provide a scaffolded environment to develop and run MCP servers with ease. Enable rapid prototyping and integration of tools, resources, and prompts for LLM applications. Simplify MCP server setup and development workflows.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 8,
+      "remote": true,
+      "createdAt": "2025-07-09T08:18:48.123Z",
+      "homepage": "https://smithery.ai/server/@Vaibahv1306Rapid/sample_mcp"
+    }
+  }
+}

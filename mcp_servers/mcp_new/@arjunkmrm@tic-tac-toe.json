@@ -1,0 +1,187 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Tic-Tac-Toe",
+    "rank_by_usage": null,
+    "usage_count": 27,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334246,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@arjunkmrm/tic-tac-toe/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "start-game",
+          "description": "Start a new tic-tac-toe game",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "make-move",
+          "description": "Make a move in the tic-tac-toe game",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "position"
+            ],
+            "properties": {
+              "position": {
+                "type": "number",
+                "maximum": 8,
+                "minimum": 0,
+                "description": "Board position (0-8)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get-game-state",
+          "description": "Get the current state of the tic-tac-toe game",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 3,
+      "tool_names": [
+        "start-game",
+        "make-move",
+        "get-game-state"
+      ],
+      "verification_call_result": "meta={'gameState': {'board': [None, None, None, None, None, None, None, None, None], 'currentPlayer': 'X', 'gameOver': False, 'winner': None}, 'lastSyncedAt': '2025-10-24T19:30:45.983Z'} content=[TextContent(type='text', text='Game started. The interactive board is displayed above - do not describe or explain the board, just let the user play.', annotations=None, meta=None)] structuredContent={'board': [None, None, None, None, None, None, None, None, None], 'currentPlayer': 'X', 'gameOver': False, 'winner': None} isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Tic-Tac-Toe",
+      "author": null,
+      "overview": "Play tic‑tac‑toe right from your chat and track turns effortlessly. Start a new game, make moves, and view the current board state anytime. Add a quick, strategic break to your workflow.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@arjunkmrm/tic-tac-toe",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 27,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 3,
+      "tools": [
+        {
+          "name": "start-game",
+          "_meta": {
+            "openai/outputTemplate": "ui://widget/tic-tac-toe.html",
+            "openai/widgetAccessible": true,
+            "openai/toolInvocation/invoked": "Game started",
+            "openai/toolInvocation/invoking": "Starting new game..."
+          },
+          "title": "Start New Game",
+          "description": "Start a new tic-tac-toe game",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "make-move",
+          "_meta": {
+            "openai/outputTemplate": "ui://widget/tic-tac-toe.html",
+            "openai/widgetAccessible": true,
+            "openai/toolInvocation/invoked": "Move completed",
+            "openai/toolInvocation/invoking": "Making move..."
+          },
+          "title": "Make Move",
+          "description": "Make a move in the tic-tac-toe game",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "position"
+            ],
+            "properties": {
+              "position": {
+                "type": "number",
+                "maximum": 8,
+                "minimum": 0,
+                "description": "Board position (0-8)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get-game-state",
+          "_meta": {
+            "openai/outputTemplate": "ui://widget/tic-tac-toe.html",
+            "openai/widgetAccessible": true,
+            "openai/toolInvocation/invoked": "Retrieved game state",
+            "openai/toolInvocation/invoking": "Getting game state..."
+          },
+          "title": "Get Game State",
+          "description": "Get the current state of the tic-tac-toe game",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@arjunkmrm@tic-tac-toe.json",
+    "source_filename": "@arjunkmrm@tic-tac-toe.json",
+    "processed_timestamp": 1761334246,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@arjunkmrm/tic-tac-toe/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "required": [],
+        "properties": {},
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@arjunkmrm/tic-tac-toe",
+      "displayName": "Tic-Tac-Toe",
+      "description": "Play tic‑tac‑toe right from your chat and track turns effortlessly. Start a new game, make moves, and view the current board state anytime. Add a quick, strategic break to your workflow.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 27,
+      "remote": true,
+      "createdAt": "2025-10-18T03:57:01.503Z",
+      "homepage": "https://smithery.ai/server/@arjunkmrm/tic-tac-toe"
+    }
+  }
+}

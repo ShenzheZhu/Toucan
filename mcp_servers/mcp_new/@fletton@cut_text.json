@@ -1,0 +1,174 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Cut Text",
+    "rank_by_usage": null,
+    "usage_count": 8,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334500,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@fletton/cut_text/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "hello",
+          "description": "Say hello to someone",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name to greet"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "cut_text",
+          "description": "Cut text into chunks of up to 300 words each, with Chinese language support",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "Text to cut into chunks"
+              },
+              "maxWords": {
+                "type": "number",
+                "default": 300,
+                "description": "Maximum words per chunk (default: 300)"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 2,
+      "tool_names": [
+        "hello",
+        "cut_text"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool hello: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"name\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Cut Text",
+      "author": null,
+      "overview": "Provide a minimal MCP server scaffold to help developers quickly build and test MCP servers. Enable rapid prototyping of MCP tools and resources with a simple setup. Facilitate integration of custom MCP capabilities in your applications.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@fletton/cut_text",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 8,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 2,
+      "tools": [
+        {
+          "name": "hello",
+          "description": "Say hello to someone",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name to greet"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "cut_text",
+          "description": "Cut text into chunks of up to 300 words each, with Chinese language support",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "Text to cut into chunks"
+              },
+              "maxWords": {
+                "type": "number",
+                "default": 300,
+                "description": "Maximum words per chunk (default: 300)"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@fletton@cut_text.json",
+    "source_filename": "@fletton@cut_text.json",
+    "processed_timestamp": 1761334500,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@fletton/cut_text/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@fletton/cut_text",
+      "displayName": "Cut Text",
+      "description": "Provide a minimal MCP server scaffold to help developers quickly build and test MCP servers. Enable rapid prototyping of MCP tools and resources with a simple setup. Facilitate integration of custom MCP capabilities in your applications.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 8,
+      "remote": true,
+      "createdAt": "2025-07-22T00:33:42.149Z",
+      "homepage": "https://smithery.ai/server/@fletton/cut_text"
+    }
+  }
+}

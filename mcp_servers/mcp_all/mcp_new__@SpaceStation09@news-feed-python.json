@@ -1,0 +1,113 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "News Feed Python Server",
+    "rank_by_usage": null,
+    "usage_count": 4,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333266,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@SpaceStation09/news-feed-python/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_news_flash",
+          "description": "Get the latest news flash about crypto (usually the up-to-date events). It can be used to query the latest happened event in crypto community. (e.g. the famous CEX launched a new activity, a trending project emerges in market, etc.)",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_article",
+          "description": "Get the latest crypto-related articles. Articles are always about the deep research of an crypto project / a company. Besides this, they can also be about the analysis of the crypto market and etc.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      ],
+      "tool_count": 2,
+      "tool_names": [
+        "get_news_flash",
+        "get_article"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Title: SpaceX仅间隔三天再次转出1215枚BTC，价值1.33亿美元\\nLink: https://m.theblockbeats.info/flash/317713\\nDescription: BlockBeats 消息，10 月 25 日，据链上分析师 Ai 姨（@ai_9684xtpa）监测，SpaceX 仅间隔三天再次转出 1215 枚 BTC，价值 1.33 亿美元。需要注意的是，三天前转移的价值 2.68 亿美元的 BTC 也暂时没有动静，转出意图尚不明确。\\nPubdate: Sat, 25 Oct 2025 00:46:26 +0800\\n\\nTitle: Tom Lee：比特币四年周期模式已经打破，但仍可能出现50%的跌幅\\nLink: https://m.theblockbeats.info/flash/317712\\nDescription: BlockBeats 消息，10 月 25 日，Tom Lee 在周四接受加密货币企业家 Anthony Pompliano 采访时表示：「我确信比特币会出现 50% 的跌幅。股市 25% 的跌幅越来越频繁，过去六年，股市取得了很大进步；我们经历了异常大规模的 25% 跌幅，因此，如果标准普尔指数下跌 20 点，比特币可能会下跌 40 点。」Tom Lee 还表示，比特币已经打破了其典型的四年周期，这表明一个「更长的周期」正在形成。\\nPubdate: Sat, 25 Oct 2025 00:07:13 +0800\\n\\nTitle: 特朗普旗下无人机公司赢得五角大楼史上最大合同\\nLink: https://m.theblockbeats.info/flash/317711\\nDescription: BlockBeats 消息，10 月 25 日，特朗普旗下无人机公司 Unusual Machines 赢得五角大楼史上最大合同。Unusual Machines 暴涨 14%，随后停牌。\\nPubdate: Sat, 25 Oct 2025 00:00:49 +0800\\n\\nTitle: Coinbase Prime新增对APR、BNB和weETH的托管支持\\nLink: https://m.theblockbeats.info/flash/317710\\nDescription: BlockBeats 消息，10 月 24 日，Coinbase Institutional 在 X 平台宣布，aPriori（APR）、BNB（BNB）和 weETH（weETH）现在可在 Coinbase Prime 上托管。\\nPubdate: Fri, 24 Oct 2025 23:48:56 +0800\\n\\nTitle: Resupply在Curve社区发起提案，提议铸造500万枚crvUSD向sreUSD Llamalend市场供应\\nLink: https://m.theblockbeats.info/flash/317709\\nDescription: BlockBeats 消息，10 月 24 日，基于 Llamalend 的借贷协议 Resupply 在 Curve 社区发起了一项新提案，提议铸造 500 万枚 crvUSD，并直接向 sreUSD Llamalend 市场供应，该提案旨在通过改善 reUSD、sreUSD 和 crvUSD 之间的动态来加强整体补给系统。\\nPubdate: Fri, 24 Oct 2025 23:43:19 +0800\\n\\nTitle: CLANKER持续上涨，24小时涨幅达184%\\nLink: https://m.theblockbeats.info/flash/317708\\nDescription: BlockBeats 消息，10 月 24 日，据行情信息，CLANKER 持续上涨，现报价 69.25 美元，24 小时涨幅达 184%。此前报道，Clanker 将加入 Farcaster 生态，协议费用将回购持有 CLANKER 代币。\\nPubdate: Fri, 24 Oct 2025 23:23:38 +0800\\n\\nTitle: Bybit已上线Aptos网络USD1，支持用户0费用充提\\nLink: https://m.theblockbeats.info/flash/317707\\nDescription: BlockBeats 消息，10 月 24 日，Bybit 已上线由 World Liberty Finance 在 Aptos 网络上发行的 USD1，用户可通过 Aptos 网络在 Bybit 进行 USD1 的充值与提现，并享受 0 Gas 费用优惠。此外，参与用户还有机会赢取价值 9 万美元的 USD1 幸运抽奖奖励。Aptos 高性能、低成本和安全性为稳定币资产提供了高效的清算与转移通道，包括 Bybit、Crypto.com 等在内的主流交易平台已普遍支持 Aptos 上的 USDT、USDC 等主流稳定充提，且费用极低甚至接近 0，显著降低了用户跨平台流通稳定币的成本。\\nPubdate: Fri, 24 Oct 2025 23:10:51 +0800\\n\\nTitle: Tether CEO：预计年内利润150亿美元，利润率高达99%\\nLink: https://m.theblockbeats.info/flash/317706\\nDescription: BlockBeats 消息，10 月 24 日，Tether 首席执行官 Paolo Ardoino 近日在瑞士参加论坛接受采访时表示，Tether 今年的利润将接近 150 亿美元，利润率高达 99%。被问及想引入的投资者类型，他表示许多基金和科技基金投资组合中的公司，可能用到 Tether 部分技术和产品，这关乎协同效应与更大影响力，不过他未透露潜在投资者信息。（彭博社）\\nPubdate: Fri, 24 Oct 2025 23:08:42 +0800\\n\\nTitle: 加密矿企TeraWulf完成32亿美元债券发行，拟用于扩建数据中心\\nLink: https://m.theblockbeats.info/flash/317705\\nDescription: BlockBeats 消息，10 月 24 日，据彭博社报道，加密货币挖矿公司 TeraWulf Inc. 完成了一笔 32 亿美元的债务交易，拟用于扩建数据中心。\\nPubdate: Fri, 24 Oct 2025 22:53:53 +0800\\n\\nTitle: 「胜率100%神秘巨鲸」多单仓位价值已加至2.7亿美元，浮亏38.4万美元\\nLink: https://m.theblockbeats.info/flash/317704\\nDescription: BlockBeats 消息，10 月 24 日，据链上分析师 Ai 姨（@ai_9684xtpa）监测，「胜率 100% 神秘巨鲸」BTC 多单规模已超越 ETH：BTC 多单：持仓 1,309.31 枚 BTC，价值 1.44 亿美元，开仓价 110,592.3 美元；ETH 多单：持仓 33,270.78 枚 ETH，价值 1.29 亿美元，开仓价 3,897.59 美元。整体仓位达 2.74 亿美元，且转盈为亏，浮亏 38.4 万美元；另外还有 64.95 BTC 挂单未成交。\\nPubdate: Fri, 24 Oct 2025 22:32:49 +0800', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "News Feed Python Server",
+      "author": null,
+      "overview": "Provide a data feed of Blockbeats RSS to large language models, enabling them to answer user queries about news and information. Serve as an MCP server exposing news content via HTTP for seamless integration with LLM applications. Facilitate easy testing and interaction through a web-based MCP inspector UI.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@SpaceStation09/news-feed-python",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 4,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 2,
+      "tools": [
+        {
+          "name": "get_news_flash",
+          "description": "Get the latest news flash about crypto (usually the up-to-date events). It can be used to query the latest happened event in crypto community. (e.g. the famous CEX launched a new activity, a trending project emerges in market, etc.)",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_article",
+          "description": "Get the latest crypto-related articles. Articles are always about the deep research of an crypto project / a company. Besides this, they can also be about the analysis of the crypto market and etc.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@SpaceStation09@news-feed-python.json",
+    "source_filename": "@SpaceStation09@news-feed-python.json",
+    "processed_timestamp": 1761333266,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@SpaceStation09/news-feed-python/mcp",
+      "configSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@SpaceStation09/news-feed-python",
+      "displayName": "News Feed Python Server",
+      "description": "Provide a data feed of Blockbeats RSS to large language models, enabling them to answer user queries about news and information. Serve as an MCP server exposing news content via HTTP for seamless integration with LLM applications. Facilitate easy testing and interaction through a web-based MCP inspector UI.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/gofastmcp.com.ico",
+      "verified": false,
+      "useCount": 4,
+      "remote": true,
+      "createdAt": "2025-07-08T09:08:41.153Z",
+      "homepage": "https://smithery.ai/server/@SpaceStation09/news-feed-python"
+    }
+  }
+}

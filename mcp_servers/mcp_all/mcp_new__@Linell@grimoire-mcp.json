@@ -1,0 +1,375 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Grimoire Spellbook Server",
+    "rank_by_usage": null,
+    "usage_count": 2,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333414,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@Linell/grimoire-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "search_spells",
+          "description": "Search for D&D 5E spells with various filters",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Partial spell name to search for"
+              },
+              "class": {
+                "enum": [
+                  "barbarian",
+                  "bard",
+                  "cleric",
+                  "druid",
+                  "fighter",
+                  "monk",
+                  "paladin",
+                  "ranger",
+                  "rogue",
+                  "sorcerer",
+                  "warlock",
+                  "wizard",
+                  "artificer"
+                ],
+                "type": "string",
+                "description": "Character class that can cast this spell"
+              },
+              "level": {
+                "type": "number",
+                "maximum": 9,
+                "minimum": 0,
+                "description": "Spell level (0-9)"
+              },
+              "ritual": {
+                "type": "boolean",
+                "description": "Filter for ritual spells only"
+              },
+              "school": {
+                "enum": [
+                  "abjuration",
+                  "conjuration",
+                  "divination",
+                  "enchantment",
+                  "evocation",
+                  "illusion",
+                  "necromancy",
+                  "transmutation"
+                ],
+                "type": "string",
+                "description": "Spell school"
+              },
+              "concentration": {
+                "type": "boolean",
+                "description": "Filter for concentration spells only"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_spell",
+          "description": "Get detailed information about a specific D&D 5E spell",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "spell_name"
+            ],
+            "properties": {
+              "spell_name": {
+                "type": "string",
+                "description": "Name of the spell to look up"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list_schools",
+          "description": "List all available D&D 5E spell schools",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list_classes",
+          "description": "List all available D&D 5E character classes that can cast spells",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_class_spells",
+          "description": "Get all spells available to a specific class at a given level",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "class",
+              "level"
+            ],
+            "properties": {
+              "class": {
+                "enum": [
+                  "barbarian",
+                  "bard",
+                  "cleric",
+                  "druid",
+                  "fighter",
+                  "monk",
+                  "paladin",
+                  "ranger",
+                  "rogue",
+                  "sorcerer",
+                  "warlock",
+                  "wizard",
+                  "artificer"
+                ],
+                "type": "string",
+                "description": "Character class to search spells for"
+              },
+              "level": {
+                "type": "number",
+                "maximum": 9,
+                "minimum": 0,
+                "description": "Spell level to search for"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 5,
+      "tool_names": [
+        "search_spells",
+        "get_spell",
+        "list_schools",
+        "list_classes",
+        "get_class_spells"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text=\"Found 319 spell(s):\\n\\n• **Acid Arrow** (Level 2) - Unknown School\\n• **Acid Splash** (Level Unknown) - Unknown School\\n• **Aid** (Level 2) - Unknown School\\n• **Alarm** (Level 1) - Unknown School\\n• **Alter Self** (Level 2) - Unknown School\\n• **Animal Friendship** (Level 1) - Unknown School\\n• **Animal Messenger** (Level 2) - Unknown School\\n• **Animal Shapes** (Level 8) - Unknown School\\n• **Animate Dead** (Level 3) - Unknown School\\n• **Animate Objects** (Level 5) - Unknown School\\n• **Antilife Shell** (Level 5) - Unknown School\\n• **Antimagic Field** (Level 8) - Unknown School\\n• **Antipathy/Sympathy** (Level 8) - Unknown School\\n• **Arcane Eye** (Level 4) - Unknown School\\n• **Arcane Hand** (Level 5) - Unknown School\\n• **Arcane Lock** (Level 2) - Unknown School\\n• **Arcane Sword** (Level 7) - Unknown School\\n• **Arcanist's Magic Aura** (Level 2) - Unknown School\\n• **Astral Projection** (Level 9) - Unknown School\\n• **Augury** (Level 2) - Unknown School\\n• **Awaken** (Level 5) - Unknown School\\n• **Bane** (Level 1) - Unknown School\\n• **Banishment** (Level 4) - Unknown School\\n• **Barkskin** (Level 2) - Unknown School\\n• **Beacon of Hope** (Level 3) - Unknown School\\n• **Bestow Curse** (Level 3) - Unknown School\\n• **Black Tentacles** (Level 4) - Unknown School\\n• **Blade Barrier** (Level 6) - Unknown School\\n• **Bless** (Level 1) - Unknown School\\n• **Blight** (Level 4) - Unknown School\\n• **Blindness/Deafness** (Level 2) - Unknown School\\n• **Blink** (Level 3) - Unknown School\\n• **Blur** (Level 2) - Unknown School\\n• **Branding Smite** (Level 2) - Unknown School\\n• **Burning Hands** (Level 1) - Unknown School\\n• **Call Lightning** (Level 3) - Unknown School\\n• **Calm Emotions** (Level 2) - Unknown School\\n• **Chain Lightning** (Level 6) - Unknown School\\n• **Charm Person** (Level 1) - Unknown School\\n• **Chill Touch** (Level Unknown) - Unknown School\\n• **Circle of Death** (Level 6) - Unknown School\\n• **Clairvoyance** (Level 3) - Unknown School\\n• **Clone** (Level 8) - Unknown School\\n• **Cloudkill** (Level 5) - Unknown School\\n• **Color Spray** (Level 1) - Unknown School\\n• **Command** (Level 1) - Unknown School\\n• **Commune** (Level 5) - Unknown School\\n• **Commune With Nature** (Level 5) - Unknown School\\n• **Comprehend Languages** (Level 1) - Unknown School\\n• **Compulsion** (Level 4) - Unknown School\\n• **Cone of Cold** (Level 5) - Unknown School\\n• **Confusion** (Level 4) - Unknown School\\n• **Conjure Animals** (Level 3) - Unknown School\\n• **Conjure Celestial** (Level 7) - Unknown School\\n• **Conjure Elemental** (Level 5) - Unknown School\\n• **Conjure Fey** (Level 6) - Unknown School\\n• **Conjure Minor Elementals** (Level 4) - Unknown School\\n• **Conjure Woodland Beings** (Level 4) - Unknown School\\n• **Contact Other Plane** (Level 5) - Unknown School\\n• **Contagion** (Level 5) - Unknown School\\n• **Contingency** (Level 6) - Unknown School\\n• **Continual Flame** (Level 2) - Unknown School\\n• **Control Water** (Level 4) - Unknown School\\n• **Control Weather** (Level 8) - Unknown School\\n• **Counterspell** (Level 3) - Unknown School\\n• **Create Food and Water** (Level 3) - Unknown School\\n• **Create or Destroy Water** (Level 1) - Unknown School\\n• **Create Undead** (Level 6) - Unknown School\\n• **Creation** (Level 5) - Unknown School\\n• **Cure Wounds** (Level 1) - Unknown School\\n• **Dancing Lights** (Level Unknown) - Unknown School\\n• **Darkness** (Level 2) - Unknown School\\n• **Darkvision** (Level 2) - Unknown School\\n• **Daylight** (Level 3) - Unknown School\\n• **Death Ward** (Level 4) - Unknown School\\n• **Delayed Blast Fireball** (Level 7) - Unknown School\\n• **Demiplane** (Level 8) - Unknown School\\n• **Detect Evil and Good** (Level 1) - Unknown School\\n• **Detect Magic** (Level 1) - Unknown School\\n• **Detect Poison and Disease** (Level 1) - Unknown School\\n• **Detect Thoughts** (Level 2) - Unknown School\\n• **Dimension Door** (Level 4) - Unknown School\\n• **Disguise Self** (Level 1) - Unknown School\\n• **Disintegrate** (Level 6) - Unknown School\\n• **Dispel Evil and Good** (Level 5) - Unknown School\\n• **Dispel Magic** (Level 3) - Unknown School\\n• **Divination** (Level 4) - Unknown School\\n• **Divine Favor** (Level 1) - Unknown School\\n• **Divine Word** (Level 7) - Unknown School\\n• **Dominate Beast** (Level 4) - Unknown School\\n• **Dominate Monster** (Level 8) - Unknown School\\n• **Dominate Person** (Level 5) - Unknown School\\n• **Dream** (Level 5) - Unknown School\\n• **Druidcraft** (Level Unknown) - Unknown School\\n• **Earthquake** (Level 8) - Unknown School\\n• **Eldritch Blast** (Level Unknown) - Unknown School\\n• **Enhance Ability** (Level 2) - Unknown School\\n• **Enlarge/Reduce** (Level 2) - Unknown School\\n• **Entangle** (Level 1) - Unknown School\\n• **Enthrall** (Level 2) - Unknown School\\n• **Etherealness** (Level 7) - Unknown School\\n• **Expeditious Retreat** (Level 1) - Unknown School\\n• **Eyebite** (Level 6) - Unknown School\\n• **Fabricate** (Level 4) - Unknown School\\n• **Faerie Fire** (Level 1) - Unknown School\\n• **Faithful Hound** (Level 4) - Unknown School\\n• **False Life** (Level 1) - Unknown School\\n• **Fear** (Level 3) - Unknown School\\n• **Feather Fall** (Level 1) - Unknown School\\n• **Feeblemind** (Level 8) - Unknown School\\n• **Find Familiar** (Level 1) - Unknown School\\n• **Find Steed** (Level 2) - Unknown School\\n• **Find the Path** (Level 6) - Unknown School\\n• **Find Traps** (Level 2) - Unknown School\\n• **Finger of Death** (Level 7) - Unknown School\\n• **Fire Bolt** (Level Unknown) - Unknown School\\n• **Fire Shield** (Level 4) - Unknown School\\n• **Fire Storm** (Level 7) - Unknown School\\n• **Fireball** (Level 3) - Unknown School\\n• **Flame Blade** (Level 2) - Unknown School\\n• **Flame Strike** (Level 5) - Unknown School\\n• **Flaming Sphere** (Level 2) - Unknown School\\n• **Flesh to Stone** (Level 6) - Unknown School\\n• **Floating Disk** (Level 1) - Unknown School\\n• **Fly** (Level 3) - Unknown School\\n• **Fog Cloud** (Level 1) - Unknown School\\n• **Forbiddance** (Level 6) - Unknown School\\n• **Forcecage** (Level 7) - Unknown School\\n• **Foresight** (Level 9) - Unknown School\\n• **Freedom of Movement** (Level 4) - Unknown School\\n• **Freezing Sphere** (Level 6) - Unknown School\\n• **Gaseous Form** (Level 3) - Unknown School\\n• **Gate** (Level 9) - Unknown School\\n• **Geas** (Level 5) - Unknown School\\n• **Gentle Repose** (Level 2) - Unknown School\\n• **Giant Insect** (Level 4) - Unknown School\\n• **Glibness** (Level 8) - Unknown School\\n• **Globe of Invulnerability** (Level 6) - Unknown School\\n• **Glyph of Warding** (Level 3) - Unknown School\\n• **Goodberry** (Level 1) - Unknown School\\n• **Grease** (Level 1) - Unknown School\\n• **Greater Invisibility** (Level 4) - Unknown School\\n• **Greater Restoration** (Level 5) - Unknown School\\n• **Guardian of Faith** (Level 4) - Unknown School\\n• **Guards and Wards** (Level 6) - Unknown School\\n• **Guidance** (Level Unknown) - Unknown School\\n• **Guiding Bolt** (Level 1) - Unknown School\\n• **Gust of Wind** (Level 2) - Unknown School\\n• **Hallow** (Level 5) - Unknown School\\n• **Hallucinatory Terrain** (Level 4) - Unknown School\\n• **Harm** (Level 6) - Unknown School\\n• **Haste** (Level 3) - Unknown School\\n• **Heal** (Level 6) - Unknown School\\n• **Healing Word** (Level 1) - Unknown School\\n• **Heat Metal** (Level 2) - Unknown School\\n• **Hellish Rebuke** (Level 1) - Unknown School\\n• **Heroes' Feast** (Level 6) - Unknown School\\n• **Heroism** (Level 1) - Unknown School\\n• **Hideous Laughter** (Level 1) - Unknown School\\n• **Hold Monster** (Level 5) - Unknown School\\n• **Hold Person** (Level 2) - Unknown School\\n• **Holy Aura** (Level 8) - Unknown School\\n• **Hunter's Mark** (Level 1) - Unknown School\\n• **Hypnotic Pattern** (Level 3) - Unknown School\\n• **Ice Storm** (Level 4) - Unknown School\\n• **Identify** (Level 1) - Unknown School\\n• **Illusory Script** (Level 1) - Unknown School\\n• **Imprisonment** (Level 9) - Unknown School\\n• **Incendiary Cloud** (Level 8) - Unknown School\\n• **Inflict Wounds** (Level 1) - Unknown School\\n• **Insect Plague** (Level 5) - Unknown School\\n• **Instant Summons** (Level 6) - Unknown School\\n• **Invisibility** (Level 2) - Unknown School\\n• **Irresistible Dance** (Level 6) - Unknown School\\n• **Jump** (Level 1) - Unknown School\\n• **Knock** (Level 2) - Unknown School\\n• **Legend Lore** (Level 5) - Unknown School\\n• **Lesser Restoration** (Level 2) - Unknown School\\n• **Levitate** (Level 2) - Unknown School\\n• **Light** (Level Unknown) - Unknown School\\n• **Lightning Bolt** (Level 3) - Unknown School\\n• **Locate Animals or Plants** (Level 2) - Unknown School\\n• **Locate Creature** (Level 4) - Unknown School\\n• **Locate Object** (Level 2) - Unknown School\\n• **Longstrider** (Level 1) - Unknown School\\n• **Mage Armor** (Level 1) - Unknown School\\n• **Mage Hand** (Level Unknown) - Unknown School\\n• **Magic Circle** (Level 3) - Unknown School\\n• **Magic Jar** (Level 6) - Unknown School\\n• **Magic Missile** (Level 1) - Unknown School\\n• **Magic Mouth** (Level 2) - Unknown School\\n• **Magic Weapon** (Level 2) - Unknown School\\n• **Magnificent Mansion** (Level 7) - Unknown School\\n• **Major Image** (Level 3) - Unknown School\\n• **Mass Cure Wounds** (Level 5) - Unknown School\\n• **Mass Heal** (Level 9) - Unknown School\\n• **Mass Healing Word** (Level 3) - Unknown School\\n• **Mass Suggestion** (Level 6) - Unknown School\\n• **Maze** (Level 8) - Unknown School\\n• **Meld Into Stone** (Level 3) - Unknown School\\n• **Mending** (Level Unknown) - Unknown School\\n• **Message** (Level Unknown) - Unknown School\\n• **Meteor Swarm** (Level 9) - Unknown School\\n• **Mind Blank** (Level 8) - Unknown School\\n• **Minor Illusion** (Level Unknown) - Unknown School\\n• **Mirage Arcane** (Level 7) - Unknown School\\n• **Mirror Image** (Level 2) - Unknown School\\n• **Mislead** (Level 5) - Unknown School\\n• **Misty Step** (Level 2) - Unknown School\\n• **Modify Memory** (Level 5) - Unknown School\\n• **Moonbeam** (Level 2) - Unknown School\\n• **Move Earth** (Level 6) - Unknown School\\n• **Nondetection** (Level 3) - Unknown School\\n• **Pass Without Trace** (Level 2) - Unknown School\\n• **Passwall** (Level 5) - Unknown School\\n• **Phantasmal Killer** (Level 4) - Unknown School\\n• **Phantom Steed** (Level 3) - Unknown School\\n• **Planar Ally** (Level 6) - Unknown School\\n• **Planar Binding** (Level 5) - Unknown School\\n• **Plane Shift** (Level 7) - Unknown School\\n• **Plant Growth** (Level 3) - Unknown School\\n• **Poison Spray** (Level Unknown) - Unknown School\\n• **Polymorph** (Level 4) - Unknown School\\n• **Power Word Kill** (Level 9) - Unknown School\\n• **Power Word Stun** (Level 8) - Unknown School\\n• **Prayer of Healing** (Level 2) - Unknown School\\n• **Prestidigitation** (Level Unknown) - Unknown School\\n• **Prismatic Spray** (Level 7) - Unknown School\\n• **Prismatic Wall** (Level 9) - Unknown School\\n• **Private Sanctum** (Level 4) - Unknown School\\n• **Produce Flame** (Level Unknown) - Unknown School\\n• **Programmed Illusion** (Level 6) - Unknown School\\n• **Project Image** (Level 7) - Unknown School\\n• **Protection From Energy** (Level 3) - Unknown School\\n• **Protection from Evil and Good** (Level 1) - Unknown School\\n• **Protection from Poison** (Level 2) - Unknown School\\n• **Purify Food and Drink** (Level 1) - Unknown School\\n• **Raise Dead** (Level 5) - Unknown School\\n• **Ray of Enfeeblement** (Level 2) - Unknown School\\n• **Ray of Frost** (Level Unknown) - Unknown School\\n• **Regenerate** (Level 7) - Unknown School\\n• **Reincarnate** (Level 5) - Unknown School\\n• **Remove Curse** (Level 3) - Unknown School\\n• **Resilient Sphere** (Level 4) - Unknown School\\n• **Resistance** (Level Unknown) - Unknown School\\n• **Resurrection** (Level 7) - Unknown School\\n• **Reverse Gravity** (Level 7) - Unknown School\\n• **Revivify** (Level 3) - Unknown School\\n• **Rope Trick** (Level 2) - Unknown School\\n• **Sacred Flame** (Level Unknown) - Unknown School\\n• **Sanctuary** (Level 1) - Unknown School\\n• **Scorching Ray** (Level 2) - Unknown School\\n• **Scrying** (Level 5) - Unknown School\\n• **Secret Chest** (Level 4) - Unknown School\\n• **See Invisibility** (Level 2) - Unknown School\\n• **Seeming** (Level 5) - Unknown School\\n• **Sending** (Level 3) - Unknown School\\n• **Sequester** (Level 7) - Unknown School\\n• **Shapechange** (Level 9) - Unknown School\\n• **Shatter** (Level 2) - Unknown School\\n• **Shield** (Level 1) - Unknown School\\n• **Shield of Faith** (Level 1) - Unknown School\\n• **Shillelagh** (Level Unknown) - Unknown School\\n• **Shocking Grasp** (Level Unknown) - Unknown School\\n• **Silence** (Level 2) - Unknown School\\n• **Silent Image** (Level 1) - Unknown School\\n• **Simulacrum** (Level 7) - Unknown School\\n• **Sleep** (Level 1) - Unknown School\\n• **Sleet Storm** (Level 3) - Unknown School\\n• **Slow** (Level 3) - Unknown School\\n• **Spare the Dying** (Level Unknown) - Unknown School\\n• **Speak with Animals** (Level 1) - Unknown School\\n• **Speak with Dead** (Level 3) - Unknown School\\n• **Speak with Plants** (Level 3) - Unknown School\\n• **Spider Climb** (Level 2) - Unknown School\\n• **Spike Growth** (Level 2) - Unknown School\\n• **Spirit Guardians** (Level 3) - Unknown School\\n• **Spiritual Weapon** (Level 2) - Unknown School\\n• **Stinking Cloud** (Level 3) - Unknown School\\n• **Stone Shape** (Level 4) - Unknown School\\n• **Stoneskin** (Level 4) - Unknown School\\n• **Storm of Vengeance** (Level 9) - Unknown School\\n• **Suggestion** (Level 2) - Unknown School\\n• **Sunbeam** (Level 6) - Unknown School\\n• **Sunburst** (Level 8) - Unknown School\\n• **Symbol** (Level 7) - Unknown School\\n• **Telekinesis** (Level 5) - Unknown School\\n• **Telepathic Bond** (Level 5) - Unknown School\\n• **Teleport** (Level 7) - Unknown School\\n• **Teleportation Circle** (Level 5) - Unknown School\\n• **Thaumaturgy** (Level Unknown) - Unknown School\\n• **Thunderwave** (Level 1) - Unknown School\\n• **Time Stop** (Level 9) - Unknown School\\n• **Tiny Hut** (Level 3) - Unknown School\\n• **Tongues** (Level 3) - Unknown School\\n• **Transport via Plants** (Level 6) - Unknown School\\n• **Tree Stride** (Level 5) - Unknown School\\n• **True Polymorph** (Level 9) - Unknown School\\n• **True Resurrection** (Level 9) - Unknown School\\n• **True Seeing** (Level 6) - Unknown School\\n• **True Strike** (Level Unknown) - Unknown School\\n• **Unseen Servant** (Level 1) - Unknown School\\n• **Vampiric Touch** (Level 3) - Unknown School\\n• **Vicious Mockery** (Level Unknown) - Unknown School\\n• **Wall of Fire** (Level 4) - Unknown School\\n• **Wall of Force** (Level 5) - Unknown School\\n• **Wall of Ice** (Level 6) - Unknown School\\n• **Wall of Stone** (Level 5) - Unknown School\\n• **Wall of Thorns** (Level 6) - Unknown School\\n• **Warding Bond** (Level 2) - Unknown School\\n• **Water Breathing** (Level 3) - Unknown School\\n• **Water Walk** (Level 3) - Unknown School\\n• **Web** (Level 2) - Unknown School\\n• **Weird** (Level 9) - Unknown School\\n• **Wind Walk** (Level 6) - Unknown School\\n• **Wind Wall** (Level 3) - Unknown School\\n• **Wish** (Level 9) - Unknown School\\n• **Word of Recall** (Level 6) - Unknown School\\n• **Zone of Truth** (Level 2) - Unknown School\", annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Grimoire Spellbook Server",
+      "author": null,
+      "overview": "Provide a comprehensive spellbook for Dungeons & Dragons 5th Edition to enhance your gameplay experience. Access detailed spell information and manage your spell resources efficiently. Streamline your D&D sessions with easy-to-use spell data and tools.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@Linell/grimoire-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 2,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 5,
+      "tools": [
+        {
+          "name": "search_spells",
+          "description": "Search for D&D 5E spells with various filters",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Partial spell name to search for"
+              },
+              "class": {
+                "enum": [
+                  "barbarian",
+                  "bard",
+                  "cleric",
+                  "druid",
+                  "fighter",
+                  "monk",
+                  "paladin",
+                  "ranger",
+                  "rogue",
+                  "sorcerer",
+                  "warlock",
+                  "wizard",
+                  "artificer"
+                ],
+                "type": "string",
+                "description": "Character class that can cast this spell"
+              },
+              "level": {
+                "type": "number",
+                "maximum": 9,
+                "minimum": 0,
+                "description": "Spell level (0-9)"
+              },
+              "ritual": {
+                "type": "boolean",
+                "description": "Filter for ritual spells only"
+              },
+              "school": {
+                "enum": [
+                  "abjuration",
+                  "conjuration",
+                  "divination",
+                  "enchantment",
+                  "evocation",
+                  "illusion",
+                  "necromancy",
+                  "transmutation"
+                ],
+                "type": "string",
+                "description": "Spell school"
+              },
+              "concentration": {
+                "type": "boolean",
+                "description": "Filter for concentration spells only"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_spell",
+          "description": "Get detailed information about a specific D&D 5E spell",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "spell_name"
+            ],
+            "properties": {
+              "spell_name": {
+                "type": "string",
+                "description": "Name of the spell to look up"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list_schools",
+          "description": "List all available D&D 5E spell schools",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list_classes",
+          "description": "List all available D&D 5E character classes that can cast spells",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_class_spells",
+          "description": "Get all spells available to a specific class at a given level",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "class",
+              "level"
+            ],
+            "properties": {
+              "class": {
+                "enum": [
+                  "barbarian",
+                  "bard",
+                  "cleric",
+                  "druid",
+                  "fighter",
+                  "monk",
+                  "paladin",
+                  "ranger",
+                  "rogue",
+                  "sorcerer",
+                  "warlock",
+                  "wizard",
+                  "artificer"
+                ],
+                "type": "string",
+                "description": "Character class to search spells for"
+              },
+              "level": {
+                "type": "number",
+                "maximum": 9,
+                "minimum": 0,
+                "description": "Spell level to search for"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@Linell@grimoire-mcp.json",
+    "source_filename": "@Linell@grimoire-mcp.json",
+    "processed_timestamp": 1761333414,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@Linell/grimoire-mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@Linell/grimoire-mcp",
+      "displayName": "Grimoire Spellbook Server",
+      "description": "Provide a comprehensive spellbook for Dungeons & Dragons 5th Edition to enhance your gameplay experience. Access detailed spell information and manage your spell resources efficiently. Streamline your D&D sessions with easy-to-use spell data and tools.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 2,
+      "remote": true,
+      "createdAt": "2025-07-12T23:43:27.306Z",
+      "homepage": "https://smithery.ai/server/@Linell/grimoire-mcp"
+    }
+  }
+}

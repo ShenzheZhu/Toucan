@@ -1,0 +1,208 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Thoughtbox (beta)",
+    "rank_by_usage": null,
+    "usage_count": 981,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761332765,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@Kastalien-Research/clear-thought-two/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "clear_thought",
+          "description": "A detailed tool for dynamic and reflective problem-solving through thoughts.\nThis tool helps analyze problems through a flexible thinking process that can adapt and evolve.\nEach thought can build on, question, or revise previous insights as understanding deepens.\nSupports forward thinking (1→N), backward thinking (N→1), or mixed approaches.\n\nWhen to use this tool:\n- Breaking down complex problems into steps\n- Planning and design with room for revision\n- Analysis that might need course correction\n- Problems where the full scope might not be clear initially\n- Problems that require a multi-step solution\n- Tasks that need to maintain context over multiple steps\n- Situations where irrelevant information needs to be filtered out\n\nThinking Approaches:\n\n**Forward Thinking (Traditional Chain of Thought)**: Start at thought 1, work sequentially to thought N\n- Use when: Exploring unknowns, brainstorming, open-ended analysis, discovery\n- Pattern: thoughtNumber 1 → 2 → 3 → ... → N\n- Example: \"How can we improve user engagement?\" Start with current state, explore options, reach conclusion\n\n**Backward Thinking (Goal-Driven Reasoning)**: Start at thought N (desired end state), work back to thought 1 (starting conditions)\n- Use when: Designing systems, planning projects, solving well-defined problems, working from goals\n- Pattern: thoughtNumber N → N-1 → N-2 → ... → 1\n- Example: \"Design a caching strategy for 10k req/s\" Start with success criteria (thought 8), work backwards through prerequisites (monitoring, invalidation, implementation, profiling) to reach starting point (thought 1: define requirements)\n- Tip: Begin with the desired outcome, then repeatedly ask \"what must be true immediately before this?\"\n\n**Mixed/Branched Thinking**: Combine approaches or explore alternative paths using branch parameters\n- Use when: Complex problems requiring multiple perspectives or hypothesis testing\n- Pattern: Use isRevision, branchFromThought, and branchId to create alternative reasoning paths\n\nPatterns Cookbook:\nThe patterns cookbook guide is automatically provided as an embedded resource at thought 1 and at the final thought.\nYou can also request it at any time using the includeGuide parameter.\nThe cookbook contains 20+ reasoning patterns with examples and usage guidance.\n\nKey features:\n- You can adjust total_thoughts up or down as you progress\n- You can question or revise previous thoughts\n- You can add more thoughts even after reaching what seemed like the end\n- You can express uncertainty and explore alternative approaches\n- Not every thought needs to build linearly - you can branch or backtrack\n- Generates a solution hypothesis\n- Verifies the hypothesis based on the Chain of Thought steps\n- Repeats the process until satisfied\n- Provides a correct answer\n\nParameters explained:\n- thought: Your current thinking step, which can include:\n* Regular analytical steps\n* Revisions of previous thoughts\n* Questions about previous decisions\n* Realizations about needing more analysis\n* Changes in approach\n* Hypothesis generation\n* Hypothesis verification\n- next_thought_needed: True if you need more thinking, even if at what seemed like the end\n- thought_number: Current number in sequence (can go beyond initial total if needed)\n- total_thoughts: Current estimate of thoughts needed (can be adjusted up/down)\n- is_revision: A boolean indicating if this thought revises previous thinking\n- revises_thought: If is_revision is true, which thought number is being reconsidered\n- branch_from_thought: If branching, which thought number is the branching point\n- branch_id: Identifier for the current branch (if any)\n- needs_more_thoughts: If reaching end but realizing more thoughts needed\n\nYou should:\n1. Start with an initial estimate of needed thoughts, but be ready to adjust\n2. Feel free to question or revise previous thoughts\n3. Don't hesitate to add more thoughts if needed, even at the \"end\"\n4. Express uncertainty when present\n5. Mark thoughts that revise previous thinking or branch into new paths\n6. Ignore information that is irrelevant to the current step\n7. Generate a solution hypothesis when appropriate\n8. Verify the hypothesis based on the Chain of Thought steps\n9. Repeat the process until satisfied with the solution\n10. Provide a single, ideally correct answer as the final output\n11. Only set next_thought_needed to false when truly done and a satisfactory answer is reached",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "thought",
+              "nextThoughtNeeded",
+              "thoughtNumber",
+              "totalThoughts"
+            ],
+            "properties": {
+              "thought": {
+                "type": "string",
+                "description": "Your current thinking step"
+              },
+              "branchId": {
+                "type": "string",
+                "description": "Branch identifier"
+              },
+              "isRevision": {
+                "type": "boolean",
+                "description": "Whether this revises previous thinking"
+              },
+              "includeGuide": {
+                "type": "boolean",
+                "description": "Request the patterns cookbook guide as embedded resource (also provided automatically at thought 1 and final thought)"
+              },
+              "thoughtNumber": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Current thought number (can be 1→N for forward thinking, or N→1 for backward/goal-driven thinking)"
+              },
+              "totalThoughts": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Estimated total thoughts needed (for backward thinking, start with thoughtNumber = totalThoughts)"
+              },
+              "revisesThought": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Which thought is being reconsidered"
+              },
+              "branchFromThought": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Branching point thought number"
+              },
+              "needsMoreThoughts": {
+                "type": "boolean",
+                "description": "If more thoughts are needed"
+              },
+              "nextThoughtNeeded": {
+                "type": "boolean",
+                "description": "Whether another thought step is needed"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "clear_thought"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='{\\n  \"error\": \"Invalid thought: must be a string\",\\n  \"status\": \"failed\"\\n}', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Thoughtbox (beta)",
+      "author": null,
+      "overview": "next-generation MCP reasoning tool.  -- \"npm i @kastalien-research/clear-thought-two\"\n\nsend feedback, suggestions, or anything else about Thoughtbox to glassBead at kastalienresearch@gmail.com.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@Kastalien-Research/clear-thought-two",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 981,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "clear_thought",
+          "description": "A detailed tool for dynamic and reflective problem-solving through thoughts.\nThis tool helps analyze problems through a flexible thinking process that can adapt and evolve.\nEach thought can build on, question, or revise previous insights as understanding deepens.\nSupports forward thinking (1→N), backward thinking (N→1), or mixed approaches.\n\nWhen to use this tool:\n- Breaking down complex problems into steps\n- Planning and design with room for revision\n- Analysis that might need course correction\n- Problems where the full scope might not be clear initially\n- Problems that require a multi-step solution\n- Tasks that need to maintain context over multiple steps\n- Situations where irrelevant information needs to be filtered out\n\nThinking Approaches:\n\n**Forward Thinking (Traditional Chain of Thought)**: Start at thought 1, work sequentially to thought N\n- Use when: Exploring unknowns, brainstorming, open-ended analysis, discovery\n- Pattern: thoughtNumber 1 → 2 → 3 → ... → N\n- Example: \"How can we improve user engagement?\" Start with current state, explore options, reach conclusion\n\n**Backward Thinking (Goal-Driven Reasoning)**: Start at thought N (desired end state), work back to thought 1 (starting conditions)\n- Use when: Designing systems, planning projects, solving well-defined problems, working from goals\n- Pattern: thoughtNumber N → N-1 → N-2 → ... → 1\n- Example: \"Design a caching strategy for 10k req/s\" Start with success criteria (thought 8), work backwards through prerequisites (monitoring, invalidation, implementation, profiling) to reach starting point (thought 1: define requirements)\n- Tip: Begin with the desired outcome, then repeatedly ask \"what must be true immediately before this?\"\n\n**Mixed/Branched Thinking**: Combine approaches or explore alternative paths using branch parameters\n- Use when: Complex problems requiring multiple perspectives or hypothesis testing\n- Pattern: Use isRevision, branchFromThought, and branchId to create alternative reasoning paths\n\nPatterns Cookbook:\nThe patterns cookbook guide is automatically provided as an embedded resource at thought 1 and at the final thought.\nYou can also request it at any time using the includeGuide parameter.\nThe cookbook contains 20+ reasoning patterns with examples and usage guidance.\n\nKey features:\n- You can adjust total_thoughts up or down as you progress\n- You can question or revise previous thoughts\n- You can add more thoughts even after reaching what seemed like the end\n- You can express uncertainty and explore alternative approaches\n- Not every thought needs to build linearly - you can branch or backtrack\n- Generates a solution hypothesis\n- Verifies the hypothesis based on the Chain of Thought steps\n- Repeats the process until satisfied\n- Provides a correct answer\n\nParameters explained:\n- thought: Your current thinking step, which can include:\n* Regular analytical steps\n* Revisions of previous thoughts\n* Questions about previous decisions\n* Realizations about needing more analysis\n* Changes in approach\n* Hypothesis generation\n* Hypothesis verification\n- next_thought_needed: True if you need more thinking, even if at what seemed like the end\n- thought_number: Current number in sequence (can go beyond initial total if needed)\n- total_thoughts: Current estimate of thoughts needed (can be adjusted up/down)\n- is_revision: A boolean indicating if this thought revises previous thinking\n- revises_thought: If is_revision is true, which thought number is being reconsidered\n- branch_from_thought: If branching, which thought number is the branching point\n- branch_id: Identifier for the current branch (if any)\n- needs_more_thoughts: If reaching end but realizing more thoughts needed\n\nYou should:\n1. Start with an initial estimate of needed thoughts, but be ready to adjust\n2. Feel free to question or revise previous thoughts\n3. Don't hesitate to add more thoughts if needed, even at the \"end\"\n4. Express uncertainty when present\n5. Mark thoughts that revise previous thinking or branch into new paths\n6. Ignore information that is irrelevant to the current step\n7. Generate a solution hypothesis when appropriate\n8. Verify the hypothesis based on the Chain of Thought steps\n9. Repeat the process until satisfied with the solution\n10. Provide a single, ideally correct answer as the final output\n11. Only set next_thought_needed to false when truly done and a satisfactory answer is reached",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "thought",
+              "nextThoughtNeeded",
+              "thoughtNumber",
+              "totalThoughts"
+            ],
+            "properties": {
+              "thought": {
+                "type": "string",
+                "description": "Your current thinking step"
+              },
+              "branchId": {
+                "type": "string",
+                "description": "Branch identifier"
+              },
+              "isRevision": {
+                "type": "boolean",
+                "description": "Whether this revises previous thinking"
+              },
+              "includeGuide": {
+                "type": "boolean",
+                "description": "Request the patterns cookbook guide as embedded resource (also provided automatically at thought 1 and final thought)"
+              },
+              "thoughtNumber": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Current thought number (can be 1→N for forward thinking, or N→1 for backward/goal-driven thinking)"
+              },
+              "totalThoughts": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Estimated total thoughts needed (for backward thinking, start with thoughtNumber = totalThoughts)"
+              },
+              "revisesThought": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Which thought is being reconsidered"
+              },
+              "branchFromThought": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Branching point thought number"
+              },
+              "needsMoreThoughts": {
+                "type": "boolean",
+                "description": "If more thoughts are needed"
+              },
+              "nextThoughtNeeded": {
+                "type": "boolean",
+                "description": "Whether another thought step is needed"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@Kastalien-Research@clear-thought-two.json",
+    "source_filename": "@Kastalien-Research@clear-thought-two.json",
+    "processed_timestamp": 1761332765,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@Kastalien-Research/clear-thought-two/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "disableThoughtLogging": {
+            "type": "boolean",
+            "default": false,
+            "description": "Disable thought output to stderr (useful for production deployments)"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@Kastalien-Research/clear-thought-two",
+      "displayName": "Thoughtbox (beta)",
+      "description": "next-generation MCP reasoning tool.  -- \"npm i @kastalien-research/clear-thought-two\"\n\nsend feedback, suggestions, or anything else about Thoughtbox to glassBead at kastalienresearch@gmail.com.",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/2789686d-d02f-4227-8887-2d21549858d0.jpg",
+      "verified": false,
+      "useCount": 981,
+      "remote": true,
+      "createdAt": "2025-10-20T03:54:23.095Z",
+      "homepage": "https://smithery.ai/server/@Kastalien-Research/clear-thought-two"
+    }
+  }
+}

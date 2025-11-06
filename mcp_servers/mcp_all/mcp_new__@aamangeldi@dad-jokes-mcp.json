@@ -1,0 +1,216 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Dad Jokes",
+    "rank_by_usage": null,
+    "usage_count": 25,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334632,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@aamangeldi/dad-jokes-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_random_joke_tool",
+          "description": "Get a random dad joke from icanhazdadjoke.com",
+          "input_schema": {
+            "type": "object",
+            "title": "get_random_joke_toolArguments",
+            "properties": {}
+          }
+        },
+        {
+          "name": "search_jokes_tool",
+          "description": "\n        Search for dad jokes by keyword or phrase.\n\n        Args:\n            term: Search term to find jokes\n            limit: Number of jokes to return (default: 5, max: 30)\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "search_jokes_toolArguments",
+            "required": [
+              "term"
+            ],
+            "properties": {
+              "term": {
+                "type": "string",
+                "title": "Term"
+              },
+              "limit": {
+                "type": "integer",
+                "title": "Limit",
+                "default": 5
+              }
+            }
+          }
+        },
+        {
+          "name": "get_joke_by_id_tool",
+          "description": "\n        Get a specific dad joke by its ID.\n\n        Args:\n            joke_id: The ID of the joke to retrieve\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_joke_by_id_toolArguments",
+            "required": [
+              "joke_id"
+            ],
+            "properties": {
+              "joke_id": {
+                "type": "string",
+                "title": "Joke Id"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 3,
+      "tool_names": [
+        "get_random_joke_tool",
+        "search_jokes_tool",
+        "get_joke_by_id_tool"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text=\"Why don't skeletons ride roller coasters? They don't have the stomach for it.\\n\\n(ID: 8hFYojqz5h)\", annotations=None, meta=None)] structuredContent={'result': \"Why don't skeletons ride roller coasters? They don't have the stomach for it.\\n\\n(ID: 8hFYojqz5h)\"} isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Dad Jokes",
+      "author": null,
+      "overview": "Get a random dad joke whenever you need a quick laugh. Search jokes by keyword or pull up a specific favorite. Add lighthearted humor to chats, demos, and prototypes in seconds.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@aamangeldi/dad-jokes-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 25,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 3,
+      "tools": [
+        {
+          "name": "get_random_joke_tool",
+          "description": "Get a random dad joke from icanhazdadjoke.com",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_random_joke_toolArguments",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "get_random_joke_toolOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_jokes_tool",
+          "description": "\n        Search for dad jokes by keyword or phrase.\n\n        Args:\n            term: Search term to find jokes\n            limit: Number of jokes to return (default: 5, max: 30)\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "search_jokes_toolArguments",
+            "required": [
+              "term"
+            ],
+            "properties": {
+              "term": {
+                "type": "string",
+                "title": "Term"
+              },
+              "limit": {
+                "type": "integer",
+                "title": "Limit",
+                "default": 5
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "search_jokes_toolOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_joke_by_id_tool",
+          "description": "\n        Get a specific dad joke by its ID.\n\n        Args:\n            joke_id: The ID of the joke to retrieve\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_joke_by_id_toolArguments",
+            "required": [
+              "joke_id"
+            ],
+            "properties": {
+              "joke_id": {
+                "type": "string",
+                "title": "Joke Id"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "get_joke_by_id_toolOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@aamangeldi@dad-jokes-mcp.json",
+    "source_filename": "@aamangeldi@dad-jokes-mcp.json",
+    "processed_timestamp": 1761334632,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@aamangeldi/dad-jokes-mcp/mcp",
+      "configSchema": {
+        "message": "No configuration schema available"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@aamangeldi/dad-jokes-mcp",
+      "displayName": "Dad Jokes",
+      "description": "Get a random dad joke whenever you need a quick laugh. Search jokes by keyword or pull up a specific favorite. Add lighthearted humor to chats, demos, and prototypes in seconds.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 25,
+      "remote": true,
+      "createdAt": "2025-09-29T23:37:59.096Z",
+      "homepage": "https://smithery.ai/server/@aamangeldi/dad-jokes-mcp"
+    }
+  }
+}

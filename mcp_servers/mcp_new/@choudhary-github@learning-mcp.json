@@ -1,0 +1,155 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "ds-mcp-server",
+    "rank_by_usage": null,
+    "usage_count": 58,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761332966,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@choudhary-github/learning-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "getSoftwareProductDetails",
+          "description": "\n      Retrieves version, release url, and lifecycle details for software products \n      from the database. Supports queries such as:\n      - \"release URL of Microsoft Office 2024\"\n      - \"Current version of .NET 8\"\n      - \"End of life date for Windows Server 2019\"\n    ",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "query about software version, release, or lifecycle details."
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getDataFromQDrantDB",
+          "description": "Retrieves data from QDrant DB. Just send a users query.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 2,
+      "tool_names": [
+        "getSoftwareProductDetails",
+        "getDataFromQDrantDB"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool getSoftwareProductDetails: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"query\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "ds-mcp-server",
+      "author": null,
+      "overview": "Test prompts by instantly reflecting your message back. Validate formatting and round-trip behavior in your workflows. Debug integrations quickly with a predictable response.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@choudhary-github/learning-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 58,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 2,
+      "tools": [
+        {
+          "name": "getSoftwareProductDetails",
+          "title": "Get Software Product Details",
+          "description": "\n      Retrieves version, release url, and lifecycle details for software products \n      from the database. Supports queries such as:\n      - \"release URL of Microsoft Office 2024\"\n      - \"Current version of .NET 8\"\n      - \"End of life date for Windows Server 2019\"\n    ",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "query about software version, release, or lifecycle details."
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getDataFromQDrantDB",
+          "title": "Get Data From QDrant vector DB",
+          "description": "Retrieves data from QDrant DB. Just send a users query.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@choudhary-github@learning-mcp.json",
+    "source_filename": "@choudhary-github@learning-mcp.json",
+    "processed_timestamp": 1761332966,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@choudhary-github/learning-mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@choudhary-github/learning-mcp",
+      "displayName": "ds-mcp-server",
+      "description": "Test prompts by instantly reflecting your message back. Validate formatting and round-trip behavior in your workflows. Debug integrations quickly with a predictable response.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 58,
+      "remote": true,
+      "createdAt": "2025-10-13T06:33:33.004Z",
+      "homepage": "https://smithery.ai/server/@choudhary-github/learning-mcp"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Zuplo",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761335517,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@emmanuel/ll8/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [],
+      "tool_count": 0,
+      "tool_names": [],
+      "verification_call_result": "error: Invalid arguments for tool 'alerts_query': ✖ Invalid input: expected object, received undefined\n  → at queryParams"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Zuplo",
+      "author": null,
+      "overview": "Connect to Zuplo to perform tasks directly from your workspace. Automate routine operations and fetch relevant data without switching tools. Save time and keep your workflow in one place.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@emmanuel/ll8",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 0,
+      "tools": [],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@emmanuel@ll8.json",
+    "source_filename": "@emmanuel@ll8.json",
+    "processed_timestamp": 1761335517,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@emmanuel/ll8/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@emmanuel/ll8",
+      "displayName": "Zuplo",
+      "description": "Connect to Zuplo to perform tasks directly from your workspace. Automate routine operations and fetch relevant data without switching tools. Save time and keep your workflow in one place.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-08-25T21:22:46.776Z",
+      "homepage": "https://smithery.ai/server/@emmanuel/ll8"
+    }
+  }
+}

@@ -1,0 +1,1036 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Dokploy Deployments",
+    "rank_by_usage": null,
+    "usage_count": 52,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333186,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@huuthangntk/dokploy-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "list-projects",
+          "description": "List all projects in your Dokploy instance",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "create-project",
+          "description": "Create a new project in Dokploy",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Project name"
+              },
+              "description": {
+                "type": "string",
+                "description": "Project description"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "delete-project",
+          "description": "Delete a project from Dokploy",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "projectId"
+            ],
+            "properties": {
+              "projectId": {
+                "type": "string",
+                "description": "The ID of the project to delete"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list-applications",
+          "description": "List all applications in a project",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "projectId"
+            ],
+            "properties": {
+              "projectId": {
+                "type": "string",
+                "description": "The project ID to list applications from"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "create-application",
+          "description": "Create a new application in Dokploy",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "projectId",
+              "name"
+            ],
+            "properties": {
+              "env": {
+                "type": "object",
+                "description": "Environment variables as key-value pairs",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "name": {
+                "type": "string",
+                "description": "Application name"
+              },
+              "branch": {
+                "type": "string",
+                "default": "main",
+                "description": "Git branch to deploy"
+              },
+              "appType": {
+                "enum": [
+                  "docker",
+                  "git",
+                  "github"
+                ],
+                "type": "string",
+                "default": "github",
+                "description": "Application type"
+              },
+              "buildPath": {
+                "type": "string",
+                "default": "/",
+                "description": "Build path in repository"
+              },
+              "projectId": {
+                "type": "string",
+                "description": "The project ID to create the application in"
+              },
+              "dockerfile": {
+                "type": "string",
+                "description": "Path to Dockerfile (for docker type)"
+              },
+              "repository": {
+                "type": "string",
+                "description": "Git repository URL (for git/github types)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "deploy-application",
+          "description": "Deploy an application in Dokploy",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The ID of the application to deploy"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "stop-application",
+          "description": "Stop a running application",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The ID of the application to stop"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "start-application",
+          "description": "Start a stopped application",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The ID of the application to start"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "restart-application",
+          "description": "Restart an application",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The ID of the application to restart"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "delete-application",
+          "description": "Delete an application from Dokploy",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The ID of the application to delete"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "create-database",
+          "description": "Create a new database (PostgreSQL, MySQL, MongoDB, Redis, or MariaDB)",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "projectId",
+              "name",
+              "type"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Database name"
+              },
+              "type": {
+                "enum": [
+                  "postgres",
+                  "mysql",
+                  "mongodb",
+                  "redis",
+                  "mariadb"
+                ],
+                "type": "string",
+                "description": "Database type"
+              },
+              "password": {
+                "type": "string",
+                "description": "Database password"
+              },
+              "username": {
+                "type": "string",
+                "description": "Database username"
+              },
+              "projectId": {
+                "type": "string",
+                "description": "The project ID to create the database in"
+              },
+              "databaseName": {
+                "type": "string",
+                "description": "Database name (for SQL databases)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list-databases",
+          "description": "List all databases in a project",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "projectId"
+            ],
+            "properties": {
+              "projectId": {
+                "type": "string",
+                "description": "The project ID to list databases from"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "add-domain",
+          "description": "Add a custom domain to an application",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId",
+              "domain"
+            ],
+            "properties": {
+              "domain": {
+                "type": "string",
+                "description": "Domain name (e.g., example.com)"
+              },
+              "enableSSL": {
+                "type": "boolean",
+                "default": true,
+                "description": "Enable automatic SSL with Let's Encrypt"
+              },
+              "applicationId": {
+                "type": "string",
+                "description": "The application ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list-domains",
+          "description": "List all domains for an application",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The application ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "create-backup",
+          "description": "Create a backup of a database",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "databaseId"
+            ],
+            "properties": {
+              "databaseId": {
+                "type": "string",
+                "description": "The database ID to backup"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list-backups",
+          "description": "List all backups for a database",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "databaseId"
+            ],
+            "properties": {
+              "databaseId": {
+                "type": "string",
+                "description": "The database ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "restore-backup",
+          "description": "Restore a database from a backup",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "backupId"
+            ],
+            "properties": {
+              "backupId": {
+                "type": "string",
+                "description": "The backup ID to restore"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get-logs",
+          "description": "Get recent logs for an application",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "lines": {
+                "type": "number",
+                "default": 100,
+                "description": "Number of log lines to retrieve"
+              },
+              "applicationId": {
+                "type": "string",
+                "description": "The application ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get-application-status",
+          "description": "Get the current status and health of an application",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The application ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "update-env-vars",
+          "description": "Update environment variables for an application",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId",
+              "env"
+            ],
+            "properties": {
+              "env": {
+                "type": "object",
+                "description": "Environment variables as key-value pairs",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "applicationId": {
+                "type": "string",
+                "description": "The application ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 20,
+      "tool_names": [
+        "list-projects",
+        "create-project",
+        "delete-project",
+        "list-applications",
+        "create-application",
+        "deploy-application",
+        "stop-application",
+        "start-application",
+        "restart-application",
+        "delete-application",
+        "create-database",
+        "list-databases",
+        "add-domain",
+        "list-domains",
+        "create-backup",
+        "list-backups",
+        "restore-backup",
+        "get-logs",
+        "get-application-status",
+        "update-env-vars"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='fetch failed', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Dokploy Deployments",
+      "author": null,
+      "overview": "Manage Dokploy projects, applications, databases, domains, and backups from one place. Deploy from Git repositories, monitor status and logs, and control start/stop/restart actions effortlessly. Streamline workflows with guided prompts for app deployment, database setup, and troubleshooting.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@huuthangntk/dokploy-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 52,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 20,
+      "tools": [
+        {
+          "name": "list-projects",
+          "title": "List Projects",
+          "description": "List all projects in your Dokploy instance",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "create-project",
+          "title": "Create Project",
+          "description": "Create a new project in Dokploy",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Project name"
+              },
+              "description": {
+                "type": "string",
+                "description": "Project description"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "delete-project",
+          "title": "Delete Project",
+          "description": "Delete a project from Dokploy",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "projectId"
+            ],
+            "properties": {
+              "projectId": {
+                "type": "string",
+                "description": "The ID of the project to delete"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list-applications",
+          "title": "List Applications",
+          "description": "List all applications in a project",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "projectId"
+            ],
+            "properties": {
+              "projectId": {
+                "type": "string",
+                "description": "The project ID to list applications from"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "create-application",
+          "title": "Create Application",
+          "description": "Create a new application in Dokploy",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "projectId",
+              "name"
+            ],
+            "properties": {
+              "env": {
+                "type": "object",
+                "description": "Environment variables as key-value pairs",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "name": {
+                "type": "string",
+                "description": "Application name"
+              },
+              "branch": {
+                "type": "string",
+                "default": "main",
+                "description": "Git branch to deploy"
+              },
+              "appType": {
+                "enum": [
+                  "docker",
+                  "git",
+                  "github"
+                ],
+                "type": "string",
+                "default": "github",
+                "description": "Application type"
+              },
+              "buildPath": {
+                "type": "string",
+                "default": "/",
+                "description": "Build path in repository"
+              },
+              "projectId": {
+                "type": "string",
+                "description": "The project ID to create the application in"
+              },
+              "dockerfile": {
+                "type": "string",
+                "description": "Path to Dockerfile (for docker type)"
+              },
+              "repository": {
+                "type": "string",
+                "description": "Git repository URL (for git/github types)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "deploy-application",
+          "title": "Deploy Application",
+          "description": "Deploy an application in Dokploy",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The ID of the application to deploy"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "stop-application",
+          "title": "Stop Application",
+          "description": "Stop a running application",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The ID of the application to stop"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "start-application",
+          "title": "Start Application",
+          "description": "Start a stopped application",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The ID of the application to start"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "restart-application",
+          "title": "Restart Application",
+          "description": "Restart an application",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The ID of the application to restart"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "delete-application",
+          "title": "Delete Application",
+          "description": "Delete an application from Dokploy",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The ID of the application to delete"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "create-database",
+          "title": "Create Database",
+          "description": "Create a new database (PostgreSQL, MySQL, MongoDB, Redis, or MariaDB)",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "projectId",
+              "name",
+              "type"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Database name"
+              },
+              "type": {
+                "enum": [
+                  "postgres",
+                  "mysql",
+                  "mongodb",
+                  "redis",
+                  "mariadb"
+                ],
+                "type": "string",
+                "description": "Database type"
+              },
+              "password": {
+                "type": "string",
+                "description": "Database password"
+              },
+              "username": {
+                "type": "string",
+                "description": "Database username"
+              },
+              "projectId": {
+                "type": "string",
+                "description": "The project ID to create the database in"
+              },
+              "databaseName": {
+                "type": "string",
+                "description": "Database name (for SQL databases)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list-databases",
+          "title": "List Databases",
+          "description": "List all databases in a project",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "projectId"
+            ],
+            "properties": {
+              "projectId": {
+                "type": "string",
+                "description": "The project ID to list databases from"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "add-domain",
+          "title": "Add Domain",
+          "description": "Add a custom domain to an application",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId",
+              "domain"
+            ],
+            "properties": {
+              "domain": {
+                "type": "string",
+                "description": "Domain name (e.g., example.com)"
+              },
+              "enableSSL": {
+                "type": "boolean",
+                "default": true,
+                "description": "Enable automatic SSL with Let's Encrypt"
+              },
+              "applicationId": {
+                "type": "string",
+                "description": "The application ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list-domains",
+          "title": "List Domains",
+          "description": "List all domains for an application",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The application ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "create-backup",
+          "title": "Create Backup",
+          "description": "Create a backup of a database",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "databaseId"
+            ],
+            "properties": {
+              "databaseId": {
+                "type": "string",
+                "description": "The database ID to backup"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "list-backups",
+          "title": "List Backups",
+          "description": "List all backups for a database",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "databaseId"
+            ],
+            "properties": {
+              "databaseId": {
+                "type": "string",
+                "description": "The database ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "restore-backup",
+          "title": "Restore Backup",
+          "description": "Restore a database from a backup",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "backupId"
+            ],
+            "properties": {
+              "backupId": {
+                "type": "string",
+                "description": "The backup ID to restore"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get-logs",
+          "title": "Get Application Logs",
+          "description": "Get recent logs for an application",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "lines": {
+                "type": "number",
+                "default": 100,
+                "description": "Number of log lines to retrieve"
+              },
+              "applicationId": {
+                "type": "string",
+                "description": "The application ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get-application-status",
+          "title": "Get Application Status",
+          "description": "Get the current status and health of an application",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId"
+            ],
+            "properties": {
+              "applicationId": {
+                "type": "string",
+                "description": "The application ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "update-env-vars",
+          "title": "Update Environment Variables",
+          "description": "Update environment variables for an application",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "applicationId",
+              "env"
+            ],
+            "properties": {
+              "env": {
+                "type": "object",
+                "description": "Environment variables as key-value pairs",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "applicationId": {
+                "type": "string",
+                "description": "The application ID"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@huuthangntk@dokploy-mcp.json",
+    "source_filename": "@huuthangntk@dokploy-mcp.json",
+    "processed_timestamp": 1761333186,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@huuthangntk/dokploy-mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging for troubleshooting"
+          },
+          "apiToken": {
+            "type": "string",
+            "default": "",
+            "description": "Your Dokploy API authentication token"
+          },
+          "dokployUrl": {
+            "type": "string",
+            "format": "uri",
+            "default": "https://dok.bish.one",
+            "description": "Your Dokploy instance URL (e.g., https://dok.bish.one)"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@huuthangntk/dokploy-mcp",
+      "displayName": "Dokploy Deployments",
+      "description": "Manage Dokploy projects, applications, databases, domains, and backups from one place. Deploy from Git repositories, monitor status and logs, and control start/stop/restart actions effortlessly. Streamline workflows with guided prompts for app deployment, database setup, and troubleshooting.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 52,
+      "remote": true,
+      "createdAt": "2025-10-12T10:05:33.667Z",
+      "homepage": "https://smithery.ai/server/@huuthangntk/dokploy-mcp"
+    }
+  }
+}

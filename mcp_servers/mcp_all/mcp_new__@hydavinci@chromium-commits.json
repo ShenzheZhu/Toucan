@@ -1,0 +1,111 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Chromium Latest Commit",
+    "rank_by_usage": null,
+    "usage_count": 181,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761332872,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@hydavinci/chromium-commits/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_chromium_latest_commit",
+          "description": "\n    MCP handler to get the latest commit information for a specified file in Chromium repository\n\n    Args:\n        file_path (str): Relative path of the file in Chromium repository (e.g., \"components/sync/service/data_type_manager.cc\")\n\n    Returns:\n        str: Formatted commit information including hash, author, message, modified files list, and diff details\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_chromium_latest_commitArguments",
+            "required": [
+              "file_path"
+            ],
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "title": "File Path"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "get_chromium_latest_commit"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Error executing tool get_chromium_latest_commit: 1 validation error for get_chromium_latest_commitArguments\\nfile_path\\n  Field required [type=missing, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Chromium Latest Commit",
+      "author": null,
+      "overview": "Query the latest commit information for any file in the Chromium repository with detailed commit data including hash, author, timestamp, message, modified files, and diffs. Integrate seamlessly with MCP-compatible tools via the provided MCP server to enable programmatic access and automation. Utilize multiple interfaces including CLI, Python API, and Docker for flexible deployment and usage.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@hydavinci/chromium-commits",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 181,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "get_chromium_latest_commit",
+          "description": "\n    MCP handler to get the latest commit information for a specified file in Chromium repository\n\n    Args:\n        file_path (str): Relative path of the file in Chromium repository (e.g., \"components/sync/service/data_type_manager.cc\")\n\n    Returns:\n        str: Formatted commit information including hash, author, message, modified files list, and diff details\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_chromium_latest_commitArguments",
+            "required": [
+              "file_path"
+            ],
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "title": "File Path"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@hydavinci@chromium-commits.json",
+    "source_filename": "@hydavinci@chromium-commits.json",
+    "processed_timestamp": 1761332872,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@hydavinci/chromium-commits/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@hydavinci/chromium-commits",
+      "displayName": "Chromium Latest Commit",
+      "description": "Query the latest commit information for any file in the Chromium repository with detailed commit data including hash, author, timestamp, message, modified files, and diffs. Integrate seamlessly with MCP-compatible tools via the provided MCP server to enable programmatic access and automation. Utilize multiple interfaces including CLI, Python API, and Docker for flexible deployment and usage.",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/030bd658-5dd6-455b-a739-b086a6a5280a.png",
+      "verified": false,
+      "useCount": 181,
+      "remote": true,
+      "createdAt": "2025-06-23T10:28:00.369Z",
+      "homepage": "https://smithery.ai/server/@hydavinci/chromium-commits"
+    }
+  }
+}

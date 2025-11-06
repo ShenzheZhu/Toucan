@@ -1,0 +1,107 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "UseWebhook",
+    "rank_by_usage": null,
+    "usage_count": 177,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334033,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@figstra/usewebhook-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "generate_webhook",
+          "description": "Generate a webhook endpoint that captures incoming HTTP requests",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "generate_webhook"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='https://usewebhook.com/?id=9e4f35c3446d45adbbc073ee2b3fa9a9', annotations=None, meta=None, description='Unique URL for inspecting requests sent to the generated webhook (this will not capture requests)'), TextContent(type='text', text='https://usewebhook.com/9e4f35c3446d45adbbc073ee2b3fa9a9', annotations=None, meta=None, description='Unique URL for sending requests to the webhook (this is the webhook endpoint that will capture requests)')] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "UseWebhook",
+      "author": null,
+      "overview": "Generate webhook endpoints for testing, inspect and diff HTTP request payloads, replay requests from history, and forward requests to your localhost. Enhance your development workflow by easily managing and debugging webhooks in a streamlined manner.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@figstra/usewebhook-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 177,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "generate_webhook",
+          "description": "Generate a webhook endpoint that captures incoming HTTP requests",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@figstra@usewebhook-mcp.json",
+    "source_filename": "@figstra@usewebhook-mcp.json",
+    "processed_timestamp": 1761334033,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@figstra/usewebhook-mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@figstra/usewebhook-mcp",
+      "displayName": "UseWebhook",
+      "description": "Generate webhook endpoints for testing, inspect and diff HTTP request payloads, replay requests from history, and forward requests to your localhost. Enhance your development workflow by easily managing and debugging webhooks in a streamlined manner.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/usewebhook.com.ico",
+      "verified": false,
+      "useCount": 177,
+      "remote": true,
+      "createdAt": "2025-07-02T19:11:06.452Z",
+      "homepage": "https://smithery.ai/server/@figstra/usewebhook-mcp"
+    }
+  }
+}

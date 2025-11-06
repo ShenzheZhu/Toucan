@@ -1,0 +1,136 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "mcp-crew-risk",
+    "rank_by_usage": null,
+    "usage_count": 56,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333118,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@deeppath-ai/mcp-crew-risk/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "assess-crew-risk",
+          "description": "This system evaluates the compliance and potential risks associated with web crawling activities. It is designed to assist developers, legal teams, and data professionals in ensuring that their crawlers operate within acceptable technical, legal, and ethical boundaries.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "Web page URL, for example: https://www.xxx.com"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "assess-crew-risk"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool assess-crew-risk: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"url\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "mcp-crew-risk",
+      "author": null,
+      "overview": "This framework aims to provide crawler developers and operators with a comprehensive automated compliance detection toolset to evaluate the crawler-friendliness and potential risks of target websites. It covers three major dimensions: legal, social ethics, and technical aspects. Through multi-level risk warnings and specific recommendations, it helps plan crawler strategies reasonably to avoid legal disputes and negative social impacts while improving technical stability and efficiency.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@deeppath-ai/mcp-crew-risk",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 56,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "assess-crew-risk",
+          "description": "This system evaluates the compliance and potential risks associated with web crawling activities. It is designed to assist developers, legal teams, and data professionals in ensuring that their crawlers operate within acceptable technical, legal, and ethical boundaries.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "Web page URL, for example: https://www.xxx.com"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@deeppath-ai@mcp-crew-risk.json",
+    "source_filename": "@deeppath-ai@mcp-crew-risk.json",
+    "processed_timestamp": 1761333118,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@deeppath-ai/mcp-crew-risk/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "server": {
+            "type": "object",
+            "properties": {
+              "host": {
+                "type": "string",
+                "description": "The host to bind the server to. Default is localhost. Use 0.0.0.0 to bind to all interfaces"
+              },
+              "port": {
+                "type": "number",
+                "description": "The port to listen on for SSE or MCP transport"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@deeppath-ai/mcp-crew-risk",
+      "displayName": "mcp-crew-risk",
+      "description": "This framework aims to provide crawler developers and operators with a comprehensive automated compliance detection toolset to evaluate the crawler-friendliness and potential risks of target websites. It covers three major dimensions: legal, social ethics, and technical aspects. Through multi-level risk warnings and specific recommendations, it helps plan crawler strategies reasonably to avoid legal disputes and negative social impacts while improving technical stability and efficiency.",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/99685d4f-6add-46c9-af85-fe5760c793cc.png",
+      "verified": false,
+      "useCount": 56,
+      "remote": true,
+      "createdAt": "2025-06-27T02:27:02.190Z",
+      "homepage": "https://smithery.ai/server/@deeppath-ai/mcp-crew-risk"
+    }
+  }
+}

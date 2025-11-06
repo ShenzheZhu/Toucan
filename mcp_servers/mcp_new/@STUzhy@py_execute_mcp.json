@@ -1,0 +1,151 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Python execute",
+    "rank_by_usage": null,
+    "usage_count": 13,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334375,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@STUzhy/py_execute_mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "python_execute",
+          "description": "Run Python in a Pyodide sandbox with optional PEP 723 requirements.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "code"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "Python code to execute"
+              },
+              "context": {
+                "type": "object",
+                "additionalProperties": {}
+              },
+              "timeout": {
+                "type": "integer",
+                "default": 60000,
+                "exclusiveMinimum": 0
+              },
+              "requirements": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "python_execute"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool python_execute: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"code\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Python execute",
+      "author": null,
+      "overview": "Run Python code in a secure sandbox without local setup. Declare inline dependencies and execute snippets instantly. Prototype, test, and share reproducible results with ease.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@STUzhy/py_execute_mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 13,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "python_execute",
+          "title": "Execute Python via Pyodide",
+          "description": "Run Python in a Pyodide sandbox with optional PEP 723 requirements.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "code"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "Python code to execute"
+              },
+              "context": {
+                "type": "object",
+                "additionalProperties": {}
+              },
+              "timeout": {
+                "type": "integer",
+                "default": 60000,
+                "exclusiveMinimum": 0
+              },
+              "requirements": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@STUzhy@py_execute_mcp.json",
+    "source_filename": "@STUzhy@py_execute_mcp.json",
+    "processed_timestamp": 1761334375,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@STUzhy/py_execute_mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "required": [],
+        "properties": {},
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@STUzhy/py_execute_mcp",
+      "displayName": "Python execute",
+      "description": "Run Python code in a secure sandbox without local setup. Declare inline dependencies and execute snippets instantly. Prototype, test, and share reproducible results with ease.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 13,
+      "remote": true,
+      "createdAt": "2025-09-17T04:31:22.037Z",
+      "homepage": "https://smithery.ai/server/@STUzhy/py_execute_mcp"
+    }
+  }
+}

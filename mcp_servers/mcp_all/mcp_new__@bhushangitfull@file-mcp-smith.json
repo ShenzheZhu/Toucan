@@ -1,0 +1,324 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Filesystem",
+    "rank_by_usage": null,
+    "usage_count": 1027,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761332721,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@bhushangitfull/file-mcp-smith/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "read_file",
+          "description": "Read contents of a file.\n        \n        Args:\n            path: Path to the file to read\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "read_fileArguments",
+            "required": [
+              "path"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "title": "Path"
+              }
+            }
+          }
+        },
+        {
+          "name": "write_file",
+          "description": "Write content to a file.\n        \n        Args:\n            path: Path to the file to write\n            content: Content to write to the file\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "write_fileArguments",
+            "required": [
+              "path",
+              "content"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "title": "Path"
+              },
+              "content": {
+                "type": "string",
+                "title": "Content"
+              }
+            }
+          }
+        },
+        {
+          "name": "list_directory",
+          "description": "List contents of a directory.\n        \n        Args:\n            path: Path to the directory (defaults to current directory)\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "list_directoryArguments",
+            "properties": {
+              "path": {
+                "type": "string",
+                "title": "Path",
+                "default": "."
+              }
+            }
+          }
+        },
+        {
+          "name": "create_directory",
+          "description": "Create a new directory.\n        \n        Args:\n            path: Path to the directory to create\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "create_directoryArguments",
+            "required": [
+              "path"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "title": "Path"
+              }
+            }
+          }
+        },
+        {
+          "name": "delete_file",
+          "description": "Delete a file.\n        \n        Args:\n            path: Path to the file to delete\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "delete_fileArguments",
+            "required": [
+              "path"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "title": "Path"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 5,
+      "tool_names": [
+        "read_file",
+        "write_file",
+        "list_directory",
+        "create_directory",
+        "delete_file"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Error executing tool read_file: 1 validation error for read_fileArguments\\npath\\n  Field required [type=missing, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Filesystem",
+      "author": null,
+      "overview": "Manage files and folders with ease. Read and write files, list directories, create folders, and delete unwanted items to keep projects organized.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@bhushangitfull/file-mcp-smith",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 1027,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 5,
+      "tools": [
+        {
+          "name": "read_file",
+          "description": "Read contents of a file.\n        \n        Args:\n            path: Path to the file to read\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "read_fileArguments",
+            "required": [
+              "path"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "title": "Path"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "read_fileOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "write_file",
+          "description": "Write content to a file.\n        \n        Args:\n            path: Path to the file to write\n            content: Content to write to the file\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "write_fileArguments",
+            "required": [
+              "path",
+              "content"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "title": "Path"
+              },
+              "content": {
+                "type": "string",
+                "title": "Content"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "write_fileOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "list_directory",
+          "description": "List contents of a directory.\n        \n        Args:\n            path: Path to the directory (defaults to current directory)\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "list_directoryArguments",
+            "properties": {
+              "path": {
+                "type": "string",
+                "title": "Path",
+                "default": "."
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "list_directoryOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "create_directory",
+          "description": "Create a new directory.\n        \n        Args:\n            path: Path to the directory to create\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "create_directoryArguments",
+            "required": [
+              "path"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "title": "Path"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "create_directoryOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "delete_file",
+          "description": "Delete a file.\n        \n        Args:\n            path: Path to the file to delete\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "delete_fileArguments",
+            "required": [
+              "path"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "title": "Path"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "delete_fileOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@bhushangitfull@file-mcp-smith.json",
+    "source_filename": "@bhushangitfull@file-mcp-smith.json",
+    "processed_timestamp": 1761332721,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@bhushangitfull/file-mcp-smith/mcp",
+      "configSchema": {
+        "message": "No configuration schema available"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@bhushangitfull/file-mcp-smith",
+      "displayName": "Filesystem",
+      "description": "Manage files and folders with ease. Read and write files, list directories, create folders, and delete unwanted items to keep projects organized.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 1027,
+      "remote": true,
+      "createdAt": "2025-10-07T07:56:58.402Z",
+      "homepage": "https://smithery.ai/server/@bhushangitfull/file-mcp-smith"
+    }
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "agent-press",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761336026,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@markchiang/agent-press/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "news_company",
+          "description": "Fetch recent company headlines for a given stock symbol.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "symbol"
+            ],
+            "properties": {
+              "limit": {
+                "type": "integer",
+                "title": "Limit",
+                "default": 25
+              },
+              "symbol": {
+                "type": "string",
+                "title": "Symbol"
+              },
+              "end_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "End Date",
+                "default": null
+              },
+              "provider": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Provider",
+                "default": null
+              },
+              "start_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Start Date",
+                "default": null
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "news_company"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text=\"Input validation error: 'symbol' is a required property\", annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "agent-press",
+      "author": null,
+      "overview": "GeneOnline Agent Press MCP Server",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@markchiang/agent-press",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "news_company",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "Fetch recent company headlines for a given stock symbol.",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "symbol"
+            ],
+            "properties": {
+              "limit": {
+                "type": "integer",
+                "title": "Limit",
+                "default": 25
+              },
+              "symbol": {
+                "type": "string",
+                "title": "Symbol"
+              },
+              "end_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "End Date",
+                "default": null
+              },
+              "provider": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Provider",
+                "default": null
+              },
+              "start_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Start Date",
+                "default": null
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "_WrappedResult",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "title": "Result"
+              }
+            },
+            "x-fastmcp-wrap-result": true
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@markchiang@agent-press.json",
+    "source_filename": "@markchiang@agent-press.json",
+    "processed_timestamp": 1761336026,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@markchiang/agent-press/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@markchiang/agent-press",
+      "displayName": "agent-press",
+      "description": "GeneOnline Agent Press MCP Server",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/701c4d52-3518-40cc-8ffe-40122b30c3e7.png",
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-09-26T02:31:05.735Z",
+      "homepage": "https://smithery.ai/server/@markchiang/agent-press"
+    }
+  }
+}

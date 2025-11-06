@@ -1,0 +1,197 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Streamable Demo",
+    "rank_by_usage": null,
+    "usage_count": 7,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334463,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@Trashwbin/streamable-demo1/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "greet",
+          "description": "一个简单的问候工具",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "要问候的名字"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "multi-greet",
+          "description": "一个工具，发送不同的问候，并在它们之间有延迟",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "要问候的名字"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "start-notification-stream",
+          "description": "开始发送周期性通知以测试恢复",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "count": {
+                "type": "number",
+                "default": 50,
+                "description": "要发送的通知数量（0 表示 100）"
+              },
+              "interval": {
+                "type": "number",
+                "default": 100,
+                "description": "通知之间的间隔（毫秒）"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 3,
+      "tool_names": [
+        "greet",
+        "multi-greet",
+        "start-notification-stream"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool greet: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"name\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Streamable Demo",
+      "author": null,
+      "overview": "Provide a simple notes system with capabilities to create, list, and summarize text notes. Enable easy management of notes as resources and generate summaries using prompts. Facilitate integration with LLMs for note summarization workflows.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@Trashwbin/streamable-demo1",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 7,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 3,
+      "tools": [
+        {
+          "name": "greet",
+          "description": "一个简单的问候工具",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "要问候的名字"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "multi-greet",
+          "description": "一个工具，发送不同的问候，并在它们之间有延迟",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "要问候的名字"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "start-notification-stream",
+          "description": "开始发送周期性通知以测试恢复",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "count": {
+                "type": "number",
+                "default": 50,
+                "description": "要发送的通知数量（0 表示 100）"
+              },
+              "interval": {
+                "type": "number",
+                "default": 100,
+                "description": "通知之间的间隔（毫秒）"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@Trashwbin@streamable-demo1.json",
+    "source_filename": "@Trashwbin@streamable-demo1.json",
+    "processed_timestamp": 1761334463,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@Trashwbin/streamable-demo1/mcp",
+      "configSchema": {
+        "type": "object",
+        "required": [],
+        "properties": {}
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@Trashwbin/streamable-demo1",
+      "displayName": "Streamable Demo",
+      "description": "Provide a simple notes system with capabilities to create, list, and summarize text notes. Enable easy management of notes as resources and generate summaries using prompts. Facilitate integration with LLMs for note summarization workflows.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 7,
+      "remote": true,
+      "createdAt": "2025-08-22T08:07:37.378Z",
+      "homepage": "https://smithery.ai/server/@Trashwbin/streamable-demo1"
+    }
+  }
+}

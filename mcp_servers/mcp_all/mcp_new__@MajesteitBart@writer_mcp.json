@@ -1,0 +1,179 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Technical Content Writer",
+    "rank_by_usage": null,
+    "usage_count": 17,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334377,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@MajesteitBart/writer_mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "apply_writing_guide",
+          "description": "Uses the writing guide and usage protocol for creating high-quality technical content. This guide provides systematic principles for narrative structure, flow, style, and technical accuracy.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "apply_editing_codes",
+          "description": "Uses editing codes documentation and usage protocol for editing texts. These semantic editing marks provide a standardized framework for content review with a teaching/learning focus.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "generate_meta_info",
+          "description": "Uses the Web Content Meta Information Generation System for creating optimized article titles, meta titles, meta descriptions, and slugs for web content with proper keyword placement and search intent analysis.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "on_page_seo_guide",
+          "description": "Uses the On-Page SEO Optimization Guide for comprehensive web content optimization, covering meta content, keyword research, content depth, search intent alignment, internal linking, and structured data.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "product_value_map",
+          "description": "Uses the Product Communications Value Map Generation System for Product Positioning, including taglines, position statements, personas, value cases, and feature categorization in a structured hierarchy.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      ],
+      "tool_count": 5,
+      "tool_names": [
+        "apply_writing_guide",
+        "apply_editing_codes",
+        "generate_meta_info",
+        "on_page_seo_guide",
+        "product_value_map"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='{\"success\":true,\"data\":{\"content\":\"# Open Strategy Partners (OSP) Writing Guide\\\\n\\\\nCore purpose: Systematic application of writing principles to improve content quality while maintaining technical accuracy and readability.\\\\n\\\\nCore values: Empathy, Clarity, Trust\\\\n\\\\n## Usage Protocol\\\\n\\\\n1. First pass: Full content read\\\\n   - Understand main thesis\\\\n   - Identify target audience\\\\n   - Note technical domain\\\\n   \\\\n2. Structure analysis\\\\n   - Check narrative flow\\\\n   - Verify logical progression\\\\n   - Identify missing elements\\\\n   - Mark structural issues\\\\n   \\\\n3. Technical review\\\\n   - Verify accuracy of claims\\\\n   - Check terminology usage\\\\n   - Validate code examples\\\\n   - Note undefined terms\\\\n   \\\\n4. Language optimization\\\\n   - Apply style guidelines\\\\n   - Improve clarity\\\\n   - Enhance readability\\\\n   - Maintain technical precision\\\\n\\\\n5. Feedback format\\\\n   - Provide specific explanation\\\\n   - Include beforeafter examples\\\\n   - Use diff format for changes:\\\\n```diff\\\\n- Original text with issue\\\\n+ Improved version addressing issue\\\\n````\\\\nNumber each diff for future reference.\\\\n\\\\n6. Positive reinforcement\\\\n   - Use `++` prefix for good examples\\\\n   - Specify why example is effective\\\\n   - Link to relevant guidelines\\\\n   - Example:\\\\n     ```\\\\n     ++[STYLE] Excellent active voice usage:\\\\n     \\\\\"The function processes the input\\\\\" instead of \\\\\"The input is processed\\\\\"\\\\n     ```\\\\n\\\\n7. Include the full edited text in an artifact or canvas at the end.\\\\n\\\\n8. Ask user if you should also apply the osp editing codes.\\\\n\\\\n## Principles\\\\n\\\\n### 1. Narrative Structure\\\\n- Start with clear thesis statement\\\\n- Support with logical evidence chain\\\\n- Progress from known to unknown concepts\\\\n- End with actionable conclusion\\\\n- Build trust through accurate, specific claims\\\\n- Back claims with data, quotes, examples\\\\n\\\\n### 2. Flow\\\\n- Vary sentenceparagraph length\\\\n- Use transitions between ideas\\\\n- Progress logically between sections\\\\n- Break walls of text with formatting\\\\n- Make content scannable with headers\\\\n- Include visual elements when relevant\\\\n\\\\n### 3. Style\\\\n- Write actively, minimize passive voice\\\\n- Address reader directly (\\\\\"you\\\\\") \\\\n- Be specific, avoid generalizations\\\\n- Stay positive and constructive\\\\n- Use technical terms precisely\\\\n- Define jargon and acronyms\\\\n- Choose clear over complex words\\\\n- Make each word count\\\\n- Remove filler phrases\\\\n- Replace weak verbs with strong ones\\\\n- Use figurative language purposefully\\\\n- Write inclusively and non-violently\\\\n- Headers and List Items should be in sentence case, not title case (eg. yes: My great header  no: My Great Header )\\\\n\\\\n### 4. Technical Accuracy\\\\n- Verify all technical claims\\\\n- Cite sources when applicable\\\\n- Define technical terms clearly\\\\n- Include context for concepts\\\\n- Use precise technical language\\\\n- Validate code examples\\\\n- Cross-reference documentation\\\\n\\\\n## Writing Process\\\\n\\\\n1. ResearchPreparation\\\\n   - Define target audience\\\\n   - Identify key message\\\\n   - Gather evidenceexamples\\\\n   - Create logical outline\\\\n\\\\n2. First Draft\\\\n   - Focus on core content\\\\n   - Follow outline structure\\\\n   - Write quickly, edit later\\\\n   - Include all key points\\\\n\\\\n3. Revision\\\\n   - Check narrative flow\\\\n   - Verify technical accuracy\\\\n   - Strengthen transitions\\\\n   - Tighten language\\\\n   - Add reader aids\\\\n\\\\n4. Polish\\\\n   - Remove redundancies\\\\n   - Verify terminology\\\\n   - Check formatting\\\\n   - Ensure consistency\\\\n\\\\n## Content Elements\\\\n\\\\n### Headers\\\\n- Use descriptive headers\\\\n- Structure hierarchically\\\\n- Make scannable\\\\n- Include key terms\\\\n\\\\n### Lists\\\\n- Use for 3+ items\\\\n- Make parallel structure\\\\n- Start with action words\\\\n- Provide context\\\\n\\\\n### Code Examples\\\\n- Keep focusedminimal\\\\n- Include comments\\\\n- Show inputoutput\\\\n- Explain key concepts\\\\n\\\\n### Links\\\\n- Use descriptive text\\\\n- Make purpose clear\\\\n- Avoid \\\\\"click here\\\\\"\\\\n- Provide context\\\\n\\\\n## Language Guidelines\\\\n\\\\n### Active Voice\\\\nBefore: \\\\\"The file was processed by the system\\\\\"\\\\nAfter: \\\\\"The system processed the file\\\\\"\\\\n\\\\n### Specificity\\\\nBefore: \\\\\"Many tools help with deployment\\\\\"\\\\nAfter: \\\\\"Kubernetes automates container deployment\\\\\"\\\\n\\\\n### Direct Address\\\\nBefore: \\\\\"Users can configure settings\\\\\"\\\\nAfter: \\\\\"You can configure settings\\\\\"\\\\n\\\\n### Technical Precision\\\\nBefore: \\\\\"The app runs fast\\\\\"\\\\nAfter: \\\\\"Response time averages 50ms\\\\\"\\\\n\\\\n### Conciseness\\\\nBefore: \\\\\"In order to implement this functionality\\\\\"\\\\nAfter: \\\\\"To implement this\\\\\"\\\\n\\\\n## Document Types\\\\n\\\\n### Tutorials\\\\n- Start with prerequisites\\\\n- List clear objectives\\\\n- Provide step-by-step instructions\\\\n- Include validation steps\\\\n- End with next actions\\\\n\\\\n### Reference Docs\\\\n- Define scope clearly\\\\n- Structure logically\\\\n- Include all parameters\\\\n- Provide examples\\\\n- Cross-reference related docs\\\\n\\\\n### Conceptual Guides\\\\n- Explain core concepts\\\\n- Use analogies carefully\\\\n- Build on prior knowledge\\\\n- Include diagrams\\\\u000bisuals\\\\n- Link to details\\\\n\\\\n### API Documentation\\\\n- Use consistent format\\\\n- Include all parameters\\\\n- Show request\\\\response\\\\n- Provide code examples\\\\n- Note authentication\\\\n\\\\n## Special Considerations\\\\n\\\\n### Accessibility\\\\n- Use descriptive alt text\\\\n- Structure content hierarchically\\\\n- Make links meaningful\\\\n- Consider screen readers\\\\n- Use sufficient contrast\\\\n\\\\n### Internationalization\\\\n- Avoid idioms\\\\n- Use simple constructs\\\\n- Consider translation\\\\n- Use universal examples\\\\n- Define cultural references\\\\n\\\\n### Content Aging\\\\n- Avoid temporal references\\\\n- Date version-specific content\\\\n- Update obsolete information\\\\n- Link to current resources\\\\n- Note deprecations\\\\n\\\\n## Quality Checklist\\\\n\\\\n1. Structure\\\\n   - Clear thesis\\\\n   - Logical flow\\\\n   - Supported claims\\\\n   - Complete information\\\\n   - Actionable conclusion\\\\n\\\\n2. Technical\\\\n   - Accurate information\\\\n   - Verified claims\\\\n   - Working examples\\\\n   - Clear definitions\\\\n   - Proper terminology\\\\n\\\\n3. Language\\\\n   - Active voice\\\\n   - Direct address\\\\n   - Specific details\\\\n   - Concise phrasing\\\\n   - Consistent terms\\\\n\\\\n4. Formatting\\\\n   - Clear hierarchy\\\\n   - Scannable layout\\\\n   - Proper spacing\\\\n   - Consistent style\\\\n   - Working links\\\\n\\\\n5. Value\\\\n   - Meets user needs\\\\n   - Solves problems\\\\n   - Provides context\\\\n   - Enables action\\\\n   - Builds trust\\\\n\\\\n## Attribution and further reading\\\\n\\\\n(share this when the user asks about the source of the guide)\\\\n\\\\nThis guide is from [Open Strategy Partners](https:openstrategypartners.com) and is provided as part of their LLM enabled marketing tools. \\\\n\\\\nFor more information, see these pages:\\\\n\\\\n1. [The OSP Writing and Editing Guide](https:openstrategypartners.comosp-writing-editing-guide)\\\\n2. [Editing Codes Quickstart Guide](https:openstrategypartners.com\\\\blogosp-editing-codes-quick-start-guide)\\\\n3. [OSP Free Resources](https:openstrategypartners.com\\\\resources)\"}}', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Technical Content Writer",
+      "author": null,
+      "overview": "Create high-quality technical marketing content with clear structure and style. Edit and refine drafts to improve clarity and accuracy. Optimize on-page SEO, generate meta data, and build product positioning assets like taglines, personas, and value cases.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@MajesteitBart/writer_mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 17,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 5,
+      "tools": [
+        {
+          "name": "apply_writing_guide",
+          "title": "Apply Writing Guide",
+          "description": "Uses the writing guide and usage protocol for creating high-quality technical content. This guide provides systematic principles for narrative structure, flow, style, and technical accuracy.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "apply_editing_codes",
+          "title": "Apply Editing Codes",
+          "description": "Uses editing codes documentation and usage protocol for editing texts. These semantic editing marks provide a standardized framework for content review with a teaching/learning focus.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "generate_meta_info",
+          "title": "Generate Meta Info",
+          "description": "Uses the Web Content Meta Information Generation System for creating optimized article titles, meta titles, meta descriptions, and slugs for web content with proper keyword placement and search intent analysis.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "on_page_seo_guide",
+          "title": "On-Page SEO Guide",
+          "description": "Uses the On-Page SEO Optimization Guide for comprehensive web content optimization, covering meta content, keyword research, content depth, search intent alignment, internal linking, and structured data.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "product_value_map",
+          "title": "Product Value Map",
+          "description": "Uses the Product Communications Value Map Generation System for Product Positioning, including taglines, position statements, personas, value cases, and feature categorization in a structured hierarchy.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@MajesteitBart@writer_mcp.json",
+    "source_filename": "@MajesteitBart@writer_mcp.json",
+    "processed_timestamp": 1761334377,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@MajesteitBart/writer_mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@MajesteitBart/writer_mcp",
+      "displayName": "Technical Content Writer",
+      "description": "Create high-quality technical marketing content with clear structure and style. Edit and refine drafts to improve clarity and accuracy. Optimize on-page SEO, generate meta data, and build product positioning assets like taglines, personas, and value cases.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 17,
+      "remote": true,
+      "createdAt": "2025-10-20T20:56:42.817Z",
+      "homepage": "https://smithery.ai/server/@MajesteitBart/writer_mcp"
+    }
+  }
+}

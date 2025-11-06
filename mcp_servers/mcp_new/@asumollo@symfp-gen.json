@@ -1,0 +1,606 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "CAD Model Automation Bridge Server",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761335462,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@asumollo/symfp-gen/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_server_info",
+          "description": "Get information about the bridge server and API connection status",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_cache_status",
+          "description": "Get current status of the symbol documentation cache including age, version, and TTL settings",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "refresh_symbol_documentation",
+          "description": "Manually refresh the symbol documentation cache from the API",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "validate_library",
+          "description": "Validate a complete Eagle library file (requires uploading the file first)",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "file_id"
+            ],
+            "properties": {
+              "file_id": {
+                "type": "string",
+                "description": "File ID from library upload"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "upload_library",
+          "description": "Upload Eagle library XML content for validation and preview. This tool provides the preview URL for viewing your component.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "library_content"
+            ],
+            "properties": {
+              "filename": {
+                "type": "string",
+                "description": "Filename for the upload (default: library.lbr)"
+              },
+              "library_content": {
+                "type": "string",
+                "description": "Complete Eagle library XML content - paste the template or your XML directly here"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generate_connector_symbol",
+          "description": "Generate a connector symbol using static templates or dynamic generation",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "datasheet_id",
+              "category",
+              "template",
+              "part_name",
+              "connector_config"
+            ],
+            "properties": {
+              "category": {
+                "type": "string",
+                "description": "Template category (usually 'connector')"
+              },
+              "template": {
+                "type": "string",
+                "description": "Template ID (e.g., 'usb_type_c', 'header', 'audio_jack')"
+              },
+              "part_name": {
+                "type": "string",
+                "description": "Part name for the generated component"
+              },
+              "datasheet_id": {
+                "type": "string",
+                "description": "Datasheet ID for the connector"
+              },
+              "connector_config": {
+                "type": "object",
+                "properties": {
+                  "num_pins": {
+                    "type": "number",
+                    "description": "Number of pins per row (1-1000, required for dynamic generation)"
+                  },
+                  "jack_size": {
+                    "type": "string",
+                    "description": "Jack size (e.g., '3.5mm', '6.35mm') - for audio connectors"
+                  },
+                  "power_pins": {
+                    "type": "boolean",
+                    "description": "Include power pins"
+                  },
+                  "row_option": {
+                    "type": "string",
+                    "description": "Number of rows ('1', '2', '3', '4')"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Library description"
+                  },
+                  "power_count": {
+                    "type": "number",
+                    "description": "Number of power pins (≥0)"
+                  },
+                  "shield_pins": {
+                    "type": "boolean",
+                    "description": "Include shield pins"
+                  },
+                  "num_sections": {
+                    "type": "number",
+                    "description": "Number of sections (1, 2)"
+                  },
+                  "shield_count": {
+                    "type": "number",
+                    "description": "Number of shield pins (≥0)"
+                  },
+                  "custom_prefix": {
+                    "type": "string",
+                    "description": "Custom prefix when format is 'custom_prefix'"
+                  },
+                  "sequence_type": {
+                    "type": "string",
+                    "description": "Sequence type ('linear', 'sequential')"
+                  },
+                  "connector_type": {
+                    "type": "string",
+                    "description": "Type of connector ('standard', 'audio', 'usb', 'coaxial')"
+                  },
+                  "connector_gender": {
+                    "type": "string",
+                    "description": "Connector gender ('male', 'female') - mapped to connector_subtype"
+                  },
+                  "connector_subtype": {
+                    "type": "string",
+                    "description": "Subtype (e.g., 'male', 'female', 'terminal_block')"
+                  },
+                  "differential_pair": {
+                    "type": "boolean",
+                    "description": "Use differential pair configuration"
+                  },
+                  "pin_naming_format": {
+                    "type": "string",
+                    "description": "Pin naming format ('numeric', 'zero_padded', 'alpha', 'alpha_zero_padded', 'custom_prefix')"
+                  },
+                  "use_static_template": {
+                    "type": "boolean",
+                    "description": "Use static template if available (default: true)"
+                  }
+                },
+                "description": "Connector configuration options",
+                "additionalProperties": true
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_symbol_documentation",
+          "description": "Get Eagle symbol format documentation and templates for direct XML generation. NOTE: Documentation is also available as MCP resource 'eagle://symbol-documentation'",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_ic_pin_placement_rules",
+          "description": "Get IC-specific pin placement rules for optimal symbol layout when generating IC symbols",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_ic_templates",
+          "description": "Get list of all available IC templates. START HERE to browse templates before using other IC template tools. ANY template can be used as a starting point for customization",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_ic_template_by_category",
+          "description": "Get IC templates for a specific category with complete metadata including file paths for downloading",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "category"
+            ],
+            "properties": {
+              "category": {
+                "type": "string",
+                "description": "Template category name (e.g., 'microcontrollers', 'amplifiers', 'interface')"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_ic_categories",
+          "description": "Get available IC template categories with template counts and descriptions",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "download_ic_template",
+          "description": "Download an Eagle .lbr library file for a specific IC template",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "file_path"
+            ],
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "description": "File path from template metadata (e.g., 'microcontrollers/atmega328p.lbr')"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 12,
+      "tool_names": [
+        "get_server_info",
+        "get_cache_status",
+        "refresh_symbol_documentation",
+        "validate_library",
+        "upload_library",
+        "generate_connector_symbol",
+        "get_symbol_documentation",
+        "get_ic_pin_placement_rules",
+        "get_ic_templates",
+        "get_ic_template_by_category",
+        "get_ic_categories",
+        "download_ic_template"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Server Information:\\n- Name: CAD Model Automation Bridge\\n- Version: 1.0.0\\n- API Configured: true\\n- API Endpoint: https://cad-model-automation-dd492ee14722.herokuapp.com\\n- API Healthy: true\\n- Connection State: connected', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "CAD Model Automation Bridge Server",
+      "author": null,
+      "overview": "Enable AI-driven creation and validation of Eagle CAD components by bridging Claude Desktop with the CAD Model Automation web API. Facilitate seamless interaction with CAD design tools through a clean and efficient MCP interface. Simplify CAD model workflows by providing tools for validation, generation, and previewing of components.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@asumollo/symfp-gen",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 12,
+      "tools": [
+        {
+          "name": "get_server_info",
+          "description": "Get information about the bridge server and API connection status",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_cache_status",
+          "description": "Get current status of the symbol documentation cache including age, version, and TTL settings",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "refresh_symbol_documentation",
+          "description": "Manually refresh the symbol documentation cache from the API",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "validate_library",
+          "description": "Validate a complete Eagle library file (requires uploading the file first)",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "file_id"
+            ],
+            "properties": {
+              "file_id": {
+                "type": "string",
+                "description": "File ID from library upload"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "upload_library",
+          "description": "Upload Eagle library XML content for validation and preview. This tool provides the preview URL for viewing your component.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "library_content"
+            ],
+            "properties": {
+              "filename": {
+                "type": "string",
+                "description": "Filename for the upload (default: library.lbr)"
+              },
+              "library_content": {
+                "type": "string",
+                "description": "Complete Eagle library XML content - paste the template or your XML directly here"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generate_connector_symbol",
+          "description": "Generate a connector symbol using static templates or dynamic generation",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "datasheet_id",
+              "category",
+              "template",
+              "part_name",
+              "connector_config"
+            ],
+            "properties": {
+              "category": {
+                "type": "string",
+                "description": "Template category (usually 'connector')"
+              },
+              "template": {
+                "type": "string",
+                "description": "Template ID (e.g., 'usb_type_c', 'header', 'audio_jack')"
+              },
+              "part_name": {
+                "type": "string",
+                "description": "Part name for the generated component"
+              },
+              "datasheet_id": {
+                "type": "string",
+                "description": "Datasheet ID for the connector"
+              },
+              "connector_config": {
+                "type": "object",
+                "properties": {
+                  "num_pins": {
+                    "type": "number",
+                    "description": "Number of pins per row (1-1000, required for dynamic generation)"
+                  },
+                  "jack_size": {
+                    "type": "string",
+                    "description": "Jack size (e.g., '3.5mm', '6.35mm') - for audio connectors"
+                  },
+                  "power_pins": {
+                    "type": "boolean",
+                    "description": "Include power pins"
+                  },
+                  "row_option": {
+                    "type": "string",
+                    "description": "Number of rows ('1', '2', '3', '4')"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Library description"
+                  },
+                  "power_count": {
+                    "type": "number",
+                    "description": "Number of power pins (≥0)"
+                  },
+                  "shield_pins": {
+                    "type": "boolean",
+                    "description": "Include shield pins"
+                  },
+                  "num_sections": {
+                    "type": "number",
+                    "description": "Number of sections (1, 2)"
+                  },
+                  "shield_count": {
+                    "type": "number",
+                    "description": "Number of shield pins (≥0)"
+                  },
+                  "custom_prefix": {
+                    "type": "string",
+                    "description": "Custom prefix when format is 'custom_prefix'"
+                  },
+                  "sequence_type": {
+                    "type": "string",
+                    "description": "Sequence type ('linear', 'sequential')"
+                  },
+                  "connector_type": {
+                    "type": "string",
+                    "description": "Type of connector ('standard', 'audio', 'usb', 'coaxial')"
+                  },
+                  "connector_gender": {
+                    "type": "string",
+                    "description": "Connector gender ('male', 'female') - mapped to connector_subtype"
+                  },
+                  "connector_subtype": {
+                    "type": "string",
+                    "description": "Subtype (e.g., 'male', 'female', 'terminal_block')"
+                  },
+                  "differential_pair": {
+                    "type": "boolean",
+                    "description": "Use differential pair configuration"
+                  },
+                  "pin_naming_format": {
+                    "type": "string",
+                    "description": "Pin naming format ('numeric', 'zero_padded', 'alpha', 'alpha_zero_padded', 'custom_prefix')"
+                  },
+                  "use_static_template": {
+                    "type": "boolean",
+                    "description": "Use static template if available (default: true)"
+                  }
+                },
+                "description": "Connector configuration options",
+                "additionalProperties": true
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_symbol_documentation",
+          "description": "Get Eagle symbol format documentation and templates for direct XML generation. NOTE: Documentation is also available as MCP resource 'eagle://symbol-documentation'",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_ic_pin_placement_rules",
+          "description": "Get IC-specific pin placement rules for optimal symbol layout when generating IC symbols",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_ic_templates",
+          "description": "Get list of all available IC templates. START HERE to browse templates before using other IC template tools. ANY template can be used as a starting point for customization",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_ic_template_by_category",
+          "description": "Get IC templates for a specific category with complete metadata including file paths for downloading",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "category"
+            ],
+            "properties": {
+              "category": {
+                "type": "string",
+                "description": "Template category name (e.g., 'microcontrollers', 'amplifiers', 'interface')"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_ic_categories",
+          "description": "Get available IC template categories with template counts and descriptions",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "download_ic_template",
+          "description": "Download an Eagle .lbr library file for a specific IC template",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "file_path"
+            ],
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "description": "File path from template metadata (e.g., 'microcontrollers/atmega328p.lbr')"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@asumollo@symfp-gen.json",
+    "source_filename": "@asumollo@symfp-gen.json",
+    "processed_timestamp": 1761335462,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@asumollo/symfp-gen/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "required": [],
+        "properties": {},
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@asumollo/symfp-gen",
+      "displayName": "CAD Model Automation Bridge Server",
+      "description": "Enable AI-driven creation and validation of Eagle CAD components by bridging Claude Desktop with the CAD Model Automation web API. Facilitate seamless interaction with CAD design tools through a clean and efficient MCP interface. Simplify CAD model workflows by providing tools for validation, generation, and previewing of components.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-07-30T15:36:51.915Z",
+      "homepage": "https://smithery.ai/server/@asumollo/symfp-gen"
+    }
+  }
+}

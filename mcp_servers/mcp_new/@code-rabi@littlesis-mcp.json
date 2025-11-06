@@ -1,0 +1,454 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "LittleSis API Server",
+    "rank_by_usage": null,
+    "usage_count": 20,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334471,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@code-rabi/littlesis-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_entity",
+          "description": "Get detailed information about a specific entity (person or organization) from LittleSis by ID",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The unique numerical ID of the entity in LittleSis database"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_entities",
+          "description": "Get information about multiple entities at once (up to 300 entities per request)",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "ids"
+            ],
+            "properties": {
+              "ids": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "maxItems": 300,
+                "description": "Array of entity IDs to retrieve (maximum 300)"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_entities",
+          "description": "Search for entities by name. Results are ranked by number of relationships.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "q"
+            ],
+            "properties": {
+              "q": {
+                "type": "string",
+                "description": "Search query (entity name)"
+              },
+              "page": {
+                "type": "number",
+                "minimum": 1,
+                "description": "Page number for pagination (default: 1)"
+              },
+              "tags": {
+                "type": "string",
+                "description": "Filter by tags (e.g., \"oil\")"
+              },
+              "regions": {
+                "type": "number",
+                "description": "Filter by region ID"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_entity_extensions",
+          "description": "Get the types/extensions associated with an entity (Person, Organization, Business, etc.)",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The entity ID"
+              },
+              "details": {
+                "type": "boolean",
+                "default": false,
+                "description": "Include additional details contained within extensions"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_entity_relationships",
+          "description": "Get all relationships this entity has with other entities",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The entity ID"
+              },
+              "page": {
+                "type": "number",
+                "minimum": 1,
+                "description": "Page number for pagination"
+              },
+              "sort": {
+                "enum": [
+                  "amount",
+                  "oldest",
+                  "recent"
+                ],
+                "type": "string",
+                "default": "recent",
+                "description": "Sort order for relationships"
+              },
+              "category_id": {
+                "type": "number",
+                "description": "Filter relationships by category (1-12)"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_entity_connections",
+          "description": "Get other entities that this entity has relationships with",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The entity ID"
+              },
+              "page": {
+                "type": "number",
+                "minimum": 1,
+                "description": "Page number for pagination"
+              },
+              "category_id": {
+                "type": "number",
+                "description": "Filter connections by relationship category"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_entity_lists",
+          "description": "Get the lists that an entity appears on (e.g., Fortune 1000, lobbying lists)",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The entity ID"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_relationship",
+          "description": "Get detailed information about a specific relationship between two entities",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The unique numerical ID of the relationship in LittleSis database"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 8,
+      "tool_names": [
+        "get_entity",
+        "get_entities",
+        "search_entities",
+        "get_entity_extensions",
+        "get_entity_relationships",
+        "get_entity_connections",
+        "get_entity_lists",
+        "get_relationship"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Error fetching entity: LittleSis API Error (404): Record Missing', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "LittleSis API Server",
+      "author": null,
+      "overview": "Provide access to the LittleSis API to track corporate power and accountability. Enable querying and exploring relationships and entities related to corporate influence. Facilitate integration of corporate data into LLM applications for enhanced context and insights.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@code-rabi/littlesis-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 20,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 8,
+      "tools": [
+        {
+          "name": "get_entity",
+          "description": "Get detailed information about a specific entity (person or organization) from LittleSis by ID",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The unique numerical ID of the entity in LittleSis database"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_entities",
+          "description": "Get information about multiple entities at once (up to 300 entities per request)",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "ids"
+            ],
+            "properties": {
+              "ids": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "maxItems": 300,
+                "description": "Array of entity IDs to retrieve (maximum 300)"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_entities",
+          "description": "Search for entities by name. Results are ranked by number of relationships.",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "q"
+            ],
+            "properties": {
+              "q": {
+                "type": "string",
+                "description": "Search query (entity name)"
+              },
+              "page": {
+                "type": "number",
+                "minimum": 1,
+                "description": "Page number for pagination (default: 1)"
+              },
+              "tags": {
+                "type": "string",
+                "description": "Filter by tags (e.g., \"oil\")"
+              },
+              "regions": {
+                "type": "number",
+                "description": "Filter by region ID"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_entity_extensions",
+          "description": "Get the types/extensions associated with an entity (Person, Organization, Business, etc.)",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The entity ID"
+              },
+              "details": {
+                "type": "boolean",
+                "default": false,
+                "description": "Include additional details contained within extensions"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_entity_relationships",
+          "description": "Get all relationships this entity has with other entities",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The entity ID"
+              },
+              "page": {
+                "type": "number",
+                "minimum": 1,
+                "description": "Page number for pagination"
+              },
+              "sort": {
+                "enum": [
+                  "amount",
+                  "oldest",
+                  "recent"
+                ],
+                "type": "string",
+                "default": "recent",
+                "description": "Sort order for relationships"
+              },
+              "category_id": {
+                "type": "number",
+                "description": "Filter relationships by category (1-12)"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_entity_connections",
+          "description": "Get other entities that this entity has relationships with",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The entity ID"
+              },
+              "page": {
+                "type": "number",
+                "minimum": 1,
+                "description": "Page number for pagination"
+              },
+              "category_id": {
+                "type": "number",
+                "description": "Filter connections by relationship category"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_entity_lists",
+          "description": "Get the lists that an entity appears on (e.g., Fortune 1000, lobbying lists)",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The entity ID"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_relationship",
+          "description": "Get detailed information about a specific relationship between two entities",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": "The unique numerical ID of the relationship in LittleSis database"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@code-rabi@littlesis-mcp.json",
+    "source_filename": "@code-rabi@littlesis-mcp.json",
+    "processed_timestamp": 1761334471,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@code-rabi/littlesis-mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@code-rabi/littlesis-mcp",
+      "displayName": "LittleSis API Server",
+      "description": "Provide access to the LittleSis API to track corporate power and accountability. Enable querying and exploring relationships and entities related to corporate influence. Facilitate integration of corporate data into LLM applications for enhanced context and insights.",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/b7139536-3e0e-41a6-ae2a-a625ced8709a.png",
+      "verified": false,
+      "useCount": 20,
+      "remote": true,
+      "createdAt": "2025-08-05T12:40:08.126Z",
+      "homepage": "https://smithery.ai/server/@code-rabi/littlesis-mcp"
+    }
+  }
+}

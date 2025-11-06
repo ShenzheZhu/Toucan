@@ -1,0 +1,196 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "China Weather",
+    "rank_by_usage": null,
+    "usage_count": 73,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333683,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@jjyaoao/weather-mcp-server/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_weather",
+          "description": "获取指定城市的当前天气",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "city"
+            ],
+            "properties": {
+              "city": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "name": "list_supported_cities",
+          "description": "列出所有支持的中文城市",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_server_info",
+          "description": "获取服务器信息",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      ],
+      "tool_count": 3,
+      "tool_names": [
+        "get_weather",
+        "list_supported_cities",
+        "get_server_info"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text=\"Input validation error: 'city' is a required property\", annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "China Weather",
+      "author": null,
+      "overview": "Get real-time weather for supported Chinese cities. Browse the full list of cities to quickly find coverage. Stay informed with concise, up-to-date conditions for your location.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@jjyaoao/weather-mcp-server",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 73,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 3,
+      "tools": [
+        {
+          "name": "get_weather",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "获取指定城市的当前天气",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "city"
+            ],
+            "properties": {
+              "city": {
+                "type": "string"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string"
+              }
+            },
+            "x-fastmcp-wrap-result": true
+          }
+        },
+        {
+          "name": "list_supported_cities",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "列出所有支持的中文城市",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string"
+              }
+            },
+            "x-fastmcp-wrap-result": true
+          }
+        },
+        {
+          "name": "get_server_info",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "获取服务器信息",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string"
+              }
+            },
+            "x-fastmcp-wrap-result": true
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@jjyaoao@weather-mcp-server.json",
+    "source_filename": "@jjyaoao@weather-mcp-server.json",
+    "processed_timestamp": 1761333683,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@jjyaoao/weather-mcp-server/mcp",
+      "configSchema": {
+        "title": "MCP Session Configuration",
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@jjyaoao/weather-mcp-server",
+      "displayName": "China Weather",
+      "description": "Get real-time weather for supported Chinese cities. Browse the full list of cities to quickly find coverage. Stay informed with concise, up-to-date conditions for your location.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 73,
+      "remote": true,
+      "createdAt": "2025-10-09T03:09:45.405Z",
+      "homepage": "https://smithery.ai/server/@jjyaoao/weather-mcp-server"
+    }
+  }
+}

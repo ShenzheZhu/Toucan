@@ -1,0 +1,294 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "MCP Server",
+    "rank_by_usage": null,
+    "usage_count": 357,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333988,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@ShresthaAnkit/mcpserver/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "add",
+          "description": "Add two numbers",
+          "input_schema": {
+            "type": "object",
+            "title": "addArguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "integer",
+                "title": "A"
+              },
+              "b": {
+                "type": "integer",
+                "title": "B"
+              }
+            }
+          }
+        },
+        {
+          "name": "multiply",
+          "description": "Multiply two numbers",
+          "input_schema": {
+            "type": "object",
+            "title": "multiplyArguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "integer",
+                "title": "A"
+              },
+              "b": {
+                "type": "integer",
+                "title": "B"
+              }
+            }
+          }
+        },
+        {
+          "name": "validatePhoneNumber",
+          "description": "Validates if the given phone number is a valid nepali phone number",
+          "input_schema": {
+            "type": "object",
+            "title": "validatePhoneNumberArguments",
+            "required": [
+              "phone_number"
+            ],
+            "properties": {
+              "phone_number": {
+                "type": "string",
+                "title": "Phone Number"
+              }
+            }
+          }
+        },
+        {
+          "name": "checkBalance",
+          "description": "Takes a validated phone number and return the balance of the user",
+          "input_schema": {
+            "type": "object",
+            "title": "checkBalanceArguments",
+            "required": [
+              "phone_number"
+            ],
+            "properties": {
+              "phone_number": {
+                "type": "string",
+                "title": "Phone Number"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 4,
+      "tool_names": [
+        "add",
+        "multiply",
+        "validatePhoneNumber",
+        "checkBalance"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Error executing tool add: 2 validation errors for addArguments\\na\\n  Field required [type=missing, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing\\nb\\n  Field required [type=missing, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "MCP Server",
+      "author": null,
+      "overview": "Integrate your applications with real-world data and tools seamlessly. Access files, databases, and APIs while leveraging the power of language models to enhance your workflows. Simplify complex interactions and automate tasks with a standardized protocol.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@ShresthaAnkit/mcpserver",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 357,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 4,
+      "tools": [
+        {
+          "name": "add",
+          "description": "Add two numbers",
+          "inputSchema": {
+            "type": "object",
+            "title": "addArguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "integer",
+                "title": "A"
+              },
+              "b": {
+                "type": "integer",
+                "title": "B"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "addOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "integer",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "multiply",
+          "description": "Multiply two numbers",
+          "inputSchema": {
+            "type": "object",
+            "title": "multiplyArguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "integer",
+                "title": "A"
+              },
+              "b": {
+                "type": "integer",
+                "title": "B"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "multiplyOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "integer",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "validatePhoneNumber",
+          "description": "Validates if the given phone number is a valid nepali phone number",
+          "inputSchema": {
+            "type": "object",
+            "title": "validatePhoneNumberArguments",
+            "required": [
+              "phone_number"
+            ],
+            "properties": {
+              "phone_number": {
+                "type": "string",
+                "title": "Phone Number"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "validatePhoneNumberOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "boolean",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "checkBalance",
+          "description": "Takes a validated phone number and return the balance of the user",
+          "inputSchema": {
+            "type": "object",
+            "title": "checkBalanceArguments",
+            "required": [
+              "phone_number"
+            ],
+            "properties": {
+              "phone_number": {
+                "type": "string",
+                "title": "Phone Number"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "checkBalanceOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "integer",
+                "title": "Result"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@ShresthaAnkit@mcpserver.json",
+    "source_filename": "@ShresthaAnkit@mcpserver.json",
+    "processed_timestamp": 1761333988,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@ShresthaAnkit/mcpserver/mcp",
+      "configSchema": {
+        "type": "object",
+        "required": [
+          "serverToken"
+        ],
+        "properties": {}
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@ShresthaAnkit/mcpserver",
+      "displayName": "MCP Server",
+      "description": "Integrate your applications with real-world data and tools seamlessly. Access files, databases, and APIs while leveraging the power of language models to enhance your workflows. Simplify complex interactions and automate tasks with a standardized protocol.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 357,
+      "remote": true,
+      "createdAt": "2025-04-09T09:19:19.296Z",
+      "homepage": "https://smithery.ai/server/@ShresthaAnkit/mcpserver"
+    }
+  }
+}

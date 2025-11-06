@@ -1,0 +1,1464 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Blockscout MCP Server",
+    "rank_by_usage": null,
+    "usage_count": 1668,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333735,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@blockscout/mcp-server/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "__unlock_blockchain_analysis__",
+          "description": "Unlocks access to other MCP tools.\n\n    All tools remain locked with a \"Session Not Initialized\" error until this\n    function is successfully called. Skipping this explicit initialization step\n    will cause all subsequent tool calls to fail.\n\n    MANDATORY FOR AI AGENTS: The returned instructions contain ESSENTIAL rules\n    that MUST govern ALL blockchain data interactions. Failure to integrate these\n    rules will result in incorrect data retrieval, tool failures and invalid\n    responses. Always apply these guidelines when planning queries, processing\n    responses or recommending blockchain actions.\n\n    COMPREHENSIVE DATA SOURCES: Provides an extensive catalog of specialized\n    blockchain endpoints to unlock sophisticated, multi-dimensional blockchain\n    investigations across all supported networks.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "__unlock_blockchain_analysis__Arguments",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_block_info",
+          "description": "\n    Get block information like timestamp, gas used, burnt fees, transaction count etc.\n    Can optionally include the list of transaction hashes contained in the block. Transaction hashes are omitted by default; request them only when you truly need them, because on high-traffic chains the list may exhaust the context.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_block_infoArguments",
+            "required": [
+              "chain_id",
+              "number_or_hash"
+            ],
+            "properties": {
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "number_or_hash": {
+                "type": "string",
+                "title": "Number Or Hash",
+                "description": "Block number or hash"
+              },
+              "include_transactions": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Include Transactions",
+                "default": false,
+                "description": "If true, includes a list of transaction hashes from the block."
+              }
+            }
+          }
+        },
+        {
+          "name": "get_latest_block",
+          "description": "\n    Get the latest indexed block number and timestamp, which represents the most recent state of the blockchain.\n    No transactions or token transfers can exist beyond this point, making it useful as a reference timestamp for other API calls.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_latest_blockArguments",
+            "required": [
+              "chain_id"
+            ],
+            "properties": {
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_address_by_ens_name",
+          "description": "\n    Useful for when you need to convert an ENS domain name (e.g. \"blockscout.eth\")\n    to its corresponding Ethereum address.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_address_by_ens_nameArguments",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Name",
+                "description": "ENS domain name to resolve"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transactions_by_address",
+          "description": "\n    Retrieves native currency transfers and smart contract interactions (calls, internal txs) for an address.\n    **EXCLUDES TOKEN TRANSFERS**: Filters out direct token balance changes (ERC-20, etc.). You'll see calls *to* token contracts, but not the `Transfer` events. For token history, use `get_token_transfers_by_address`.\n    A single tx can have multiple records from internal calls; use `internal_transaction_index` for execution order.\n    Use cases:\n      - `get_transactions_by_address(address, age_from)` - get all txs to/from the address since a given date.\n      - `get_transactions_by_address(address, age_from, age_to)` - get all txs to/from the address between given dates.\n      - `get_transactions_by_address(address, age_from, age_to, methods)` - get all txs to/from the address between given dates, filtered by method.\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field, use the provided next_call to get additional pages.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_transactions_by_addressArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "age_to": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Age To",
+                "default": null,
+                "description": "End date and time (e.g 2025-05-22T22:30:00.00Z)."
+              },
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Address which either sender or receiver of the transaction"
+              },
+              "methods": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Methods",
+                "default": null,
+                "description": "A method signature to filter transactions by (e.g 0x304e6ade)"
+              },
+              "age_from": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Age From",
+                "default": null,
+                "description": "Start date and time (e.g 2025-05-22T23:00:00.00Z)."
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_token_transfers_by_address",
+          "description": "\n    Get ERC-20 token transfers for an address within a specific time range.\n    Use cases:\n      - `get_token_transfers_by_address(address, age_from)` - get all transfers of any ERC-20 token to/from the address since the given date up to the current time\n      - `get_token_transfers_by_address(address, age_from, age_to)` - get all transfers of any ERC-20 token to/from the address between the given dates\n      - `get_token_transfers_by_address(address, age_from, age_to, token)` - get all transfers of the given ERC-20 token to/from the address between the given dates\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field, use the provided next_call to get additional pages.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_token_transfers_by_addressArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "token": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Token",
+                "default": null,
+                "description": "An ERC-20 token contract address to filter transfers by a specific token. If omitted, returns transfers of all tokens."
+              },
+              "age_to": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Age To",
+                "default": null,
+                "description": "End date and time (e.g 2025-05-22T22:30:00.00Z). Can be omitted to get all transfers up to the current time."
+              },
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Address which either transfer initiator or transfer receiver"
+              },
+              "age_from": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Age From",
+                "default": null,
+                "description": "Start date and time (e.g 2025-05-22T23:00:00.00Z). This parameter should be provided in most cases to limit transfers and avoid heavy database queries. Omit only if you absolutely need the full history."
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "lookup_token_by_symbol",
+          "description": "\n    Search for token addresses by symbol or name. Returns multiple potential\n    matches based on symbol or token name similarity. Only the first\n    ``TOKEN_RESULTS_LIMIT`` matches from the Blockscout API are returned.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "lookup_token_by_symbolArguments",
+            "required": [
+              "chain_id",
+              "symbol"
+            ],
+            "properties": {
+              "symbol": {
+                "type": "string",
+                "title": "Symbol",
+                "description": "Token symbol or name to search for"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_contract_abi",
+          "description": "\n    Get smart contract ABI (Application Binary Interface).\n    An ABI defines all functions, events, their parameters, and return types. The ABI is required to format function calls or interpret contract data.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_contract_abiArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Smart contract address"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "inspect_contract_code",
+          "description": "Inspects a verified contract's source code or metadata.",
+          "input_schema": {
+            "type": "object",
+            "title": "inspect_contract_codeArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "The address of the smart contract."
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain."
+              },
+              "file_name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "File Name",
+                "default": null,
+                "description": "The name of the source file to inspect. If omitted, returns contract metadata and the list of source files."
+              }
+            }
+          }
+        },
+        {
+          "name": "read_contract",
+          "description": "\n        Calls a smart contract function (view/pure, or non-view/pure simulated via eth_call) and returns the\n        decoded result.\n\n        This tool provides a direct way to query the state of a smart contract.\n\n        Example:\n        To check the USDT balance of an address on Ethereum Mainnet, you would use the following arguments:\n    {\n      \"tool_name\": \"read_contract\",\n      \"params\": {\n        \"chain_id\": \"1\",\n        \"address\": \"0xdAC17F958D2ee523a2206206994597C13D831ec7\",\n        \"abi\": {\n          \"constant\": true,\n          \"inputs\": [{\"name\": \"_owner\", \"type\": \"address\"}],\n          \"name\": \"balanceOf\",\n          \"outputs\": [{\"name\": \"balance\", \"type\": \"uint256\"}],\n          \"payable\": false,\n          \"stateMutability\": \"view\",\n          \"type\": \"function\"\n        },\n        \"function_name\": \"balanceOf\",\n        \"args\": \"[\"0xF977814e90dA44bFA03b6295A0616a897441aceC\"]\"\n      }\n    }\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "read_contractArguments",
+            "required": [
+              "chain_id",
+              "address",
+              "abi",
+              "function_name"
+            ],
+            "properties": {
+              "abi": {
+                "type": "object",
+                "title": "Abi",
+                "description": "The JSON ABI for the specific function being called. This should be a dictionary that defines the function's name, inputs, and outputs. The function ABI can be obtained using the `get_contract_abi` tool.",
+                "additionalProperties": true
+              },
+              "args": {
+                "type": "string",
+                "title": "Args",
+                "default": "[]",
+                "description": "A JSON string containing an array of arguments. Example: \"[\"0xabc...\"]\" for a single address argument, or \"[]\" for no arguments. Order and types must match ABI inputs. Addresses: use 0x-prefixed strings; Numbers: prefer integers (not quoted); numeric strings like \"1\" are also accepted and coerced to integers. Bytes: keep as 0x-hex strings."
+              },
+              "block": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ],
+                "title": "Block",
+                "default": "latest",
+                "description": "The block identifier to read the contract state from. Can be a block number (e.g., 19000000) or a string tag (e.g., 'latest'). Defaults to 'latest'."
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Smart contract address"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "function_name": {
+                "type": "string",
+                "title": "Function Name",
+                "description": "The symbolic name of the function to be called. This must match the `name` field in the provided ABI."
+              }
+            }
+          }
+        },
+        {
+          "name": "get_address_info",
+          "description": "\n    Get comprehensive information about an address, including:\n    - Address existence check\n    - Native token (ETH) balance (provided as is, without adjusting by decimals)\n    - ENS name association (if any)\n    - Contract status (whether the address is a contract, whether it is verified)\n    - Proxy contract information (if applicable): determines if a smart contract is a proxy contract (which forwards calls to implementation contracts), including proxy type and implementation addresses\n    - Token details (if the contract is a token): name, symbol, decimals, total supply, etc.\n    Essential for address analysis, contract investigation, token research, and DeFi protocol analysis.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_address_infoArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Address to get information about"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_tokens_by_address",
+          "description": "\n    Get comprehensive ERC20 token holdings for an address with enriched metadata and market data.\n    Returns detailed token information including contract details (name, symbol, decimals), market metrics (exchange rate, market cap, volume), holders count, and actual balance (provided as is, without adjusting by decimals).\n    Essential for portfolio analysis, wallet auditing, and DeFi position tracking.\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field, use the provided next_call to get additional pages.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_tokens_by_addressArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Wallet address"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "transaction_summary",
+          "description": "\n    Get human-readable transaction summaries from Blockscout Transaction Interpreter.\n    Automatically classifies transactions into natural language descriptions (transfers, swaps, NFT sales, DeFi operations)\n    Essential for rapid transaction comprehension, dashboard displays, and initial analysis.\n    Note: Not all transactions can be summarized and accuracy is not guaranteed for complex patterns.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "transaction_summaryArguments",
+            "required": [
+              "chain_id",
+              "transaction_hash"
+            ],
+            "properties": {
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "transaction_hash": {
+                "type": "string",
+                "title": "Transaction Hash",
+                "description": "Transaction hash"
+              }
+            }
+          }
+        },
+        {
+          "name": "nft_tokens_by_address",
+          "description": "\n    Retrieve NFT tokens (ERC-721, ERC-404, ERC-1155) owned by an address, grouped by collection.\n    Provides collection details (type, address, name, symbol, total supply, holder count) and individual token instance data (ID, name, description, external URL, metadata attributes).\n    Essential for a detailed overview of an address's digital collectibles and their associated collection data.\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field, use the provided next_call to get additional pages.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "nft_tokens_by_addressArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "NFT owner address"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction_info",
+          "description": "\n    Get comprehensive transaction information.\n    Unlike standard eth_getTransactionByHash, this tool returns enriched data including decoded input parameters, detailed token transfers with token metadata, transaction fee breakdown (priority fees, burnt fees) and categorized transaction types.\n    By default, the raw transaction input is omitted if a decoded version is available to save context; request it with `include_raw_input=True` only when you truly need the raw hex data.\n    Essential for transaction analysis, debugging smart contract interactions, tracking DeFi operations.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_transaction_infoArguments",
+            "required": [
+              "chain_id",
+              "transaction_hash"
+            ],
+            "properties": {
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "transaction_hash": {
+                "type": "string",
+                "title": "Transaction Hash",
+                "description": "Transaction hash"
+              },
+              "include_raw_input": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Include Raw Input",
+                "default": false,
+                "description": "If true, includes the raw transaction input data."
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction_logs",
+          "description": "\n    Get comprehensive transaction logs.\n    Unlike standard eth_getLogs, this tool returns enriched logs, primarily focusing on decoded event parameters with their types and values (if event decoding is applicable).\n    Essential for analyzing smart contract events, tracking token transfers, monitoring DeFi protocol interactions, debugging event emissions, and understanding complex multi-contract transaction flows.\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field, use the provided next_call to get additional pages.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_transaction_logsArguments",
+            "required": [
+              "chain_id",
+              "transaction_hash"
+            ],
+            "properties": {
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "transaction_hash": {
+                "type": "string",
+                "title": "Transaction Hash",
+                "description": "Transaction hash"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_chains_list",
+          "description": "\n    Get the list of known blockchain chains with their IDs.\n    Useful for getting a chain ID when the chain name is known. This information can be used in other tools that require a chain ID to request information.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_chains_listArguments",
+            "properties": {}
+          }
+        },
+        {
+          "name": "direct_api_call",
+          "description": "Call a raw Blockscout API endpoint for advanced or chain-specific data.\n\n    Do not include query strings in ``endpoint_path``; pass all query parameters via\n    ``query_params`` to avoid double-encoding.\n\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field,\n    use the provided next_call to get additional pages.\n\n    Returns:\n        ToolResponse[Any]: Must return ToolResponse[Any] (not ToolResponse[BaseModel])\n        because specialized handlers can return lists or other types that don't inherit\n        from BaseModel. The dispatcher system supports flexible data structures.\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "direct_api_callArguments",
+            "required": [
+              "chain_id",
+              "endpoint_path"
+            ],
+            "properties": {
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "query_params": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Query Params",
+                "default": null,
+                "description": "Optional query parameters forwarded to the Blockscout API."
+              },
+              "endpoint_path": {
+                "type": "string",
+                "title": "Endpoint Path",
+                "description": "The Blockscout API path to call (e.g., '/api/v2/stats'); do not include query strings."
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 18,
+      "tool_names": [
+        "__unlock_blockchain_analysis__",
+        "get_block_info",
+        "get_latest_block",
+        "get_address_by_ens_name",
+        "get_transactions_by_address",
+        "get_token_transfers_by_address",
+        "lookup_token_by_symbol",
+        "get_contract_abi",
+        "inspect_contract_code",
+        "read_contract",
+        "get_address_info",
+        "get_tokens_by_address",
+        "transaction_summary",
+        "nft_tokens_by_address",
+        "get_transaction_info",
+        "get_transaction_logs",
+        "get_chains_list",
+        "direct_api_call"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='{\\n  \"data\": {\\n    \"version\": \"0.11.0\",\\n    \"error_handling_rules\": \"\\\\nIf you receive an error \\\\\"500 Internal Server Error\\\\\" for any tool, retry calling this tool up to 3 times \\\\nuntil successful.\\\\n\",\\n    \"chain_id_guidance\": {\\n      \"rules\": \"\\\\nAll Blockscout API tools require a chain_id parameter:\\\\n- If the chain ID to be used in the tools is not clear, use the tool `get_chains_list` to get chain IDs \\\\nof all known chains.\\\\n- If no chain is specified in the user\\'s prompt, assume \\\\\"Ethereum Mainnet\\\\\" (chain_id: 1) as the default.\\\\n\",\\n      \"recommended_chains\": [\\n        {\\n          \"name\": \"Ethereum\",\\n          \"chain_id\": \"1\",\\n          \"is_testnet\": false,\\n          \"native_currency\": \"ETH\",\\n          \"ecosystem\": \"Ethereum\",\\n          \"settlement_layer_chain_id\": null\\n        },\\n        {\\n          \"name\": \"Polygon PoS\",\\n          \"chain_id\": \"137\",\\n          \"is_testnet\": false,\\n          \"native_currency\": \"POL\",\\n          \"ecosystem\": \"Polygon\",\\n          \"settlement_layer_chain_id\": null\\n        },\\n        {\\n          \"name\": \"Base\",\\n          \"chain_id\": \"8453\",\\n          \"is_testnet\": false,\\n          \"native_currency\": \"ETH\",\\n          \"ecosystem\": [\\n            \"Ethereum\",\\n            \"Superchain\"\\n          ],\\n          \"settlement_layer_chain_id\": \"1\"\\n        },\\n        {\\n          \"name\": \"Arbitrum One Nitro\",\\n          \"chain_id\": \"42161\",\\n          \"is_testnet\": false,\\n          \"native_currency\": \"ETH\",\\n          \"ecosystem\": \"Arbitrum\",\\n          \"settlement_layer_chain_id\": \"1\"\\n        },\\n        {\\n          \"name\": \"OP Mainnet\",\\n          \"chain_id\": \"10\",\\n          \"is_testnet\": false,\\n          \"native_currency\": \"ETH\",\\n          \"ecosystem\": [\\n            \"Optimism\",\\n            \"Superchain\"\\n          ],\\n          \"settlement_layer_chain_id\": \"1\"\\n        },\\n        {\\n          \"name\": \"ZkSync Era\",\\n          \"chain_id\": \"324\",\\n          \"is_testnet\": false,\\n          \"native_currency\": \"ETH\",\\n          \"ecosystem\": \"zkSync\",\\n          \"settlement_layer_chain_id\": \"1\"\\n        },\\n        {\\n          \"name\": \"Gnosis\",\\n          \"chain_id\": \"100\",\\n          \"is_testnet\": false,\\n          \"native_currency\": \"XDAI\",\\n          \"ecosystem\": \"Gnosis\",\\n          \"settlement_layer_chain_id\": null\\n        },\\n        {\\n          \"name\": \"Celo\",\\n          \"chain_id\": \"42220\",\\n          \"is_testnet\": false,\\n          \"native_currency\": \"CELO\",\\n          \"ecosystem\": \"Ethereum\",\\n          \"settlement_layer_chain_id\": null\\n        },\\n        {\\n          \"name\": \"Scroll\",\\n          \"chain_id\": \"534352\",\\n          \"is_testnet\": false,\\n          \"native_currency\": \"ETH\",\\n          \"ecosystem\": \"Ethereum\",\\n          \"settlement_layer_chain_id\": \"1\"\\n        }\\n      ]\\n    },\\n    \"pagination_rules\": \"\\\\nPAGINATION HANDLING: When any tool response includes a \\'pagination\\' field, this means there are additional \\\\npages of data available. You MUST use the exact tool call provided in \\'pagination.next_call\\' to fetch the \\\\nnext page. The \\'pagination.next_call\\' contains the complete tool name and all required parameters (including \\\\nthe cursor) for the next page request.\\\\n\\\\nIf the user asks for comprehensive data or \\'all\\' results, and you receive a paginated response, continue \\\\ncalling the pagination tool calls until you have gathered all available data or reached a reasonable limit.\\\\n\",\\n    \"time_based_query_rules\": \"\\\\nTIME-BASED QUERIES: When users ask for blockchain data with time constraints (before/after/between \\\\nspecific dates), start with transaction-level tools that support time filtering (`get_transactions_by_address`, \\\\n`get_token_transfers_by_address`) rather than trying to filter other data types directly. Use `age_from` and \\\\n`age_to` parameters to filter transactions by time, then retrieve associated data (logs, token transfers, etc.) \\\\nfrom those specific transactions.\\\\n\",\\n    \"block_time_estimation_rules\": \"\\\\nBLOCK TIME ESTIMATION: When no direct time filtering is available and you need to navigate to a specific \\\\ntime period, use mathematical block time estimation instead of brute-force iteration. For known chains, use \\\\nestablished patterns (Ethereum ~12s, Polygon ~2s, Base ~2s, etc.). For unknown chains or improved accuracy, \\\\nuse adaptive sampling:\\\\n1. Sample 2-3 widely-spaced blocks to calculate initial average block time\\\\n2. Calculate approximate target: target_block ≈ current_block - (time_difference_in_seconds / average_block_time)\\\\n3. As you gather new block data, refine your estimates using local patterns (detect if recent segments \\\\nhave different timing)\\\\n4. Self-correct: if block 1800000→1700000 shows different timing than 1900000→1800000, use the more \\\\nrelevant local segment\\\\nThis adaptive approach works on any blockchain and automatically handles network upgrades or timing changes.\\\\n\",\\n    \"efficiency_optimization_rules\": \"\\\\nEFFICIENCY OPTIMIZATION: When direct tools don\\'t exist for your query, be creative and strategic:\\\\n1. Assess the \\'distance\\' - if you need data from far back in time, use block estimation first\\\\n2. Avoid excessive iteration - if you find yourself making >5 sequential calls for timestamps, switch to estimation\\\\n3. Use adaptive sampling - check a few data points to understand timing patterns, then adjust your strategy \\\\nas you learn\\\\n4. Learn continuously - refine your understanding of network patterns as new data becomes available\\\\n5. Detect pattern changes - if your estimates become less accurate, recalibrate using more recent data segments\\\\n6. Combine approaches - use estimation to get close, then fine-tune with iteration, always learning from each step\\\\n\",\\n    \"binary_search_rules\": \"\\\\nBINARY SEARCH FOR HISTORICAL BLOCKCHAIN DATA: Never paginate for temporal boundaries. Use binary search \\\\nwith `age_from`/`age_to` parameters to efficiently locate specific time periods or events in blockchain history.\\\\n\\\\n## Pattern:\\\\n```\\\\nget_transactions_by_address(age_from: START, age_to: MID)\\\\n├── Results found → search earlier half: [START, MID]  \\\\n└── No results → search later half: [MID, END]\\\\n```\\\\n\\\\n## Example: First transaction for vitalik.eth\\\\n```\\\\n1. get_transactions_by_address(age_from: \\\\\"2015-07-30\\\\\", age_to: \\\\\"2015-12-31\\\\\") → ✓ \\\\n2. get_transactions_by_address(age_from: \\\\\"2015-07-30\\\\\", age_to: \\\\\"2015-09-12\\\\\") → ✗\\\\n3. get_transactions_by_address(age_from: \\\\\"2015-09-12\\\\\", age_to: \\\\\"2015-10-03\\\\\") → ✓\\\\n4. get_transactions_by_address(age_from: \\\\\"2015-09-27\\\\\", age_to: \\\\\"2015-09-30\\\\\") → ✓ \\\\n   Found: 2015-09-28T08:24:43Z\\\\n5. get_transactions_by_address(age_from: \\\\\"2015-07-30\\\\\", age_to: \\\\\"2015-09-28T08:24:42\\\\\") → ✗\\\\n   Confirmed: This is the first transaction.\\\\n```\\\\n\\\\n**Result: 5 API calls instead of potentially hundreds of pagination calls.**\\\\n\",\\n    \"direct_api_call_rules\": \"\\\\nADVANCED API USAGE: For specialized or chain-specific data not covered by other tools,\\\\nyou can use `direct_api_call`. This tool can call a curated list of raw Blockscout API endpoints.\\\\n\",\\n    \"direct_api_endpoints\": {\\n      \"common\": [\\n        {\\n          \"group\": \"Stats\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/stats-service/api/v1/counters\",\\n              \"description\": \"Get consolidated historical and recent-window counters—totals and 24h/30m rollups for blockchain activity (transactions, accounts, contracts, verified contracts, ERC-4337 user ops), plus average block time and fee aggregates\"\\n            },\\n            {\\n              \"path\": \"/api/v2/stats\",\\n              \"description\": \"Get real-time network status and market context—current gas price tiers with last-update and next-update timing, network utilization, today\\'s transactions, average block time \\'now\\', and coin price/market cap.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"group\": \"User Operations\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/proxy/account-abstraction/operations/{user_operation_hash}\",\\n              \"description\": \"Get details for a specific User Operation by its hash.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"group\": \"Tokens & NFTs\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/tokens/{token_contract_address}/instances\",\\n              \"description\": \"Get all NFT instances for a given token contract address.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/tokens/{token_contract_address}/holders\",\\n              \"description\": \"Get a list of holders for a given token.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/tokens/{token_contract_address}/instances/{instance_id}\",\\n              \"description\": \"Get details for a specific NFT instance.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/tokens/{token_contract_address}/instances/{instance_id}/transfers\",\\n              \"description\": \"Get transfer history for a specific NFT instance.\"\\n            }\\n          ]\\n        }\\n      ],\\n      \"specific\": [\\n        {\\n          \"chain_family\": \"Ethereum Mainnet and Gnosis\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/addresses/{account_address}/beacon/deposits\",\\n              \"description\": \"Get Beacon Chain deposits for a specific address.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/blocks/{block_number}/beacon/deposits\",\\n              \"description\": \"Get Beacon Chain deposits for a specific block.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/addresses/{account_address}/withdrawals\",\\n              \"description\": \"Get Beacon Chain withdrawals for a specific address.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/blocks/{block_number}/withdrawals\",\\n              \"description\": \"Get Beacon Chain withdrawals for a specific block.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"chain_family\": \"Arbitrum\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/main-page/arbitrum/batches/latest-number\",\\n              \"description\": \"Get the latest committed batch number for Arbitrum.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/arbitrum/batches/{batch_number}\",\\n              \"description\": \"Get information for a specific Arbitrum batch.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/arbitrum/messages/to-rollup\",\\n              \"description\": \"Get L1 to L2 messages for Arbitrum.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/arbitrum/messages/from-rollup\",\\n              \"description\": \"Get L2 to L1 messages for Arbitrum.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/arbitrum/messages/withdrawals/{transaction_hash}\",\\n              \"description\": \"Get L2 to L1 messages for a specific transaction hash on Arbitrum.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"chain_family\": \"Optimism\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/optimism/batches\",\\n              \"description\": \"Get the latest committed batches for Optimism.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/optimism/batches/{batch_number}\",\\n              \"description\": \"Get information for a specific Optimism batch.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/optimism/games\",\\n              \"description\": \"Get dispute games for Optimism.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/optimism/deposits\",\\n              \"description\": \"Get L1 to L2 messages (deposits) for Optimism.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/optimism/withdrawals\",\\n              \"description\": \"Get L2 to L1 messages (withdrawals) for Optimism.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"chain_family\": \"Celo\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/celo/epochs\",\\n              \"description\": \"Get the latest finalized epochs for Celo.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/celo/epochs/{epoch_number}\",\\n              \"description\": \"Get information for a specific Celo epoch.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/celo/epochs/{epoch_number}/election-rewards/group\",\\n              \"description\": \"Get validator group rewards for a specific Celo epoch.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/celo/epochs/{epoch_number}/election-rewards/validator\",\\n              \"description\": \"Get validator rewards for a specific Celo epoch.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/celo/epochs/{epoch_number}/election-rewards/voter\",\\n              \"description\": \"Get voter rewards for a specific Celo epoch.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"chain_family\": \"zkSync\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/main-page/zksync/batches/latest-number\",\\n              \"description\": \"Get the latest committed batch number for zkSync.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/zksync/batches/{batch_number}\",\\n              \"description\": \"Get information for a specific zkSync batch.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"chain_family\": \"zkEVM\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/zkevm/batches/confirmed\",\\n              \"description\": \"Get the latest confirmed batches for zkEVM.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/zkevm/batches/{batch_number}\",\\n              \"description\": \"Get information for a specific zkEVM batch.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/zkevm/deposits\",\\n              \"description\": \"Get deposits for zkEVM.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/zkevm/withdrawals\",\\n              \"description\": \"Get withdrawals for zkEVM.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"chain_family\": \"Scroll\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/scroll/batches\",\\n              \"description\": \"Get the latest committed batches for Scroll.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/scroll/batches/{batch_number}\",\\n              \"description\": \"Get information for a specific Scroll batch.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/blocks/scroll-batch/{batch_number}\",\\n              \"description\": \"Get blocks for a specific Scroll batch.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/scroll/deposits\",\\n              \"description\": \"Get L1 to L2 messages (deposits) for Scroll.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/scroll/withdrawals\",\\n              \"description\": \"Get L2 to L1 messages (withdrawals) for Scroll.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"chain_family\": \"Shibarium\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/shibarium/deposits\",\\n              \"description\": \"Get L1 to L2 messages (deposits) for Shibarium.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/shibarium/withdrawals\",\\n              \"description\": \"Get L2 to L1 messages (withdrawals) for Shibarium.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"chain_family\": \"Stability\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/validators/stability\",\\n              \"description\": \"Get the list of validators for Stability.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"chain_family\": \"Zilliqa\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/validators/zilliqa\",\\n              \"description\": \"Get the list of validators for Zilliqa.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/validators/zilliqa/{validator_public_key}\",\\n              \"description\": \"Get information for a specific Zilliqa validator.\"\\n            }\\n          ]\\n        },\\n        {\\n          \"chain_family\": \"Redstone\",\\n          \"endpoints\": [\\n            {\\n              \"path\": \"/api/v2/mud/worlds\",\\n              \"description\": \"Get a list of MUD worlds for Redstone.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/mud/worlds/{contract_address}/tables\",\\n              \"description\": \"Get tables for a specific MUD world on Redstone.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/mud/worlds/{contract_address}/tables/{table_id}/records\",\\n              \"description\": \"Get records for a specific MUD world table on Redstone.\"\\n            },\\n            {\\n              \"path\": \"/api/v2/mud/worlds/{contract_address}/tables/{table_id}/records/{record_id}\",\\n              \"description\": \"Get a specific record from a MUD world table on Redstone.\"\\n            }\\n          ]\\n        }\\n      ]\\n    }\\n  },\\n  \"data_description\": null,\\n  \"notes\": null,\\n  \"instructions\": null,\\n  \"pagination\": null\\n}', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Blockscout MCP Server",
+      "author": null,
+      "overview": "Provide AI agents and automation tools with contextual access to blockchain data including balances, tokens, NFTs, and contract metadata. Enable multi-chain support and deliver enhanced user experience with progress notifications for long-running queries. Facilitate seamless integration with AI hosts like Claude Desktop for blockchain data analysis.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@blockscout/mcp-server",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 1668,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 18,
+      "tools": [
+        {
+          "name": "__unlock_blockchain_analysis__",
+          "annotations": {
+            "title": "Unlock Blockchain Analysis",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "Unlocks access to other MCP tools.\n\n    All tools remain locked with a \"Session Not Initialized\" error until this\n    function is successfully called. Skipping this explicit initialization step\n    will cause all subsequent tool calls to fail.\n\n    MANDATORY FOR AI AGENTS: The returned instructions contain ESSENTIAL rules\n    that MUST govern ALL blockchain data interactions. Failure to integrate these\n    rules will result in incorrect data retrieval, tool failures and invalid\n    responses. Always apply these guidelines when planning queries, processing\n    responses or recommending blockchain actions.\n\n    COMPREHENSIVE DATA SOURCES: Provides an extensive catalog of specialized\n    blockchain endpoints to unlock sophisticated, multi-dimensional blockchain\n    investigations across all supported networks.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "__unlock_blockchain_analysis__Arguments",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_block_info",
+          "annotations": {
+            "title": "Get Block Information",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Get block information like timestamp, gas used, burnt fees, transaction count etc.\n    Can optionally include the list of transaction hashes contained in the block. Transaction hashes are omitted by default; request them only when you truly need them, because on high-traffic chains the list may exhaust the context.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_block_infoArguments",
+            "required": [
+              "chain_id",
+              "number_or_hash"
+            ],
+            "properties": {
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "number_or_hash": {
+                "type": "string",
+                "title": "Number Or Hash",
+                "description": "Block number or hash"
+              },
+              "include_transactions": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Include Transactions",
+                "default": false,
+                "description": "If true, includes a list of transaction hashes from the block."
+              }
+            }
+          }
+        },
+        {
+          "name": "get_latest_block",
+          "annotations": {
+            "title": "Get Latest Block",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Get the latest indexed block number and timestamp, which represents the most recent state of the blockchain.\n    No transactions or token transfers can exist beyond this point, making it useful as a reference timestamp for other API calls.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_latest_blockArguments",
+            "required": [
+              "chain_id"
+            ],
+            "properties": {
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_address_by_ens_name",
+          "annotations": {
+            "title": "Get Address by ENS Name",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Useful for when you need to convert an ENS domain name (e.g. \"blockscout.eth\")\n    to its corresponding Ethereum address.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_address_by_ens_nameArguments",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Name",
+                "description": "ENS domain name to resolve"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transactions_by_address",
+          "annotations": {
+            "title": "Get Transactions by Address",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Retrieves native currency transfers and smart contract interactions (calls, internal txs) for an address.\n    **EXCLUDES TOKEN TRANSFERS**: Filters out direct token balance changes (ERC-20, etc.). You'll see calls *to* token contracts, but not the `Transfer` events. For token history, use `get_token_transfers_by_address`.\n    A single tx can have multiple records from internal calls; use `internal_transaction_index` for execution order.\n    Use cases:\n      - `get_transactions_by_address(address, age_from)` - get all txs to/from the address since a given date.\n      - `get_transactions_by_address(address, age_from, age_to)` - get all txs to/from the address between given dates.\n      - `get_transactions_by_address(address, age_from, age_to, methods)` - get all txs to/from the address between given dates, filtered by method.\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field, use the provided next_call to get additional pages.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_transactions_by_addressArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "age_to": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Age To",
+                "default": null,
+                "description": "End date and time (e.g 2025-05-22T22:30:00.00Z)."
+              },
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Address which either sender or receiver of the transaction"
+              },
+              "methods": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Methods",
+                "default": null,
+                "description": "A method signature to filter transactions by (e.g 0x304e6ade)"
+              },
+              "age_from": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Age From",
+                "default": null,
+                "description": "Start date and time (e.g 2025-05-22T23:00:00.00Z)."
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_token_transfers_by_address",
+          "annotations": {
+            "title": "Get Token Transfers by Address",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Get ERC-20 token transfers for an address within a specific time range.\n    Use cases:\n      - `get_token_transfers_by_address(address, age_from)` - get all transfers of any ERC-20 token to/from the address since the given date up to the current time\n      - `get_token_transfers_by_address(address, age_from, age_to)` - get all transfers of any ERC-20 token to/from the address between the given dates\n      - `get_token_transfers_by_address(address, age_from, age_to, token)` - get all transfers of the given ERC-20 token to/from the address between the given dates\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field, use the provided next_call to get additional pages.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_token_transfers_by_addressArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "token": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Token",
+                "default": null,
+                "description": "An ERC-20 token contract address to filter transfers by a specific token. If omitted, returns transfers of all tokens."
+              },
+              "age_to": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Age To",
+                "default": null,
+                "description": "End date and time (e.g 2025-05-22T22:30:00.00Z). Can be omitted to get all transfers up to the current time."
+              },
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Address which either transfer initiator or transfer receiver"
+              },
+              "age_from": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Age From",
+                "default": null,
+                "description": "Start date and time (e.g 2025-05-22T23:00:00.00Z). This parameter should be provided in most cases to limit transfers and avoid heavy database queries. Omit only if you absolutely need the full history."
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "lookup_token_by_symbol",
+          "annotations": {
+            "title": "Lookup Token by Symbol",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Search for token addresses by symbol or name. Returns multiple potential\n    matches based on symbol or token name similarity. Only the first\n    ``TOKEN_RESULTS_LIMIT`` matches from the Blockscout API are returned.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "lookup_token_by_symbolArguments",
+            "required": [
+              "chain_id",
+              "symbol"
+            ],
+            "properties": {
+              "symbol": {
+                "type": "string",
+                "title": "Symbol",
+                "description": "Token symbol or name to search for"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_contract_abi",
+          "annotations": {
+            "title": "Get Contract ABI",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Get smart contract ABI (Application Binary Interface).\n    An ABI defines all functions, events, their parameters, and return types. The ABI is required to format function calls or interpret contract data.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_contract_abiArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Smart contract address"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "inspect_contract_code",
+          "annotations": {
+            "title": "Inspect Contract Code",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "Inspects a verified contract's source code or metadata.",
+          "inputSchema": {
+            "type": "object",
+            "title": "inspect_contract_codeArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "The address of the smart contract."
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain."
+              },
+              "file_name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "File Name",
+                "default": null,
+                "description": "The name of the source file to inspect. If omitted, returns contract metadata and the list of source files."
+              }
+            }
+          }
+        },
+        {
+          "name": "read_contract",
+          "annotations": {
+            "title": "Read from Contract",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n        Calls a smart contract function (view/pure, or non-view/pure simulated via eth_call) and returns the\n        decoded result.\n\n        This tool provides a direct way to query the state of a smart contract.\n\n        Example:\n        To check the USDT balance of an address on Ethereum Mainnet, you would use the following arguments:\n    {\n      \"tool_name\": \"read_contract\",\n      \"params\": {\n        \"chain_id\": \"1\",\n        \"address\": \"0xdAC17F958D2ee523a2206206994597C13D831ec7\",\n        \"abi\": {\n          \"constant\": true,\n          \"inputs\": [{\"name\": \"_owner\", \"type\": \"address\"}],\n          \"name\": \"balanceOf\",\n          \"outputs\": [{\"name\": \"balance\", \"type\": \"uint256\"}],\n          \"payable\": false,\n          \"stateMutability\": \"view\",\n          \"type\": \"function\"\n        },\n        \"function_name\": \"balanceOf\",\n        \"args\": \"[\"0xF977814e90dA44bFA03b6295A0616a897441aceC\"]\"\n      }\n    }\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "read_contractArguments",
+            "required": [
+              "chain_id",
+              "address",
+              "abi",
+              "function_name"
+            ],
+            "properties": {
+              "abi": {
+                "type": "object",
+                "title": "Abi",
+                "description": "The JSON ABI for the specific function being called. This should be a dictionary that defines the function's name, inputs, and outputs. The function ABI can be obtained using the `get_contract_abi` tool.",
+                "additionalProperties": true
+              },
+              "args": {
+                "type": "string",
+                "title": "Args",
+                "default": "[]",
+                "description": "A JSON string containing an array of arguments. Example: \"[\"0xabc...\"]\" for a single address argument, or \"[]\" for no arguments. Order and types must match ABI inputs. Addresses: use 0x-prefixed strings; Numbers: prefer integers (not quoted); numeric strings like \"1\" are also accepted and coerced to integers. Bytes: keep as 0x-hex strings."
+              },
+              "block": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ],
+                "title": "Block",
+                "default": "latest",
+                "description": "The block identifier to read the contract state from. Can be a block number (e.g., 19000000) or a string tag (e.g., 'latest'). Defaults to 'latest'."
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Smart contract address"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "function_name": {
+                "type": "string",
+                "title": "Function Name",
+                "description": "The symbolic name of the function to be called. This must match the `name` field in the provided ABI."
+              }
+            }
+          }
+        },
+        {
+          "name": "get_address_info",
+          "annotations": {
+            "title": "Get Address Information",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Get comprehensive information about an address, including:\n    - Address existence check\n    - Native token (ETH) balance (provided as is, without adjusting by decimals)\n    - ENS name association (if any)\n    - Contract status (whether the address is a contract, whether it is verified)\n    - Proxy contract information (if applicable): determines if a smart contract is a proxy contract (which forwards calls to implementation contracts), including proxy type and implementation addresses\n    - Token details (if the contract is a token): name, symbol, decimals, total supply, etc.\n    Essential for address analysis, contract investigation, token research, and DeFi protocol analysis.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_address_infoArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Address to get information about"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_tokens_by_address",
+          "annotations": {
+            "title": "Get Tokens by Address",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Get comprehensive ERC20 token holdings for an address with enriched metadata and market data.\n    Returns detailed token information including contract details (name, symbol, decimals), market metrics (exchange rate, market cap, volume), holders count, and actual balance (provided as is, without adjusting by decimals).\n    Essential for portfolio analysis, wallet auditing, and DeFi position tracking.\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field, use the provided next_call to get additional pages.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_tokens_by_addressArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "Wallet address"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "transaction_summary",
+          "annotations": {
+            "title": "Get Transaction Summary",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Get human-readable transaction summaries from Blockscout Transaction Interpreter.\n    Automatically classifies transactions into natural language descriptions (transfers, swaps, NFT sales, DeFi operations)\n    Essential for rapid transaction comprehension, dashboard displays, and initial analysis.\n    Note: Not all transactions can be summarized and accuracy is not guaranteed for complex patterns.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "transaction_summaryArguments",
+            "required": [
+              "chain_id",
+              "transaction_hash"
+            ],
+            "properties": {
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "transaction_hash": {
+                "type": "string",
+                "title": "Transaction Hash",
+                "description": "Transaction hash"
+              }
+            }
+          }
+        },
+        {
+          "name": "nft_tokens_by_address",
+          "annotations": {
+            "title": "Get NFT Tokens by Address",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Retrieve NFT tokens (ERC-721, ERC-404, ERC-1155) owned by an address, grouped by collection.\n    Provides collection details (type, address, name, symbol, total supply, holder count) and individual token instance data (ID, name, description, external URL, metadata attributes).\n    Essential for a detailed overview of an address's digital collectibles and their associated collection data.\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field, use the provided next_call to get additional pages.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "nft_tokens_by_addressArguments",
+            "required": [
+              "chain_id",
+              "address"
+            ],
+            "properties": {
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "description": "NFT owner address"
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction_info",
+          "annotations": {
+            "title": "Get Transaction Information",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Get comprehensive transaction information.\n    Unlike standard eth_getTransactionByHash, this tool returns enriched data including decoded input parameters, detailed token transfers with token metadata, transaction fee breakdown (priority fees, burnt fees) and categorized transaction types.\n    By default, the raw transaction input is omitted if a decoded version is available to save context; request it with `include_raw_input=True` only when you truly need the raw hex data.\n    Essential for transaction analysis, debugging smart contract interactions, tracking DeFi operations.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_transaction_infoArguments",
+            "required": [
+              "chain_id",
+              "transaction_hash"
+            ],
+            "properties": {
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "transaction_hash": {
+                "type": "string",
+                "title": "Transaction Hash",
+                "description": "Transaction hash"
+              },
+              "include_raw_input": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Include Raw Input",
+                "default": false,
+                "description": "If true, includes the raw transaction input data."
+              }
+            }
+          }
+        },
+        {
+          "name": "get_transaction_logs",
+          "annotations": {
+            "title": "Get Transaction Logs",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Get comprehensive transaction logs.\n    Unlike standard eth_getLogs, this tool returns enriched logs, primarily focusing on decoded event parameters with their types and values (if event decoding is applicable).\n    Essential for analyzing smart contract events, tracking token transfers, monitoring DeFi protocol interactions, debugging event emissions, and understanding complex multi-contract transaction flows.\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field, use the provided next_call to get additional pages.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_transaction_logsArguments",
+            "required": [
+              "chain_id",
+              "transaction_hash"
+            ],
+            "properties": {
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "transaction_hash": {
+                "type": "string",
+                "title": "Transaction Hash",
+                "description": "Transaction hash"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_chains_list",
+          "annotations": {
+            "title": "Get List of Chains",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "\n    Get the list of known blockchain chains with their IDs.\n    Useful for getting a chain ID when the chain name is known. This information can be used in other tools that require a chain ID to request information.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_chains_listArguments",
+            "properties": {}
+          }
+        },
+        {
+          "name": "direct_api_call",
+          "annotations": {
+            "title": "Direct Blockscout API Call",
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "destructiveHint": false
+          },
+          "description": "Call a raw Blockscout API endpoint for advanced or chain-specific data.\n\n    Do not include query strings in ``endpoint_path``; pass all query parameters via\n    ``query_params`` to avoid double-encoding.\n\n    **SUPPORTS PAGINATION**: If response includes 'pagination' field,\n    use the provided next_call to get additional pages.\n\n    Returns:\n        ToolResponse[Any]: Must return ToolResponse[Any] (not ToolResponse[BaseModel])\n        because specialized handlers can return lists or other types that don't inherit\n        from BaseModel. The dispatcher system supports flexible data structures.\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "direct_api_callArguments",
+            "required": [
+              "chain_id",
+              "endpoint_path"
+            ],
+            "properties": {
+              "cursor": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Cursor",
+                "default": null,
+                "description": "The pagination cursor from a previous response to get the next page of results."
+              },
+              "chain_id": {
+                "type": "string",
+                "title": "Chain Id",
+                "description": "The ID of the blockchain"
+              },
+              "query_params": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Query Params",
+                "default": null,
+                "description": "Optional query parameters forwarded to the Blockscout API."
+              },
+              "endpoint_path": {
+                "type": "string",
+                "title": "Endpoint Path",
+                "description": "The Blockscout API path to call (e.g., '/api/v2/stats'); do not include query strings."
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@blockscout@mcp-server.json",
+    "source_filename": "@blockscout@mcp-server.json",
+    "processed_timestamp": 1761333735,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@blockscout/mcp-server/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@blockscout/mcp-server",
+      "displayName": "Blockscout MCP Server",
+      "description": "Provide AI agents and automation tools with contextual access to blockchain data including balances, tokens, NFTs, and contract metadata. Enable multi-chain support and deliver enhanced user experience with progress notifications for long-running queries. Facilitate seamless integration with AI hosts like Claude Desktop for blockchain data analysis.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/blockscout.com.ico",
+      "verified": true,
+      "useCount": 1668,
+      "remote": true,
+      "createdAt": "2025-06-05T11:59:08.605Z",
+      "homepage": "https://smithery.ai/server/@blockscout/mcp-server"
+    }
+  }
+}

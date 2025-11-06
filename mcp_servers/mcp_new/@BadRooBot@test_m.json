@@ -1,0 +1,217 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Hello",
+    "rank_by_usage": null,
+    "usage_count": 9,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334853,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@BadRooBot/test_m/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "hello",
+          "description": "Say hello to someone.",
+          "input_schema": {
+            "type": "object",
+            "title": "helloArguments",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Name"
+              }
+            }
+          }
+        },
+        {
+          "name": "scrape",
+          "description": "Scrape a website.",
+          "input_schema": {
+            "type": "object",
+            "title": "scrapeArguments",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "Url"
+              }
+            }
+          }
+        },
+        {
+          "name": "ai_generate",
+          "description": "\n        Interact with ai for AI model responses.\n        \n        Args:\n            request_type: Type of request - \"text\", \"image\", or \"web_search\"\n            user_message: The prompt or query to send\n            \n        Returns:\n            Dictionary with content, sources, and optionally images\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "ai_generateArguments",
+            "required": [
+              "request_type",
+              "user_message"
+            ],
+            "properties": {
+              "request_type": {
+                "type": "string",
+                "title": "Request Type"
+              },
+              "user_message": {
+                "type": "string",
+                "title": "User Message"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 3,
+      "tool_names": [
+        "hello",
+        "scrape",
+        "ai_generate"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Error executing tool hello: 1 validation error for helloArguments\\nname\\n  Field required [type=missing, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Hello",
+      "author": null,
+      "overview": "Send quick greetings, scrape website content, and generate text or images on demand. Perform web searches and collect sources to back your results. Streamline outreach, research, and content creation in one place.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@BadRooBot/test_m",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 9,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 3,
+      "tools": [
+        {
+          "name": "hello",
+          "description": "Say hello to someone.",
+          "inputSchema": {
+            "type": "object",
+            "title": "helloArguments",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Name"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "helloOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "scrape",
+          "description": "Scrape a website.",
+          "inputSchema": {
+            "type": "object",
+            "title": "scrapeArguments",
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "Url"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "scrapeOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "ai_generate",
+          "description": "\n        Interact with ai for AI model responses.\n        \n        Args:\n            request_type: Type of request - \"text\", \"image\", or \"web_search\"\n            user_message: The prompt or query to send\n            \n        Returns:\n            Dictionary with content, sources, and optionally images\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "ai_generateArguments",
+            "required": [
+              "request_type",
+              "user_message"
+            ],
+            "properties": {
+              "request_type": {
+                "type": "string",
+                "title": "Request Type"
+              },
+              "user_message": {
+                "type": "string",
+                "title": "User Message"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@BadRooBot@test_m.json",
+    "source_filename": "@BadRooBot@test_m.json",
+    "processed_timestamp": 1761334853,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@BadRooBot/test_m/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@BadRooBot/test_m",
+      "displayName": "Hello",
+      "description": "Send quick greetings, scrape website content, and generate text or images on demand. Perform web searches and collect sources to back your results. Streamline outreach, research, and content creation in one place.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 9,
+      "remote": true,
+      "createdAt": "2025-09-17T18:26:16.837Z",
+      "homepage": "https://smithery.ai/server/@BadRooBot/test_m"
+    }
+  }
+}

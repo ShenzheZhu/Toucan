@@ -1,0 +1,114 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Region Weather",
+    "rank_by_usage": null,
+    "usage_count": 318,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333999,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@hydavinci/weather_mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_weather",
+          "description": "\n    MCP handler to get weather information for a specified region\n    \n    Args:\n        region_name (str): Name of the region to get weather for\n        \n    Returns:\n        dict: Weather information for the specified region\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_weatherArguments",
+            "required": [
+              "region_name"
+            ],
+            "properties": {
+              "region_name": {
+                "type": "string",
+                "title": "Region Name"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "get_weather"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Error executing tool get_weather: 1 validation error for get_weatherArguments\\nregion_name\\n  Field required [type=missing, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Region Weather",
+      "author": null,
+      "overview": "Provide accurate and up-to-date weather information for any city or region worldwide through a simple and standardized interface. Enable AI models and clients to easily fetch weather data without requiring API keys. Deploy quickly with Docker support for seamless integration.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@hydavinci/weather_mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 318,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "get_weather",
+          "description": "\n    MCP handler to get weather information for a specified region\n    \n    Args:\n        region_name (str): Name of the region to get weather for\n        \n    Returns:\n        dict: Weather information for the specified region\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_weatherArguments",
+            "required": [
+              "region_name"
+            ],
+            "properties": {
+              "region_name": {
+                "type": "string",
+                "title": "Region Name"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@hydavinci@weather_mcp.json",
+    "source_filename": "@hydavinci@weather_mcp.json",
+    "processed_timestamp": 1761333999,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@hydavinci/weather_mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "description": "Empty config, no options"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@hydavinci/weather_mcp",
+      "displayName": "Region Weather",
+      "description": "Provide accurate and up-to-date weather information for any city or region worldwide through a simple and standardized interface. Enable AI models and clients to easily fetch weather data without requiring API keys. Deploy quickly with Docker support for seamless integration.",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/22de8b51-f07f-4cde-b2bf-4ca2ee03ac5b.png",
+      "verified": false,
+      "useCount": 318,
+      "remote": true,
+      "createdAt": "2025-05-19T06:48:44.286Z",
+      "homepage": "https://smithery.ai/server/@hydavinci/weather_mcp"
+    }
+  }
+}

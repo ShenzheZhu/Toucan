@@ -1,0 +1,112 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "WordDirectory MCP Server",
+    "rank_by_usage": null,
+    "usage_count": 3,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761335309,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@WordDirectory/directory/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "lookup_word",
+          "description": null,
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "word"
+            ],
+            "properties": {
+              "word": {
+                "type": "string",
+                "description": "The word to look up"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "lookup_word"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool lookup_word: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"word\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "WordDirectory MCP Server",
+      "author": null,
+      "overview": "Provide word definition lookups and suggestions for similar words through a standardized interface. Enhance your applications with easy access to human-readable word definitions from WordDirectory. Quickly integrate dictionary capabilities using the lookup_word tool.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@WordDirectory/directory",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 3,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "lookup_word",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "word"
+            ],
+            "properties": {
+              "word": {
+                "type": "string",
+                "description": "The word to look up"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@WordDirectory@directory.json",
+    "source_filename": "@WordDirectory@directory.json",
+    "processed_timestamp": 1761335309,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@WordDirectory/directory/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@WordDirectory/directory",
+      "displayName": "WordDirectory MCP Server",
+      "description": "Provide word definition lookups and suggestions for similar words through a standardized interface. Enhance your applications with easy access to human-readable word definitions from WordDirectory. Quickly integrate dictionary capabilities using the lookup_word tool.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/worddirectory.app.ico",
+      "verified": false,
+      "useCount": 3,
+      "remote": true,
+      "createdAt": "2025-05-06T14:31:45.832Z",
+      "homepage": "https://smithery.ai/server/@WordDirectory/directory"
+    }
+  }
+}

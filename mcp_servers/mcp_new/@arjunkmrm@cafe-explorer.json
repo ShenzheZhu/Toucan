@@ -1,0 +1,231 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Cafe Explorer",
+    "rank_by_usage": null,
+    "usage_count": 24,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761332808,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@arjunkmrm/cafe-explorer/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "search-coffee-shops",
+          "description": "Find specialty coffee shops in Singapore with optional filters",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "vibe": {
+                "type": "string",
+                "description": "Filter by vibe (e.g., Cozy, Minimalist, Japanese)"
+              },
+              "maxPrice": {
+                "enum": [
+                  "$",
+                  "$$",
+                  "$$$"
+                ],
+                "type": "string",
+                "description": "Maximum price range"
+              },
+              "minRating": {
+                "type": "number",
+                "maximum": 5,
+                "minimum": 1,
+                "description": "Minimum rating (1-5)"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Filter by neighborhood (e.g., Tiong Bahru, Haji Lane)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get-shop-details",
+          "description": "View detailed information about a specific coffee shop",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "shopId"
+            ],
+            "properties": {
+              "shopId": {
+                "type": "string",
+                "description": "ID of the coffee shop"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "explore-all-shops",
+          "description": "View all specialty coffee shops in Singapore on an interactive map",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 3,
+      "tool_names": [
+        "search-coffee-shops",
+        "get-shop-details",
+        "explore-all-shops"
+      ],
+      "verification_call_result": "meta={'shops': [{'id': 'tiong-bahru-bakery', 'name': 'Tiong Bahru Bakery', 'coords': [103.8372, 1.2868], 'neighborhood': 'Tiong Bahru', 'description': 'French-inspired bakery cafe with excellent coffee and pastries in heritage shophouse.', 'specialty': 'Flat White, Croissants', 'vibe': ['Cozy', 'Artisanal', 'European'], 'priceRange': '$$', 'rating': 4.6, 'openHours': '8am - 6pm'}, {'id': 'common-man-coffee', 'name': 'Common Man Coffee Roasters', 'coords': [103.8245, 1.279], 'neighborhood': 'Robertson Quay', 'description': 'Award-winning roastery with minimalist aesthetic and expertly crafted brews.', 'specialty': 'Pour Over, Single Origin', 'vibe': ['Minimalist', 'Professional', 'Specialty'], 'priceRange': '$$', 'rating': 4.7, 'openHours': '8am - 5pm'}, {'id': 'nylon-coffee', 'name': 'Nylon Coffee Roasters', 'coords': [103.8526, 1.3172], 'neighborhood': 'Everton Park', 'description': 'Pioneering third-wave roaster in an industrial HDB void deck setting.', 'specialty': 'Filter Coffee, Cold Brew', 'vibe': ['Industrial', 'Authentic', 'Local'], 'priceRange': '$', 'rating': 4.8, 'openHours': '9am - 6pm'}, {'id': 'forty-hands', 'name': 'Forty Hands', 'coords': [103.839, 1.2855], 'neighborhood': 'Tiong Bahru', 'description': 'Neighborhood favorite with strong community vibe and consistent quality.', 'specialty': 'Cappuccino, Brunch', 'vibe': ['Community', 'Relaxed', 'Friendly'], 'priceRange': '$$', 'rating': 4.5, 'openHours': '8am - 10pm'}, {'id': 'chye-seng-huat', 'name': 'Chye Seng Huat Hardware', 'coords': [103.8565, 1.3128], 'neighborhood': 'Lavender', 'description': 'Restored hardware store turned cafe with Papa Palheta coffee.', 'specialty': 'Espresso, Siphon Coffee', 'vibe': ['Heritage', 'Spacious', 'Instagram-worthy'], 'priceRange': '$$', 'rating': 4.4, 'openHours': '9am - 6pm'}, {'id': 'apartment-coffee', 'name': 'Apartment Coffee', 'coords': [103.8987, 1.2998], 'neighborhood': 'Haji Lane', 'description': 'Tiny third-floor hideaway with killer coffee in the heart of Arab Street.', 'specialty': 'Latte Art, Affogato', 'vibe': ['Cozy', 'Hidden', 'Intimate'], 'priceRange': '$', 'rating': 4.6, 'openHours': '11am - 7pm'}, {'id': 'homeground-coffee', 'name': 'Homeground Coffee Roasters', 'coords': [103.8456, 1.2812], 'neighborhood': 'Katong', 'description': 'Multi-roaster concept serving beans from around the world.', 'specialty': 'Guest Roasters, Aeropress', 'vibe': ['Eclectic', 'Diverse', 'Educational'], 'priceRange': '$$', 'rating': 4.5, 'openHours': '9am - 6pm'}, {'id': 'sarnies', 'name': 'Sarnies', 'coords': [103.8453, 1.3046], 'neighborhood': 'Telok Ayer', 'description': 'Aussie-style cafe serving excellent coffee and creative sandwiches.', 'specialty': 'Piccolo, Long Black', 'vibe': ['Australian', 'Brunch', 'Vibrant'], 'priceRange': '$$', 'rating': 4.4, 'openHours': '8am - 4pm'}, {'id': 'curious-palette', 'name': 'The Curious Palette', 'coords': [103.8245, 1.2795], 'neighborhood': 'Duxton Hill', 'description': 'Specialty coffee meets wine bar in a charming heritage shophouse.', 'specialty': 'Chemex, V60', 'vibe': ['Sophisticated', 'Evening', 'Wine'], 'priceRange': '$$$', 'rating': 4.5, 'openHours': '10am - 11pm'}, {'id': 'mellower-coffee', 'name': 'Mellower Coffee', 'coords': [103.8198, 1.2812], 'neighborhood': 'Alexandra', 'description': 'Japanese-style kissaten with meticulous brewing and tranquil atmosphere.', 'specialty': 'Hand-drip, Single Origin', 'vibe': ['Japanese', 'Zen', 'Quiet'], 'priceRange': '$$', 'rating': 4.7, 'openHours': '10am - 7pm'}, {'id': 'cata-coffee', 'name': 'Cata Coffee', 'coords': [103.9, 1.31], 'neighborhood': 'Macpherson', 'description': 'Modern specialty roastery with focus on precision brewing and single-origin beans.', 'specialty': 'Espresso, Pour Over', 'vibe': ['Contemporary', 'Specialty', 'Minimalist'], 'priceRange': '$$', 'rating': 4.6, 'openHours': '9am - 6pm'}], 'searchParams': {}} content=[TextContent(type='text', text='Found 11 coffee shops: Tiong Bahru Bakery, Common Man Coffee Roasters, Nylon Coffee Roasters, Forty Hands, Chye Seng Huat Hardware, Apartment Coffee, Homeground Coffee Roasters, Sarnies, The Curious Palette, Mellower Coffee, Cata Coffee', annotations=None, meta=None)] structuredContent={'center': [103.8372, 1.2868], 'zoom': 12, 'markers': [[103.8372, 1.2868], [103.8245, 1.279], [103.8526, 1.3172], [103.839, 1.2855], [103.8565, 1.3128], [103.8987, 1.2998], [103.8456, 1.2812], [103.8453, 1.3046], [103.8245, 1.2795], [103.8198, 1.2812], [103.9, 1.31]], 'favorites': []} isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Cafe Explorer",
+      "author": null,
+      "overview": "A simple demonstration of ChatGPT app with map integration",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@arjunkmrm/cafe-explorer",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 24,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 3,
+      "tools": [
+        {
+          "name": "search-coffee-shops",
+          "_meta": {
+            "openai/outputTemplate": "ui://widget/coffee-map.html",
+            "openai/widgetAccessible": true,
+            "openai/toolInvocation/invoked": "Found coffee shops!",
+            "openai/toolInvocation/invoking": "Finding great coffee spots..."
+          },
+          "title": "Search Coffee Shops",
+          "description": "Find specialty coffee shops in Singapore with optional filters",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "vibe": {
+                "type": "string",
+                "description": "Filter by vibe (e.g., Cozy, Minimalist, Japanese)"
+              },
+              "maxPrice": {
+                "enum": [
+                  "$",
+                  "$$",
+                  "$$$"
+                ],
+                "type": "string",
+                "description": "Maximum price range"
+              },
+              "minRating": {
+                "type": "number",
+                "maximum": 5,
+                "minimum": 1,
+                "description": "Minimum rating (1-5)"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Filter by neighborhood (e.g., Tiong Bahru, Haji Lane)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get-shop-details",
+          "_meta": {
+            "openai/outputTemplate": "ui://widget/coffee-map.html",
+            "openai/widgetAccessible": true,
+            "openai/toolInvocation/invoked": "Here's the shop info!",
+            "openai/toolInvocation/invoking": "Getting shop details..."
+          },
+          "title": "Get Coffee Shop Details",
+          "description": "View detailed information about a specific coffee shop",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "shopId"
+            ],
+            "properties": {
+              "shopId": {
+                "type": "string",
+                "description": "ID of the coffee shop"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "explore-all-shops",
+          "_meta": {
+            "openai/outputTemplate": "ui://widget/coffee-map.html",
+            "openai/widgetAccessible": true,
+            "openai/toolInvocation/invoked": "Explore away!",
+            "openai/toolInvocation/invoking": "Loading Singapore's best coffee..."
+          },
+          "title": "Explore All Coffee Shops",
+          "description": "View all specialty coffee shops in Singapore on an interactive map",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@arjunkmrm@cafe-explorer.json",
+    "source_filename": "@arjunkmrm@cafe-explorer.json",
+    "processed_timestamp": 1761332808,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@arjunkmrm/cafe-explorer/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "required": [],
+        "properties": {},
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@arjunkmrm/cafe-explorer",
+      "displayName": "Cafe Explorer",
+      "description": "A simple demonstration of ChatGPT app with map integration",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 24,
+      "remote": true,
+      "createdAt": "2025-10-18T03:48:48.827Z",
+      "homepage": "https://smithery.ai/server/@arjunkmrm/cafe-explorer"
+    }
+  }
+}

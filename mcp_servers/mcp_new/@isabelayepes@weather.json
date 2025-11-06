@@ -1,0 +1,189 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Weather",
+    "rank_by_usage": null,
+    "usage_count": 15,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333396,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@isabelayepes/weather/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_alerts",
+          "description": "Get weather alerts for a US state.\n\n    Args:\n        state: Two-letter US state code (e.g. CA, NY)\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_alertsArguments",
+            "required": [
+              "state"
+            ],
+            "properties": {
+              "state": {
+                "type": "string",
+                "title": "State"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_forecast",
+          "description": "Get weather forecast for a location.\n\n    Args:\n        latitude: Latitude of the location\n        longitude: Longitude of the location\n    ",
+          "input_schema": {
+            "type": "object",
+            "title": "get_forecastArguments",
+            "required": [
+              "latitude",
+              "longitude"
+            ],
+            "properties": {
+              "latitude": {
+                "type": "number",
+                "title": "Latitude"
+              },
+              "longitude": {
+                "type": "number",
+                "title": "Longitude"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 2,
+      "tool_names": [
+        "get_alerts",
+        "get_forecast"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Error executing tool get_alerts: 1 validation error for get_alertsArguments\\nstate\\n  Field required [type=missing, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Weather",
+      "author": null,
+      "overview": "Get up-to-date forecasts and US severe weather alerts. Check conditions for any location to plan commutes, trips, and outdoor activities. Stay ahead of storms with timely, localized insights.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@isabelayepes/weather",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 15,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 2,
+      "tools": [
+        {
+          "name": "get_alerts",
+          "description": "Get weather alerts for a US state.\n\n    Args:\n        state: Two-letter US state code (e.g. CA, NY)\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_alertsArguments",
+            "required": [
+              "state"
+            ],
+            "properties": {
+              "state": {
+                "type": "string",
+                "title": "State"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "get_alertsOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_forecast",
+          "description": "Get weather forecast for a location.\n\n    Args:\n        latitude: Latitude of the location\n        longitude: Longitude of the location\n    ",
+          "inputSchema": {
+            "type": "object",
+            "title": "get_forecastArguments",
+            "required": [
+              "latitude",
+              "longitude"
+            ],
+            "properties": {
+              "latitude": {
+                "type": "number",
+                "title": "Latitude"
+              },
+              "longitude": {
+                "type": "number",
+                "title": "Longitude"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "get_forecastOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@isabelayepes@weather.json",
+    "source_filename": "@isabelayepes@weather.json",
+    "processed_timestamp": 1761333396,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@isabelayepes/weather/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "required": [],
+        "properties": {},
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@isabelayepes/weather",
+      "displayName": "Weather",
+      "description": "Get up-to-date forecasts and US severe weather alerts. Check conditions for any location to plan commutes, trips, and outdoor activities. Stay ahead of storms with timely, localized insights.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 15,
+      "remote": true,
+      "createdAt": "2025-10-01T19:07:39.026Z",
+      "homepage": "https://smithery.ai/server/@isabelayepes/weather"
+    }
+  }
+}

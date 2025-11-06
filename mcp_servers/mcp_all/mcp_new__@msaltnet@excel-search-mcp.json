@@ -1,0 +1,296 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Excel MCP Server",
+    "rank_by_usage": null,
+    "usage_count": 211,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333770,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@msaltnet/excel-search-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "list_excel_files_tool",
+          "description": "Search and return a list of Excel files in the configured work directory.",
+          "input_schema": {
+            "type": "object",
+            "title": "list_excel_files_toolArguments",
+            "properties": {}
+          }
+        },
+        {
+          "name": "read_excel_data_tool",
+          "description": "Read Excel file data and convert it to JSON format.",
+          "input_schema": {
+            "type": "object",
+            "title": "read_excel_data_toolArguments",
+            "required": [
+              "file_path"
+            ],
+            "properties": {
+              "max_rows": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Max Rows",
+                "default": null
+              },
+              "file_path": {
+                "type": "string",
+                "title": "File Path"
+              },
+              "worksheet_name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Worksheet Name",
+                "default": null
+              }
+            }
+          }
+        },
+        {
+          "name": "search_in_excel_tool",
+          "description": "Search for specific text within Excel file(s).",
+          "input_schema": {
+            "type": "object",
+            "title": "search_in_excel_toolArguments",
+            "required": [
+              "file_path",
+              "search_term"
+            ],
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "title": "File Path"
+              },
+              "search_term": {
+                "type": "string",
+                "title": "Search Term"
+              },
+              "case_sensitive": {
+                "type": "boolean",
+                "title": "Case Sensitive",
+                "default": false
+              },
+              "worksheet_name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Worksheet Name",
+                "default": null
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 3,
+      "tool_names": [
+        "list_excel_files_tool",
+        "read_excel_data_tool",
+        "search_in_excel_tool"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='{\\n  \"success\": false,\\n  \"error\": \"Directory does not exist: C:\\\\\\\\01_code\\\\\\\\excel-search-mcp\\\\\\\\sample\",\\n  \"error_code\": \"DIRECTORY_NOT_FOUND\",\\n  \"directory\": \"C:\\\\\\\\01_code\\\\\\\\excel-search-mcp\\\\\\\\sample\",\\n  \"recursive\": true,\\n  \"total_files\": 0,\\n  \"files\": [],\\n  \"work_directory\": \"\"\\n}', annotations=None, meta=None)] structuredContent={'result': '{\\n  \"success\": false,\\n  \"error\": \"Directory does not exist: C:\\\\\\\\01_code\\\\\\\\excel-search-mcp\\\\\\\\sample\",\\n  \"error_code\": \"DIRECTORY_NOT_FOUND\",\\n  \"directory\": \"C:\\\\\\\\01_code\\\\\\\\excel-search-mcp\\\\\\\\sample\",\\n  \"recursive\": true,\\n  \"total_files\": 0,\\n  \"files\": [],\\n  \"work_directory\": \"\"\\n}'} isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Excel MCP Server",
+      "author": null,
+      "overview": "Find Excel files fast. Extract data from spreadsheets for quick analysis. Search across multiple files to pinpoint what you need.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@msaltnet/excel-search-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 211,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 3,
+      "tools": [
+        {
+          "name": "list_excel_files_tool",
+          "description": "Search and return a list of Excel files in the configured work directory.",
+          "inputSchema": {
+            "type": "object",
+            "title": "list_excel_files_toolArguments",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "list_excel_files_toolOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "read_excel_data_tool",
+          "description": "Read Excel file data and convert it to JSON format.",
+          "inputSchema": {
+            "type": "object",
+            "title": "read_excel_data_toolArguments",
+            "required": [
+              "file_path"
+            ],
+            "properties": {
+              "max_rows": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Max Rows",
+                "default": null
+              },
+              "file_path": {
+                "type": "string",
+                "title": "File Path"
+              },
+              "worksheet_name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Worksheet Name",
+                "default": null
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "read_excel_data_toolOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_in_excel_tool",
+          "description": "Search for specific text within Excel file(s).",
+          "inputSchema": {
+            "type": "object",
+            "title": "search_in_excel_toolArguments",
+            "required": [
+              "file_path",
+              "search_term"
+            ],
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "title": "File Path"
+              },
+              "search_term": {
+                "type": "string",
+                "title": "Search Term"
+              },
+              "case_sensitive": {
+                "type": "boolean",
+                "title": "Case Sensitive",
+                "default": false
+              },
+              "worksheet_name": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Worksheet Name",
+                "default": null
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "search_in_excel_toolOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@msaltnet@excel-search-mcp.json",
+    "source_filename": "@msaltnet@excel-search-mcp.json",
+    "processed_timestamp": 1761333770,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@msaltnet/excel-search-mcp/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@msaltnet/excel-search-mcp",
+      "displayName": "Excel MCP Server",
+      "description": "Find Excel files fast. Extract data from spreadsheets for quick analysis. Search across multiple files to pinpoint what you need.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 211,
+      "remote": true,
+      "createdAt": "2025-10-13T07:30:34.712Z",
+      "homepage": "https://smithery.ai/server/@msaltnet/excel-search-mcp"
+    }
+  }
+}

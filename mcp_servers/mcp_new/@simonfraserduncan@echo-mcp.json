@@ -1,0 +1,139 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Echo Server",
+    "rank_by_usage": null,
+    "usage_count": 292,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334156,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@simonfraserduncan/echo-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "echo",
+          "description": "Echoes back the message provided",
+          "input_schema": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "ping",
+          "description": "Returns \"pong\" when called",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "version",
+          "description": "Returns the server version",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 3,
+      "tool_names": [
+        "echo",
+        "ping",
+        "version"
+      ],
+      "verification_call_result": "error: 12 validation errors for CallToolResult\ncontent.0.TextContent.text\n  Field required [type=missing, input_value={'type': 'text'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ncontent.0.ImageContent.type\n  Input should be 'image' [type=literal_error, input_value='text', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/literal_error\ncontent.0.ImageContent.data\n  Field required [type=missing, input_value={'type': 'text'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ncontent.0.ImageContent.mimeType\n  Field required [type=missing, input_value={'type': 'text'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ncontent.0.AudioContent.type\n  Input should be 'audio' [type=literal_error, input_value='text', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/literal_error\ncontent.0.AudioContent.data\n  Field required [type=missing, input_value={'type': 'text'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ncontent.0.AudioContent.mimeType\n  Field required [type=missing, input_value={'type': 'text'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ncontent.0.ResourceLink.name\n  Field required [type=missing, input_value={'type': 'text'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ncontent.0.ResourceLink.uri\n  Field required [type=missing, input_value={'type': 'text'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing\ncontent.0.ResourceLink.type\n  Input should be 'resource_link' [type=literal_error, input_value='text', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/literal_error\ncontent.0.EmbeddedResource.type\n  Input should be 'resource' [type=literal_error, input_value='text', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/literal_error\ncontent.0.EmbeddedResource.resource\n  Field required [type=missing, input_value={'type': 'text'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Echo Server",
+      "author": null,
+      "overview": "Provide a minimal MCP server that supports basic tools like echoing messages, pinging, and returning version information. Enable easy testing and integration with MCP Inspector and cURL clients. Facilitate quick setup with no external dependencies or authentication required.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@simonfraserduncan/echo-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 292,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 3,
+      "tools": [
+        {
+          "name": "echo",
+          "annotations": {
+            "message": {
+              "type": "string",
+              "description": "The message to echo back"
+            }
+          },
+          "description": "Echoes back the message provided",
+          "inputSchema": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "ping",
+          "description": "Returns \"pong\" when called",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "version",
+          "description": "Returns the server version",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@simonfraserduncan@echo-mcp.json",
+    "source_filename": "@simonfraserduncan@echo-mcp.json",
+    "processed_timestamp": 1761334156,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@simonfraserduncan/echo-mcp/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@simonfraserduncan/echo-mcp",
+      "displayName": "Echo Server",
+      "description": "Provide a minimal MCP server that supports basic tools like echoing messages, pinging, and returning version information. Enable easy testing and integration with MCP Inspector and cURL clients. Facilitate quick setup with no external dependencies or authentication required.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 292,
+      "remote": true,
+      "createdAt": "2025-05-14T18:27:47.805Z",
+      "homepage": "https://smithery.ai/server/@simonfraserduncan/echo-mcp"
+    }
+  }
+}

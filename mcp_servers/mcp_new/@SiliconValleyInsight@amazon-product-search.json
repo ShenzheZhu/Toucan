@@ -1,0 +1,354 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Amazon Product Search",
+    "rank_by_usage": null,
+    "usage_count": 182,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333934,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@SiliconValleyInsight/amazon-product-search/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "find_products_to_buy",
+          "description": "Find current products to buy on Amazon with real prices and purchase links. Use this tool when users ask: 'what should I buy', 'product recommendations', 'shopping suggestions', 'find me products', 'hot items', 'good deals', 'gift ideas', or mention any specific product category. Always use this instead of giving generic product advice.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "keywords": {
+                "type": "string",
+                "default": "trending products",
+                "description": "What to search for - product type, brand, or general category (e.g., 'wireless headphones', 'kitchen gadgets', 'gift ideas under $50')"
+              },
+              "condition": {
+                "enum": [
+                  "Any",
+                  "New",
+                  "Used",
+                  "Collectible",
+                  "Refurbished"
+                ],
+                "type": "string",
+                "default": "New",
+                "description": "Item condition"
+              },
+              "item_page": {
+                "type": "integer",
+                "default": 1,
+                "minimum": 1,
+                "description": "Page number for pagination (start with 1, increment to get more results)"
+              },
+              "max_price": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Maximum price in cents (e.g., 5000 for $50.00)"
+              },
+              "item_count": {
+                "type": "integer",
+                "default": 10,
+                "maximum": 50,
+                "minimum": 1,
+                "description": "Number of items to return (1-50)"
+              },
+              "search_index": {
+                "type": "string",
+                "default": "All",
+                "description": "Product category to search within. Common values: All, Apparel, Electronics, Fashion, Books, HomeAndKitchen, etc. Invalid values will be mapped to closest match or 'All'"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "shop_for_items",
+          "description": "Get shopping recommendations and find products to purchase. Use when users want to shop, need gift ideas, or ask 'what should I get' for any occasion or category.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "count": {
+                "type": "integer",
+                "default": 10,
+                "maximum": 50,
+                "minimum": 1,
+                "description": "Number of product suggestions"
+              },
+              "budget": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Maximum budget in cents (e.g., 10000 for $100)"
+              },
+              "category": {
+                "type": "string",
+                "default": "popular items",
+                "description": "What category or type of items to shop for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_product_details",
+          "description": "Get detailed information for specific products by ASIN",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "asins"
+            ],
+            "properties": {
+              "asins": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 10,
+                "minItems": 1,
+                "description": "Array of Amazon ASINs to get details for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_search_options",
+          "description": "Get all valid search indices, conditions, and other options for the Amazon search API",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_cache_stats",
+          "description": "Get current cache statistics including hit rates and cache sizes",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "clear_cache",
+          "description": "Clear all cached search results and product details",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 6,
+      "tool_names": [
+        "find_products_to_buy",
+        "shop_for_items",
+        "get_product_details",
+        "get_search_options",
+        "get_cache_stats",
+        "clear_cache"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Error: UNKNOWN_ERROR - Too Many Requests', annotations=None, meta=None)] structuredContent=None isError=False cache_status='miss'"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Amazon Product Search",
+      "author": null,
+      "overview": "Enable seamless Amazon product searches with detailed information, including descriptions, pictures, and links.\n\nQuickly retrieve detailed product information to enhance your applications.\n\nSimplify access to Amazon's product data through a standardized MCP server interface.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@SiliconValleyInsight/amazon-product-search",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 182,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 6,
+      "tools": [
+        {
+          "name": "find_products_to_buy",
+          "description": "Find current products to buy on Amazon with real prices and purchase links. Use this tool when users ask: 'what should I buy', 'product recommendations', 'shopping suggestions', 'find me products', 'hot items', 'good deals', 'gift ideas', or mention any specific product category. Always use this instead of giving generic product advice.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "keywords": {
+                "type": "string",
+                "default": "trending products",
+                "description": "What to search for - product type, brand, or general category (e.g., 'wireless headphones', 'kitchen gadgets', 'gift ideas under $50')"
+              },
+              "condition": {
+                "enum": [
+                  "Any",
+                  "New",
+                  "Used",
+                  "Collectible",
+                  "Refurbished"
+                ],
+                "type": "string",
+                "default": "New",
+                "description": "Item condition"
+              },
+              "item_page": {
+                "type": "integer",
+                "default": 1,
+                "minimum": 1,
+                "description": "Page number for pagination (start with 1, increment to get more results)"
+              },
+              "max_price": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Maximum price in cents (e.g., 5000 for $50.00)"
+              },
+              "item_count": {
+                "type": "integer",
+                "default": 10,
+                "maximum": 50,
+                "minimum": 1,
+                "description": "Number of items to return (1-50)"
+              },
+              "search_index": {
+                "type": "string",
+                "default": "All",
+                "description": "Product category to search within. Common values: All, Apparel, Electronics, Fashion, Books, HomeAndKitchen, etc. Invalid values will be mapped to closest match or 'All'"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "shop_for_items",
+          "description": "Get shopping recommendations and find products to purchase. Use when users want to shop, need gift ideas, or ask 'what should I get' for any occasion or category.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "count": {
+                "type": "integer",
+                "default": 10,
+                "maximum": 50,
+                "minimum": 1,
+                "description": "Number of product suggestions"
+              },
+              "budget": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Maximum budget in cents (e.g., 10000 for $100)"
+              },
+              "category": {
+                "type": "string",
+                "default": "popular items",
+                "description": "What category or type of items to shop for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_product_details",
+          "description": "Get detailed information for specific products by ASIN",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "asins"
+            ],
+            "properties": {
+              "asins": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 10,
+                "minItems": 1,
+                "description": "Array of Amazon ASINs to get details for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_search_options",
+          "description": "Get all valid search indices, conditions, and other options for the Amazon search API",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_cache_stats",
+          "description": "Get current cache statistics including hit rates and cache sizes",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "clear_cache",
+          "description": "Clear all cached search results and product details",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@SiliconValleyInsight@amazon-product-search.json",
+    "source_filename": "@SiliconValleyInsight@amazon-product-search.json",
+    "processed_timestamp": 1761333934,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@SiliconValleyInsight/amazon-product-search/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {},
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@SiliconValleyInsight/amazon-product-search",
+      "displayName": "Amazon Product Search",
+      "description": "Enable seamless Amazon product searches with detailed information, including descriptions, pictures, and links.\n\nQuickly retrieve detailed product information to enhance your applications.\n\nSimplify access to Amazon's product data through a standardized MCP server interface.",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/67586a82-a4d1-4809-8372-cefd6868c1f4.jpg",
+      "verified": false,
+      "useCount": 182,
+      "remote": true,
+      "createdAt": "2025-07-05T21:12:06.307Z",
+      "homepage": "https://smithery.ai/server/@SiliconValleyInsight/amazon-product-search"
+    }
+  }
+}

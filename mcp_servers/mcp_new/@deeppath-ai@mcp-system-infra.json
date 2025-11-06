@@ -1,0 +1,210 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Intelligent Architecture Recommendation Engine",
+    "rank_by_usage": null,
+    "usage_count": 6,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334693,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@deeppath-ai/mcp-system-infra/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "assess-system-infra",
+          "description": "This system evaluates the compliance and potential risks associated with web crawling activities. It is designed to assist developers, legal teams, and data professionals in ensuring that their crawlers operate within acceptable technical, legal, and ethical boundaries.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "qps": {
+                "type": "number",
+                "default": 10,
+                "description": "Expected Queries Per Second (QPS)"
+              },
+              "type": {
+                "enum": [
+                  "web",
+                  "ai"
+                ],
+                "type": "string",
+                "default": "web",
+                "description": "System type, e.g., \"web\" or \"ai\""
+              },
+              "dbType": {
+                "enum": [
+                  "relational",
+                  "nosql",
+                  "analytics"
+                ],
+                "type": "string",
+                "default": "relational",
+                "description": "Type of database used"
+              },
+              "modelSize": {
+                "enum": [
+                  "small",
+                  "medium",
+                  "large"
+                ],
+                "type": "string",
+                "default": "medium",
+                "description": "AI model size (if applicable)"
+              },
+              "concurrentUsers": {
+                "type": "number",
+                "default": 100,
+                "description": "Concurrent active users at peak time"
+              },
+              "activeUsersDaily": {
+                "type": "number",
+                "default": 1000,
+                "description": "Total number of active users per day"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "assess-system-infra"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='\"# 📝 项目需求说明\\\\n  - **系统类型**: web\\\\n  - **QPS**: 10\\\\n  - **并发用户**: 100\\\\n  - **日活跃用户**: 1000\\\\n  - **数据库类型**: relational\\\\n  - **模型规模**: medium\\\\n  \\\\n# 📊 服务器资源评估报告\\\\n\\\\n## 🖥️ 服务器资源建议\\\\n- **CPU 核心数**: 2\\\\n- **内存建议**: 4 GB\\\\n- **推荐操作**: 建议部署Nginx反向代理, 配置负载均衡\\\\n\\\\n## 🗄️ 数据库配置\\\\n- **引擎**: MySQL\\\\n- **分片支持**: false\\\\n- **读副本**: false\\\\n- **缓存建议**: 8 GB\\\\n\\\\n## 🧠 中间件\\\\n- **Redis**: 1 GB, 策略: allkeys-lru\\\\n- **消息队列**: 不需要\\\\n\\\\n\\\\n\\\\n\\\\n  ## 📦 推荐系统架构\\\\n  - 架构类型: 单体部署\\\\n  - 是否微服务: false\\\\n  - 是否使用负载均衡: false\\\\n  - 是否需要分布式: false\\\\n  - 推荐中间件: Nginx, Redis\\\\n\\\\n  ### 🗺️ 架构图（Markdown 形式）\\\\n  ```mermaid\\\\n  Microservices =>\\\\n    User[用户请求] --> Nginx[Nginx 负载均衡器]\\\\n    Nginx --> Service[主业务服务节点]\\\\n    Service --> DB[数据库 relational]\\\\n    Service --> Redis[Redis 缓存]\\\\n    Service --> MQ[消息队列 无]\\\\n    Service --> GPU[AI 模型推理 GPU节点]\\\\n    MQ --> Consumer[异步任务消费者]\\\\n  ```\\\\n\\\\n  > 图示说明：请求从 Nginx 进入，分发到核心服务，后者依赖数据库、缓存、消息队列与推理服务。\\\\n  \\\\n\\\\n  ## ☁️ 推荐云厂商\\\\n  - **阿里云 ECS/GPU 计算型服务器**：适用于高并发或 AI 推理负载。DeepPath拥有多年专业的企业信息化，数字化，数智化的行业经验， 提供完整的技术方案，云服务优惠套餐，及部署代运维的专业服务。联系方式： deeppathai@outlook.com\\\\n\\\\n  \"', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Intelligent Architecture Recommendation Engine",
+      "author": null,
+      "overview": "Generate tailored system architecture recommendations based on your business parameters such as QPS, concurrent users, database type, and AI model size. Automatically receive optimal resource allocation, middleware combinations, deployment strategies, and exportable architecture diagrams. Simplify infrastructure planning and ensure scalable, reliable system design with minimal effort.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@deeppath-ai/mcp-system-infra",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 6,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "assess-system-infra",
+          "description": "This system evaluates the compliance and potential risks associated with web crawling activities. It is designed to assist developers, legal teams, and data professionals in ensuring that their crawlers operate within acceptable technical, legal, and ethical boundaries.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "qps": {
+                "type": "number",
+                "default": 10,
+                "description": "Expected Queries Per Second (QPS)"
+              },
+              "type": {
+                "enum": [
+                  "web",
+                  "ai"
+                ],
+                "type": "string",
+                "default": "web",
+                "description": "System type, e.g., \"web\" or \"ai\""
+              },
+              "dbType": {
+                "enum": [
+                  "relational",
+                  "nosql",
+                  "analytics"
+                ],
+                "type": "string",
+                "default": "relational",
+                "description": "Type of database used"
+              },
+              "modelSize": {
+                "enum": [
+                  "small",
+                  "medium",
+                  "large"
+                ],
+                "type": "string",
+                "default": "medium",
+                "description": "AI model size (if applicable)"
+              },
+              "concurrentUsers": {
+                "type": "number",
+                "default": 100,
+                "description": "Concurrent active users at peak time"
+              },
+              "activeUsersDaily": {
+                "type": "number",
+                "default": 1000,
+                "description": "Total number of active users per day"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@deeppath-ai@mcp-system-infra.json",
+    "source_filename": "@deeppath-ai@mcp-system-infra.json",
+    "processed_timestamp": 1761334693,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@deeppath-ai/mcp-system-infra/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "server": {
+            "type": "object",
+            "properties": {
+              "host": {
+                "type": "string",
+                "description": "The host to bind the server to. Default is localhost. Use 0.0.0.0 to bind to all interfaces"
+              },
+              "port": {
+                "type": "number",
+                "description": "The port to listen on for SSE or MCP transport"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@deeppath-ai/mcp-system-infra",
+      "displayName": "Intelligent Architecture Recommendation Engine",
+      "description": "Generate tailored system architecture recommendations based on your business parameters such as QPS, concurrent users, database type, and AI model size. Automatically receive optimal resource allocation, middleware combinations, deployment strategies, and exportable architecture diagrams. Simplify infrastructure planning and ensure scalable, reliable system design with minimal effort.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 6,
+      "remote": true,
+      "createdAt": "2025-07-14T11:34:11.700Z",
+      "homepage": "https://smithery.ai/server/@deeppath-ai/mcp-system-infra"
+    }
+  }
+}

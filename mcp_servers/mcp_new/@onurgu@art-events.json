@@ -1,0 +1,275 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "art-events",
+    "rank_by_usage": null,
+    "usage_count": 3,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334605,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@onurgu/art-events/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "search_events_by_artist",
+          "description": "\n        Search for art events by artist name with fuzzy matching.\n        \n        Args:\n            artist_name: The name of the artist to search for (can contain typos)\n        \n        Returns:\n            JSON string containing matching events with artist and venue information\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "search_events_by_artistArguments",
+            "required": [
+              "artist_name"
+            ],
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "title": "Artist Name"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_events_by_date_range",
+          "description": "\n        Search for art events that are visitable during a date range or on a specific date.\n        Returns events whose date ranges intersect with the search range.\n        \n        Args:\n            start_date: Start date in YYYY-MM-DD format (optional if specific_date is provided)\n            end_date: End date in YYYY-MM-DD format (optional if specific_date is provided)\n            specific_date: Specific date in YYYY-MM-DD format (alternative to date range)\n        \n        Returns:\n            JSON string containing events that are visitable during the specified date range\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "search_events_by_date_rangeArguments",
+            "properties": {
+              "end_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "End Date",
+                "default": null
+              },
+              "start_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Start Date",
+                "default": null
+              },
+              "specific_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Specific Date",
+                "default": null
+              }
+            }
+          }
+        },
+        {
+          "name": "search_events_today",
+          "description": "\n        Search for art events happening today (automatically uses current date).\n        This is useful for LLMs that don't have access to the current date.\n        \n        Returns:\n            JSON string containing events happening today\n        ",
+          "input_schema": {
+            "type": "object",
+            "title": "search_events_todayArguments",
+            "properties": {}
+          }
+        }
+      ],
+      "tool_count": 3,
+      "tool_names": [
+        "search_events_by_artist",
+        "search_events_by_date_range",
+        "search_events_today"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Error executing tool search_events_by_artist: 1 validation error for search_events_by_artistArguments\\nartist_name\\n  Field required [type=missing, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "art-events",
+      "author": null,
+      "overview": "",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@onurgu/art-events",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 3,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 3,
+      "tools": [
+        {
+          "name": "search_events_by_artist",
+          "description": "\n        Search for art events by artist name with fuzzy matching.\n        \n        Args:\n            artist_name: The name of the artist to search for (can contain typos)\n        \n        Returns:\n            JSON string containing matching events with artist and venue information\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "search_events_by_artistArguments",
+            "required": [
+              "artist_name"
+            ],
+            "properties": {
+              "artist_name": {
+                "type": "string",
+                "title": "Artist Name"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "search_events_by_artistOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_events_by_date_range",
+          "description": "\n        Search for art events that are visitable during a date range or on a specific date.\n        Returns events whose date ranges intersect with the search range.\n        \n        Args:\n            start_date: Start date in YYYY-MM-DD format (optional if specific_date is provided)\n            end_date: End date in YYYY-MM-DD format (optional if specific_date is provided)\n            specific_date: Specific date in YYYY-MM-DD format (alternative to date range)\n        \n        Returns:\n            JSON string containing events that are visitable during the specified date range\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "search_events_by_date_rangeArguments",
+            "properties": {
+              "end_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "End Date",
+                "default": null
+              },
+              "start_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Start Date",
+                "default": null
+              },
+              "specific_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Specific Date",
+                "default": null
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "search_events_by_date_rangeOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_events_today",
+          "description": "\n        Search for art events happening today (automatically uses current date).\n        This is useful for LLMs that don't have access to the current date.\n        \n        Returns:\n            JSON string containing events happening today\n        ",
+          "inputSchema": {
+            "type": "object",
+            "title": "search_events_todayArguments",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "search_events_todayOutput",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "Result"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@onurgu@art-events.json",
+    "source_filename": "@onurgu@art-events.json",
+    "processed_timestamp": 1761334605,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@onurgu/art-events/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "ConfigSchema",
+        "properties": {
+          "database_url": {
+            "type": "string",
+            "title": "Database Url",
+            "default": "postgresql://artdata_user:artdata_pass@localhost:5432/artdata_db",
+            "description": "PostgreSQL database connection URL"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@onurgu/art-events",
+      "displayName": "art-events",
+      "description": "",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 3,
+      "remote": true,
+      "createdAt": "2025-09-29T20:42:38.980Z",
+      "homepage": "https://smithery.ai/server/@onurgu/art-events"
+    }
+  }
+}

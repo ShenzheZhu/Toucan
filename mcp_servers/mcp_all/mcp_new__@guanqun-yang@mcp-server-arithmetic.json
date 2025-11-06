@@ -1,0 +1,308 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Arithmetic",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761336114,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@guanqun-yang/mcp-server-arithmetic/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "fun1",
+          "description": "Divides the first number by the second",
+          "input_schema": {
+            "type": "object",
+            "title": "fun1Arguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "number",
+                "title": "A"
+              },
+              "b": {
+                "type": "number",
+                "title": "B"
+              }
+            }
+          }
+        },
+        {
+          "name": "fun2",
+          "description": "Multiplies two numbers together",
+          "input_schema": {
+            "type": "object",
+            "title": "fun2Arguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "number",
+                "title": "A"
+              },
+              "b": {
+                "type": "number",
+                "title": "B"
+              }
+            }
+          }
+        },
+        {
+          "name": "fun3",
+          "description": "Subtracts the second number from the first",
+          "input_schema": {
+            "type": "object",
+            "title": "fun3Arguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "number",
+                "title": "A"
+              },
+              "b": {
+                "type": "number",
+                "title": "B"
+              }
+            }
+          }
+        },
+        {
+          "name": "fun4",
+          "description": "Adds two numbers together",
+          "input_schema": {
+            "type": "object",
+            "title": "fun4Arguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "number",
+                "title": "A"
+              },
+              "b": {
+                "type": "number",
+                "title": "B"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 4,
+      "tool_names": [
+        "fun1",
+        "fun2",
+        "fun3",
+        "fun4"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Error executing tool fun1: 2 validation errors for fun1Arguments\\na\\n  Field required [type=missing, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing\\nb\\n  Field required [type=missing, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Arithmetic",
+      "author": null,
+      "overview": "Perform quick addition, subtraction, multiplication, and division in your workflow. Get fast, reliable results for everyday calculations. Streamline simple math tasks without switching tools.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@guanqun-yang/mcp-server-arithmetic",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 4,
+      "tools": [
+        {
+          "name": "fun1",
+          "description": "Divides the first number by the second",
+          "inputSchema": {
+            "type": "object",
+            "title": "fun1Arguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "number",
+                "title": "A"
+              },
+              "b": {
+                "type": "number",
+                "title": "B"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "fun1Output",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "number",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "fun2",
+          "description": "Multiplies two numbers together",
+          "inputSchema": {
+            "type": "object",
+            "title": "fun2Arguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "number",
+                "title": "A"
+              },
+              "b": {
+                "type": "number",
+                "title": "B"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "fun2Output",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "number",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "fun3",
+          "description": "Subtracts the second number from the first",
+          "inputSchema": {
+            "type": "object",
+            "title": "fun3Arguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "number",
+                "title": "A"
+              },
+              "b": {
+                "type": "number",
+                "title": "B"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "fun3Output",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "number",
+                "title": "Result"
+              }
+            }
+          }
+        },
+        {
+          "name": "fun4",
+          "description": "Adds two numbers together",
+          "inputSchema": {
+            "type": "object",
+            "title": "fun4Arguments",
+            "required": [
+              "a",
+              "b"
+            ],
+            "properties": {
+              "a": {
+                "type": "number",
+                "title": "A"
+              },
+              "b": {
+                "type": "number",
+                "title": "B"
+              }
+            }
+          },
+          "outputSchema": {
+            "type": "object",
+            "title": "fun4Output",
+            "required": [
+              "result"
+            ],
+            "properties": {
+              "result": {
+                "type": "number",
+                "title": "Result"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@guanqun-yang@mcp-server-arithmetic.json",
+    "source_filename": "@guanqun-yang@mcp-server-arithmetic.json",
+    "processed_timestamp": 1761336114,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@guanqun-yang/mcp-server-arithmetic/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@guanqun-yang/mcp-server-arithmetic",
+      "displayName": "Arithmetic",
+      "description": "Perform quick addition, subtraction, multiplication, and division in your workflow. Get fast, reliable results for everyday calculations. Streamline simple math tasks without switching tools.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-09-23T07:40:14.141Z",
+      "homepage": "https://smithery.ai/server/@guanqun-yang/mcp-server-arithmetic"
+    }
+  }
+}

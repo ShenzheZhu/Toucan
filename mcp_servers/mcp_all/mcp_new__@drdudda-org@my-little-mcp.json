@@ -1,0 +1,169 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "KST Time & Randomizer",
+    "rank_by_usage": null,
+    "usage_count": 1,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333411,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@drdudda-org/my-little-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_current_time",
+          "description": "현재 시간을 알려주는 도구입니다. 한국 시간(KST)으로 현재 날짜와 시간을 반환합니다.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "format": {
+                "enum": [
+                  "locale",
+                  "iso",
+                  "timestamp"
+                ],
+                "type": "string",
+                "description": "시간 포맷 (기본값: locale)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_random_number",
+          "description": "1부터 50 사이의 랜덤한 숫자를 하나 뽑아주는 도구입니다.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "max": {
+                "type": "number",
+                "maximum": 100,
+                "minimum": 1,
+                "description": "최대값 (기본값: 50)"
+              },
+              "min": {
+                "type": "number",
+                "maximum": 100,
+                "minimum": 1,
+                "description": "최소값 (기본값: 1)"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 2,
+      "tool_names": [
+        "get_current_time",
+        "get_random_number"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='현재 시간: 2025. 10. 25. 토요일 오전 04:16:51', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "KST Time & Randomizer",
+      "author": null,
+      "overview": "Get the current date and time in Korea Standard Time. Draw a random number between 1 and 50 for quick picks, testing, or games. Streamline tasks that need precise local time and simple randomness.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@drdudda-org/my-little-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 1,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 2,
+      "tools": [
+        {
+          "name": "get_current_time",
+          "title": "현재 시간 조회",
+          "description": "현재 시간을 알려주는 도구입니다. 한국 시간(KST)으로 현재 날짜와 시간을 반환합니다.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "format": {
+                "enum": [
+                  "locale",
+                  "iso",
+                  "timestamp"
+                ],
+                "type": "string",
+                "description": "시간 포맷 (기본값: locale)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "get_random_number",
+          "title": "랜덤 숫자 생성",
+          "description": "1부터 50 사이의 랜덤한 숫자를 하나 뽑아주는 도구입니다.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "max": {
+                "type": "number",
+                "maximum": 100,
+                "minimum": 1,
+                "description": "최대값 (기본값: 50)"
+              },
+              "min": {
+                "type": "number",
+                "maximum": 100,
+                "minimum": 1,
+                "description": "최소값 (기본값: 1)"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@drdudda-org@my-little-mcp.json",
+    "source_filename": "@drdudda-org@my-little-mcp.json",
+    "processed_timestamp": 1761333411,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@drdudda-org/my-little-mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@drdudda-org/my-little-mcp",
+      "displayName": "KST Time & Randomizer",
+      "description": "Get the current date and time in Korea Standard Time. Draw a random number between 1 and 50 for quick picks, testing, or games. Streamline tasks that need precise local time and simple randomness.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 1,
+      "remote": true,
+      "createdAt": "2025-09-04T07:56:34.646Z",
+      "homepage": "https://smithery.ai/server/@drdudda-org/my-little-mcp"
+    }
+  }
+}

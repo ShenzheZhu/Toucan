@@ -1,0 +1,261 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Game Trends",
+    "rank_by_usage": null,
+    "usage_count": 1198,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761332457,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@halismertkir/game-trends-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_steam_trending_games",
+          "description": "Get real trending games from Steam platform with live data from multiple sources.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_steam_top_sellers",
+          "description": "Get real top selling games from Steam platform with live sales data.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_steam_most_played",
+          "description": "Get real-time most played games from Steam with live player statistics from SteamCharts.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_epic_free_games",
+          "description": "Get current and upcoming free games from Epic Games Store with real promotion data.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_epic_trending_games",
+          "description": "Get trending games from Epic Games Store.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_all_trending_games",
+          "description": "Get comprehensive real-time gaming data from all platforms (Steam and Epic Games).",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_api_health",
+          "description": "Check the health status of the Gaming Trend Analytics API.",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      ],
+      "tool_count": 7,
+      "tool_names": [
+        "get_steam_trending_games",
+        "get_steam_top_sellers",
+        "get_steam_most_played",
+        "get_epic_free_games",
+        "get_epic_trending_games",
+        "get_all_trending_games",
+        "get_api_health"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='{\"success\":true,\"platform\":\"Steam\",\"type\":\"Trending Games\",\"count\":25,\"data\":[{\"id\":\"2650760\",\"name\":\"Tom Clancy\\'s The Division Franchise Sale\",\"price\":\"N/A\",\"discount\":0,\"headerImage\":\"https://store.akamai.steamstatic.com/public/images/blank.gif\",\"platform\":\"Steam\",\"category\":\"Featured\",\"isTrending\":true,\"source\":\"featured_home\",\"url\":\"https://store.steampowered.com/sale/TheDivisionSale2025?snr=1_4_4__40_1\"},{\"id\":\"1217060\",\"name\":\"Gunfire Reborn\",\"price\":\"$10.99\",\"discount\":45,\"headerImage\":\"https://store.akamai.steamstatic.com/public/images/blank.gif\",\"platform\":\"Steam\",\"category\":\"Featured\",\"isTrending\":true,\"source\":\"featured_home\",\"url\":\"https://store.steampowered.com/app/1217060?snr=1_4_4__40_1\"},{\"id\":\"495660\",\"name\":\"The Walking Dead: The Telltale Series. FRANCHISE SALE.\",\"price\":\"N/A\",\"discount\":0,\"headerImage\":\"https://store.akamai.steamstatic.com/public/images/blank.gif\",\"platform\":\"Steam\",\"category\":\"Featured\",\"isTrending\":true,\"source\":\"featured_home\",\"url\":\"https://store.steampowered.com/sale/TWDFranchisesale2025?snr=1_4_4__40_2\"},{\"id\":\"1794680\",\"name\":\"Vampire Survivors\",\"price\":\"$3.49\",\"discount\":30,\"headerImage\":\"https://store.akamai.steamstatic.com/public/images/blank.gif\",\"platform\":\"Steam\",\"category\":\"Featured\",\"isTrending\":true,\"source\":\"featured_home\",\"url\":\"https://store.steampowered.com/app/1794680?snr=1_4_4__40_2\"},{\"id\":\"1237970\",\"name\":\"Titanfall® 2\",\"price\":\"$2.99\",\"discount\":90,\"headerImage\":\"https://store.akamai.steamstatic.com/public/images/blank.gif\",\"platform\":\"Steam\",\"category\":\"Featured\",\"isTrending\":true,\"source\":\"featured_home\",\"url\":\"https://store.steampowered.com/app/1237970?snr=1_4_4__40_2\"},{\"id\":\"1911610\",\"name\":\"Windblown\",\"price\":\"$19.99\",\"discount\":20,\"headerImage\":\"https://store.akamai.steamstatic.com/public/images/blank.gif\",\"platform\":\"Steam\",\"category\":\"Featured\",\"isTrending\":true,\"source\":\"featured_home\",\"url\":\"https://store.steampowered.com/app/1911610?snr=1_4_4__40_3\"},{\"id\":\"730\",\"name\":\"Counter-Strike 2\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/capsule_231x87.jpg?t=1749053861\",\"platform\":\"Steam\",\"releaseDate\":\"Aug 21, 2012\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/730/CounterStrike_2/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"2592160\",\"name\":\"Dispatch\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2592160/925ffa7e3699d5c9c1369be5d4c3369f0e907e00/capsule_231x87.jpg?t=1761322491\",\"platform\":\"Steam\",\"releaseDate\":\"Oct 22, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/2592160/Dispatch/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"2767030\",\"name\":\"Marvel Rivals\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2767030/f77a7018444fbf8bd96dd79de42b4f5d6603d236/capsule_231x87.jpg?t=1760151360\",\"platform\":\"Steam\",\"releaseDate\":\"Dec 5, 2024\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/2767030/Marvel_Rivals/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"1984270\",\"name\":\"Digimon Story Time Stranger\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1984270/150fc2146dfdaf16243b81bd82bcc4ebc059113b/capsule_231x87.jpg?t=1759485332\",\"platform\":\"Steam\",\"releaseDate\":\"Oct 2, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/1984270/Digimon_Story_Time_Stranger/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"252490\",\"name\":\"Rust\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252490/21aac0b6e20e1ba12f635e7deb730e32a51afbd5/capsule_231x87.jpg?t=1761251855\",\"platform\":\"Steam\",\"releaseDate\":\"Feb 8, 2018\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/252490/Rust/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"230410\",\"name\":\"Warframe\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/230410/75b31abf9c1b62d78e5e6c83a44c05ef390e0fe2/capsule_231x87.jpg?t=1760556657\",\"platform\":\"Steam\",\"releaseDate\":\"Mar 25, 2013\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/230410/Warframe/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"2958130\",\"name\":\"Jurassic World Evolution 3\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2958130/767bbed48a0426d14562f4aba32bd30abefb79ec/capsule_231x87.jpg?t=1761208654\",\"platform\":\"Steam\",\"releaseDate\":\"Oct 21, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/2958130/Jurassic_World_Evolution_3/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"2062430\",\"name\":\"BALL x PIT\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2062430/93669476208e773101f9949b9e668322fc39ef85/capsule_231x87.jpg?t=1761330172\",\"platform\":\"Steam\",\"releaseDate\":\"Oct 15, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/2062430/BALL_x_PIT/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"236390\",\"name\":\"War Thunder\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/236390/019a2d6b67747f719793df0d241ba81cda31a674/capsule_231x87.jpg?t=1760699357\",\"platform\":\"Steam\",\"releaseDate\":\"Aug 15, 2013\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/236390/War_Thunder/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"2352620\",\"name\":\"Fellowship\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2352620/f06c76ca2bc7a445225dd73260946d89f977cc8f/capsule_231x87.jpg?t=1761150960\",\"platform\":\"Steam\",\"releaseDate\":\"Oct 16, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/2352620/Fellowship/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"3405690\",\"name\":\"EA SPORTS FC™ 26\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1759332156\",\"platform\":\"Steam\",\"releaseDate\":\"Sep 25, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"3949040\",\"name\":\"RV There Yet?\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3949040/05b77bc86d227612ded8e54753063e43c44698c4/capsule_231x87.jpg?t=1761050176\",\"platform\":\"Steam\",\"releaseDate\":\"Oct 21, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/3949040/RV_There_Yet/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"381210\",\"name\":\"Dead by Daylight\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/capsule_231x87.jpg?t=1760636583\",\"platform\":\"Steam\",\"releaseDate\":\"Jun 14, 2016\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/381210/Dead_by_Daylight/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"3167020\",\"name\":\"Escape From Duckov\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3167020/3c797aea37aa81aea663767e432236418bc1ce82/capsule_231x87.jpg?t=1761189013\",\"platform\":\"Steam\",\"releaseDate\":\"Oct 16, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/3167020/Escape_From_Duckov/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"3405340\",\"name\":\"Megabonk\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405340/d6e1b8b1fff6b5b6da2aadedac6626a658ed0ec4/capsule_231x87.jpg?t=1760445338\",\"platform\":\"Steam\",\"releaseDate\":\"Sep 18, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/3405340/Megabonk/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"3681810\",\"name\":\"Blue Protocol: Star Resonance\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3681810/20ce9aa0380585078b52dc2ba5f2e8149fcb40a6/capsule_231x87.jpg?t=1760461813\",\"platform\":\"Steam\",\"releaseDate\":\"Oct 9, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/3681810/Blue_Protocol_Star_Resonance/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"3472040\",\"name\":\"NBA 2K26\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/85138a5e265c37f8c529e7187102e8753bd92527/capsule_231x87_alt_assets_0.jpg?t=1760717379\",\"platform\":\"Steam\",\"releaseDate\":\"Sep 4, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"2968420\",\"name\":\"PowerWash Simulator 2\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2968420/33ef3ac597ce9813b4eb8da4eace0f5cb51869e5/capsule_231x87.jpg?t=1761318957\",\"platform\":\"Steam\",\"releaseDate\":\"Oct 23, 2025\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/2968420/PowerWash_Simulator_2/?snr=1_7_7_popularnew_150_1\"},{\"id\":\"2183900\",\"name\":\"Warhammer 40,000: Space Marine 2\",\"price\":\"N/A\",\"headerImage\":\"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/capsule_231x87.jpg?t=1760605499\",\"platform\":\"Steam\",\"releaseDate\":\"Sep 9, 2024\",\"reviewScore\":null,\"tags\":[],\"category\":\"New & Trending\",\"isTrending\":true,\"source\":\"new_trending_api\",\"url\":\"https://store.steampowered.com/app/2183900/Warhammer_40000_Space_Marine_2/?snr=1_7_7_popularnew_150_1\"}],\"sources_consulted\":[\"featured_home\",\"new_trending_api\",\"popular_new_releases_api\",\"steamcharts_top\",\"steam_global_stats_page\"],\"timestamp\":\"2025-10-24T19:00:57.597626\"}', annotations=None, meta=None)] structuredContent={'success': True, 'platform': 'Steam', 'type': 'Trending Games', 'count': 25, 'data': [{'id': '2650760', 'name': \"Tom Clancy's The Division Franchise Sale\", 'price': 'N/A', 'discount': 0, 'headerImage': 'https://store.akamai.steamstatic.com/public/images/blank.gif', 'platform': 'Steam', 'category': 'Featured', 'isTrending': True, 'source': 'featured_home', 'url': 'https://store.steampowered.com/sale/TheDivisionSale2025?snr=1_4_4__40_1'}, {'id': '1217060', 'name': 'Gunfire Reborn', 'price': '$10.99', 'discount': 45, 'headerImage': 'https://store.akamai.steamstatic.com/public/images/blank.gif', 'platform': 'Steam', 'category': 'Featured', 'isTrending': True, 'source': 'featured_home', 'url': 'https://store.steampowered.com/app/1217060?snr=1_4_4__40_1'}, {'id': '495660', 'name': 'The Walking Dead: The Telltale Series. FRANCHISE SALE.', 'price': 'N/A', 'discount': 0, 'headerImage': 'https://store.akamai.steamstatic.com/public/images/blank.gif', 'platform': 'Steam', 'category': 'Featured', 'isTrending': True, 'source': 'featured_home', 'url': 'https://store.steampowered.com/sale/TWDFranchisesale2025?snr=1_4_4__40_2'}, {'id': '1794680', 'name': 'Vampire Survivors', 'price': '$3.49', 'discount': 30, 'headerImage': 'https://store.akamai.steamstatic.com/public/images/blank.gif', 'platform': 'Steam', 'category': 'Featured', 'isTrending': True, 'source': 'featured_home', 'url': 'https://store.steampowered.com/app/1794680?snr=1_4_4__40_2'}, {'id': '1237970', 'name': 'Titanfall® 2', 'price': '$2.99', 'discount': 90, 'headerImage': 'https://store.akamai.steamstatic.com/public/images/blank.gif', 'platform': 'Steam', 'category': 'Featured', 'isTrending': True, 'source': 'featured_home', 'url': 'https://store.steampowered.com/app/1237970?snr=1_4_4__40_2'}, {'id': '1911610', 'name': 'Windblown', 'price': '$19.99', 'discount': 20, 'headerImage': 'https://store.akamai.steamstatic.com/public/images/blank.gif', 'platform': 'Steam', 'category': 'Featured', 'isTrending': True, 'source': 'featured_home', 'url': 'https://store.steampowered.com/app/1911610?snr=1_4_4__40_3'}, {'id': '730', 'name': 'Counter-Strike 2', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/capsule_231x87.jpg?t=1749053861', 'platform': 'Steam', 'releaseDate': 'Aug 21, 2012', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/730/CounterStrike_2/?snr=1_7_7_popularnew_150_1'}, {'id': '2592160', 'name': 'Dispatch', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2592160/925ffa7e3699d5c9c1369be5d4c3369f0e907e00/capsule_231x87.jpg?t=1761322491', 'platform': 'Steam', 'releaseDate': 'Oct 22, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/2592160/Dispatch/?snr=1_7_7_popularnew_150_1'}, {'id': '2767030', 'name': 'Marvel Rivals', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2767030/f77a7018444fbf8bd96dd79de42b4f5d6603d236/capsule_231x87.jpg?t=1760151360', 'platform': 'Steam', 'releaseDate': 'Dec 5, 2024', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/2767030/Marvel_Rivals/?snr=1_7_7_popularnew_150_1'}, {'id': '1984270', 'name': 'Digimon Story Time Stranger', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1984270/150fc2146dfdaf16243b81bd82bcc4ebc059113b/capsule_231x87.jpg?t=1759485332', 'platform': 'Steam', 'releaseDate': 'Oct 2, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/1984270/Digimon_Story_Time_Stranger/?snr=1_7_7_popularnew_150_1'}, {'id': '252490', 'name': 'Rust', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252490/21aac0b6e20e1ba12f635e7deb730e32a51afbd5/capsule_231x87.jpg?t=1761251855', 'platform': 'Steam', 'releaseDate': 'Feb 8, 2018', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/252490/Rust/?snr=1_7_7_popularnew_150_1'}, {'id': '230410', 'name': 'Warframe', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/230410/75b31abf9c1b62d78e5e6c83a44c05ef390e0fe2/capsule_231x87.jpg?t=1760556657', 'platform': 'Steam', 'releaseDate': 'Mar 25, 2013', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/230410/Warframe/?snr=1_7_7_popularnew_150_1'}, {'id': '2958130', 'name': 'Jurassic World Evolution 3', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2958130/767bbed48a0426d14562f4aba32bd30abefb79ec/capsule_231x87.jpg?t=1761208654', 'platform': 'Steam', 'releaseDate': 'Oct 21, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/2958130/Jurassic_World_Evolution_3/?snr=1_7_7_popularnew_150_1'}, {'id': '2062430', 'name': 'BALL x PIT', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2062430/93669476208e773101f9949b9e668322fc39ef85/capsule_231x87.jpg?t=1761330172', 'platform': 'Steam', 'releaseDate': 'Oct 15, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/2062430/BALL_x_PIT/?snr=1_7_7_popularnew_150_1'}, {'id': '236390', 'name': 'War Thunder', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/236390/019a2d6b67747f719793df0d241ba81cda31a674/capsule_231x87.jpg?t=1760699357', 'platform': 'Steam', 'releaseDate': 'Aug 15, 2013', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/236390/War_Thunder/?snr=1_7_7_popularnew_150_1'}, {'id': '2352620', 'name': 'Fellowship', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2352620/f06c76ca2bc7a445225dd73260946d89f977cc8f/capsule_231x87.jpg?t=1761150960', 'platform': 'Steam', 'releaseDate': 'Oct 16, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/2352620/Fellowship/?snr=1_7_7_popularnew_150_1'}, {'id': '3405690', 'name': 'EA SPORTS FC™ 26', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405690/abca0fd9695521a046d407327d82f808162315f7/capsule_231x87.jpg?t=1759332156', 'platform': 'Steam', 'releaseDate': 'Sep 25, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/?snr=1_7_7_popularnew_150_1'}, {'id': '3949040', 'name': 'RV There Yet?', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3949040/05b77bc86d227612ded8e54753063e43c44698c4/capsule_231x87.jpg?t=1761050176', 'platform': 'Steam', 'releaseDate': 'Oct 21, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/3949040/RV_There_Yet/?snr=1_7_7_popularnew_150_1'}, {'id': '381210', 'name': 'Dead by Daylight', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/capsule_231x87.jpg?t=1760636583', 'platform': 'Steam', 'releaseDate': 'Jun 14, 2016', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/381210/Dead_by_Daylight/?snr=1_7_7_popularnew_150_1'}, {'id': '3167020', 'name': 'Escape From Duckov', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3167020/3c797aea37aa81aea663767e432236418bc1ce82/capsule_231x87.jpg?t=1761189013', 'platform': 'Steam', 'releaseDate': 'Oct 16, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/3167020/Escape_From_Duckov/?snr=1_7_7_popularnew_150_1'}, {'id': '3405340', 'name': 'Megabonk', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3405340/d6e1b8b1fff6b5b6da2aadedac6626a658ed0ec4/capsule_231x87.jpg?t=1760445338', 'platform': 'Steam', 'releaseDate': 'Sep 18, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/3405340/Megabonk/?snr=1_7_7_popularnew_150_1'}, {'id': '3681810', 'name': 'Blue Protocol: Star Resonance', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3681810/20ce9aa0380585078b52dc2ba5f2e8149fcb40a6/capsule_231x87.jpg?t=1760461813', 'platform': 'Steam', 'releaseDate': 'Oct 9, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/3681810/Blue_Protocol_Star_Resonance/?snr=1_7_7_popularnew_150_1'}, {'id': '3472040', 'name': 'NBA 2K26', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3472040/85138a5e265c37f8c529e7187102e8753bd92527/capsule_231x87_alt_assets_0.jpg?t=1760717379', 'platform': 'Steam', 'releaseDate': 'Sep 4, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/3472040/NBA_2K26/?snr=1_7_7_popularnew_150_1'}, {'id': '2968420', 'name': 'PowerWash Simulator 2', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2968420/33ef3ac597ce9813b4eb8da4eace0f5cb51869e5/capsule_231x87.jpg?t=1761318957', 'platform': 'Steam', 'releaseDate': 'Oct 23, 2025', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/2968420/PowerWash_Simulator_2/?snr=1_7_7_popularnew_150_1'}, {'id': '2183900', 'name': 'Warhammer 40,000: Space Marine 2', 'price': 'N/A', 'headerImage': 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2183900/capsule_231x87.jpg?t=1760605499', 'platform': 'Steam', 'releaseDate': 'Sep 9, 2024', 'reviewScore': None, 'tags': [], 'category': 'New & Trending', 'isTrending': True, 'source': 'new_trending_api', 'url': 'https://store.steampowered.com/app/2183900/Warhammer_40000_Space_Marine_2/?snr=1_7_7_popularnew_150_1'}], 'sources_consulted': ['featured_home', 'new_trending_api', 'popular_new_releases_api', 'steamcharts_top', 'steam_global_stats_page'], 'timestamp': '2025-10-24T19:00:57.597626'} isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Game Trends",
+      "author": null,
+      "overview": "Provide real-time insights and analytics on gaming trends to help users stay updated with the latest developments in the gaming industry. Enable data-driven decisions by exposing relevant game trend data and metrics through a standardized interface. Facilitate integration with other tools and applications for enhanced gaming market analysis.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@halismertkir/game-trends-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 1198,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 7,
+      "tools": [
+        {
+          "name": "get_steam_trending_games",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "Get real trending games from Steam platform with live data from multiple sources.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        {
+          "name": "get_steam_top_sellers",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "Get real top selling games from Steam platform with live sales data.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        {
+          "name": "get_steam_most_played",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "Get real-time most played games from Steam with live player statistics from SteamCharts.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        {
+          "name": "get_epic_free_games",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "Get current and upcoming free games from Epic Games Store with real promotion data.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        {
+          "name": "get_epic_trending_games",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "Get trending games from Epic Games Store.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        {
+          "name": "get_all_trending_games",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "Get comprehensive real-time gaming data from all platforms (Steam and Epic Games).",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        {
+          "name": "get_api_health",
+          "_meta": {
+            "_fastmcp": {
+              "tags": []
+            }
+          },
+          "description": "Check the health status of the Gaming Trend Analytics API.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          },
+          "outputSchema": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@halismertkir@game-trends-mcp.json",
+    "source_filename": "@halismertkir@game-trends-mcp.json",
+    "processed_timestamp": 1761332457,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@halismertkir/game-trends-mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@halismertkir/game-trends-mcp",
+      "displayName": "Game Trends",
+      "description": "Provide real-time insights and analytics on gaming trends to help users stay updated with the latest developments in the gaming industry. Enable data-driven decisions by exposing relevant game trend data and metrics through a standardized interface. Facilitate integration with other tools and applications for enhanced gaming market analysis.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 1198,
+      "remote": true,
+      "createdAt": "2025-05-27T23:23:13.641Z",
+      "homepage": "https://smithery.ai/server/@halismertkir/game-trends-mcp"
+    }
+  }
+}

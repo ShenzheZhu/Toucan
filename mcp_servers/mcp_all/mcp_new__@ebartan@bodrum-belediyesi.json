@@ -1,0 +1,507 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Bodrum Belediyesi",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334865,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@ebartan/bodrum-belediyesi/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "list_departments",
+          "description": "Bodrum Belediyesi'nin tüm müdürlüklerini listeler",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_department",
+          "description": "Belirli bir müdürlük hakkında detaylı bilgi getirir",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Müdürlük adı"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_departments",
+          "description": "Anahtar kelimeye göre müdürlük arar",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "keyword": {
+                "type": "string",
+                "description": "Arama kelimesi"
+              }
+            }
+          }
+        },
+        {
+          "name": "list_neighborhoods",
+          "description": "Bodrum'un tüm mahallelerini listeler",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_neighborhood",
+          "description": "Belirli bir mahalle hakkında detaylı bilgi getirir",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Mahalle adı"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_neighborhoods",
+          "description": "Anahtar kelimeye göre mahalle arar",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "keyword": {
+                "type": "string",
+                "description": "Arama kelimesi"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_streets_by_neighborhood",
+          "description": "Bir mahalledeki tüm sokak ve caddeleri listeler",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "neighborhood"
+            ],
+            "properties": {
+              "neighborhood": {
+                "type": "string",
+                "description": "Mahalle adı"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_streets",
+          "description": "Sokak/cadde adına göre arama yapar",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "limit": {
+                "type": "number",
+                "description": "Maksimum sonuç sayısı (varsayılan: 50)"
+              },
+              "keyword": {
+                "type": "string",
+                "description": "Arama kelimesi"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_street_stats",
+          "description": "Tüm sokak ve caddelerin istatistiklerini getirir",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_public_works_by_neighborhood",
+          "description": "Bir mahalledeki Fen İşleri çalışmalarını listeler (2024-2025)",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "neighborhood"
+            ],
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Yıl (2024 veya 2025, boş bırakılırsa tümü)"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Mahalle adı"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_public_works_by_status",
+          "description": "Durumuna göre Fen İşleri çalışmalarını listeler",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Yıl (2024 veya 2025, boş bırakılırsa tümü)"
+              },
+              "status": {
+                "enum": [
+                  "completed",
+                  "ongoing"
+                ],
+                "type": "string",
+                "description": "Çalışma durumu (completed: Bitti, ongoing: Devam Eden)"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_public_works",
+          "description": "Fen İşleri çalışmalarında arama yapar",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Yıl (2024 veya 2025, boş bırakılırsa tümü)"
+              },
+              "limit": {
+                "type": "number",
+                "description": "Maksimum sonuç sayısı (varsayılan: 50)"
+              },
+              "keyword": {
+                "type": "string",
+                "description": "Arama kelimesi"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_public_works_stats",
+          "description": "Fen İşleri çalışmaları istatistiklerini getirir (2024-2025)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Yıl (2024 veya 2025, boş bırakılırsa tümü)"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 13,
+      "tool_names": [
+        "list_departments",
+        "get_department",
+        "search_departments",
+        "list_neighborhoods",
+        "get_neighborhood",
+        "search_neighborhoods",
+        "get_streets_by_neighborhood",
+        "search_streets",
+        "get_street_stats",
+        "get_public_works_by_neighborhood",
+        "get_public_works_by_status",
+        "search_public_works",
+        "get_public_works_stats"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Bodrum Belediyesi Müdürlükleri:\\n\\n- Afet İşleri Müdürlüğü: Afet ve acil durum yönetimi, risk azaltma çalışmaları\\n- Basın Yayın ve Halkla İlişkiler Müdürlüğü: Kurumsal iletişim, basın ilişkileri, halkla ilişkiler faaliyetleri\\n- Bilgi İşlem Müdürlüğü: Bilgi teknolojileri altyapısı, yazılım geliştirme, sistem yönetimi\\n- Destek Hizmetleri Müdürlüğü: İdari destek, satın alma, lojistik hizmetler\\n- Emlak ve İstimlak Müdürlüğü: Gayrimenkul yönetimi, kamulaştırma işlemleri\\n- Fen İşleri Müdürlüğü: Altyapı çalışmaları, yol yapım ve bakımı, teknik hizmetler\\n- Hukuk İşleri Müdürlüğü: Hukuki danışmanlık, dava takibi, sözleşme yönetimi\\n- İklim Değişikliği ve Sıfır Atık Müdürlüğü: Çevre koruma, iklim eylem planı, atık yönetimi\\n- İmar ve Şehircilik Müdürlüğü: İmar planları, yapı ruhsatları, şehir planlama\\n- İnsan Kaynakları ve Eğitim Müdürlüğü: Personel yönetimi, eğitim programları, kariyer geliştirme\\n- İşletme ve İştirakler Müdürlüğü: Belediye işletmeleri yönetimi, iştirak takibi\\n- Kadın ve Aile Hizmetleri Müdürlüğü: Kadın hakları, aile danışmanlığı, sosyal destek hizmetleri\\n- Kültür ve Sosyal İşler Müdürlüğü: Kültürel etkinlikler, sosyal projeler, sanat faaliyetleri\\n- Mali Hizmetler Müdürlüğü: Bütçe yönetimi, muhasebe, mali kontrol\\n- Muhtarlık İşleri Müdürlüğü: Muhtarlıklarla koordinasyon, mahalle hizmetleri\\n- Özel Kalem Müdürlüğü: Başkanlık sekretaryası, protokol işleri\\n- Park ve Bahçeler Müdürlüğü: Yeşil alan düzenleme, park bakımı, peyzaj çalışmaları\\n- Plan ve Proje Müdürlüğü: Stratejik planlama, proje geliştirme ve yönetimi\\n- Ruhsat ve Denetim Müdürlüğü: İşyeri ruhsatları, denetim faaliyetleri\\n- Sağlık İşleri Müdürlüğü: Halk sağlığı hizmetleri, veterinerlik hizmetleri\\n- Sosyal Destek Hizmetleri Müdürlüğü: Sosyal yardımlar, dezavantajlı gruplara destek\\n- Sosyal ve Kültürel Hizmetler Müdürlüğü: Sosyal ve kültürel etkinlikler, toplumsal projeler\\n- Strateji Geliştirme Müdürlüğü: Kurumsal strateji, performans yönetimi, kalite süreçleri\\n- Tarımsal Hizmetler Müdürlüğü: Tarımsal destek, üretici destekleri, kırsal kalkınma\\n- Temizlik İşleri Müdürlüğü: Çevre temizliği, atık toplama, sokak temizliği\\n- Ulaşım Hizmetleri Müdürlüğü: Toplu taşıma, trafik düzenleme, ulaşım planlaması\\n- Veteriner İşleri Müdürlüğü: Hayvan sağlığı, hayvan barınakları, kuduz mücadele\\n- Yazı İşleri Müdürlüğü: Meclis ve encümen işleri, evrak yönetimi, arşiv\\n- Zabıta Müdürlüğü: Belediye düzeni, denetim, zabıta hizmetleri', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Bodrum Belediyesi",
+      "author": null,
+      "overview": "Provide a scaffold for building MCP servers with ease. Accelerate development by leveraging pre-built tools and integrations. Simplify the creation and management of MCP-compliant services.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@ebartan/bodrum-belediyesi",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 13,
+      "tools": [
+        {
+          "name": "list_departments",
+          "description": "Bodrum Belediyesi'nin tüm müdürlüklerini listeler",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_department",
+          "description": "Belirli bir müdürlük hakkında detaylı bilgi getirir",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Müdürlük adı"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_departments",
+          "description": "Anahtar kelimeye göre müdürlük arar",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "keyword": {
+                "type": "string",
+                "description": "Arama kelimesi"
+              }
+            }
+          }
+        },
+        {
+          "name": "list_neighborhoods",
+          "description": "Bodrum'un tüm mahallelerini listeler",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_neighborhood",
+          "description": "Belirli bir mahalle hakkında detaylı bilgi getirir",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Mahalle adı"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_neighborhoods",
+          "description": "Anahtar kelimeye göre mahalle arar",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "keyword": {
+                "type": "string",
+                "description": "Arama kelimesi"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_streets_by_neighborhood",
+          "description": "Bir mahalledeki tüm sokak ve caddeleri listeler",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "neighborhood"
+            ],
+            "properties": {
+              "neighborhood": {
+                "type": "string",
+                "description": "Mahalle adı"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_streets",
+          "description": "Sokak/cadde adına göre arama yapar",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "limit": {
+                "type": "number",
+                "description": "Maksimum sonuç sayısı (varsayılan: 50)"
+              },
+              "keyword": {
+                "type": "string",
+                "description": "Arama kelimesi"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_street_stats",
+          "description": "Tüm sokak ve caddelerin istatistiklerini getirir",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "get_public_works_by_neighborhood",
+          "description": "Bir mahalledeki Fen İşleri çalışmalarını listeler (2024-2025)",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "neighborhood"
+            ],
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Yıl (2024 veya 2025, boş bırakılırsa tümü)"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Mahalle adı"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_public_works_by_status",
+          "description": "Durumuna göre Fen İşleri çalışmalarını listeler",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Yıl (2024 veya 2025, boş bırakılırsa tümü)"
+              },
+              "status": {
+                "enum": [
+                  "completed",
+                  "ongoing"
+                ],
+                "type": "string",
+                "description": "Çalışma durumu (completed: Bitti, ongoing: Devam Eden)"
+              }
+            }
+          }
+        },
+        {
+          "name": "search_public_works",
+          "description": "Fen İşleri çalışmalarında arama yapar",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Yıl (2024 veya 2025, boş bırakılırsa tümü)"
+              },
+              "limit": {
+                "type": "number",
+                "description": "Maksimum sonuç sayısı (varsayılan: 50)"
+              },
+              "keyword": {
+                "type": "string",
+                "description": "Arama kelimesi"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_public_works_stats",
+          "description": "Fen İşleri çalışmaları istatistiklerini getirir (2024-2025)",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Yıl (2024 veya 2025, boş bırakılırsa tümü)"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@ebartan@bodrum-belediyesi.json",
+    "source_filename": "@ebartan@bodrum-belediyesi.json",
+    "processed_timestamp": 1761334865,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@ebartan/bodrum-belediyesi/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "required": [],
+        "properties": {},
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@ebartan/bodrum-belediyesi",
+      "displayName": "Bodrum Belediyesi",
+      "description": "Provide a scaffold for building MCP servers with ease. Accelerate development by leveraging pre-built tools and integrations. Simplify the creation and management of MCP-compliant services.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/www.bodrum.bel.tr.ico",
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-08-03T10:32:22.069Z",
+      "homepage": "https://smithery.ai/server/@ebartan/bodrum-belediyesi"
+    }
+  }
+}

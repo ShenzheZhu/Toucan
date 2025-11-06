@@ -1,0 +1,80 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "MagicSlides MCP",
+    "rank_by_usage": null,
+    "usage_count": 154,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333845,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@IndianAppGuy/magicslide-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [],
+      "tool_count": 0,
+      "tool_names": [],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='❌ Error: Missing userText parameter.', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "MagicSlides MCP",
+      "author": null,
+      "overview": "Generate professional PowerPoint presentations from text, YouTube videos, or structured JSON data. Customize slide count, images, language, templates, and output formats to suit your needs. Integrate seamlessly with AI assistants to create presentations on any topic efficiently.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@IndianAppGuy/magicslide-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 154,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 0,
+      "tools": [],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@IndianAppGuy@magicslide-mcp.json",
+    "source_filename": "@IndianAppGuy@magicslide-mcp.json",
+    "processed_timestamp": 1761333845,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@IndianAppGuy/magicslide-mcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "required": [],
+        "properties": {},
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@IndianAppGuy/magicslide-mcp",
+      "displayName": "MagicSlides MCP",
+      "description": "Generate professional PowerPoint presentations from text, YouTube videos, or structured JSON data. Customize slide count, images, language, templates, and output formats to suit your needs. Integrate seamlessly with AI assistants to create presentations on any topic efficiently.",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/aec788cb-bd9e-4cf2-b9e1-41e12615cddf.svg",
+      "verified": false,
+      "useCount": 154,
+      "remote": true,
+      "createdAt": "2025-04-29T06:33:18.687Z",
+      "homepage": "https://smithery.ai/server/@IndianAppGuy/magicslide-mcp"
+    }
+  }
+}

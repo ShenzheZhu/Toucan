@@ -1,0 +1,115 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Infobip Search MCP",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334396,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@infobip-mcp/search/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "post_experience_1_explore",
+          "description": "Explore Infobip Documentation; Use semantic search to explore the Infobip documentation hub, a comprehensive collection of product documentation, practical use cases, and general platform information designed to help both new and advanced users find resources and inspiration for interacting with end-users.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "example": "How to send an SMS?",
+                "maxLength": 30000,
+                "minLength": 0,
+                "description": "Text query to search through Infobip documentation pages."
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "post_experience_1_explore"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='Status code: 400, Response: {\"errorCode\":\"E400\",\"description\":\"Request cannot be processed.\",\"action\":\"Check the syntax, violations and adjust the request.\",\"violations\":[{\"property\":\"Request body\",\"violation\":\"Invalid request body.\"}],\"resources\":[]}', annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Infobip Search MCP",
+      "author": null,
+      "overview": "Search Infobip documentation to quickly find guides, use cases, and best practices. Unblock integration and messaging workflows with precise, context-aware answers. Accelerate development with ready-to-use examples and clear guidance for building and troubleshooting requests.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@infobip-mcp/search",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "post_experience_1_explore",
+          "description": "Explore Infobip Documentation; Use semantic search to explore the Infobip documentation hub, a comprehensive collection of product documentation, practical use cases, and general platform information designed to help both new and advanced users find resources and inspiration for interacting with end-users.",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "example": "How to send an SMS?",
+                "maxLength": 30000,
+                "minLength": 0,
+                "description": "Text query to search through Infobip documentation pages."
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@infobip-mcp@search.json",
+    "source_filename": "@infobip-mcp@search.json",
+    "processed_timestamp": 1761334396,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@infobip-mcp/search/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@infobip-mcp/search",
+      "displayName": "Infobip Search MCP",
+      "description": "Search Infobip documentation to quickly find guides, use cases, and best practices. Unblock integration and messaging workflows with precise, context-aware answers. Accelerate development with ready-to-use examples and clear guidance for building and troubleshooting requests.",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/0dec1189-a1f6-4825-aaef-7fa8bb5aacc2.png",
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-10-16T10:16:33.757Z",
+      "homepage": "https://smithery.ai/server/@infobip-mcp/search"
+    }
+  }
+}

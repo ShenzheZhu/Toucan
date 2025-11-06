@@ -1,0 +1,955 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Bodrum MCP Server",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761335784,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@ebartan/bodrum-mcp-2025/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "getBodrumInfo",
+          "description": "Get comprehensive information about Bodrum",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "category": {
+                "enum": [
+                  "general",
+                  "history",
+                  "tourism",
+                  "climate",
+                  "culture",
+                  "transport",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Category of information to retrieve"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "searchBodrumAttractions",
+          "description": "Search for specific attractions or activities in Bodrum",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "keyword": {
+                "type": "string",
+                "description": "Keyword to search for (e.g., 'beach', 'castle', 'diving')"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getTravelTips",
+          "description": "Get practical travel tips for visiting Bodrum",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getBodrumWeather",
+          "description": "Get typical weather information for Bodrum by season",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "season": {
+                "enum": [
+                  "spring",
+                  "summer",
+                  "autumn",
+                  "winter",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Season to get weather information for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getCurrentWeather",
+          "description": "Get current weather information for Bodrum from OpenWeatherMap",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "detailed": {
+                "type": "boolean",
+                "description": "Get detailed weather information including hourly forecast"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getBodrumNeighborhoods",
+          "description": "Get information about Bodrum neighborhoods (mahalleler)",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "limit": {
+                "type": "number",
+                "description": "Limit number of results"
+              },
+              "filter": {
+                "enum": [
+                  "coastal",
+                  "central",
+                  "rural"
+                ],
+                "type": "string",
+                "description": "Filter neighborhoods by type"
+              },
+              "sortBy": {
+                "enum": [
+                  "name",
+                  "population",
+                  "postal_code"
+                ],
+                "type": "string",
+                "description": "Sort neighborhoods by specified criteria"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "searchBodrumNeighborhood",
+          "description": "Search for a specific Bodrum neighborhood and get detailed information",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the neighborhood to search for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getPublicServices",
+          "description": "Get information about public services, municipality, and government offices in Bodrum",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "category": {
+                "enum": [
+                  "municipality",
+                  "government",
+                  "emergency",
+                  "utilities",
+                  "education",
+                  "transportation",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Category of public service to retrieve"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getEmergencyContacts",
+          "description": "Get emergency contact numbers and services in Bodrum",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "service": {
+                "enum": [
+                  "police",
+                  "gendarmerie",
+                  "fire",
+                  "health",
+                  "coastGuard",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Specific emergency service to get contact for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getBodrumEvents",
+          "description": "Get information about events, festivals, and activities in Bodrum",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "type": {
+                "enum": [
+                  "annual",
+                  "seasonal",
+                  "weekly",
+                  "cultural",
+                  "sports",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Type of events to retrieve"
+              },
+              "month": {
+                "type": "string",
+                "description": "Filter events by month name (e.g., 'Ağustos', 'Haziran')"
+              },
+              "season": {
+                "enum": [
+                  "spring",
+                  "summer",
+                  "autumn",
+                  "winter"
+                ],
+                "type": "string",
+                "description": "Filter seasonal events by specific season"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getBelediyeEvents",
+          "description": "Get municipality events from MongoDB belediye_events collection",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "limit": {
+                "type": "number",
+                "description": "Limit number of results (default: 20)"
+              },
+              "category": {
+                "type": "string",
+                "description": "Filter by event category"
+              },
+              "upcoming": {
+                "type": "boolean",
+                "description": "Show only upcoming events (default: true)"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Filter by neighborhood name"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getMarketPlaces",
+          "description": "Get information about market places (pazar yerleri) in Bodrum with neighborhood connections",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "day": {
+                "enum": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday",
+                  "saturday",
+                  "sunday",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Day of the week to get market information"
+              },
+              "type": {
+                "enum": [
+                  "Sebze - Meyve Pazarı",
+                  "Tuhafiye",
+                  "Giyim",
+                  "Üretici pazarı-TARKO",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Type of market to filter"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Filter markets by neighborhood name"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getDailyPharmacies",
+          "description": "Get daily duty pharmacies (nöbetçi eczane) list for Bodrum",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "area": {
+                "enum": [
+                  "merkez",
+                  "turgutreis",
+                  "yalikavak",
+                  "gumbet",
+                  "bitez",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Filter pharmacies by area"
+              },
+              "date": {
+                "type": "string",
+                "description": "Date in YYYY-MM-DD format (defaults to today)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getEducationInstitutions",
+          "description": "Get information about education institutions in Bodrum by neighborhood",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "type": {
+                "enum": [
+                  "public",
+                  "private",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Filter by institution type (public/private)"
+              },
+              "level": {
+                "enum": [
+                  "anaokulu",
+                  "ilkokul",
+                  "ortaokul",
+                  "lise",
+                  "universite",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Filter by education level"
+              },
+              "includeOther": {
+                "type": "boolean",
+                "description": "Include other education services like courses"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Filter institutions by neighborhood name"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "searchEducationByName",
+          "description": "Search for a specific education institution by name",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name or part of the name to search for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getMEBSchools",
+          "description": "Get official MEB (Ministry of Education) schools list for Bodrum",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "type": {
+                "enum": [
+                  "İlkokul",
+                  "Ortaokul",
+                  "Lise",
+                  "Anaokulu",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Filter by school type"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Filter by neighborhood name"
+              },
+              "includePrivate": {
+                "type": "boolean",
+                "description": "Include private schools (default: true)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "searchMEBSchool",
+          "description": "Search for a specific school in MEB official list",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "School name or part of it to search"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 17,
+      "tool_names": [
+        "getBodrumInfo",
+        "searchBodrumAttractions",
+        "getTravelTips",
+        "getBodrumWeather",
+        "getCurrentWeather",
+        "getBodrumNeighborhoods",
+        "searchBodrumNeighborhood",
+        "getPublicServices",
+        "getEmergencyContacts",
+        "getBodrumEvents",
+        "getBelediyeEvents",
+        "getMarketPlaces",
+        "getDailyPharmacies",
+        "getEducationInstitutions",
+        "searchEducationByName",
+        "getMEBSchools",
+        "searchMEBSchool"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='{\\n  \"general\": {\\n    \"name\": \"Bodrum\",\\n    \"country\": \"Turkey\",\\n    \"region\": \"Muğla Province\",\\n    \"population\": \"Approximately 180,000 (2023)\",\\n    \"coordinates\": \"37.0344° N, 27.4305° E\",\\n    \"timezone\": \"Turkey Time (TRT) UTC+3\",\\n    \"language\": \"Turkish\",\\n    \"currency\": \"Turkish Lira (TRY)\"\\n  },\\n  \"history\": {\\n    \"ancientName\": \"Halicarnassus\",\\n    \"founded\": \"Around 11th century BC\",\\n    \"famousFor\": [\\n      \"Mausoleum of Halicarnassus (one of the Seven Wonders of the Ancient World)\",\\n      \"Birthplace of Herodotus (Father of History)\",\\n      \"Bodrum Castle (Castle of St. Peter) built by Knights Hospitaller\"\\n    ],\\n    \"keyPeriods\": [\\n      \"Ancient Greek period\",\\n      \"Persian rule\",\\n      \"Roman and Byzantine periods\",\\n      \"Ottoman Empire\",\\n      \"Modern Turkish Republic\"\\n    ]\\n  },\\n  \"tourism\": {\\n    \"bestVisitTime\": \"May to October\",\\n    \"mainAttractions\": [\\n      \"Bodrum Castle and Museum of Underwater Archaeology\",\\n      \"Ancient Theatre of Halicarnassus\",\\n      \"Mausoleum at Halicarnassus ruins\",\\n      \"Bodrum Marina\",\\n      \"Gümbet Beach\",\\n      \"Bitez Beach\",\\n      \"Ortakent Beach\",\\n      \"Yalıkavak Marina\",\\n      \"Turgutreis\",\\n      \"Gümüşlük (ancient Myndos)\"\\n    ],\\n    \"activities\": [\\n      \"Beach and water sports\",\\n      \"Sailing and yachting\",\\n      \"Scuba diving\",\\n      \"Historical site visits\",\\n      \"Nightlife and entertainment\",\\n      \"Traditional Turkish bath (Hamam)\",\\n      \"Blue voyage cruises\"\\n    ]\\n  },\\n  \"climate\": {\\n    \"type\": \"Mediterranean climate\",\\n    \"summerTemp\": \"25-35°C (77-95°F)\",\\n    \"winterTemp\": \"10-15°C (50-59°F)\",\\n    \"rainfall\": \"Mostly in winter months\",\\n    \"seaTemperature\": \"20-25°C (68-77°F) in summer\"\\n  },\\n  \"culture\": {\\n    \"localCuisine\": [\\n      \"Fresh seafood and fish\",\\n      \"Bodrum mantısı (Turkish dumplings)\",\\n      \"Çökertme kebabı (local specialty)\",\\n      \"Stuffed zucchini flowers\",\\n      \"Gözleme (Turkish flatbread)\",\\n      \"Rakı (traditional anise-flavored spirit)\"\\n    ],\\n    \"festivals\": [\\n      \"Bodrum Ballet Festival\",\\n      \"Bodrum Music Festival\",\\n      \"International Bodrum Biennial\",\\n      \"Gümüşlük Classical Music Festival\"\\n    ],\\n    \"localProducts\": [\\n      \"Bodrum sandals\",\\n      \"Blue beads (Nazar)\",\\n      \"Kilim rugs\",\\n      \"Local olive oil\",\\n      \"Sponges\"\\n    ]\\n  },\\n  \"transport\": {\\n    \"airport\": \"Milas-Bodrum Airport (BJV) - 36km from city center\",\\n    \"localTransport\": [\\n      \"Dolmuş (shared minibus)\",\\n      \"Taxi\",\\n      \"Rental cars\",\\n      \"Boats for island hopping\",\\n      \"Bicycles and scooters\"\\n    ],\\n    \"ferries\": [\\n      \"To Greek islands (Kos, Rhodes)\",\\n      \"To other Turkish coastal towns\"\\n    ]\\n  }\\n}', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Bodrum MCP Server",
+      "author": null,
+      "overview": "Provide a flexible and extensible server implementation for the Model Context Protocol to enable dynamic integration of LLMs with external data, tools, and prompts. Facilitate seamless interaction between language models and real-world resources through a standardized JSON-RPC interface. Enhance LLM applications by exposing customizable capabilities and resources securely and efficiently.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@ebartan/bodrum-mcp-2025",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 17,
+      "tools": [
+        {
+          "name": "getBodrumInfo",
+          "description": "Get comprehensive information about Bodrum",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "category": {
+                "enum": [
+                  "general",
+                  "history",
+                  "tourism",
+                  "climate",
+                  "culture",
+                  "transport",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Category of information to retrieve"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "searchBodrumAttractions",
+          "description": "Search for specific attractions or activities in Bodrum",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "keyword": {
+                "type": "string",
+                "description": "Keyword to search for (e.g., 'beach', 'castle', 'diving')"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getTravelTips",
+          "description": "Get practical travel tips for visiting Bodrum",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getBodrumWeather",
+          "description": "Get typical weather information for Bodrum by season",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "season": {
+                "enum": [
+                  "spring",
+                  "summer",
+                  "autumn",
+                  "winter",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Season to get weather information for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getCurrentWeather",
+          "description": "Get current weather information for Bodrum from OpenWeatherMap",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "detailed": {
+                "type": "boolean",
+                "description": "Get detailed weather information including hourly forecast"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getBodrumNeighborhoods",
+          "description": "Get information about Bodrum neighborhoods (mahalleler)",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "limit": {
+                "type": "number",
+                "description": "Limit number of results"
+              },
+              "filter": {
+                "enum": [
+                  "coastal",
+                  "central",
+                  "rural"
+                ],
+                "type": "string",
+                "description": "Filter neighborhoods by type"
+              },
+              "sortBy": {
+                "enum": [
+                  "name",
+                  "population",
+                  "postal_code"
+                ],
+                "type": "string",
+                "description": "Sort neighborhoods by specified criteria"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "searchBodrumNeighborhood",
+          "description": "Search for a specific Bodrum neighborhood and get detailed information",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the neighborhood to search for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getPublicServices",
+          "description": "Get information about public services, municipality, and government offices in Bodrum",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "category": {
+                "enum": [
+                  "municipality",
+                  "government",
+                  "emergency",
+                  "utilities",
+                  "education",
+                  "transportation",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Category of public service to retrieve"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getEmergencyContacts",
+          "description": "Get emergency contact numbers and services in Bodrum",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "service": {
+                "enum": [
+                  "police",
+                  "gendarmerie",
+                  "fire",
+                  "health",
+                  "coastGuard",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Specific emergency service to get contact for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getBodrumEvents",
+          "description": "Get information about events, festivals, and activities in Bodrum",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "type": {
+                "enum": [
+                  "annual",
+                  "seasonal",
+                  "weekly",
+                  "cultural",
+                  "sports",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Type of events to retrieve"
+              },
+              "month": {
+                "type": "string",
+                "description": "Filter events by month name (e.g., 'Ağustos', 'Haziran')"
+              },
+              "season": {
+                "enum": [
+                  "spring",
+                  "summer",
+                  "autumn",
+                  "winter"
+                ],
+                "type": "string",
+                "description": "Filter seasonal events by specific season"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getBelediyeEvents",
+          "description": "Get municipality events from MongoDB belediye_events collection",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "limit": {
+                "type": "number",
+                "description": "Limit number of results (default: 20)"
+              },
+              "category": {
+                "type": "string",
+                "description": "Filter by event category"
+              },
+              "upcoming": {
+                "type": "boolean",
+                "description": "Show only upcoming events (default: true)"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Filter by neighborhood name"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getMarketPlaces",
+          "description": "Get information about market places (pazar yerleri) in Bodrum with neighborhood connections",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "day": {
+                "enum": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday",
+                  "saturday",
+                  "sunday",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Day of the week to get market information"
+              },
+              "type": {
+                "enum": [
+                  "Sebze - Meyve Pazarı",
+                  "Tuhafiye",
+                  "Giyim",
+                  "Üretici pazarı-TARKO",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Type of market to filter"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Filter markets by neighborhood name"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getDailyPharmacies",
+          "description": "Get daily duty pharmacies (nöbetçi eczane) list for Bodrum",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "area": {
+                "enum": [
+                  "merkez",
+                  "turgutreis",
+                  "yalikavak",
+                  "gumbet",
+                  "bitez",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Filter pharmacies by area"
+              },
+              "date": {
+                "type": "string",
+                "description": "Date in YYYY-MM-DD format (defaults to today)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getEducationInstitutions",
+          "description": "Get information about education institutions in Bodrum by neighborhood",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "type": {
+                "enum": [
+                  "public",
+                  "private",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Filter by institution type (public/private)"
+              },
+              "level": {
+                "enum": [
+                  "anaokulu",
+                  "ilkokul",
+                  "ortaokul",
+                  "lise",
+                  "universite",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Filter by education level"
+              },
+              "includeOther": {
+                "type": "boolean",
+                "description": "Include other education services like courses"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Filter institutions by neighborhood name"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "searchEducationByName",
+          "description": "Search for a specific education institution by name",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name or part of the name to search for"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "getMEBSchools",
+          "description": "Get official MEB (Ministry of Education) schools list for Bodrum",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+              "type": {
+                "enum": [
+                  "İlkokul",
+                  "Ortaokul",
+                  "Lise",
+                  "Anaokulu",
+                  "all"
+                ],
+                "type": "string",
+                "description": "Filter by school type"
+              },
+              "neighborhood": {
+                "type": "string",
+                "description": "Filter by neighborhood name"
+              },
+              "includePrivate": {
+                "type": "boolean",
+                "description": "Include private schools (default: true)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "searchMEBSchool",
+          "description": "Search for a specific school in MEB official list",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "School name or part of it to search"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@ebartan@bodrum-mcp-2025.json",
+    "source_filename": "@ebartan@bodrum-mcp-2025.json",
+    "processed_timestamp": 1761335784,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@ebartan/bodrum-mcp-2025/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@ebartan/bodrum-mcp-2025",
+      "displayName": "Bodrum MCP Server",
+      "description": "Provide a flexible and extensible server implementation for the Model Context Protocol to enable dynamic integration of LLMs with external data, tools, and prompts. Facilitate seamless interaction between language models and real-world resources through a standardized JSON-RPC interface. Enhance LLM applications by exposing customizable capabilities and resources securely and efficiently.",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/a10e7f9f-3732-4cea-bc07-6fda7a8950cd.jpg",
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-08-03T16:25:57.915Z",
+      "homepage": "https://smithery.ai/server/@ebartan/bodrum-mcp-2025"
+    }
+  }
+}

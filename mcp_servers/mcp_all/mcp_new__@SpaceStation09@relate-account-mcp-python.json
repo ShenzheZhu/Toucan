@@ -1,0 +1,290 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Relate Account Python Server",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761335315,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@SpaceStation09/relate-account-mcp-python/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get-related-address",
+          "description": "Retrieves all related identities associated with a specific platform identity. This tool helps discover cross-platform connections for the same person or entity. Use cases include: 1) Finding all accounts (Lens, Farcaster, ENS, etc.) belonging to the same person, 2) Resolving domain names to their underlying addresses (ENS domains, Lens handles, etc.)",
+          "input_schema": {
+            "type": "object",
+            "$defs": {
+              "Platform": {
+                "enum": [
+                  "ethereum",
+                  "solana",
+                  "ens",
+                  "sns",
+                  "farcaster",
+                  "lens",
+                  "clusters",
+                  "basenames",
+                  "unstoppabledomains",
+                  "space_id",
+                  "dotbit",
+                  "ckb",
+                  "box",
+                  "linea",
+                  "justaname",
+                  "zeta",
+                  "mode",
+                  "arbitrum",
+                  "taiko",
+                  "mint",
+                  "zkfair",
+                  "manta",
+                  "lightlink",
+                  "genome",
+                  "merlin",
+                  "alienx",
+                  "tomo",
+                  "ailayer",
+                  "gravity",
+                  "bitcoin",
+                  "litecoin",
+                  "dogecoin",
+                  "aptos",
+                  "stacks",
+                  "tron",
+                  "ton",
+                  "xrpc",
+                  "cosmos",
+                  "arweave",
+                  "algorand",
+                  "firefly",
+                  "particle",
+                  "privy",
+                  "twitter",
+                  "bluesky",
+                  "github",
+                  "discord",
+                  "telegram",
+                  "dentity",
+                  "email",
+                  "linkedin",
+                  "reddit",
+                  "nextid",
+                  "keybase",
+                  "facebook",
+                  "dns",
+                  "nftd",
+                  "gallery",
+                  "paragraph",
+                  "mirror",
+                  "instagram",
+                  "crowdsourcing",
+                  "nostr",
+                  "gmgn",
+                  "talentprotocol",
+                  "foundation",
+                  "rarible",
+                  "soundxyz",
+                  "warpcast",
+                  "opensea",
+                  "icebreaker",
+                  "tally"
+                ],
+                "type": "string",
+                "title": "Platform"
+              }
+            },
+            "required": [
+              "platform",
+              "identity"
+            ],
+            "properties": {
+              "identity": {
+                "type": "string",
+                "title": "Identity",
+                "maxLength": 256,
+                "minLength": 1,
+                "description": "User's identity"
+              },
+              "platform": {
+                "$ref": "#/$defs/Platform",
+                "title": "Platform",
+                "description": "The platform of a specific identity, e.g.: Ethereum, Farcaster, lens, ens"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "get-related-address"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text=\"Error calling tool 'get-related-address': 2 validation errors for call[relate_account]\\nplatform\\n  Missing required argument [type=missing_argument, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing_argument\\nidentity\\n  Missing required argument [type=missing_argument, input_value={}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing_argument\", annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Relate Account Python Server",
+      "author": null,
+      "overview": "Provide identity linkage and analysis by querying user-related information across platforms using web3.bio's GraphQL API. Enable clients to retrieve and analyze user identity bindings efficiently. Facilitate integration via a streamable HTTP MCP server interface.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@SpaceStation09/relate-account-mcp-python",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "get-related-address",
+          "description": "Retrieves all related identities associated with a specific platform identity. This tool helps discover cross-platform connections for the same person or entity. Use cases include: 1) Finding all accounts (Lens, Farcaster, ENS, etc.) belonging to the same person, 2) Resolving domain names to their underlying addresses (ENS domains, Lens handles, etc.)",
+          "inputSchema": {
+            "type": "object",
+            "$defs": {
+              "Platform": {
+                "enum": [
+                  "ethereum",
+                  "solana",
+                  "ens",
+                  "sns",
+                  "farcaster",
+                  "lens",
+                  "clusters",
+                  "basenames",
+                  "unstoppabledomains",
+                  "space_id",
+                  "dotbit",
+                  "ckb",
+                  "box",
+                  "linea",
+                  "justaname",
+                  "zeta",
+                  "mode",
+                  "arbitrum",
+                  "taiko",
+                  "mint",
+                  "zkfair",
+                  "manta",
+                  "lightlink",
+                  "genome",
+                  "merlin",
+                  "alienx",
+                  "tomo",
+                  "ailayer",
+                  "gravity",
+                  "bitcoin",
+                  "litecoin",
+                  "dogecoin",
+                  "aptos",
+                  "stacks",
+                  "tron",
+                  "ton",
+                  "xrpc",
+                  "cosmos",
+                  "arweave",
+                  "algorand",
+                  "firefly",
+                  "particle",
+                  "privy",
+                  "twitter",
+                  "bluesky",
+                  "github",
+                  "discord",
+                  "telegram",
+                  "dentity",
+                  "email",
+                  "linkedin",
+                  "reddit",
+                  "nextid",
+                  "keybase",
+                  "facebook",
+                  "dns",
+                  "nftd",
+                  "gallery",
+                  "paragraph",
+                  "mirror",
+                  "instagram",
+                  "crowdsourcing",
+                  "nostr",
+                  "gmgn",
+                  "talentprotocol",
+                  "foundation",
+                  "rarible",
+                  "soundxyz",
+                  "warpcast",
+                  "opensea",
+                  "icebreaker",
+                  "tally"
+                ],
+                "type": "string",
+                "title": "Platform"
+              }
+            },
+            "required": [
+              "platform",
+              "identity"
+            ],
+            "properties": {
+              "identity": {
+                "type": "string",
+                "title": "Identity",
+                "maxLength": 256,
+                "minLength": 1,
+                "description": "User's identity"
+              },
+              "platform": {
+                "$ref": "#/$defs/Platform",
+                "title": "Platform",
+                "description": "The platform of a specific identity, e.g.: Ethereum, Farcaster, lens, ens"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@SpaceStation09@relate-account-mcp-python.json",
+    "source_filename": "@SpaceStation09@relate-account-mcp-python.json",
+    "processed_timestamp": 1761335315,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@SpaceStation09/relate-account-mcp-python/mcp",
+      "configSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@SpaceStation09/relate-account-mcp-python",
+      "displayName": "Relate Account Python Server",
+      "description": "Provide identity linkage and analysis by querying user-related information across platforms using web3.bio's GraphQL API. Enable clients to retrieve and analyze user identity bindings efficiently. Facilitate integration via a streamable HTTP MCP server interface.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-07-03T09:00:50.361Z",
+      "homepage": "https://smithery.ai/server/@SpaceStation09/relate-account-mcp-python"
+    }
+  }
+}

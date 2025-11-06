@@ -1,0 +1,129 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Sideways",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334408,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@ari.badernatal/sideways/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get-strategy",
+          "description": "Get a random creative strategy from a specific category. Use the categories://index resource first to understand available categories and their guidance.",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "category"
+            ],
+            "properties": {
+              "category": {
+                "enum": [
+                  "reframe",
+                  "reduce",
+                  "expand",
+                  "disrupt",
+                  "embody",
+                  "pause"
+                ],
+                "type": "string",
+                "description": "The category of strategy to retrieve"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "get-strategy"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool get-strategy: [\n  {\n    \"expected\": \"'reframe' | 'reduce' | 'expand' | 'disrupt' | 'embody' | 'pause'\",\n    \"received\": \"undefined\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"category\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Sideways",
+      "author": null,
+      "overview": "Generate fresh creative strategies on demand to unlock breakthroughs when you’re stuck. Shift perspective by reframing, simplifying, expanding, disrupting, embodying, or pausing to reveal new options. Get concise, actionable prompts that help you focus, explore alternatives, and move forward faster.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@ari.badernatal/sideways",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "get-strategy",
+          "description": "Get a random creative strategy from a specific category. Use the categories://index resource first to understand available categories and their guidance.",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "category"
+            ],
+            "properties": {
+              "category": {
+                "enum": [
+                  "reframe",
+                  "reduce",
+                  "expand",
+                  "disrupt",
+                  "embody",
+                  "pause"
+                ],
+                "type": "string",
+                "description": "The category of strategy to retrieve"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@ari.badernatal@sideways.json",
+    "source_filename": "@ari.badernatal@sideways.json",
+    "processed_timestamp": 1761334408,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@ari.badernatal/sideways/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@ari.badernatal/sideways",
+      "displayName": "Sideways",
+      "description": "Generate fresh creative strategies on demand to unlock breakthroughs when you’re stuck. Shift perspective by reframing, simplifying, expanding, disrupting, embodying, or pausing to reveal new options. Get concise, actionable prompts that help you focus, explore alternatives, and move forward faster.",
+      "iconUrl": "https://spjawbfpwezjfmicopsl.supabase.co/storage/v1/object/public/server-icons/96e918f8-3e30-4299-83e0-7659c1352a10.svg",
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-10-22T06:57:51.773Z",
+      "homepage": "https://smithery.ai/server/@ari.badernatal/sideways"
+    }
+  }
+}

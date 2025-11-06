@@ -1,0 +1,127 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Smithery Scaffold",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761335360,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@aerialcombat/say-hello-smithery-sample/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "hello",
+          "description": "Say hello to someone",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name to greet"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 1,
+      "tool_names": [
+        "hello"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool hello: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"name\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Smithery Scaffold",
+      "author": null,
+      "overview": "Provide a scaffold for building MCP servers with tools and resources integration. Enable rapid development and testing of MCP capabilities using a modular and type-safe approach. Simplify the creation of MCP-compliant servers with built-in support for common patterns.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@aerialcombat/say-hello-smithery-sample",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 1,
+      "tools": [
+        {
+          "name": "hello",
+          "description": "Say hello to someone",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name to greet"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@aerialcombat@say-hello-smithery-sample.json",
+    "source_filename": "@aerialcombat@say-hello-smithery-sample.json",
+    "processed_timestamp": 1761335360,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@aerialcombat/say-hello-smithery-sample/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@aerialcombat/say-hello-smithery-sample",
+      "displayName": "Smithery Scaffold",
+      "description": "Provide a scaffold for building MCP servers with tools and resources integration. Enable rapid development and testing of MCP capabilities using a modular and type-safe approach. Simplify the creation of MCP-compliant servers with built-in support for common patterns.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-07-02T05:34:56.168Z",
+      "homepage": "https://smithery.ai/server/@aerialcombat/say-hello-smithery-sample"
+    }
+  }
+}

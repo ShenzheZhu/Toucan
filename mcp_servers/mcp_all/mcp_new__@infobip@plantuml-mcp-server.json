@@ -1,0 +1,200 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "PlantUML Diagrams",
+    "rank_by_usage": null,
+    "usage_count": 61,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334458,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@infobip/plantuml-mcp-server/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "generate_plantuml_diagram",
+          "description": "Generate a PlantUML diagram with automatic syntax validation and error reporting for auto-fix workflows. Returns embeddable image URLs for valid diagrams or structured error details for invalid syntax that can be automatically corrected.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "plantuml_code"
+            ],
+            "properties": {
+              "format": {
+                "enum": [
+                  "svg",
+                  "png"
+                ],
+                "type": "string",
+                "default": "svg",
+                "description": "Output image format (SVG or PNG)"
+              },
+              "plantuml_code": {
+                "type": "string",
+                "description": "PlantUML diagram code. Will be automatically validated for syntax errors before generating the diagram URL."
+              }
+            }
+          }
+        },
+        {
+          "name": "encode_plantuml",
+          "description": "Encode PlantUML code for URL usage",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "plantuml_code"
+            ],
+            "properties": {
+              "plantuml_code": {
+                "type": "string",
+                "description": "PlantUML diagram code to encode"
+              }
+            }
+          }
+        },
+        {
+          "name": "decode_plantuml",
+          "description": "Decode encoded PlantUML string back to PlantUML code",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "encoded_string"
+            ],
+            "properties": {
+              "encoded_string": {
+                "type": "string",
+                "description": "Encoded PlantUML string to decode"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 3,
+      "tool_names": [
+        "generate_plantuml_diagram",
+        "encode_plantuml",
+        "decode_plantuml"
+      ],
+      "verification_call_result": "error: plantuml_code is required"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "PlantUML Diagrams",
+      "author": null,
+      "overview": "Create PlantUML diagrams with automatic syntax validation and auto-fix suggestions. Get embeddable image URLs for valid diagrams and structured feedback to resolve issues. Encode or decode PlantUML code for easy URL sharing.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@infobip/plantuml-mcp-server",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 61,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 3,
+      "tools": [
+        {
+          "name": "generate_plantuml_diagram",
+          "description": "Generate a PlantUML diagram with automatic syntax validation and error reporting for auto-fix workflows. Returns embeddable image URLs for valid diagrams or structured error details for invalid syntax that can be automatically corrected.",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "plantuml_code"
+            ],
+            "properties": {
+              "format": {
+                "enum": [
+                  "svg",
+                  "png"
+                ],
+                "type": "string",
+                "default": "svg",
+                "description": "Output image format (SVG or PNG)"
+              },
+              "plantuml_code": {
+                "type": "string",
+                "description": "PlantUML diagram code. Will be automatically validated for syntax errors before generating the diagram URL."
+              }
+            }
+          }
+        },
+        {
+          "name": "encode_plantuml",
+          "description": "Encode PlantUML code for URL usage",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "plantuml_code"
+            ],
+            "properties": {
+              "plantuml_code": {
+                "type": "string",
+                "description": "PlantUML diagram code to encode"
+              }
+            }
+          }
+        },
+        {
+          "name": "decode_plantuml",
+          "description": "Decode encoded PlantUML string back to PlantUML code",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "encoded_string"
+            ],
+            "properties": {
+              "encoded_string": {
+                "type": "string",
+                "description": "Encoded PlantUML string to decode"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@infobip@plantuml-mcp-server.json",
+    "source_filename": "@infobip@plantuml-mcp-server.json",
+    "processed_timestamp": 1761334458,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@infobip/plantuml-mcp-server/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "required": [],
+        "properties": {},
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@infobip/plantuml-mcp-server",
+      "displayName": "PlantUML Diagrams",
+      "description": "Create PlantUML diagrams with automatic syntax validation and auto-fix suggestions. Get embeddable image URLs for valid diagrams and structured feedback to resolve issues. Encode or decode PlantUML code for easy URL sharing.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 61,
+      "remote": true,
+      "createdAt": "2025-09-22T06:10:40.770Z",
+      "homepage": "https://smithery.ai/server/@infobip/plantuml-mcp-server"
+    }
+  }
+}

@@ -1,0 +1,524 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Due Diligence Assistant",
+    "rank_by_usage": null,
+    "usage_count": 8,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334563,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@aakashns/duediligencemcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "hello",
+          "description": "Say hello to someone",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name to greet"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "initializeDueDiligenceReport",
+          "description": "Initialize a due diligence report by creating a report file with company name and date, and fetch PitchBook data",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "companyName",
+              "companyInfo",
+              "financials",
+              "founderInfo",
+              "investmentGoals"
+            ],
+            "properties": {
+              "financials": {
+                "type": "string",
+                "description": "Company financial data and projections"
+              },
+              "companyInfo": {
+                "type": "string",
+                "description": "Basic company information and background"
+              },
+              "companyName": {
+                "type": "string",
+                "description": "Name of the company being analyzed"
+              },
+              "founderInfo": {
+                "type": "string",
+                "description": "Information about the company founder(s)"
+              },
+              "investmentGoals": {
+                "type": "string",
+                "description": "Investment goals and objectives"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generateFinancialSlide",
+          "description": "Generate financial due diligence Marp slide and append it to the report file",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "pitchbookData",
+              "companyFinancials",
+              "companyInfo"
+            ],
+            "properties": {
+              "companyInfo": {
+                "type": "string",
+                "description": "Company information and background"
+              },
+              "pitchbookData": {
+                "type": "string",
+                "description": "Financial data from PitchBook"
+              },
+              "companyFinancials": {
+                "type": "string",
+                "description": "Company financial projections and data"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generateIndustrySlide",
+          "description": "Generate industry due diligence Marp slide with market analysis and competitive landscape",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "companyInfo",
+              "pitchbookData"
+            ],
+            "properties": {
+              "companyInfo": {
+                "type": "string",
+                "description": "Company information and background"
+              },
+              "pitchbookData": {
+                "type": "string",
+                "description": "PitchBook data containing market and competitor information"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generateIdentitySlide",
+          "description": "Generate identity due diligence Marp slide with founder background analysis",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "founderInfo",
+              "companyInfo"
+            ],
+            "properties": {
+              "companyInfo": {
+                "type": "string",
+                "description": "Company information and background"
+              },
+              "founderInfo": {
+                "type": "string",
+                "description": "Information about the company founder(s)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generateLegalSlide",
+          "description": "Generate legal due diligence Marp slide with legal risk assessment and compliance analysis",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "companyInfo",
+              "founderInfo"
+            ],
+            "properties": {
+              "companyInfo": {
+                "type": "string",
+                "description": "Company information and background"
+              },
+              "founderInfo": {
+                "type": "string",
+                "description": "Founder CV and background information"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generateConclusionSlide",
+          "description": "Generate conclusion and investment recommendation Marp slide with final verdict",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "companyInfo",
+              "financials",
+              "pitchbookData"
+            ],
+            "properties": {
+              "financials": {
+                "type": "string",
+                "description": "Company financial data"
+              },
+              "companyInfo": {
+                "type": "string",
+                "description": "Company information and background"
+              },
+              "pitchbookData": {
+                "type": "string",
+                "description": "PitchBook market data"
+              },
+              "existingReportContent": {
+                "type": "string",
+                "description": "Existing report content for context"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "finalizeDueDiligenceReport",
+          "description": "Provide final investment verdict and point to the completed due diligence slide deck",
+          "input_schema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "reportPath",
+              "companyName",
+              "reportContent"
+            ],
+            "properties": {
+              "reportPath": {
+                "type": "string",
+                "description": "Path to the completed report file"
+              },
+              "companyName": {
+                "type": "string",
+                "description": "Name of the company analyzed"
+              },
+              "reportContent": {
+                "type": "string",
+                "description": "The complete report content"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "tool_count": 8,
+      "tool_names": [
+        "hello",
+        "initializeDueDiligenceReport",
+        "generateFinancialSlide",
+        "generateIndustrySlide",
+        "generateIdentitySlide",
+        "generateLegalSlide",
+        "generateConclusionSlide",
+        "finalizeDueDiligenceReport"
+      ],
+      "verification_call_result": "error: MCP error -32602: Invalid arguments for tool hello: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"name\"\n    ],\n    \"message\": \"Required\"\n  }\n]"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Due Diligence Assistant",
+      "author": null,
+      "overview": "Provide comprehensive due diligence support by integrating various data sources and tools to streamline the evaluation process. Enable efficient access to relevant documents, perform analyses, and generate insightful reports. Enhance decision-making with automated workflows tailored for due diligence tasks.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@aakashns/duediligencemcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 8,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 8,
+      "tools": [
+        {
+          "name": "hello",
+          "description": "Say hello to someone",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name to greet"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "initializeDueDiligenceReport",
+          "description": "Initialize a due diligence report by creating a report file with company name and date, and fetch PitchBook data",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "companyName",
+              "companyInfo",
+              "financials",
+              "founderInfo",
+              "investmentGoals"
+            ],
+            "properties": {
+              "financials": {
+                "type": "string",
+                "description": "Company financial data and projections"
+              },
+              "companyInfo": {
+                "type": "string",
+                "description": "Basic company information and background"
+              },
+              "companyName": {
+                "type": "string",
+                "description": "Name of the company being analyzed"
+              },
+              "founderInfo": {
+                "type": "string",
+                "description": "Information about the company founder(s)"
+              },
+              "investmentGoals": {
+                "type": "string",
+                "description": "Investment goals and objectives"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generateFinancialSlide",
+          "description": "Generate financial due diligence Marp slide and append it to the report file",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "pitchbookData",
+              "companyFinancials",
+              "companyInfo"
+            ],
+            "properties": {
+              "companyInfo": {
+                "type": "string",
+                "description": "Company information and background"
+              },
+              "pitchbookData": {
+                "type": "string",
+                "description": "Financial data from PitchBook"
+              },
+              "companyFinancials": {
+                "type": "string",
+                "description": "Company financial projections and data"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generateIndustrySlide",
+          "description": "Generate industry due diligence Marp slide with market analysis and competitive landscape",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "companyInfo",
+              "pitchbookData"
+            ],
+            "properties": {
+              "companyInfo": {
+                "type": "string",
+                "description": "Company information and background"
+              },
+              "pitchbookData": {
+                "type": "string",
+                "description": "PitchBook data containing market and competitor information"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generateIdentitySlide",
+          "description": "Generate identity due diligence Marp slide with founder background analysis",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "founderInfo",
+              "companyInfo"
+            ],
+            "properties": {
+              "companyInfo": {
+                "type": "string",
+                "description": "Company information and background"
+              },
+              "founderInfo": {
+                "type": "string",
+                "description": "Information about the company founder(s)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generateLegalSlide",
+          "description": "Generate legal due diligence Marp slide with legal risk assessment and compliance analysis",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "companyInfo",
+              "founderInfo"
+            ],
+            "properties": {
+              "companyInfo": {
+                "type": "string",
+                "description": "Company information and background"
+              },
+              "founderInfo": {
+                "type": "string",
+                "description": "Founder CV and background information"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "generateConclusionSlide",
+          "description": "Generate conclusion and investment recommendation Marp slide with final verdict",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "companyInfo",
+              "financials",
+              "pitchbookData"
+            ],
+            "properties": {
+              "financials": {
+                "type": "string",
+                "description": "Company financial data"
+              },
+              "companyInfo": {
+                "type": "string",
+                "description": "Company information and background"
+              },
+              "pitchbookData": {
+                "type": "string",
+                "description": "PitchBook market data"
+              },
+              "existingReportContent": {
+                "type": "string",
+                "description": "Existing report content for context"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "name": "finalizeDueDiligenceReport",
+          "description": "Provide final investment verdict and point to the completed due diligence slide deck",
+          "inputSchema": {
+            "type": "object",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "required": [
+              "reportPath",
+              "companyName",
+              "reportContent"
+            ],
+            "properties": {
+              "reportPath": {
+                "type": "string",
+                "description": "Path to the completed report file"
+              },
+              "companyName": {
+                "type": "string",
+                "description": "Name of the company analyzed"
+              },
+              "reportContent": {
+                "type": "string",
+                "description": "The complete report content"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@aakashns@duediligencemcp.json",
+    "source_filename": "@aakashns@duediligencemcp.json",
+    "processed_timestamp": 1761334563,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@aakashns/duediligencemcp/mcp",
+      "configSchema": {
+        "type": "object",
+        "title": "MCP Session Configuration",
+        "properties": {
+          "debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug logging"
+          }
+        },
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-mcp-version": "1.0",
+        "x-query-style": "dot+bracket",
+        "additionalProperties": false
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@aakashns/duediligencemcp",
+      "displayName": "Due Diligence Assistant",
+      "description": "Provide comprehensive due diligence support by integrating various data sources and tools to streamline the evaluation process. Enable efficient access to relevant documents, perform analyses, and generate insightful reports. Enhance decision-making with automated workflows tailored for due diligence tasks.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 8,
+      "remote": true,
+      "createdAt": "2025-07-20T20:20:57.280Z",
+      "homepage": "https://smithery.ai/server/@aakashns/duediligencemcp"
+    }
+  }
+}

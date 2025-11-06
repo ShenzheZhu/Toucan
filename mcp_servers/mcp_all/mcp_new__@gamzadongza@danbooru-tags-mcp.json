@@ -1,0 +1,292 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Danbooru Tags",
+    "rank_by_usage": null,
+    "usage_count": 299,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761333270,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@gamzadongza/danbooru-tags-mcp/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "get_post_tags",
+          "description": "**[REAL-TIME API]** Extract all tags from a specific Danbooru post by ID or URL by querying Danbooru API directly.\n\nUse this when:\n- You want to get ALL tags from a single post in real-time\n- You need tag categories and counts for a specific post\n\nFor analyzing tag statistics across multiple posts, use 'get_character_tags'.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "post_id_or_url"
+            ],
+            "properties": {
+              "post_id_or_url": {
+                "type": "string",
+                "description": "Danbooru post ID (number) or URL (e.g., https://danbooru.donmai.us/posts/2973340)"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_character_tags",
+          "description": "**[REAL-TIME API]** Analyze frequently used tags for a character by querying Danbooru API directly in real-time with advanced filtering options.\n\nUse this when:\n- You need the LATEST, most up-to-date tag statistics\n- The character data is NOT yet saved in the database\n- You want quick exploration without saving data\n- You need filtered analysis (clothing only, specific categories, include/exclude tags)\n\nFor analyzing SAVED data, use Turso SQL tools instead.\nFor bulk data collection to save, use 'collect_and_save' from Danbooru Turso Sync.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "character_tag"
+            ],
+            "properties": {
+              "top_n": {
+                "type": "number",
+                "default": 50,
+                "description": "Number of top tags to return (default: 50)"
+              },
+              "category": {
+                "enum": [
+                  "general",
+                  "artist",
+                  "copyright",
+                  "character",
+                  "meta"
+                ],
+                "type": "string",
+                "description": "Filter by tag category"
+              },
+              "num_posts": {
+                "type": "number",
+                "default": 100,
+                "description": "Number of posts to analyze (default: 100, no limit)"
+              },
+              "exclude_tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Tags to exclude (e.g., [\"game_cg\", \"comic\"])"
+              },
+              "include_tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Tags that must be included (e.g., [\"tachi-e\", \"official_art\"])"
+              },
+              "character_tag": {
+                "type": "string",
+                "description": "Character tag to search (e.g., hatsune_miku, crimson_avenger_(elsword))"
+              },
+              "clothing_only": {
+                "type": "boolean",
+                "default": false,
+                "description": "Return only clothing-related tags"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_wiki_info",
+          "description": "**[REAL-TIME API]** Search Danbooru Wiki for tag/character information in real-time.\n\nUse this when:\n- You need information about what a tag means\n- You want to understand tag relationships or aliases\n- You need character background or copyright info",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "tag_name"
+            ],
+            "properties": {
+              "tag_name": {
+                "type": "string",
+                "description": "Tag name to search (e.g., hatsune_miku, tachi-e)"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_post_count",
+          "description": "**[REAL-TIME API]** Get the total number of posts for a specific tag.\n\nUse this when:\n- You want to know how many posts exist for a character/tag BEFORE collecting data\n- You need to estimate collection time and resources\n- You want to verify data completeness after collection\n\nReturns only the post count. Use danbooru-turso-mcp.collect_and_save for actual data collection.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "tag"
+            ],
+            "properties": {
+              "tag": {
+                "type": "string",
+                "description": "Tag to check post count (e.g., scathach_(fate), hatsune_miku)"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 4,
+      "tool_names": [
+        "get_post_tags",
+        "get_character_tags",
+        "get_wiki_info",
+        "get_post_count"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text=\"Error: Cannot read properties of undefined (reading 'match')\", annotations=None, meta=None)] structuredContent=None isError=True"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Danbooru Tags",
+      "author": null,
+      "overview": "Extract tags from any Danbooru post and explore categories at a glance. Analyze character-specific tag frequencies to surface top traits and clothing patterns. Look up tag and character details from the Danbooru Wiki to add context.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@gamzadongza/danbooru-tags-mcp",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 299,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 4,
+      "tools": [
+        {
+          "name": "get_post_tags",
+          "description": "**[REAL-TIME API]** Extract all tags from a specific Danbooru post by ID or URL by querying Danbooru API directly.\n\nUse this when:\n- You want to get ALL tags from a single post in real-time\n- You need tag categories and counts for a specific post\n\nFor analyzing tag statistics across multiple posts, use 'get_character_tags'.",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "post_id_or_url"
+            ],
+            "properties": {
+              "post_id_or_url": {
+                "type": "string",
+                "description": "Danbooru post ID (number) or URL (e.g., https://danbooru.donmai.us/posts/2973340)"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_character_tags",
+          "description": "**[REAL-TIME API]** Analyze frequently used tags for a character by querying Danbooru API directly in real-time with advanced filtering options.\n\nUse this when:\n- You need the LATEST, most up-to-date tag statistics\n- The character data is NOT yet saved in the database\n- You want quick exploration without saving data\n- You need filtered analysis (clothing only, specific categories, include/exclude tags)\n\nFor analyzing SAVED data, use Turso SQL tools instead.\nFor bulk data collection to save, use 'collect_and_save' from Danbooru Turso Sync.",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "character_tag"
+            ],
+            "properties": {
+              "top_n": {
+                "type": "number",
+                "default": 50,
+                "description": "Number of top tags to return (default: 50)"
+              },
+              "category": {
+                "enum": [
+                  "general",
+                  "artist",
+                  "copyright",
+                  "character",
+                  "meta"
+                ],
+                "type": "string",
+                "description": "Filter by tag category"
+              },
+              "num_posts": {
+                "type": "number",
+                "default": 100,
+                "description": "Number of posts to analyze (default: 100, no limit)"
+              },
+              "exclude_tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Tags to exclude (e.g., [\"game_cg\", \"comic\"])"
+              },
+              "include_tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Tags that must be included (e.g., [\"tachi-e\", \"official_art\"])"
+              },
+              "character_tag": {
+                "type": "string",
+                "description": "Character tag to search (e.g., hatsune_miku, crimson_avenger_(elsword))"
+              },
+              "clothing_only": {
+                "type": "boolean",
+                "default": false,
+                "description": "Return only clothing-related tags"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_wiki_info",
+          "description": "**[REAL-TIME API]** Search Danbooru Wiki for tag/character information in real-time.\n\nUse this when:\n- You need information about what a tag means\n- You want to understand tag relationships or aliases\n- You need character background or copyright info",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "tag_name"
+            ],
+            "properties": {
+              "tag_name": {
+                "type": "string",
+                "description": "Tag name to search (e.g., hatsune_miku, tachi-e)"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_post_count",
+          "description": "**[REAL-TIME API]** Get the total number of posts for a specific tag.\n\nUse this when:\n- You want to know how many posts exist for a character/tag BEFORE collecting data\n- You need to estimate collection time and resources\n- You want to verify data completeness after collection\n\nReturns only the post count. Use danbooru-turso-mcp.collect_and_save for actual data collection.",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "tag"
+            ],
+            "properties": {
+              "tag": {
+                "type": "string",
+                "description": "Tag to check post count (e.g., scathach_(fate), hatsune_miku)"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@gamzadongza@danbooru-tags-mcp.json",
+    "source_filename": "@gamzadongza@danbooru-tags-mcp.json",
+    "processed_timestamp": 1761333270,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@gamzadongza/danbooru-tags-mcp/mcp",
+      "configSchema": {
+        "title": "MCP Session Configuration",
+        "description": "Schema for the /mcp endpoint configuration",
+        "x-query-style": "dot+bracket"
+      }
+    },
+    "registry_entry": {
+      "qualifiedName": "@gamzadongza/danbooru-tags-mcp",
+      "displayName": "Danbooru Tags",
+      "description": "Extract tags from any Danbooru post and explore categories at a glance. Analyze character-specific tag frequencies to surface top traits and clothing patterns. Look up tag and character details from the Danbooru Wiki to add context.",
+      "iconUrl": "https://icons.duckduckgo.com/ip3/github.com.ico",
+      "verified": false,
+      "useCount": 299,
+      "remote": true,
+      "createdAt": "2025-10-12T10:22:48.002Z",
+      "homepage": "https://smithery.ai/server/@gamzadongza/danbooru-tags-mcp"
+    }
+  }
+}

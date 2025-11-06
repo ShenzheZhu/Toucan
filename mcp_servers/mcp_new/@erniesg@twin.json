@@ -1,0 +1,466 @@
+{
+  "labels": {
+    "analysis": "",
+    "reasoning": "",
+    "primary_label": "",
+    "secondary_labels": [],
+    "custom_label": null,
+    "is_connected": true,
+    "is_remote_tool_valid": true,
+    "featured_server": false
+  },
+  "metadata": {
+    "server_id": null,
+    "server_name": "Twin Persona",
+    "rank_by_usage": null,
+    "usage_count": 0,
+    "original_file": "",
+    "mode": "smithery",
+    "timestamp": 1761334376,
+    "remote_server_response": {
+      "url": "https://server.smithery.ai/@erniesg/twin/mcp?api_key=8054ccbd-2466-41a5-b2fa-3ac86cfc969b&profile=outrageous-swallow-1tH4i3",
+      "is_success": true,
+      "error": null,
+      "tools": [
+        {
+          "name": "persona.generate_mock",
+          "description": "Generate mock persona for testing with optional custom instructions",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "template": {
+                "enum": [
+                  "developer",
+                  "designer",
+                  "manager",
+                  "student",
+                  "random"
+                ],
+                "type": "string",
+                "default": "random"
+              },
+              "customInstructions": {
+                "type": "string",
+                "description": "Freeform custom instructions"
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.generate_from_accounts",
+          "description": "Generate persona from connected accounts (Google, GitHub, LinkedIn, Twitter)",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "accounts"
+            ],
+            "properties": {
+              "accounts": {
+                "type": "object",
+                "properties": {
+                  "github": {
+                    "type": "object"
+                  },
+                  "google": {
+                    "type": "object"
+                  },
+                  "twitter": {
+                    "type": "object"
+                  },
+                  "linkedin": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.save",
+          "description": "Save/update a persona (creates new version)",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "supabaseId",
+              "persona"
+            ],
+            "properties": {
+              "persona": {
+                "type": "object",
+                "description": "Persona data to save"
+              },
+              "supabaseId": {
+                "type": "string",
+                "description": "User ID from Supabase auth"
+              },
+              "llmPreferences": {
+                "type": "object",
+                "properties": {
+                  "chat": {
+                    "type": "string"
+                  },
+                  "coding": {
+                    "type": "string"
+                  },
+                  "default": {
+                    "type": "string"
+                  },
+                  "analysis": {
+                    "type": "string"
+                  },
+                  "creative": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.get",
+          "description": "Get persona by user ID or persona ID",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "personaId": {
+                "type": "string"
+              },
+              "supabaseId": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.update_field",
+          "description": "Update a specific field in the persona (creates new version)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "description": "New value for the field"
+              },
+              "fieldPath": {
+                "type": "string",
+                "description": "Dot notation path (e.g., \"style.formality\")"
+              },
+              "personaId": {
+                "type": "string"
+              },
+              "supabaseId": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.get_history",
+          "description": "Get version history for a persona",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "supabaseId"
+            ],
+            "properties": {
+              "supabaseId": {
+                "type": "string",
+                "required": true
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.rollback",
+          "description": "Rollback persona to a previous version",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "personaId",
+              "toVersion"
+            ],
+            "properties": {
+              "personaId": {
+                "type": "string"
+              },
+              "toVersion": {
+                "type": "number",
+                "description": "Version number to rollback to"
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.export",
+          "description": "Export persona in different formats (JSON, YAML, LLM prompt)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "format": {
+                "enum": [
+                  "json",
+                  "yaml",
+                  "llm_prompt"
+                ],
+                "type": "string",
+                "default": "json"
+              },
+              "personaId": {
+                "type": "string"
+              },
+              "supabaseId": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "tool_count": 8,
+      "tool_names": [
+        "persona.generate_mock",
+        "persona.generate_from_accounts",
+        "persona.save",
+        "persona.get",
+        "persona.update_field",
+        "persona.get_history",
+        "persona.rollback",
+        "persona.export"
+      ],
+      "verification_call_result": "meta=None content=[TextContent(type='text', text='{\"name\":\"Maya Patel\",\"languages\":[\"en\"],\"preferredLanguage\":\"en\",\"style\":{\"formality\":\"casual\",\"verbosity\":\"balanced\",\"technical_level\":\"intermediate\"},\"interests\":[\"UI/UX\",\"Figma\",\"Design Systems\",\"Accessibility\"],\"profession\":\"Product Designer\",\"currentGoals\":[\"Master design systems\",\"Improve accessibility skills\",\"Learn motion design\"]}', annotations=None, meta=None)] structuredContent=None isError=False"
+    },
+    "server_info_crawled": {
+      "id": null,
+      "name": "Twin Persona",
+      "author": null,
+      "overview": "Generate personas for testing and prototyping. Build from your connected accounts or custom guidance to mirror real-world behavior. Export in multiple formats for easy sharing and integration.",
+      "repository_url": null,
+      "homepage": "https://smithery.ai/server/@erniesg/twin",
+      "remote_or_local": "Remote",
+      "license": null,
+      "usage_count": 0,
+      "success_rate": null,
+      "tags": [],
+      "categories": [],
+      "file_path": null,
+      "tools_count": 8,
+      "tools": [
+        {
+          "name": "persona.generate_mock",
+          "description": "Generate mock persona for testing with optional custom instructions",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "template": {
+                "enum": [
+                  "developer",
+                  "designer",
+                  "manager",
+                  "student",
+                  "random"
+                ],
+                "type": "string",
+                "default": "random"
+              },
+              "customInstructions": {
+                "type": "string",
+                "description": "Freeform custom instructions"
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.generate_from_accounts",
+          "description": "Generate persona from connected accounts (Google, GitHub, LinkedIn, Twitter)",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "accounts"
+            ],
+            "properties": {
+              "accounts": {
+                "type": "object",
+                "properties": {
+                  "github": {
+                    "type": "object"
+                  },
+                  "google": {
+                    "type": "object"
+                  },
+                  "twitter": {
+                    "type": "object"
+                  },
+                  "linkedin": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.save",
+          "description": "Save/update a persona (creates new version)",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "supabaseId",
+              "persona"
+            ],
+            "properties": {
+              "persona": {
+                "type": "object",
+                "description": "Persona data to save"
+              },
+              "supabaseId": {
+                "type": "string",
+                "description": "User ID from Supabase auth"
+              },
+              "llmPreferences": {
+                "type": "object",
+                "properties": {
+                  "chat": {
+                    "type": "string"
+                  },
+                  "coding": {
+                    "type": "string"
+                  },
+                  "default": {
+                    "type": "string"
+                  },
+                  "analysis": {
+                    "type": "string"
+                  },
+                  "creative": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.get",
+          "description": "Get persona by user ID or persona ID",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "personaId": {
+                "type": "string"
+              },
+              "supabaseId": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.update_field",
+          "description": "Update a specific field in the persona (creates new version)",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "description": "New value for the field"
+              },
+              "fieldPath": {
+                "type": "string",
+                "description": "Dot notation path (e.g., \"style.formality\")"
+              },
+              "personaId": {
+                "type": "string"
+              },
+              "supabaseId": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.get_history",
+          "description": "Get version history for a persona",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "supabaseId"
+            ],
+            "properties": {
+              "supabaseId": {
+                "type": "string",
+                "required": true
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.rollback",
+          "description": "Rollback persona to a previous version",
+          "inputSchema": {
+            "type": "object",
+            "required": [
+              "personaId",
+              "toVersion"
+            ],
+            "properties": {
+              "personaId": {
+                "type": "string"
+              },
+              "toVersion": {
+                "type": "number",
+                "description": "Version number to rollback to"
+              }
+            }
+          }
+        },
+        {
+          "name": "persona.export",
+          "description": "Export persona in different formats (JSON, YAML, LLM prompt)",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "format": {
+                "enum": [
+                  "json",
+                  "yaml",
+                  "llm_prompt"
+                ],
+                "type": "string",
+                "default": "json"
+              },
+              "personaId": {
+                "type": "string"
+              },
+              "supabaseId": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "python_sdk": null,
+      "configuration_schema": null,
+      "smithery_configuration_requirements": null,
+      "python_sdk_config": null,
+      "python_sdk_url": null
+    },
+    "source_file_path": "/data/shenzhe/Toucan/mcp_crawl/@erniesg@twin.json",
+    "source_filename": "@erniesg@twin.json",
+    "processed_timestamp": 1761334376,
+    "processing_mode": "auto_crawl",
+    "rank": null,
+    "connection": {
+      "type": "http",
+      "deploymentUrl": "https://server.smithery.ai/@erniesg/twin/mcp",
+      "configSchema": {}
+    },
+    "registry_entry": {
+      "qualifiedName": "@erniesg/twin",
+      "displayName": "Twin Persona",
+      "description": "Generate personas for testing and prototyping. Build from your connected accounts or custom guidance to mirror real-world behavior. Export in multiple formats for easy sharing and integration.",
+      "iconUrl": null,
+      "verified": false,
+      "useCount": 0,
+      "remote": true,
+      "createdAt": "2025-10-18T06:26:25.763Z",
+      "homepage": "https://smithery.ai/server/@erniesg/twin"
+    }
+  }
+}
