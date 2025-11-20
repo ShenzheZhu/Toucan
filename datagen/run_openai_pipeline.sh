@@ -133,7 +133,8 @@ else
   confirm_or_exit "Step 1.1 will generate prompts. Continue?"
   cmd=(python datagen/step1.1_gen_questions.py \
     --job_name "${JOB_ID}" \
-    --mcp_source "${MCP_SOURCE}")
+    --mcp_source "${MCP_SOURCE}" \
+    --output_folder "${JOB_DIR}")
   if [[ -n "${TOTAL_PROMPTS}" ]]; then
     cmd+=(--total_prompts "${TOTAL_PROMPTS}")
   fi
@@ -153,7 +154,7 @@ else
     cmd+=(--samples_per_server "${SAMPLES_PER_SERVER}")
   fi
   "${cmd[@]}"
-  STEP1_OUTPUT=$(find_latest_file "data/${JOB_ID}/ToolUse_s2q_*_prepared.jsonl")
+  STEP1_OUTPUT=$(find_latest_file "${JOB_DIR}/ToolUse_s2q_*_prepared.jsonl")
   if [[ -z "${STEP1_OUTPUT}" || ! -f "${STEP1_OUTPUT}" ]]; then
     echo "ERROR: Step 1.1 output not found."
     exit 1
@@ -428,7 +429,7 @@ fi
 echo "Response QC results: ${RESP_QC_RESULTS}"
 
 # ---------------- Step 4.3 ----------------
-FINAL_OUTPUT_DIR="data/${JOB_ID}/completed"
+FINAL_OUTPUT_DIR="${JOB_DIR}/completed"
 mkdir -p "${FINAL_OUTPUT_DIR}"
 if step_completed "step4_aggregation"; then
   FINAL_JSONL=$(get_checkpoint "step4_aggregation")
