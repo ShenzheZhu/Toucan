@@ -470,6 +470,40 @@ else
 fi
 echo "MS-Swift formatted dataset: ${MS_SWIFT_OUTPUT}"
 
+# ---------------- Step 5.3 ----------------
+FINAL_DATASET_PATH="${JOB_DIR}/final_dataset.jsonl"
+if [[ -n "${RULE_FILTERED:-}" && -f "${RULE_FILTERED}" ]]; then
+  TOOL_POOL_JSON="data/mcp_tool_pool.json"
+  if [[ ! -f "${TOOL_POOL_JSON}" ]]; then
+    if [[ -x "scripts/cache_mcp_tool_pool.py" ]]; then
+      echo "Tool pool cache missing - generating ${TOOL_POOL_JSON} ..."
+      if ! ./scripts/cache_mcp_tool_pool.py; then
+        echo "⚠️  Failed to generate tool pool cache. Skipping final dataset export."
+        TOOL_POOL_JSON=""
+      fi
+    else
+      echo "⚠️  scripts/cache_mcp_tool_pool.py not found. Skipping final dataset export."
+      TOOL_POOL_JSON=""
+    fi
+  fi
+  if [[ -n "${TOOL_POOL_JSON}" && -x "scripts/build_final_dataset.py" ]]; then
+    echo "Building curated dataset at ${FINAL_DATASET_PATH} ..."
+    if ./scripts/build_final_dataset.py \
+      --job_id "${JOB_ID}" \
+      --input "${RULE_FILTERED}" \
+      --output "${FINAL_DATASET_PATH}" \
+      --tool_pool "${TOOL_POOL_JSON}"; then
+      echo "Final dataset ready: ${FINAL_DATASET_PATH}"
+    else
+      echo "⚠️  Failed to build final dataset."
+    fi
+  else
+    echo "⚠️  scripts/build_final_dataset.py not executable or tool pool unavailable. Skipping Step 5.3."
+  fi
+else
+  echo "Step 5.3 skipped: RULE_FILTERED file not available."
+fi
+
 echo "========================================================"
 echo "Pipeline complete!"
 echo "  Step1 prompts          : ${STEP1_OUTPUT}"
@@ -481,5 +515,6 @@ echo "  Response QC prompts    : ${RESP_QC_PROMPTS}"
 echo "  Final processed output : ${FINAL_JSONL}"
 echo "  Normalized dataset     : ${NORMALIZED_V3}"
 echo "  MS-Swift output        : ${MS_SWIFT_OUTPUT}"
+echo "  Final dataset          : ${FINAL_DATASET_PATH}"
 echo "Checkpoint files stored in: ${CHECKPOINT_DIR}"
 echo "========================================================"

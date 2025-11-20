@@ -8,6 +8,7 @@ import re
 import requests
 import concurrent.futures
 from time import sleep, time
+from typing import Optional, List, Dict, Any
 from tqdm import tqdm
 from utils import load_dataset_from_file, save_dataset, make_api_request_with_retry, get_model_short_name, safe_save_checkpoint, get_model_abbreviation
 from vllm import LLM, SamplingParams
@@ -47,11 +48,28 @@ def get_args():
     parser.add_argument("--repetition_penalty", type=float, default=1.0)
     parser.add_argument("--num_trials", type=int, default=1)
     parser.add_argument("--step", type=str, default="unknown", help="Processing step identifier.")
+    parser.add_argument("--reasoning_effort", type=str, default=None, help="Optional reasoning effort for models that support it (e.g., gpt-5). Use 'none' to disable.")
 
     return parser.parse_args()
 
 args = get_args()
 print(f"Response Generation Manager. Arguments: {args}") # For logging
+
+def is_gpt5_family(model_name: str) -> bool:
+    if not model_name:
+        return False
+    normalized = model_name.lower().replace("-", "").replace("_", "")
+    return normalized.startswith("gpt5")
+
+def normalize_reasoning_effort(value: Optional[str]) -> Optional[str]:
+    if value is None:
+        return None
+    trimmed = value.strip()
+    return trimmed if trimmed else None
+
+args.reasoning_effort = normalize_reasoning_effort(args.reasoning_effort)
+if args.engine == "openai" and args.reasoning_effort is None and is_gpt5_family(args.model_path):
+    args.reasoning_effort = "minimal"
 
 if args.input_file is None:
     raise ValueError("Please specify the input file path.")
@@ -223,6 +241,70 @@ def process_batch_openai(batch, client):
         normalized = model_name.lower()
         return normalized.startswith("gpt-4.1") or normalized.startswith("gpt-5")
 
+    def _convert_messages_for_responses(messages: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        converted = []
+        for message in messages:
+            role = message.get("role", "user")
+            content = message.get("content", "")
+            text_chunks: List[str] = []
+            if isinstance(content, str):
+                text_chunks.append(content)
+            elif isinstance(content, list):
+                for part in content:
+                    if isinstance(part, dict):
+                        if part.get("type") == "text":
+                            text_chunks.append(part.get("text", ""))
+                        elif "text" in part:
+                            text_chunks.append(str(part.get("text", "")))
+                        elif "content" in part and isinstance(part["content"], str):
+                            text_chunks.append(part["content"])
+                    elif isinstance(part, str):
+                        text_chunks.append(part)
+                    else:
+                        text_chunks.append(str(part))
+            else:
+                text_chunks.append(str(content))
+            converted.append({
+                "role": role,
+                "content": "\n".join(chunk for chunk in text_chunks if chunk)
+            })
+        return converted
+
+    def _call_openai_responses(messages: List[Dict[str, Any]], reasoning_payload: Dict[str, Any]) -> str:
+        payload: Dict[str, Any] = {
+            "model": args.model_path,
+            "reasoning": reasoning_payload,
+            "input": _convert_messages_for_responses(messages),
+            "temperature": args.temperature,
+            "top_p": args.top_p,
+        }
+        if args.max_tokens is not None:
+            payload["max_output_tokens"] = args.max_tokens
+        response = client.responses.create(**payload)
+        response_dict = response.to_dict() if hasattr(response, "to_dict") else response
+        text_segments: List[str] = []
+        for item in response_dict.get("output", []):
+            if not isinstance(item, dict):
+                continue
+            if item.get("type") == "message":
+                for content in item.get("content", []):
+                    if isinstance(content, dict):
+                        if content.get("type") == "output_text":
+                            text_segments.append(content.get("text", ""))
+                        elif "text" in content:
+                            text_segments.append(str(content.get("text", "")))
+            elif "text" in item and isinstance(item["text"], str):
+                text_segments.append(item["text"])
+        if not text_segments:
+            output_text = response_dict.get("output_text")
+            if isinstance(output_text, list):
+                text_segments.extend(str(entry) for entry in output_text)
+            elif isinstance(output_text, str):
+                text_segments.append(output_text)
+        if not text_segments:
+            raise RuntimeError(f"Unable to extract text from OpenAI responses payload: {response_dict}")
+        return "\n".join(segment for segment in text_segments if segment)
+
     total_items = len(batch)
     for idx, item in enumerate(batch):
         message = item["messages"]
@@ -248,8 +330,20 @@ def process_batch_openai(batch, client):
                 else:
                     request_kwargs["max_tokens"] = args.max_tokens
 
-            completion = client.chat.completions.create(**request_kwargs)
-            response = completion.choices[0].message.content
+            reasoning_effort = args.reasoning_effort
+            use_reasoning = False
+            reasoning_payload = None
+            if args.engine == "openai" and reasoning_effort:
+                normalized_effort = reasoning_effort.strip().lower()
+                if normalized_effort not in ("none", "null", "off", "false"):
+                    use_reasoning = True
+                    reasoning_payload = {"effort": reasoning_effort}
+
+            if use_reasoning:
+                response = _call_openai_responses(message, reasoning_payload)
+            else:
+                completion = client.chat.completions.create(**request_kwargs)
+                response = completion.choices[0].message.content
             item['messages'] = message + [
                 {
                     "role": "assistant",

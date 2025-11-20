@@ -16,11 +16,18 @@ import queue
 import signal
 import atexit
 from time import sleep, time
+from typing import Optional, List, Dict, Any
 from urllib.parse import urlparse, parse_qsl, urlencode, urlunparse
 from tqdm import tqdm
 from wrapt_timeout_decorator import timeout
 
-from utils import load_dataset_from_file, save_dataset, make_api_request_with_retry, get_model_short_name, validate_api_pool_from_file, check_if_api_key_is_valid, safe_save_checkpoint, get_model_abbreviation
+current_dir = os.path.abspath(os.path.dirname(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
+
+from utils import load_dataset_from_file, save_dataset, make_api_request_with_retry, get_model_short_name, safe_save_checkpoint, get_model_abbreviation
+from datagen.local_runtime import get_local_registry
 
 try:
     import mcp
@@ -70,9 +77,6 @@ def get_args():
     parser.add_argument("--openai_api_key", type=str, default="", help="OpenAI API Key")
     parser.add_argument("--vllm_api_url", type=str, default="http://localhost:8000/v1", help="vLLM API URL")
     parser.add_argument("--vllm_api_key", type=str, default="EMPTY", help="vLLM API Key")
-    parser.add_argument("--smithery_api_key", type=str, default="", help="Smithery API Key")
-    parser.add_argument("--smithery_profile", type=str, default="", help="Smithery Profile")
-    parser.add_argument("--smithery_api_pool", type=str, default="smithery_api_pool.json", help="Path to Smithery API pool JSON file")
     parser.add_argument("--max_workers", type=int, default=None, help="Maximum number of parallel workers (default: use API pool size)")
     parser.add_argument("--batch_size", type=int, default=None, help="Optional concurrent worker cap (alias for max_workers)")
 
@@ -89,7 +93,7 @@ def get_args():
     parser.add_argument("--max_retries", type=int, default=3, help="Maximum number of retries for each item processing (default: 3)")
     parser.add_argument("--fncall_prompt_type", type=str, default="nous", help="Function call prompt type (default: nous)")
     parser.add_argument("--parallel_function_calls", type=bool, default=True, help="Parallel function calls (default: True)")
-    parser.add_argument("--reasoning_effort", type=str, default="high", help="Reasoning effort (default: high)")
+    parser.add_argument("--reasoning_effort", type=str, default="minimal", help="Reasoning effort (default: minimal)")
     parser.add_argument("--enable_tool_hint", action="store_true", help="Enable tool hint (default: off)")
     parser.add_argument("--enable_irrelevant_warning", action="store_true", help="Enable irrelevant warning (default: off)")
     parser.add_argument("--max_turns", type=int, default=10, help="Maximum number of dialogue turns.")
@@ -199,101 +203,31 @@ elif args.engine == "openai":
             API_PARAMS["max_completion_tokens"] = args.max_tokens
         else:
             API_PARAMS["max_tokens"] = args.max_tokens
+    if "gpt5" in model_abbreviation.lower():
+        API_PARAMS["reasoning"] = {"effort": args.reasoning_effort}
 
-# Global API pool variable
-smithery_api_pool = None
+def detect_local_server(server_info: dict, remote_response: dict) -> tuple[bool, Optional[str]]:
+    def extract_target(value):
+        if isinstance(value, str) and value.startswith("local://"):
+            return value.split("local://", 1)[1]
+        return None
 
-def load_and_validate_smithery_api_pool(pool_file_path):
-    """Load and validate Smithery API pool from JSON file, keeping only valid keys"""
-    global smithery_api_pool
-    
-    print("=" * 50)
-    print("🔍 SMITHERY API POOL VALIDATION")
-    print("=" * 50)
-    
-    # Check if pool file exists
-    if not os.path.exists(pool_file_path):
-        print(f"⚠️  API pool file {pool_file_path} not found!")
-        print("🔍 Testing fallback API key from arguments...")
-        
-        # Validate the fallback API key
-        fallback_result = check_if_api_key_is_valid(args.smithery_profile, args.smithery_api_key)
-        
-        if not fallback_result['valid']:
-            raise ValueError(f"❌ Fallback API key is also invalid: {fallback_result['message']}")
-        
-        print(f"✅ Fallback API key is valid: {fallback_result['message']}")
-        smithery_api_pool = [{
-            "profile": args.smithery_profile,
-            "api_key": args.smithery_api_key,
-            "source": "fallback"
-        }]
-        print(f"✅ Using 1 valid API key (fallback)")
-        print("=" * 50)
-        return smithery_api_pool
-    
-    # Validate the entire API pool using the test logic
-    print(f"📁 Validating all entries in {pool_file_path}...")
-    
-    try:
-        results = validate_api_pool_from_file(pool_file_path)
-        
-        if "error" in results:
-            print(f"❌ Error: {results['error']}")
-            raise ValueError(f"API pool validation failed: {results['error']}")
-        
-        # Display detailed results like in test file
-        print("=" * 30)
-        print("📊 VALIDATION SUMMARY")
-        print("=" * 30)
-        print(f"Total entries: {results['total_entries']}")
-        print(f"Valid entries: {results['valid_entries']}")
-        print(f"Invalid entries: {results['invalid_entries']}")
-        print(f"Success rate: {results['valid_entries']/results['total_entries']*100:.1f}%")
-        
-        print(f"\n📋 DETAILED RESULTS")
-        print("-" * 30)
-        for result in results['results']:
-            status = "✅" if result['valid'] else "❌"
-            print(f"{status} {result['profile']} ({result['source']}): {result['message']}")
-        
-        # Check if we have any valid entries
-        if results['valid_entries'] == 0:
-            raise ValueError("❌ No valid API keys found in the pool! All API keys failed validation.")
-        
-        # Load original data to get valid entries with API keys
-        with open(pool_file_path, 'r') as f:
-            original_data = json.load(f)
-            original_pool = original_data.get('api_pool', [])
-        
-        # Keep only valid entries
-        valid_pool = []
-        for result in results['results']:
-            if result['valid']:
-                # Find the original entry to get the API key
-                for original_entry in original_pool:
-                    if original_entry['profile'] == result['profile']:
-                        valid_pool.append(original_entry)
-                        break
-        
-        smithery_api_pool = valid_pool
-        
-        print(f"\n✅ SUCCESS: Using {len(smithery_api_pool)} valid API keys from pool")
-        print("=" * 50)
-        return smithery_api_pool
-        
-    except Exception as e:
-        print(f"❌ Error during API pool validation: {e}")
-        raise ValueError(f"API pool validation failed: {str(e)}")
+    if isinstance(remote_response, dict):
+        connection = remote_response.get("connection", {})
+        if isinstance(connection, dict) and connection.get("type") == "local":
+            target = connection.get("server") or connection.get("name")
+            if isinstance(target, str) and target.strip():
+                return True, target.strip()
+        url = remote_response.get("url")
+        target = extract_target(url)
+        if target:
+            return True, target
 
-def get_api_key_for_worker(worker_id):
-    """Get API key and profile for a specific worker"""
-    if smithery_api_pool and len(smithery_api_pool) > 0:
-        # Round-robin assignment
-        pool_entry = smithery_api_pool[worker_id % len(smithery_api_pool)]
-        return pool_entry['api_key'], pool_entry['profile']
-    else:
-        return args.smithery_api_key, args.smithery_profile
+    candidate = server_info.get("python_sdk_url") or server_info.get("url")
+    target = extract_target(candidate)
+    if target:
+        return True, target
+    return False, None
 
 def construct_mcp_server_url(server_info, api_key=None, profile=None, remote_response=None):
     """
@@ -307,12 +241,6 @@ def construct_mcp_server_url(server_info, api_key=None, profile=None, remote_res
         server_url = remote_response.get('url', '')
     if not server_url:
         return None
-    
-    # Use provided api_key and profile, or fall back to args
-    if api_key is None:
-        api_key = args.smithery_api_key
-    if profile is None:
-        profile = args.smithery_profile
     
     # Get or create default config
     mcp_config = server_info.get('python_sdk_config', "")
@@ -330,9 +258,9 @@ def construct_mcp_server_url(server_info, api_key=None, profile=None, remote_res
     config_b64 = base64.b64encode(json.dumps(mcp_config).encode()).decode()
     if "{config_b64}" in server_url:
         server_url = server_url.replace("{config_b64}", config_b64)
-    if "{smithery_api_key}" in server_url:
+    if api_key and "{smithery_api_key}" in server_url:
         server_url = server_url.replace("{smithery_api_key}", api_key)
-    if "{smithery_profile}" in server_url:
+    if profile and "{smithery_profile}" in server_url:
         server_url = server_url.replace("{smithery_profile}", profile)
     
     parsed = urlparse(server_url)
@@ -496,27 +424,63 @@ class MCPToolExecutor:
 
         used_api_names = set()
 
+        registry = None
         for idx, server in enumerate(self.mcp_servers):
             server_info = server.get("server_info") or server.get("server_info_crawled") or {}
             remote_response = server.get("remote_server_response", {})
             server_name = server_info.get("name") or server.get("server_name") or f"server_{idx}"
             server_alias = re.sub(r"[^a-zA-Z0-9]+", "_", server_name).strip("_").lower() or f"server_{idx}"
 
-            url = construct_mcp_server_url(server_info, self.api_key, self.profile, remote_response)
-            if not url:
-                raise ValueError(f"Unable to construct MCP URL for server '{server_name}'.")
+            is_local, local_target = detect_local_server(server_info, remote_response)
+            local_target_name = local_target or server_info.get("server_id") or server_alias
+            local_connection = None
+            url = None
 
-            client_ctx = streamablehttp_client(url)
-            read_stream, write_stream, _ = await client_ctx.__aenter__()
-            session_ctx = mcp.ClientSession(read_stream, write_stream)
-            session = await session_ctx.__aenter__()
+            if is_local:
+                if registry is None:
+                    registry = get_local_registry()
+                try:
+                    local_connection = registry.create_connection(local_target_name)
+                except Exception as exc:
+                    raise RuntimeError(f"Failed to create local MCP connection for '{server_name}': {exc}") from exc
+                session = await local_connection.__aenter__()
+                session_ctx = local_connection.session_ctx
+                client_ctx = local_connection.client_ctx
+                connection_record = {
+                    "type": "local",
+                    "connection": local_connection,
+                    "server_name": server_name,
+                    "url": f"local://{local_target_name}"
+                }
+            else:
+                url = construct_mcp_server_url(server_info, self.api_key, self.profile, remote_response)
+                if not url:
+                    raise ValueError(f"Unable to construct MCP URL for server '{server_name}'.")
+
+                client_ctx = streamablehttp_client(url)
+                read_stream, write_stream, _ = await client_ctx.__aenter__()
+                session_ctx = mcp.ClientSession(read_stream, write_stream)
+                session = await session_ctx.__aenter__()
+                connection_record = {
+                    "type": "remote",
+                    "session_ctx": session_ctx,
+                    "client_ctx": client_ctx,
+                    "server_name": server_name,
+                    "url": url
+                }
 
             try:
                 await asyncio.wait_for(session.initialize(), timeout=15)
                 tools_result = await asyncio.wait_for(session.list_tools(), timeout=15)
             except Exception:
-                await session_ctx.__aexit__(None, None, None)
-                await client_ctx.__aexit__(None, None, None)
+                if is_local:
+                    try:
+                        await local_connection.__aexit__(None, None, None)
+                    except Exception:
+                        pass
+                else:
+                    await session_ctx.__aexit__(None, None, None)
+                    await client_ctx.__aexit__(None, None, None)
                 raise
 
             available_tools = getattr(tools_result, "tools", []) or []
@@ -577,16 +541,21 @@ class MCPToolExecutor:
                     }
                 })
 
-            self.connections.append({
-                "session": session,
-                "session_ctx": session_ctx,
-                "client_ctx": client_ctx,
-                "server_name": server_name
-            })
+            connection_record["session"] = session
+            self.connections.append(connection_record)
 
     async def _close(self):
         while self.connections:
             conn = self.connections.pop()
+            conn_type = conn.get("type")
+            if conn_type == "local":
+                local_conn = conn.get("connection")
+                if local_conn is not None:
+                    try:
+                        await local_conn.__aexit__(None, None, None)
+                    except Exception as e:
+                        print(f"⚠️  Failed to close local MCP connection for {conn.get('server_name')}: {e}")
+                continue
             try:
                 await conn["session_ctx"].__aexit__(None, None, None)
             except Exception as e:
@@ -1085,7 +1054,7 @@ class DynamicProcessor:
     """
     
     def __init__(self, max_workers=None, checkpoint_every=16):
-        self.max_workers = max_workers or len(smithery_api_pool) if smithery_api_pool else 1
+        self.max_workers = max_workers or 1
         self.checkpoint_every = checkpoint_every
         self.processed_count = 0
         self.lock = threading.Lock()
@@ -1126,9 +1095,8 @@ class DynamicProcessor:
         
         # Prepare items with metadata for processing
         items_with_metadata = []
-        for i, (item, original_index) in enumerate(items_to_process):
-            api_key, profile = get_api_key_for_worker(i)
-            items_with_metadata.append((item, original_index, api_key, profile))
+        for item, original_index in items_to_process:
+            items_with_metadata.append((item, original_index, None, None))
         
         # Process items with ThreadPoolExecutor
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.max_workers) as executor:
@@ -1365,7 +1333,7 @@ def generate_and_update(dataset, checkpoint_file):
         return processed_dataset
 
     # Create dynamic processor
-    max_workers = args.max_workers or (len(smithery_api_pool) if smithery_api_pool else 8)
+    max_workers = args.max_workers or 8
     processor = DynamicProcessor(
         max_workers=max_workers, 
         checkpoint_every=CHECKPOINT_EVERY
@@ -1409,24 +1377,19 @@ def generate_and_update(dataset, checkpoint_file):
 
 # Main function to control workflow
 def main():
-    # Load and validate Smithery API pool
-    api_pool = load_and_validate_smithery_api_pool(args.smithery_api_pool)
-    
     # Display dynamic processing info
-    effective_workers = args.max_workers or len(api_pool)
     print("=" * 50)
     print("🚀 DYNAMIC PROCESSING CONFIGURATION")
     print("=" * 50)
     print(f"Processing mode: Dynamic (individual item processing)")
-    print(f"Workers: {effective_workers}")
-    print(f"API pool size: {len(api_pool)}")
+    print(f"Workers: {args.max_workers or 8}")
     print(f"Timeout per item: {args.timeout} seconds")
     print(f"Checkpoint frequency: Every {args.checkpoint_every} completed items")
     
     if args.max_workers is not None:
         print(f"Worker setting: Custom ({args.max_workers} workers)")
     else:
-        print(f"Worker setting: Auto-detected from API pool size")
+        print(f"Worker setting: Default (auto)")
     
     print(f"Resilience: Individual timeouts prevent blocking")
     if args.agent:
