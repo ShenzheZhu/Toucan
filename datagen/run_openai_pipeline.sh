@@ -97,7 +97,7 @@ JOB_TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 JOB_SOURCE_TAG=${MCP_SOURCE:-mcp_new}
 JOB_MODE_TAG=${INTERACTION_MODE:-single_turn}
 JOB_ID=${JOB_ID:-ToolUse_job_${JOB_TIMESTAMP}-${JOB_SOURCE_TAG}-${JOB_MODE_TAG}}
-JOB_DIR="data/${JOB_ID}"
+JOB_DIR=${JOB_DIR:-data/${JOB_ID}}
 mkdir -p "${JOB_DIR}"
 
 CHECKPOINT_DIR="${JOB_DIR}/.checkpoints"
