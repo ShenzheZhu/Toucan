@@ -15,6 +15,15 @@ find_latest_file() {
   ls -1t ${pattern} 2>/dev/null | head -n1 || true
 }
 
+resolve_path() {
+  local target="$1"
+  if [[ "$target" == /* ]]; then
+    echo "$target"
+  else
+    echo "${PROJECT_ROOT}/${target}"
+  fi
+}
+
 run_step3_agent_with_monitor() {
   local results_pattern=$1
   shift
@@ -97,7 +106,21 @@ JOB_TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 JOB_SOURCE_TAG=${MCP_SOURCE:-mcp_new}
 JOB_MODE_TAG=${INTERACTION_MODE:-single_turn}
 JOB_ID=${JOB_ID:-ToolUse_job_${JOB_TIMESTAMP}-${JOB_SOURCE_TAG}-${JOB_MODE_TAG}}
-JOB_DIR=${JOB_DIR:-data/${JOB_ID}}
+JOB_DIR_ENV=${JOB_DIR:-}
+if [[ -z "${JOB_DIR_ENV}" ]]; then
+  JOB_PARENT_DIR="data"
+  JOB_DIR="${JOB_PARENT_DIR}/${JOB_ID}"
+else
+  JOB_DIR_CLEAN="${JOB_DIR_ENV%/}"
+  if [[ "${JOB_DIR_CLEAN}" == */${JOB_ID} || "${JOB_DIR_CLEAN}" == "${JOB_ID}" ]]; then
+    JOB_DIR="${JOB_DIR_CLEAN}"
+    JOB_PARENT_DIR=$(dirname -- "${JOB_DIR_CLEAN}")
+    [[ "${JOB_PARENT_DIR}" == "." ]] && JOB_PARENT_DIR="."
+  else
+    JOB_PARENT_DIR="${JOB_DIR_CLEAN}"
+    JOB_DIR="${JOB_PARENT_DIR}/${JOB_ID}"
+  fi
+fi
 mkdir -p "${JOB_DIR}"
 
 CHECKPOINT_DIR="${JOB_DIR}/.checkpoints"
@@ -134,7 +157,7 @@ else
   cmd=(python datagen/step1.1_gen_questions.py \
     --job_name "${JOB_ID}" \
     --mcp_source "${MCP_SOURCE}" \
-    --output_folder "${JOB_DIR}")
+    --output_folder "${JOB_PARENT_DIR}")
   if [[ -n "${TOTAL_PROMPTS}" ]]; then
     cmd+=(--total_prompts "${TOTAL_PROMPTS}")
   fi
@@ -176,7 +199,7 @@ else
   (
     cd datagen && \
     bash step1.2_completion.sh \
-      "${PROJECT_ROOT}/${STEP1_OUTPUT}" \
+      "$(resolve_path "${STEP1_OUTPUT}")" \
       "${QUESTION_MODEL}" \
       "${QUESTION_ENGINE}" \
       1.2 \
@@ -232,7 +255,7 @@ else
   confirm_or_exit "Step 2.1 will create QC prompts. Continue?"
   (
     cd datagen && \
-    python step2.1_question_quality_check.py --input_file "${PROJECT_ROOT}/${SANITIZED}"
+    python step2.1_question_quality_check.py --input_file "$(resolve_path "${SANITIZED}")"
   )
   STEP2_BASE=${SANITIZED%.jsonl}
   STEP2_PROMPTS="${STEP2_BASE}_qced_prepared.jsonl"
@@ -260,7 +283,7 @@ else
   (
     cd datagen && \
     bash step2.2_completion_quality_check.sh \
-    "${PROJECT_ROOT}/${STEP2_PROMPTS}" \
+    "$(resolve_path "${STEP2_PROMPTS}")" \
     "${QC_MODEL}" \
     "${QC_ENGINE}" \
     2.2 \
@@ -336,7 +359,7 @@ else
   STEP3_RESULTS_PATTERN="$(dirname "${QUALITY_PREPARED}")/$(basename "${QUALITY_PREPARED%.jsonl}")_*_results.jsonl"
   if ! run_step3_agent_with_monitor "${STEP3_RESULTS_PATTERN}" \
     bash step3.1_completion_agent.sh \
-    "${PROJECT_ROOT}/${QUALITY_PREPARED}" \
+    "$(resolve_path "${QUALITY_PREPARED}")" \
     "${AGENT_MODEL}" \
     "${AGENT_ENGINE}" \
     3.1 \
@@ -383,7 +406,7 @@ else
   confirm_or_exit "Step 4.1 will generate response-QC prompts. Continue?"
   (
     cd datagen && \
-    python step4.1_response_quality_check.py --input_file "${PROJECT_ROOT}/${RULE_FILTERED}"
+    python step4.1_response_quality_check.py --input_file "$(resolve_path "${RULE_FILTERED}")"
   )
   RESP_QC_PROMPTS="${RULE_FILTERED%.jsonl}_response_qced_prepared.jsonl"
   if [[ ! -f "${RESP_QC_PROMPTS}" ]]; then
@@ -410,7 +433,7 @@ else
   (
     cd datagen && \
     bash step4.2_completion_response_check.sh \
-    "${PROJECT_ROOT}/${RESP_QC_PROMPTS}" \
+    "$(resolve_path "${RESP_QC_PROMPTS}")" \
     "${RESPONSE_QC_MODEL}" \
     "${RESPONSE_QC_ENGINE}" \
     4.2 \
